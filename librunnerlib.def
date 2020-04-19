@@ -1,0 +1,1189 @@
+EXPORTS
+    SDL_main @1
+    _Unwind_Backtrace @2
+    _Unwind_DeleteException @3
+    _Unwind_FindEnclosingFunction @4
+    _Unwind_Find_FDE @5
+    _Unwind_ForcedUnwind @6
+    _Unwind_GetCFA @7
+    _Unwind_GetDataRelBase @8
+    _Unwind_GetGR @9
+    _Unwind_GetIP @10
+    _Unwind_GetIPInfo @11
+    _Unwind_GetLanguageSpecificData @12
+    _Unwind_GetRegionStart @13
+    _Unwind_GetTextRelBase @14
+    _Unwind_RaiseException @15
+    _Unwind_Resume @16
+    _Unwind_Resume_or_Rethrow @17
+    _Unwind_SetGR @18
+    _Unwind_SetIP @19
+    _Z10Light_ctorv @20
+    _Z11Camera_ctorv @21
+    _Z11Player_ctorv @22
+    _Z11Spring_ctorv @23
+    _Z11draw_stringNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiN3glm6detail5tvec4IfLNS5_9precisionE0EEE @24
+    _Z12Firebar_ctorv @25
+    _Z12draw_textureP7TextureiiN3glm6detail5tvec4IfLNS1_9precisionE0EEE @26
+    _Z13Fireball_ctorv @27
+    _Z14init_librariesv @28
+    _Z15NoWalljump_ctorv @29
+    _Z15StaticProp_ctorv @30
+    _Z15meters_to_unitsd @31
+    _Z15pixels_to_unitsd @32
+    _Z15units_to_metersi @33
+    _Z15units_to_pixelsi @34
+    _Z16HurtTrigger_ctorv @35
+    _Z16meters_to_pixelsd @36
+    _Z16pixels_to_metersd @37
+    _Z17HealthPickup_ctorv @38
+    _Z17frames_to_secondsd @39
+    _Z17hertz_to_perFramed @40
+    _Z17perFrame_to_hertzd @41
+    _Z17seconds_to_framesd @42
+    _Z22openglCallbackFunctionjjjjiPKcPv@28 @43
+    _Z26unitsPerFrame_to_kmPerHouri @44
+    _Z28metersPerSecond_to_kmPerHourd @45
+    _Z32metersPerSecond_to_unitsPerFramed @46
+    _Z32unitsPerFrame_to_metersPerSecondi @47
+    _Z34metersPerSecond2_to_unitsPerFrame2d @48
+    _Z34unitsPerFrame2_to_metersPerSecond2i @49
+    _Z5fRandff @50
+    _Z8Bat_ctorv @51
+    _ZN10BaseEntity12deinitializeEv @52
+    _ZN10BaseEntity6mType_E @53 DATA
+    _ZN10BaseEntityC1Ev @54
+    _ZN10BaseEntityC2Ev @55
+    _ZN10BaseEntityD0Ev @56
+    _ZN10BaseEntityD1Ev @57
+    _ZN10BaseEntityD2Ev @58
+    _ZN10LevelTimer11get_minutesEv @59
+    _ZN10LevelTimer11get_secondsEv @60
+    _ZN10LevelTimer16get_centisecondsEv @61
+    _ZN10LevelTimer6updateEv @62
+    _ZN10LevelTimerC1Ev @63
+    _ZN10LevelTimerC2Ev @64
+    _ZN10LevelTimerD1Ev @65
+    _ZN10LevelTimerD2Ev @66
+    _ZN10NoWalljump6mType_E @67 DATA
+    _ZN10NoWalljumpC1Ev @68
+    _ZN10NoWalljumpC2Ev @69
+    _ZN10NoWalljumpD0Ev @70
+    _ZN10NoWalljumpD1Ev @71
+    _ZN10NoWalljumpD2Ev @72
+    _ZN10PlayerData16reset_temp_speedEv @73
+    _ZN10PlayerDuck12setup_spriteER10PlayerDataR7dSprite @74
+    _ZN10PlayerDuck4moveER10PlayerData @75
+    _ZN10PlayerDuck6updateER10PlayerData @76
+    _ZN10PlayerDuckD0Ev @77
+    _ZN10PlayerDuckD1Ev @78
+    _ZN10PlayerHang12setup_spriteER10PlayerDataR7dSprite @79
+    _ZN10PlayerHang6updateER10PlayerData @80
+    _ZN10PlayerHangD0Ev @81
+    _ZN10PlayerHangD1Ev @82
+    _ZN10StaticProp10initializeEPN8rapidxml8xml_nodeIcEE @83
+    _ZN10StaticProp10initializeEPv @84
+    _ZN10StaticProp12deinitializeEv @85
+    _ZN10StaticProp6mType_E @86 DATA
+    _ZN10StaticProp6updateEv @87
+    _ZN10StaticPropC1Ev @88
+    _ZN10StaticPropC2Ev @89
+    _ZN10StaticPropD0Ev @90
+    _ZN10StaticPropD1Ev @91
+    _ZN10StaticPropD2Ev @92
+    _ZN11Compression16getExtractedSizeERKSt6vectorIhSaIhEE @93
+    _ZN11Compression7extractERKSt6vectorIhSaIhEE @94
+    _ZN11Compression8compressERKSt6vectorIhSaIhEE @95
+    _ZN11FileManager12load_tilesetENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @96
+    _ZN11HurtTrigger6mType_E @97 DATA
+    _ZN11HurtTriggerC1Ev @98
+    _ZN11HurtTriggerC2Ev @99
+    _ZN11HurtTriggerD0Ev @100
+    _ZN11HurtTriggerD1Ev @101
+    _ZN11HurtTriggerD2Ev @102
+    _ZN11InputAction11add_mappingERK6Signald @103
+    _ZN11LevelSelect4drawEf @104
+    _ZN11LevelSelect6updateEv @105
+    _ZN11LevelSelectC1Ev @106
+    _ZN11LevelSelectC2Ev @107
+    _ZN11LevelSelectD0Ev @108
+    _ZN11LevelSelectD1Ev @109
+    _ZN11LevelSelectD2Ev @110
+    _ZN11LightShader12load_programEv @111
+    _ZN11LightShader16set_texture_unitEj @112
+    _ZN11LightShader20enable_data_pointersEv @113
+    _ZN11LightShader20set_texcoord_pointerEiPKv @114
+    _ZN11LightShader21disable_data_pointersEv @115
+    _ZN11LightShaderC1Ev @116
+    _ZN11LightShaderC2Ev @117
+    _ZN11LightShaderD0Ev @118
+    _ZN11LightShaderD1Ev @119
+    _ZN11LogicEntity6mType_E @120 DATA
+    _ZN11LogicEntityC1Ev @121
+    _ZN11LogicEntityC2Ev @122
+    _ZN11LogicEntityD0Ev @123
+    _ZN11LogicEntityD1Ev @124
+    _ZN11LogicEntityD2Ev @125
+    _ZN11PlayerClimb12setup_spriteER10PlayerDataR7dSprite @126
+    _ZN11PlayerClimb6updateER10PlayerData @127
+    _ZN11PlayerClimb9end_climbEv @128
+    _ZN11PlayerClimbC1Ev @129
+    _ZN11PlayerClimbC2Ev @130
+    _ZN11PlayerClimbD0Ev @131
+    _ZN11PlayerClimbD1Ev @132
+    _ZN11PlayerStand12setup_spriteER10PlayerDataR7dSprite @133
+    _ZN11PlayerStand4fallEv @134
+    _ZN11PlayerStand4moveER10PlayerData @135
+    _ZN11PlayerStand6updateER10PlayerData @136
+    _ZN11PlayerStandC1Ev @137
+    _ZN11PlayerStandC2Ev @138
+    _ZN11PlayerStandD0Ev @139
+    _ZN11PlayerStandD1Ev @140
+    _ZN11TileManager10get_layersEv @141
+    _ZN11TileManager11draw_layersEf @142
+    _ZN11TileManager12clear_layersEv @143
+    _ZN11TileManager15load_tile_layerEPN8rapidxml8xml_nodeIcEEN3glm6detail5tvec2IiLNS4_9precisionE0EEER11TilesetData @144
+    _ZN11TileManagerC1Ev @145
+    _ZN11TileManagerC2Ev @146
+    _ZN11TileManagerD1Ev @147
+    _ZN11TileManagerD2Ev @148
+    _ZN11TilesetData11add_tilesetEP7Tilesetj @149
+    _ZN11TilesetData11get_tilesetEj @150
+    _ZN11TilesetData7get_gidEj @151
+    _ZN12EntitySystem10get_entityEjNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @152
+    _ZN12EntitySystem11init_entityEjPv @153
+    _ZN12EntitySystem12get_entitiesEj @154
+    _ZN12EntitySystem13EntityManagerC1Ev @155
+    _ZN12EntitySystem13EntityManagerC2Ev @156
+    _ZN12EntitySystem13EntityManagerD1Ev @157
+    _ZN12EntitySystem13EntityManagerD2Ev @158
+    _ZN12EntitySystem13deinit_entityEjP10BaseEntity @159
+    _ZN12EntitySystem13deinit_entityEjj @160
+    _ZN12EntitySystem13register_typeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEj @161
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE10get_vectorEv @162
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE10initializeEPv @163
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE12deinitializeEP10BaseEntity @164
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE12deinitializeEj @165
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @166
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE16deinitialize_allEv @167
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpE8allocateEv @168
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpED0Ev @169
+    _ZN12EntitySystem15EntityContainerI10NoWalljumpED1Ev @170
+    _ZN12EntitySystem15EntityContainerI10StaticPropE10get_vectorEv @171
+    _ZN12EntitySystem15EntityContainerI10StaticPropE10initializeEPv @172
+    _ZN12EntitySystem15EntityContainerI10StaticPropE12deinitializeEP10BaseEntity @173
+    _ZN12EntitySystem15EntityContainerI10StaticPropE12deinitializeEj @174
+    _ZN12EntitySystem15EntityContainerI10StaticPropE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @175
+    _ZN12EntitySystem15EntityContainerI10StaticPropE16deinitialize_allEv @176
+    _ZN12EntitySystem15EntityContainerI10StaticPropE8allocateEv @177
+    _ZN12EntitySystem15EntityContainerI10StaticPropED0Ev @178
+    _ZN12EntitySystem15EntityContainerI10StaticPropED1Ev @179
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE10get_vectorEv @180
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE10initializeEPv @181
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE12deinitializeEP10BaseEntity @182
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE12deinitializeEj @183
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @184
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE16deinitialize_allEv @185
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerE8allocateEv @186
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerED0Ev @187
+    _ZN12EntitySystem15EntityContainerI11HurtTriggerED1Ev @188
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE10get_vectorEv @189
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE10initializeEPv @190
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE12deinitializeEP10BaseEntity @191
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE12deinitializeEj @192
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @193
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE16deinitialize_allEv @194
+    _ZN12EntitySystem15EntityContainerI12HealthPickupE8allocateEv @195
+    _ZN12EntitySystem15EntityContainerI12HealthPickupED0Ev @196
+    _ZN12EntitySystem15EntityContainerI12HealthPickupED1Ev @197
+    _ZN12EntitySystem15EntityContainerI3BatE10get_vectorEv @198
+    _ZN12EntitySystem15EntityContainerI3BatE10initializeEPv @199
+    _ZN12EntitySystem15EntityContainerI3BatE12deinitializeEP10BaseEntity @200
+    _ZN12EntitySystem15EntityContainerI3BatE12deinitializeEj @201
+    _ZN12EntitySystem15EntityContainerI3BatE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @202
+    _ZN12EntitySystem15EntityContainerI3BatE16deinitialize_allEv @203
+    _ZN12EntitySystem15EntityContainerI3BatE8allocateEv @204
+    _ZN12EntitySystem15EntityContainerI3BatED0Ev @205
+    _ZN12EntitySystem15EntityContainerI3BatED1Ev @206
+    _ZN12EntitySystem15EntityContainerI5LightE10get_vectorEv @207
+    _ZN12EntitySystem15EntityContainerI5LightE10initializeEPv @208
+    _ZN12EntitySystem15EntityContainerI5LightE12deinitializeEP10BaseEntity @209
+    _ZN12EntitySystem15EntityContainerI5LightE12deinitializeEj @210
+    _ZN12EntitySystem15EntityContainerI5LightE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @211
+    _ZN12EntitySystem15EntityContainerI5LightE16deinitialize_allEv @212
+    _ZN12EntitySystem15EntityContainerI5LightE8allocateEv @213
+    _ZN12EntitySystem15EntityContainerI5LightED0Ev @214
+    _ZN12EntitySystem15EntityContainerI5LightED1Ev @215
+    _ZN12EntitySystem15EntityContainerI6CameraE10get_vectorEv @216
+    _ZN12EntitySystem15EntityContainerI6CameraE10initializeEPv @217
+    _ZN12EntitySystem15EntityContainerI6CameraE12deinitializeEP10BaseEntity @218
+    _ZN12EntitySystem15EntityContainerI6CameraE12deinitializeEj @219
+    _ZN12EntitySystem15EntityContainerI6CameraE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @220
+    _ZN12EntitySystem15EntityContainerI6CameraE16deinitialize_allEv @221
+    _ZN12EntitySystem15EntityContainerI6CameraE8allocateEv @222
+    _ZN12EntitySystem15EntityContainerI6CameraED0Ev @223
+    _ZN12EntitySystem15EntityContainerI6CameraED1Ev @224
+    _ZN12EntitySystem15EntityContainerI6PlayerE10get_vectorEv @225
+    _ZN12EntitySystem15EntityContainerI6PlayerE10initializeEPv @226
+    _ZN12EntitySystem15EntityContainerI6PlayerE12deinitializeEP10BaseEntity @227
+    _ZN12EntitySystem15EntityContainerI6PlayerE12deinitializeEj @228
+    _ZN12EntitySystem15EntityContainerI6PlayerE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @229
+    _ZN12EntitySystem15EntityContainerI6PlayerE16deinitialize_allEv @230
+    _ZN12EntitySystem15EntityContainerI6PlayerE8allocateEv @231
+    _ZN12EntitySystem15EntityContainerI6PlayerED0Ev @232
+    _ZN12EntitySystem15EntityContainerI6PlayerED1Ev @233
+    _ZN12EntitySystem15EntityContainerI6SpringE10get_vectorEv @234
+    _ZN12EntitySystem15EntityContainerI6SpringE10initializeEPv @235
+    _ZN12EntitySystem15EntityContainerI6SpringE12deinitializeEP10BaseEntity @236
+    _ZN12EntitySystem15EntityContainerI6SpringE12deinitializeEj @237
+    _ZN12EntitySystem15EntityContainerI6SpringE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @238
+    _ZN12EntitySystem15EntityContainerI6SpringE16deinitialize_allEv @239
+    _ZN12EntitySystem15EntityContainerI6SpringE8allocateEv @240
+    _ZN12EntitySystem15EntityContainerI6SpringED0Ev @241
+    _ZN12EntitySystem15EntityContainerI6SpringED1Ev @242
+    _ZN12EntitySystem15EntityContainerI7FirebarE10get_vectorEv @243
+    _ZN12EntitySystem15EntityContainerI7FirebarE10initializeEPv @244
+    _ZN12EntitySystem15EntityContainerI7FirebarE12deinitializeEP10BaseEntity @245
+    _ZN12EntitySystem15EntityContainerI7FirebarE12deinitializeEj @246
+    _ZN12EntitySystem15EntityContainerI7FirebarE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @247
+    _ZN12EntitySystem15EntityContainerI7FirebarE16deinitialize_allEv @248
+    _ZN12EntitySystem15EntityContainerI7FirebarE8allocateEv @249
+    _ZN12EntitySystem15EntityContainerI7FirebarED0Ev @250
+    _ZN12EntitySystem15EntityContainerI7FirebarED1Ev @251
+    _ZN12EntitySystem15EntityContainerI8FireballE10get_vectorEv @252
+    _ZN12EntitySystem15EntityContainerI8FireballE10initializeEPv @253
+    _ZN12EntitySystem15EntityContainerI8FireballE12deinitializeEP10BaseEntity @254
+    _ZN12EntitySystem15EntityContainerI8FireballE12deinitializeEj @255
+    _ZN12EntitySystem15EntityContainerI8FireballE14initialize_xmlEPN8rapidxml8xml_nodeIcEE @256
+    _ZN12EntitySystem15EntityContainerI8FireballE16deinitialize_allEv @257
+    _ZN12EntitySystem15EntityContainerI8FireballE8allocateEv @258
+    _ZN12EntitySystem15EntityContainerI8FireballED0Ev @259
+    _ZN12EntitySystem15EntityContainerI8FireballED1Ev @260
+    _ZN12EntitySystem15deinit_entitiesEj @261
+    _ZN12EntitySystem15init_entity_xmlENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPN8rapidxml8xml_nodeIcEE @262
+    _ZN12EntitySystem16get_all_entitiesEv @263
+    _ZN12EntitySystem20allocate_entity_dataEv @264
+    _ZN12EntitySystem24get_types_that_implementEj @265
+    _ZN12EntitySystem26get_entity_that_implementsEjNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @266
+    _ZN12EntitySystem27get_entities_that_implementEj @267
+    _ZN12EntitySystem8TypeDataD1Ev @268
+    _ZN12EntitySystem8eManagerE @269 DATA
+    _ZN12HealthPickup10initializeEPN8rapidxml8xml_nodeIcEE @270
+    _ZN12HealthPickup10initializeEPv @271
+    _ZN12HealthPickup6mType_E @272 DATA
+    _ZN12HealthPickup6updateEv @273
+    _ZN12HealthPickupC1Ev @274
+    _ZN12HealthPickupC2Ev @275
+    _ZN12HealthPickupD0Ev @276
+    _ZN12HealthPickupD1Ev @277
+    _ZN12HealthPickupD2Ev @278
+    _ZN12InputManager10get_buttonEj @279
+    _ZN12InputManager10map_actionE11InputAction @280
+    _ZN12InputManager10winHandlerE @281 DATA
+    _ZN12InputManager12mouseHandlerE @282 DATA
+    _ZN12InputManager13actionsByNameE @283 DATA
+    _ZN12InputManager18get_button_pressedEj @284
+    _ZN12InputManager19get_button_releasedEj @285
+    _ZN12InputManager4pollEv @286
+    _ZN12InputManager4quitE @287 DATA
+    _ZN12InputManager8get_axisEj @288
+    _ZN12InputManager9jsHandlerE @289 DATA
+    _ZN12InputManager9kbHandlerE @290 DATA
+    _ZN12InputManagerD1Ev @291
+    _ZN12InputManagerD2Ev @292
+    _ZN12InputMappingC1ERK6Signald @293
+    _ZN12InputMappingC2ERK6Signald @294
+    _ZN12PlayerOnWall12setup_spriteER10PlayerDataR7dSprite @295
+    _ZN12PlayerOnWall6updateER10PlayerData @296
+    _ZN12PlayerOnWall7releaseEv @297
+    _ZN12PlayerOnWallC1Ev @298
+    _ZN12PlayerOnWallC2Ev @299
+    _ZN12PlayerOnWallD0Ev @300
+    _ZN12PlayerOnWallD1Ev @301
+    _ZN12SpriteShader12load_programEv @302
+    _ZN12SpriteShader16set_texture_unitEj @303
+    _ZN12SpriteShader17set_lightmap_unitEj @304
+    _ZN12SpriteShader20enable_data_pointersEv @305
+    _ZN12SpriteShader20set_texcoord_pointerEiPKv @306
+    _ZN12SpriteShader21disable_data_pointersEv @307
+    _ZN12SpriteShader8set_glowEf @308
+    _ZN12SpriteShaderC1Ev @309
+    _ZN12SpriteShaderC2Ev @310
+    _ZN12SpriteShaderD0Ev @311
+    _ZN12SpriteShaderD1Ev @312
+    _ZN13ShaderProgram12free_programEv @313
+    _ZN13ShaderProgram14delete_programEv @314
+    _ZN13ShaderProgram14get_program_idEv @315
+    _ZN13ShaderProgram16print_shader_logEj @316
+    _ZN13ShaderProgram17print_program_logEj @317
+    _ZN13ShaderProgram18set_vertex_pointerEiPKv @318
+    _ZN13ShaderProgram20enable_data_pointersEv @319
+    _ZN13ShaderProgram21disable_data_pointersEv @320
+    _ZN13ShaderProgram21load_shader_from_fileENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEj @321
+    _ZN13ShaderProgram4bindEv @322
+    _ZN13ShaderProgram6unbindEv @323
+    _ZN13ShaderProgramC1Ev @324
+    _ZN13ShaderProgramC2Ev @325
+    _ZN13ShaderProgramD0Ev @326
+    _ZN13ShaderProgramD1Ev @327
+    _ZN13ShaderProgramD2Ev @328
+    _ZN14DeferredShader12load_programEv @329
+    _ZN14DeferredShader17set_ambient_colorEN3glm6detail5tvec3IfLNS0_9precisionE0EEE @330
+    _ZN14DeferredShaderC1Ev @331
+    _ZN14DeferredShaderC2Ev @332
+    _ZN14DeferredShaderD0Ev @333
+    _ZN14DeferredShaderD1Ev @334
+    _ZN14JsEventHandler10get_buttonEh @335
+    _ZN14JsEventHandler17handle_axis_eventER23SDL_ControllerAxisEvent @336
+    _ZN14JsEventHandler19handle_button_eventER25SDL_ControllerButtonEvent @337
+    _ZN14JsEventHandler6updateEv @338
+    _ZN14JsEventHandler8get_axisEh @339
+    _ZN14JsEventHandlerC1Ev @340
+    _ZN14JsEventHandlerC2Ev @341
+    _ZN14JsEventHandlerD1Ev @342
+    _ZN14JsEventHandlerD2Ev @343
+    _ZN14KbEventHandler12handle_eventER17SDL_KeyboardEvent @344
+    _ZN14KbEventHandler6updateEv @345
+    _ZN14KbEventHandler7get_keyEj @346
+    _ZN14KbEventHandlerC1Ev @347
+    _ZN14KbEventHandlerC2Ev @348
+    _ZN14KbEventHandlerD1Ev @349
+    _ZN14KbEventHandlerD2Ev @350
+    _ZN14PhysicalEntity10get_hitboxEv @351
+    _ZN14PhysicalEntity11draw_hitboxE9Transform @352
+    _ZN14PhysicalEntity12deinitializeEv @353
+    _ZN14PhysicalEntity13update_hitboxEv @354
+    _ZN14PhysicalEntity14get_xform_lerpEf @355
+    _ZN14PhysicalEntity20save_transformationsEv @356
+    _ZN14PhysicalEntity4drawEf @357
+    _ZN14PhysicalEntity5modelEv @358
+    _ZN14PhysicalEntity6mType_E @359 DATA
+    _ZN14PhysicalEntity6spriteEv @360
+    _ZN14PhysicalEntity7set_posEii @361
+    _ZN14PhysicalEntity9translateEii @362
+    _ZN14PhysicalEntityC1Ev @363
+    _ZN14PhysicalEntityC2Ev @364
+    _ZN14PhysicalEntityD0Ev @365
+    _ZN14PhysicalEntityD1Ev @366
+    _ZN14PhysicalEntityD2Ev @367
+    _ZN14PlayerWallJump12end_walljumpEv @368
+    _ZN14PlayerWallJump6updateER10PlayerData @369
+    _ZN14PlayerWallJumpC1Ev @370
+    _ZN14PlayerWallJumpC2Ev @371
+    _ZN14PlayerWallJumpD0Ev @372
+    _ZN14PlayerWallJumpD1Ev @373
+    _ZN14RGBSplitShader12load_programEv @374
+    _ZN14RGBSplitShader16set_split_amountEN3glm6detail5tvec2IfLNS0_9precisionE0EEE @375
+    _ZN14RGBSplitShader16set_texture_unitEj @376
+    _ZN14RGBSplitShader20enable_data_pointersEv @377
+    _ZN14RGBSplitShader20set_texcoord_pointerEiPKv @378
+    _ZN14RGBSplitShader21disable_data_pointersEv @379
+    _ZN14RGBSplitShaderC1Ev @380
+    _ZN14RGBSplitShaderC2Ev @381
+    _ZN14RGBSplitShaderD0Ev @382
+    _ZN14RGBSplitShaderD1Ev @383
+    _ZN15WinEventHandler12handle_eventER15SDL_WindowEvent @384
+    _ZN15WinEventHandler6updateEv @385
+    _ZN15WinEventHandlerC1Ev @386
+    _ZN15WinEventHandlerC2Ev @387
+    _ZN15WinEventHandlerD1Ev @388
+    _ZN15WinEventHandlerD2Ev @389
+    _ZN16BackgroundShader12load_programEv @390
+    _ZN16BackgroundShaderC1Ev @391
+    _ZN16BackgroundShaderC2Ev @392
+    _ZN16BackgroundShaderD0Ev @393
+    _ZN16BackgroundShaderD1Ev @394
+    _ZN16ResourceDatabase10get_spriteENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @395
+    _ZN16ResourceDatabase10load_modelENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @396
+    _ZN16ResourceDatabase10load_soundENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @397
+    _ZN16ResourceDatabase11get_textureENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @398
+    _ZN16ResourceDatabase11get_tilesetENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @399
+    _ZN16ResourceDatabase11load_spriteENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @400
+    _ZN16ResourceDatabase12load_textureENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb @401
+    _ZN16ResourceDatabase12load_tilesetENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @402
+    _ZN16ResourceDatabase15delete_texturesEv @403
+    _ZN16ResourceDatabase16throw_file_errorENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_ @404
+    _ZN16ResourceDatabase9get_modelENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @405
+    _ZN16ResourceDatabase9get_soundENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @406
+    _ZN16ResourceDatabaseC1Ev @407
+    _ZN16ResourceDatabaseC2Ev @408
+    _ZN16ResourceDatabaseD1Ev @409
+    _ZN16ResourceDatabaseD2Ev @410
+    _ZN17FBOtoScreenShader12load_programEv @411
+    _ZN17FBOtoScreenShader16set_texture_unitEj @412
+    _ZN17FBOtoScreenShaderC1Ev @413
+    _ZN17FBOtoScreenShaderC2Ev @414
+    _ZN17FBOtoScreenShaderD0Ev @415
+    _ZN17FBOtoScreenShaderD1Ev @416
+    _ZN17MouseEventHandler12handle_eventER9SDL_Event @417
+    _ZN17MouseEventHandler6updateEv @418
+    _ZN17MouseEventHandlerC1Ev @419
+    _ZN17MouseEventHandlerC2Ev @420
+    _ZN17MouseEventHandlerD1Ev @421
+    _ZN17MouseEventHandlerD2Ev @422
+    _ZN18GaussianBlurShader12load_programEv @423
+    _ZN18GaussianBlurShader13set_directionEN3glm6detail5tvec2IfLNS0_9precisionE0EEE @424
+    _ZN18GaussianBlurShader14set_resolutionEN3glm6detail5tvec2IfLNS0_9precisionE0EEE @425
+    _ZN18GaussianBlurShader16set_texture_unitEj @426
+    _ZN18GaussianBlurShaderC1Ev @427
+    _ZN18GaussianBlurShaderC2Ev @428
+    _ZN18GaussianBlurShaderD0Ev @429
+    _ZN18GaussianBlurShaderD1Ev @430
+    _ZN19GlowThresholdShader12load_programEv @431
+    _ZN19GlowThresholdShader16set_texture_unitEj @432
+    _ZN19GlowThresholdShaderC1Ev @433
+    _ZN19GlowThresholdShaderC2Ev @434
+    _ZN19GlowThresholdShaderD0Ev @435
+    _ZN19GlowThresholdShaderD1Ev @436
+    _ZN24PlayerMovementSuperState10maxDashSpdE @437 DATA
+    _ZN24PlayerMovementSuperState10maxWalkSpdE @438 DATA
+    _ZN24PlayerMovementSuperState12accelerationE @439 DATA
+    _ZN24PlayerMovementSuperState12decelerationE @440 DATA
+    _ZN3Bat10initializeEPN8rapidxml8xml_nodeIcEE @441
+    _ZN3Bat10initializeEPv @442
+    _ZN3Bat12deinitializeEv @443
+    _ZN3Bat6mType_E @444 DATA
+    _ZN3Bat6updateEv @445
+    _ZN3BatC1Ev @446
+    _ZN3BatC2Ev @447
+    _ZN3BatD0Ev @448
+    _ZN3BatD1Ev @449
+    _ZN3BatD2Ev @450
+    _ZN4Game10time_in_msEv @451
+    _ZN4Game12enable_vsyncEv @452
+    _ZN4Game13disable_vsyncEv @453
+    _ZN4Game14load_resourcesEv @454
+    _ZN4Game4drawEf @455
+    _ZN4Game4playEv @456
+    _ZN4Game8draw_fpsEv @457
+    _ZN4Game8map_keysEv @458
+    _ZN4Game9init_gameEv @459
+    _ZN4GameC1Ev @460
+    _ZN4GameC2Ev @461
+    _ZN4GameD1Ev @462
+    _ZN4GameD2Ev @463
+    _ZN4Mesh11debug_printEv @464
+    _ZN4Mesh13get_vert_dataEv @465
+    _ZN4Mesh16get_vert_indicesEv @466
+    _ZN4Mesh8load_objERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @467
+    _ZN4MeshC1Ev @468
+    _ZN4MeshC2Ev @469
+    _ZN4MeshD1Ev @470
+    _ZN4MeshD2Ev @471
+    _ZN5Enemy6mType_E @472 DATA
+    _ZN5EnemyC1Ev @473
+    _ZN5EnemyC2Ev @474
+    _ZN5EnemyD0Ev @475
+    _ZN5EnemyD1Ev @476
+    _ZN5EnemyD2Ev @477
+    _ZN5Level10load_levelENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @478
+    _ZN5Level11draw_heartsEv @479
+    _ZN5Level15draw_backgroundEN3glm6detail5tvec3IfLNS0_9precisionE0EEES4_ @480
+    _ZN5Level4drawEf @481
+    _ZN5Level6updateEv @482
+    _ZN5Level8draw_hudEv @483
+    _ZN5LevelC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @484
+    _ZN5LevelC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @485
+    _ZN5LevelD1Ev @486
+    _ZN5LevelD2Ev @487
+    _ZN5Light10initializeEPN8rapidxml8xml_nodeIcEE @488
+    _ZN5Light10initializeEPv @489
+    _ZN5Light12deinitializeEv @490
+    _ZN5Light6mType_E @491 DATA
+    _ZN5Light6updateEv @492
+    _ZN5LightC1Ev @493
+    _ZN5LightC2Ev @494
+    _ZN5LightD0Ev @495
+    _ZN5LightD1Ev @496
+    _ZN5LightD2Ev @497
+    _ZN5Sound10load_soundENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @498
+    _ZN5Sound10play_soundEj @499
+    _ZN5SoundC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @500
+    _ZN5SoundC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @501
+    _ZN5SoundD1Ev @502
+    _ZN5SoundD2Ev @503
+    _ZN5Timer10is_runningEv @504
+    _ZN5Timer10is_stoppedEv @505
+    _ZN5Timer10stop_timerEv @506
+    _ZN5Timer14continue_timerEv @507
+    _ZN5Timer16was_just_startedEv @508
+    _ZN5Timer16was_just_stoppedEv @509
+    _ZN5Timer5emptyEv @510
+    _ZN5Timer5resetEv @511
+    _ZN5Timer6updateEv @512
+    _ZN5Timer9set_timerEj @513
+    _ZN5TimerC1ESt8functionIFvvEE @514
+    _ZN5TimerC1Ev @515
+    _ZN5TimerC2ESt8functionIFvvEE @516
+    _ZN5TimerC2Ev @517
+    _ZN5TimerD1Ev @518
+    _ZN5TimerD2Ev @519
+    _ZN5TimeraSEj @520
+    _ZN5TimereqEj @521
+    _ZN5TimergeEj @522
+    _ZN5TimergtEj @523
+    _ZN5TimerleEj @524
+    _ZN5TimerltEj @525
+    _ZN5TimerneEj @526
+    _ZN5TimerrmEj @527
+    _ZN6Camera10initializeEPN8rapidxml8xml_nodeIcEE @528
+    _ZN6Camera10initializeEPv @529
+    _ZN6Camera10set_targetEP14PhysicalEntity @530
+    _ZN6Camera11correct_posEN3glm6detail5tvec2IiLNS0_9precisionE0EEE @531
+    _ZN6Camera11correct_posEii @532
+    _ZN6Camera12deinitializeEv @533
+    _ZN6Camera6mType_E @534 DATA
+    _ZN6Camera6updateEv @535
+    _ZN6Camera7in_viewEN3glm6detail5tvec2IiLNS0_9precisionE0EEE @536
+    _ZN6Camera7in_viewEii @537
+    _ZN6CameraC1Ev @538
+    _ZN6CameraC2Ev @539
+    _ZN6CameraD0Ev @540
+    _ZN6CameraD1Ev @541
+    _ZN6CameraD2Ev @542
+    _ZN6Pickup10initializeEPN8rapidxml8xml_nodeIcEE @543
+    _ZN6Pickup10initializeEPv @544
+    _ZN6Pickup12deinitializeEv @545
+    _ZN6Pickup6mType_E @546 DATA
+    _ZN6PickupC1Ev @547
+    _ZN6PickupC2Ev @548
+    _ZN6PickupD0Ev @549
+    _ZN6PickupD1Ev @550
+    _ZN6PickupD2Ev @551
+    _ZN6Player10initializeEPN8rapidxml8xml_nodeIcEE @552
+    _ZN6Player10initializeEPv @553
+    _ZN6Player11common_initEv @554
+    _ZN6Player12deinitializeEv @555
+    _ZN6Player13update_hitboxEv @556
+    _ZN6Player17handle_collisionsEv @557
+    _ZN6Player19handle_h_collisionsER7TileHit @558
+    _ZN6Player19handle_v_collisionsER7TileHit @559
+    _ZN6Player4drawEf @560
+    _ZN6Player6mType_E @561 DATA
+    _ZN6Player6updateEv @562
+    _ZN6Player8get_dataEv @563
+    _ZN6Player9translateEii @564
+    _ZN6PlayerC1Ev @565
+    _ZN6PlayerC2Ev @566
+    _ZN6PlayerD0Ev @567
+    _ZN6PlayerD1Ev @568
+    _ZN6PlayerD2Ev @569
+    _ZN6Spring10initializeEPN8rapidxml8xml_nodeIcEE @570
+    _ZN6Spring10initializeEPv @571
+    _ZN6Spring12deinitializeEv @572
+    _ZN6Spring6mType_E @573 DATA
+    _ZN6Spring6updateEv @574
+    _ZN6SpringC1Ev @575
+    _ZN6SpringC2Ev @576
+    _ZN6SpringD0Ev @577
+    _ZN6SpringD1Ev @578
+    _ZN6SpringD2Ev @579
+    _ZN6dModel4drawE9Transform @580
+    _ZN6dModel9set_modelEP6fModel @581
+    _ZN6dModelC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @582
+    _ZN6dModelC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @583
+    _ZN6dModelD1Ev @584
+    _ZN6dModelD2Ev @585
+    _ZN6dUnion16initialize_modelENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @586
+    _ZN6dUnion17initialize_spriteENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @587
+    _ZN6dUnion5modelEv @588
+    _ZN6dUnion6spriteEv @589
+    _ZN6dUnionC1Ev @590
+    _ZN6dUnionC2Ev @591
+    _ZN6dUnionD1Ev @592
+    _ZN6dUnionD2Ev @593
+    _ZN6fModel11get_textureEv @594
+    _ZN6fModel4loadENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @595
+    _ZN6fModel8get_meshEv @596
+    _ZN6fModelC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @597
+    _ZN6fModelC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @598
+    _ZN6fModelD1Ev @599
+    _ZN6fModelD2Ev @600
+    _ZN7Firebar10initializeEPN8rapidxml8xml_nodeIcEE @601
+    _ZN7Firebar10initializeEPv @602
+    _ZN7Firebar12deinitializeEv @603
+    _ZN7Firebar6mType_E @604 DATA
+    _ZN7Firebar6updateEv @605
+    _ZN7FirebarC1Ev @606
+    _ZN7FirebarC2Ev @607
+    _ZN7FirebarD0Ev @608
+    _ZN7FirebarD1Ev @609
+    _ZN7FirebarD2Ev @610
+    _ZN7Texture12bind_textureEj @611
+    _ZN7Texture12free_textureEv @612
+    _ZN7Texture12load_textureENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb @613
+    _ZN7Texture14create_textureEPjjjii @614
+    _ZN7Texture21attach_to_framebufferEj @615
+    _ZN7TextureC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb @616
+    _ZN7TextureC1Ev @617
+    _ZN7TextureC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb @618
+    _ZN7TextureC2Ev @619
+    _ZN7TextureD1Ev @620
+    _ZN7TextureD2Ev @621
+    _ZN7TileHitC1E8TileInfoii @622
+    _ZN7TileHitC2E8TileInfoii @623
+    _ZN7Tileset11get_diffuseEv @624
+    _ZN7Tileset12get_lightmapEv @625
+    _ZN7TilesetC1ERSt6vectorI8TileInfoSaIS1_EENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_ @626
+    _ZN7TilesetC2ERSt6vectorI8TileInfoSaIS1_EENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_ @627
+    _ZN7TilesetD1Ev @628
+    _ZN7TilesetD2Ev @629
+    _ZN7Trigger10initializeEPN8rapidxml8xml_nodeIcEE @630
+    _ZN7Trigger10initializeEPv @631
+    _ZN7Trigger12deinitializeEv @632
+    _ZN7Trigger4drawEv @633
+    _ZN7Trigger6mType_E @634 DATA
+    _ZN7Trigger6updateEv @635
+    _ZN7TriggerC1Ev @636
+    _ZN7TriggerC2Ev @637
+    _ZN7TriggerD0Ev @638
+    _ZN7TriggerD1Ev @639
+    _ZN7TriggerD2Ev @640
+    _ZN7dSprite10set_spriteEP7fSprite @641
+    _ZN7dSprite11image_indexEv @642
+    _ZN7dSprite13set_animationEj @643
+    _ZN7dSprite4drawE9Transform @644
+    _ZN7dSprite6updateEv @645
+    _ZN7dSprite8set_flipEbb @646
+    _ZN7dSprite9set_frameEh @647
+    _ZN7dSprite9set_speedEf @648
+    _ZN7dSpriteC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @649
+    _ZN7dSpriteC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @650
+    _ZN7dSpriteD1Ev @651
+    _ZN7dSpriteD2Ev @652
+    _ZN7fSprite11get_textureEv @653
+    _ZN7fSprite4loadENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @654
+    _ZN7fSprite9get_frameEhRh @655
+    _ZN7fSpriteC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @656
+    _ZN7fSpriteC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @657
+    _ZN7fSpriteD1Ev @658
+    _ZN7fSpriteD2Ev @659
+    _ZN8Drawable7set_redEf @660
+    _ZN8Drawable8set_blueEf @661
+    _ZN8Drawable9set_alphaEf @662
+    _ZN8Drawable9set_colorEN3glm6detail5tvec4IfLNS0_9precisionE0EEE @663
+    _ZN8Drawable9set_colorEffff @664
+    _ZN8Drawable9set_greenEf @665
+    _ZN8DrawableC1Ev @666
+    _ZN8DrawableC2Ev @667
+    _ZN8DrawableD1Ev @668
+    _ZN8DrawableD2Ev @669
+    _ZN8Exchange16set_renderer_ptrEP8Renderer @670
+    _ZN8Exchange16set_tile_managerEP11TileManager @671
+    _ZN8Exchange17set_resource_baseEP16ResourceDatabase @672
+    _ZN8FPSTimer8add_timeEd @673
+    _ZN8FPSTimerC1Ev @674
+    _ZN8FPSTimerC2Ev @675
+    _ZN8FPSTimerD1Ev @676
+    _ZN8FPSTimerD2Ev @677
+    _ZN8Fireball10initializeEPN8rapidxml8xml_nodeIcEE @678
+    _ZN8Fireball10initializeEPv @679
+    _ZN8Fireball12deinitializeEv @680
+    _ZN8Fireball4drawEf @681
+    _ZN8Fireball6mType_E @682 DATA
+    _ZN8Fireball6updateEv @683
+    _ZN8FireballC1Ev @684
+    _ZN8FireballC2Ev @685
+    _ZN8FireballD0Ev @686
+    _ZN8FireballD1Ev @687
+    _ZN8FireballD2Ev @688
+    _ZN8GameMenu4drawEf @689
+    _ZN8GameMenu6updateEv @690
+    _ZN8GameMenuC1Ev @691
+    _ZN8GameMenuC2Ev @692
+    _ZN8GameMenuD0Ev @693
+    _ZN8GameMenuD1Ev @694
+    _ZN8GameMenuD2Ev @695
+    _ZN8GamePlay10load_levelENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @696
+    _ZN8GamePlay4drawEf @697
+    _ZN8GamePlay6updateEv @698
+    _ZN8GamePlayC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @699
+    _ZN8GamePlayC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @700
+    _ZN8GamePlayD0Ev @701
+    _ZN8GamePlayD1Ev @702
+    _ZN8GamePlayD2Ev @703
+    _ZN8Renderer10use_shaderE8ShaderID @704
+    _ZN8Renderer11render_glowEv @705
+    _ZN8Renderer11swap_windowEv @706
+    _ZN8Renderer12clear_windowEv @707
+    _ZN8Renderer12render_lightEiiiN3glm6detail5tvec4IfLNS0_9precisionE0EEE @708
+    _ZN8Renderer12set_viewportEii @709
+    _ZN8Renderer13draw_elementsEj @710
+    _ZN8Renderer13init_rendererEjjj @711
+    _ZN8Renderer13set_rgb_shiftEN3glm6detail5tvec2IfLNS0_9precisionE0EEE @712
+    _ZN8Renderer15set_vertex_dataERSt6vectorI10VertexDataSaIS1_EERS0_IjSaIjEE @713
+    _ZN8Renderer16bind_framebufferEv @714
+    _ZN8Renderer17enable_depth_testEv @715
+    _ZN8Renderer17set_ambient_colorEN3glm6detail5tvec3IfLNS0_9precisionE0EEE @716
+    _ZN8Renderer17set_normal_matrixEN3glm6detail7tmat4x4IfLNS0_9precisionE0EEE @717
+    _ZN8Renderer18disable_depth_testEv @718
+    _ZN8Renderer18render_framebufferEv @719
+    _ZN8Renderer18unbind_framebufferEv @720
+    _ZN8Renderer20prepare_fbo_verticesEv @721
+    _ZN8Renderer20render_fbo_to_screenEv @722
+    _ZN8Renderer20render_gaussian_blurEf @723
+    _ZN8Renderer20set_modelview_matrixEN3glm6detail7tmat4x4IfLNS0_9precisionE0EEE @724
+    _ZN8Renderer21bind_post_process_fboEv @725
+    _ZN8Renderer21render_glow_thresholdEv @726
+    _ZN8Renderer21set_projection_matrixEN3glm6detail7tmat4x4IfLNS0_9precisionE0EEE @727
+    _ZN8Renderer7init_glEv @728
+    _ZN8Renderer7load_gpEv @729
+    _ZN8Renderer8set_glowEf @730
+    _ZN8Renderer9set_colorEjN3glm6detail5tvec3IfLNS0_9precisionE0EEE @731
+    _ZN8Renderer9set_colorEjN3glm6detail5tvec4IfLNS0_9precisionE0EEE @732
+    _ZN8RendererC1Ev @733
+    _ZN8RendererC2Ev @734
+    _ZN8RendererD1Ev @735
+    _ZN8RendererD2Ev @736
+    _ZN8TileInfoC1Ehfi8TileType @737
+    _ZN8TileInfoC1Ev @738
+    _ZN8TileInfoC2Ehfi8TileType @739
+    _ZN8TileInfoC2Ev @740
+    _ZN8rapidxml11memory_poolIcE16allocate_alignedEj @741
+    _ZN8rapidxml11parse_errorD0Ev @742
+    _ZN8rapidxml11parse_errorD1Ev @743
+    _ZN8rapidxml12xml_documentIcE13parse_elementILi0EEEPNS_8xml_nodeIcEERPc @744
+    _ZN8rapidxml8internal13lookup_tablesILi0EE11lookup_textE @745 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE13lookup_digitsE @746 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE16lookup_node_nameE @747 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE17lookup_whitespaceE @748 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE21lookup_attribute_nameE @749 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE22lookup_text_pure_no_wsE @750 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE23lookup_attribute_data_1E @751 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE23lookup_attribute_data_2E @752 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE28lookup_attribute_data_1_pureE @753 DATA
+    _ZN8rapidxml8internal13lookup_tablesILi0EE28lookup_attribute_data_2_pureE @754 DATA
+    _ZN9Animation9get_frameERh @755
+    _ZN9AnimationC1ESt6vectorIhSaIhEE @756
+    _ZN9AnimationC1Eh @757
+    _ZN9AnimationC1Ev @758
+    _ZN9AnimationC2ESt6vectorIhSaIhEE @759
+    _ZN9AnimationC2Eh @760
+    _ZN9AnimationC2Ev @761
+    _ZN9AnimationD1Ev @762
+    _ZN9AnimationD2Ev @763
+    _ZN9AnimationaSESt6vectorIhSaIhEE @764
+    _ZN9Collision14collision_tileEiiii8TileType @765
+    _ZN9Collision15collision_tilesEiiii8TileType @766
+    _ZN9HUDShader12load_programEv @767
+    _ZN9HUDShader16set_texture_unitEj @768
+    _ZN9HUDShader20enable_data_pointersEv @769
+    _ZN9HUDShader20set_texcoord_pointerEiPKv @770
+    _ZN9HUDShader21disable_data_pointersEv @771
+    _ZN9HUDShaderC1Ev @772
+    _ZN9HUDShaderC2Ev @773
+    _ZN9HUDShaderD0Ev @774
+    _ZN9HUDShaderD1Ev @775
+    _ZN9PlayerAir10maxFallSpdE @776 DATA
+    _ZN9PlayerAir12setup_spriteER10PlayerDataR7dSprite @777
+    _ZN9PlayerAir4moveER10PlayerData @778
+    _ZN9PlayerAir6updateER10PlayerData @779
+    _ZN9PlayerAir7gravityE @780 DATA
+    _ZN9PlayerAirD0Ev @781
+    _ZN9PlayerAirD1Ev @782
+    _ZN9TileLayer10draw_tilesEf @783
+    _ZN9TileLayer16get_tileset_dataEv @784
+    _ZN9TileLayerC1E13TileLayerDataRSt6vectorIjSaIjEER11TilesetData @785
+    _ZN9TileLayerC1ERKS_ @786
+    _ZN9TileLayerC2E13TileLayerDataRSt6vectorIjSaIjEER11TilesetData @787
+    _ZN9TileLayerC2ERKS_ @788
+    _ZN9TileLayerD1Ev @789
+    _ZN9TileLayerD2Ev @790
+    _ZN9TileLayeraSERKS_ @791
+    _ZN9Transform12deinitializeEv @792
+    _ZN9Transform4lerpERKS_f @793
+    _ZN9TransformC1Ev @794
+    _ZN9TransformC2Ev @795
+    _ZN9TransformD1Ev @796
+    _ZN9TransformD2Ev @797
+    _ZN9TransformaSERKS_ @798
+    _ZNK10BaseEntity8get_nameB5cxx11Ev @799
+    _ZNK10BaseEntity8is_aliveEv @800
+    _ZNK11InputAction11button_downEv @801
+    _ZNK11InputAction4axisEv @802
+    _ZNK11InputAction6buttonEv @803
+    _ZNK11InputAction9button_upEv @804
+    _ZNK11TilesetData18get_tileset_amountEv @805
+    _ZNK14PhysicalEntity12get_prev_posEv @806
+    _ZNK14PhysicalEntity14get_prev_xformEv @807
+    _ZNK14PhysicalEntity7get_posEv @808
+    _ZNK14PhysicalEntity9get_xformEv @809
+    _ZNK5Timer8get_timeEv @810
+    _ZNK5Timer9get_stateEv @811
+    _ZNK6Player10get_healthEv @812
+    _ZNK6dUnion8drawableEv @813
+    _ZNK6fModel8get_glowEv @814
+    _ZNK7Tileset13get_tile_infoEj @815
+    _ZNK7Tileset8get_sizeEv @816
+    _ZNK7fSprite10get_heightEv @817
+    _ZNK7fSprite12get_x_offsetEv @818
+    _ZNK7fSprite12get_y_offsetEv @819
+    _ZNK7fSprite8get_glowEv @820
+    _ZNK7fSprite9get_widthEv @821
+    _ZNK8Drawable9get_colorEv @822
+    _ZNK8Exchange12tile_managerEv @823
+    _ZNK8Exchange13resource_baseEv @824
+    _ZNK8Exchange8rendererEv @825
+    _ZNK8FPSTimer6get_dtEv @826
+    _ZNK8FPSTimer7get_fpsEv @827
+    _ZNK8TileInfo10get_heightEi @828
+    _ZNK8rapidxml11parse_error4whatEv @829
+    _ZNK9Animation8get_sizeEv @830
+    _ZNK9TileLayer10get_heightEv @831
+    _ZNK9TileLayer17collision_enabledEv @832
+    _ZNK9TileLayer5get_zEv @833
+    _ZNK9TileLayer8get_tileEj @834
+    _ZNK9TileLayer9get_widthEv @835
+    _ZNKSt5ctypeIcE8do_widenEc @836
+    _ZNSt14_Function_base13_Base_managerIPFvvEE10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation @837
+    _ZNSt14_Function_base13_Base_managerISt5_BindIFSt7_Mem_fnIM10PlayerDataFvvEEPS3_EEE10_M_managerERSt9_Any_dataRKSB_St18_Manager_operation @838
+    _ZNSt14_Function_base13_Base_managerISt5_BindIFSt7_Mem_fnIM11PlayerClimbFvvEEPS3_EEE10_M_managerERSt9_Any_dataRKSB_St18_Manager_operation @839
+    _ZNSt14_Function_base13_Base_managerISt5_BindIFSt7_Mem_fnIM11PlayerStandFvvEEPS3_EEE10_M_managerERSt9_Any_dataRKSB_St18_Manager_operation @840
+    _ZNSt14_Function_base13_Base_managerISt5_BindIFSt7_Mem_fnIM12PlayerOnWallFvvEEPS3_EEE10_M_managerERSt9_Any_dataRKSB_St18_Manager_operation @841
+    _ZNSt14_Function_base13_Base_managerISt5_BindIFSt7_Mem_fnIM14PlayerWallJumpFvvEEPS3_EEE10_M_managerERSt9_Any_dataRKSB_St18_Manager_operation @842
+    _ZNSt17_Function_handlerIFvvEPS0_E9_M_invokeERKSt9_Any_data @843
+    _ZNSt17_Function_handlerIFvvESt5_BindIFSt7_Mem_fnIM10PlayerDataFvvEEPS3_EEE9_M_invokeERKSt9_Any_data @844
+    _ZNSt17_Function_handlerIFvvESt5_BindIFSt7_Mem_fnIM11PlayerClimbFvvEEPS3_EEE9_M_invokeERKSt9_Any_data @845
+    _ZNSt17_Function_handlerIFvvESt5_BindIFSt7_Mem_fnIM11PlayerStandFvvEEPS3_EEE9_M_invokeERKSt9_Any_data @846
+    _ZNSt17_Function_handlerIFvvESt5_BindIFSt7_Mem_fnIM12PlayerOnWallFvvEEPS3_EEE9_M_invokeERKSt9_Any_data @847
+    _ZNSt17_Function_handlerIFvvESt5_BindIFSt7_Mem_fnIM14PlayerWallJumpFvvEEPS3_EEE9_M_invokeERKSt9_Any_data @848
+    _ZNSt6vectorI10VertexDataSaIS0_EE12emplace_backIJRiS4_iiEEEvDpOT_ @849
+    _ZNSt6vectorI10VertexDataSaIS0_EE12emplace_backIJddiiEEEvDpOT_ @850
+    _ZNSt6vectorI10VertexDataSaIS0_EE12emplace_backIJiiRfS4_EEEvDpOT_ @851
+    _ZNSt6vectorI10VertexDataSaIS0_EE12emplace_backIJjiRfS4_EEEvDpOT_ @852
+    _ZNSt6vectorI10VertexDataSaIS0_EE12emplace_backIJjjRfS4_EEEvDpOT_ @853
+    _ZNSt6vectorI10VertexDataSaIS0_EE19_M_emplace_back_auxIJRKS0_EEEvDpOT_ @854
+    _ZNSt6vectorI10VertexDataSaIS0_EE7reserveEj @855
+    _ZNSt6vectorI11InputActionSaIS0_EE19_M_emplace_back_auxIJRKS0_EEEvDpOT_ @856
+    _ZNSt6vectorI12InputMappingSaIS0_EE19_M_emplace_back_auxIJRK6SignalRdEEEvDpOT_ @857
+    _ZNSt6vectorI7TileHitSaIS0_EE19_M_emplace_back_auxIJS0_EEEvDpOT_ @858
+    _ZNSt6vectorI8TileInfoSaIS0_EE12emplace_backIJjiRKi8TileTypeEEEvDpOT_ @859
+    _ZNSt6vectorI8TileInfoSaIS0_EE19_M_emplace_back_auxIJRjRfRiR8TileTypeEEEvDpOT_ @860
+    _ZNSt6vectorI8TileInfoSaIS0_EE19_M_emplace_back_auxIJjiRKi8TileTypeEEEvDpOT_ @861
+    _ZNSt6vectorI9AnimationSaIS0_EE19_M_emplace_back_auxIJRS_IhSaIhEEEEEvDpOT_ @862
+    _ZNSt6vectorI9TileLayerSaIS0_EE19_M_emplace_back_auxIJR13TileLayerDataRS_IjSaIjEER11TilesetDataEEEvDpOT_ @863
+    _ZNSt6vectorIN12EntitySystem8TypeDataESaIS1_EE19_M_emplace_back_auxIJRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERjEEEvDpOT_ @864
+    _ZNSt6vectorIN3glm6detail5tvec2IfLNS0_9precisionE0EEESaIS4_EE12emplace_backIJRffEEEvDpOT_ @865
+    _ZNSt6vectorIN3glm6detail5tvec2IfLNS0_9precisionE0EEESaIS4_EE19_M_emplace_back_auxIJRffEEEvDpOT_ @866
+    _ZNSt6vectorIP10BaseEntitySaIS1_EE12emplace_backIJS1_EEEvDpOT_ @867
+    _ZNSt6vectorIP10BaseEntitySaIS1_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPS1_S3_EEEEvS8_T_S9_St20forward_iterator_tag @868
+    _ZNSt6vectorIP10BaseEntitySaIS1_EE19_M_emplace_back_auxIJS1_EEEvDpOT_ @869
+    _ZNSt6vectorIP8FireballSaIS1_EE19_M_emplace_back_auxIJS1_EEEvDpOT_ @870
+    _ZNSt6vectorIPN12EntitySystem19BaseEntityContainerESaIS2_EE12emplace_backIJS2_EEEvDpOT_ @871
+    _ZNSt6vectorIPN12EntitySystem19BaseEntityContainerESaIS2_EE19_M_emplace_back_auxIJS2_EEEvDpOT_ @872
+    _ZNSt6vectorISt4pairIjP7TilesetESaIS3_EE19_M_emplace_back_auxIJS3_EEEvDpOT_ @873
+    _ZNSt6vectorIcSaIcEE17_M_default_appendEj @874
+    _ZNSt6vectorIhSaIhEE17_M_default_appendEj @875
+    _ZNSt6vectorIhSaIhEE19_M_emplace_back_auxIJRKhEEEvDpOT_ @876
+    _ZNSt6vectorIjSaIjEE12emplace_backIJjEEEvDpOT_ @877
+    _ZNSt6vectorIjSaIjEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPjS1_EEEEvS6_T_S7_St20forward_iterator_tag @878
+    _ZNSt6vectorIjSaIjEE19_M_emplace_back_auxIJRKjEEEvDpOT_ @879
+    _ZNSt6vectorIjSaIjEE19_M_emplace_back_auxIJiEEEvDpOT_ @880
+    _ZNSt6vectorIjSaIjEE19_M_emplace_back_auxIJjEEEvDpOT_ @881
+    _ZNSt6vectorIjSaIjEE7reserveEj @882
+    _ZNSt6vectorIjSaIjEEaSERKS1_ @883
+    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreambuf_iteratorIcS2_EEEvT_S8_St18input_iterator_tag @884
+    _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED1Ev @885
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_5SoundESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE17_M_emplace_uniqueIJRS5_S5_EEES6_ISt17_Rb_tree_iteratorIS9_EbEDpOT_ @886
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_5SoundESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE4findERS7_ @887
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_5SoundESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E @888
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_6fModelESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE17_M_emplace_uniqueIJRS5_S5_EEES6_ISt17_Rb_tree_iteratorIS9_EbEDpOT_ @889
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_6fModelESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E @890
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_7TextureESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE17_M_emplace_uniqueIJRKSt21piecewise_construct_tSt5tupleIJS5_EESK_IJS5_bEEEEES6_ISt17_Rb_tree_iteratorIS9_EbEDpOT_ @891
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_7TextureESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E @892
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_7TilesetESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE17_M_emplace_uniqueIJRS5_S8_EEES6_ISt17_Rb_tree_iteratorIS9_EbEDpOT_ @893
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_7TilesetESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E @894
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_7fSpriteESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE17_M_emplace_uniqueIJRS5_S5_EEES6_ISt17_Rb_tree_iteratorIS9_EbEDpOT_ @895
+    _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_7fSpriteESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E @896
+    _ZNSt8_Rb_treeIhSt4pairIKh6SignalESt10_Select1stIS3_ESt4lessIhESaIS3_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS1_EESE_IJEEEEESt17_Rb_tree_iteratorIS3_ESt23_Rb_tree_const_iteratorIS3_EDpOT_ @897
+    _ZNSt8_Rb_treeIhSt4pairIKh6SignalESt10_Select1stIS3_ESt4lessIhESaIS3_EE24_M_get_insert_unique_posERS1_ @898
+    _ZNSt8_Rb_treeIhSt4pairIKh6SignalESt10_Select1stIS3_ESt4lessIhESaIS3_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS3_ERS1_ @899
+    _ZNSt8_Rb_treeIhSt4pairIKh6SignalESt10_Select1stIS3_ESt4lessIhESaIS3_EE8_M_eraseEPSt13_Rb_tree_nodeIS3_E @900
+    _ZNSt8_Rb_treeIjSt4pairIKj6SignalESt10_Select1stIS3_ESt4lessIjESaIS3_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSB_PSt13_Rb_tree_nodeIS3_E @901
+    _ZNSt8_Rb_treeIjSt4pairIKj6SignalESt10_Select1stIS3_ESt4lessIjESaIS3_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJOjEESE_IJEEEEESt17_Rb_tree_iteratorIS3_ESt23_Rb_tree_const_iteratorIS3_EDpOT_ @902
+    _ZNSt8_Rb_treeIjSt4pairIKj6SignalESt10_Select1stIS3_ESt4lessIjESaIS3_EE24_M_get_insert_unique_posERS1_ @903
+    _ZNSt8_Rb_treeIjSt4pairIKj6SignalESt10_Select1stIS3_ESt4lessIjESaIS3_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS3_ERS1_ @904
+    _ZNSt8_Rb_treeIjSt4pairIKj6SignalESt10_Select1stIS3_ESt4lessIjESaIS3_EE8_M_eraseEPSt13_Rb_tree_nodeIS3_E @905
+    _ZSt13__adjust_heapIPjijN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S5_T1_T2_ @906
+    _ZSt9__find_ifIPjN9__gnu_cxx5__ops16_Iter_equals_valIKjEEET_S6_S6_T0_St26random_access_iterator_tag @907
+    _ZTI10BaseEntity @908 DATA
+    _ZTI10NoWalljump @909 DATA
+    _ZTI10PlayerDuck @910 DATA
+    _ZTI10PlayerHang @911 DATA
+    _ZTI10StaticProp @912 DATA
+    _ZTI11HurtTrigger @913 DATA
+    _ZTI11LevelSelect @914 DATA
+    _ZTI11LightShader @915 DATA
+    _ZTI11LogicEntity @916 DATA
+    _ZTI11PlayerClimb @917 DATA
+    _ZTI11PlayerStand @918 DATA
+    _ZTI11PlayerState @919 DATA
+    _ZTI12HealthPickup @920 DATA
+    _ZTI12PlayerOnWall @921 DATA
+    _ZTI12SpriteShader @922 DATA
+    _ZTI13ShaderProgram @923 DATA
+    _ZTI14DeferredShader @924 DATA
+    _ZTI14PhysicalEntity @925 DATA
+    _ZTI14PlayerGrounded @926 DATA
+    _ZTI14PlayerWallJump @927 DATA
+    _ZTI14RGBSplitShader @928 DATA
+    _ZTI16BackgroundShader @929 DATA
+    _ZTI17FBOtoScreenShader @930 DATA
+    _ZTI18GaussianBlurShader @931 DATA
+    _ZTI19GlowThresholdShader @932 DATA
+    _ZTI24PlayerMovementSuperState @933 DATA
+    _ZTI3Bat @934 DATA
+    _ZTI5Enemy @935 DATA
+    _ZTI5Light @936 DATA
+    _ZTI6Camera @937 DATA
+    _ZTI6Pickup @938 DATA
+    _ZTI6Player @939 DATA
+    _ZTI6Spring @940 DATA
+    _ZTI6dModel @941 DATA
+    _ZTI7Firebar @942 DATA
+    _ZTI7Trigger @943 DATA
+    _ZTI7dSprite @944 DATA
+    _ZTI8Drawable @945 DATA
+    _ZTI8Fireball @946 DATA
+    _ZTI8GameMenu @947 DATA
+    _ZTI8GamePlay @948 DATA
+    _ZTI9GameState @949 DATA
+    _ZTI9HUDShader @950 DATA
+    _ZTI9PlayerAir @951 DATA
+    _ZTIFvvE @952 DATA
+    _ZTIN12EntitySystem15EntityContainerI10NoWalljumpEE @953 DATA
+    _ZTIN12EntitySystem15EntityContainerI10StaticPropEE @954 DATA
+    _ZTIN12EntitySystem15EntityContainerI11HurtTriggerEE @955 DATA
+    _ZTIN12EntitySystem15EntityContainerI12HealthPickupEE @956 DATA
+    _ZTIN12EntitySystem15EntityContainerI3BatEE @957 DATA
+    _ZTIN12EntitySystem15EntityContainerI5LightEE @958 DATA
+    _ZTIN12EntitySystem15EntityContainerI6CameraEE @959 DATA
+    _ZTIN12EntitySystem15EntityContainerI6PlayerEE @960 DATA
+    _ZTIN12EntitySystem15EntityContainerI6SpringEE @961 DATA
+    _ZTIN12EntitySystem15EntityContainerI7FirebarEE @962 DATA
+    _ZTIN12EntitySystem15EntityContainerI8FireballEE @963 DATA
+    _ZTIN12EntitySystem19BaseEntityContainerE @964 DATA
+    _ZTIN8rapidxml11parse_errorE @965 DATA
+    _ZTIPFvvE @966 DATA
+    _ZTISt11logic_error @967 DATA
+    _ZTISt12out_of_range @968 DATA
+    _ZTISt13runtime_error @969 DATA
+    _ZTISt17_Weak_result_typeISt7_Mem_fnIM10PlayerDataFvvEEE @970 DATA
+    _ZTISt17_Weak_result_typeISt7_Mem_fnIM11PlayerClimbFvvEEE @971 DATA
+    _ZTISt17_Weak_result_typeISt7_Mem_fnIM11PlayerStandFvvEEE @972 DATA
+    _ZTISt17_Weak_result_typeISt7_Mem_fnIM12PlayerOnWallFvvEEE @973 DATA
+    _ZTISt17_Weak_result_typeISt7_Mem_fnIM14PlayerWallJumpFvvEEE @974 DATA
+    _ZTISt22_Maybe_get_result_typeISt7_Mem_fnIM10PlayerDataFvvEEvE @975 DATA
+    _ZTISt22_Maybe_get_result_typeISt7_Mem_fnIM11PlayerClimbFvvEEvE @976 DATA
+    _ZTISt22_Maybe_get_result_typeISt7_Mem_fnIM11PlayerStandFvvEEvE @977 DATA
+    _ZTISt22_Maybe_get_result_typeISt7_Mem_fnIM12PlayerOnWallFvvEEvE @978 DATA
+    _ZTISt22_Maybe_get_result_typeISt7_Mem_fnIM14PlayerWallJumpFvvEEvE @979 DATA
+    _ZTISt22_Weak_result_type_implISt7_Mem_fnIM10PlayerDataFvvEEE @980 DATA
+    _ZTISt22_Weak_result_type_implISt7_Mem_fnIM11PlayerClimbFvvEEE @981 DATA
+    _ZTISt22_Weak_result_type_implISt7_Mem_fnIM11PlayerStandFvvEEE @982 DATA
+    _ZTISt22_Weak_result_type_implISt7_Mem_fnIM12PlayerOnWallFvvEEE @983 DATA
+    _ZTISt22_Weak_result_type_implISt7_Mem_fnIM14PlayerWallJumpFvvEEE @984 DATA
+    _ZTISt5_BindIFSt7_Mem_fnIM10PlayerDataFvvEEPS1_EE @985 DATA
+    _ZTISt5_BindIFSt7_Mem_fnIM11PlayerClimbFvvEEPS1_EE @986 DATA
+    _ZTISt5_BindIFSt7_Mem_fnIM11PlayerStandFvvEEPS1_EE @987 DATA
+    _ZTISt5_BindIFSt7_Mem_fnIM12PlayerOnWallFvvEEPS1_EE @988 DATA
+    _ZTISt5_BindIFSt7_Mem_fnIM14PlayerWallJumpFvvEEPS1_EE @989 DATA
+    _ZTISt9exception @990 DATA
+    _ZTS10BaseEntity @991 DATA
+    _ZTS10NoWalljump @992 DATA
+    _ZTS10PlayerDuck @993 DATA
+    _ZTS10PlayerHang @994 DATA
+    _ZTS10StaticProp @995 DATA
+    _ZTS11HurtTrigger @996 DATA
+    _ZTS11LevelSelect @997 DATA
+    _ZTS11LightShader @998 DATA
+    _ZTS11LogicEntity @999 DATA
+    _ZTS11PlayerClimb @1000 DATA
+    _ZTS11PlayerStand @1001 DATA
+    _ZTS11PlayerState @1002 DATA
+    _ZTS12HealthPickup @1003 DATA
+    _ZTS12PlayerOnWall @1004 DATA
+    _ZTS12SpriteShader @1005 DATA
+    _ZTS13ShaderProgram @1006 DATA
+    _ZTS14DeferredShader @1007 DATA
+    _ZTS14PhysicalEntity @1008 DATA
+    _ZTS14PlayerGrounded @1009 DATA
+    _ZTS14PlayerWallJump @1010 DATA
+    _ZTS14RGBSplitShader @1011 DATA
+    _ZTS16BackgroundShader @1012 DATA
+    _ZTS17FBOtoScreenShader @1013 DATA
+    _ZTS18GaussianBlurShader @1014 DATA
+    _ZTS19GlowThresholdShader @1015 DATA
+    _ZTS24PlayerMovementSuperState @1016 DATA
+    _ZTS3Bat @1017 DATA
+    _ZTS5Enemy @1018 DATA
+    _ZTS5Light @1019 DATA
+    _ZTS6Camera @1020 DATA
+    _ZTS6Pickup @1021 DATA
+    _ZTS6Player @1022 DATA
+    _ZTS6Spring @1023 DATA
+    _ZTS6dModel @1024 DATA
+    _ZTS7Firebar @1025 DATA
+    _ZTS7Trigger @1026 DATA
+    _ZTS7dSprite @1027 DATA
+    _ZTS8Drawable @1028 DATA
+    _ZTS8Fireball @1029 DATA
+    _ZTS8GameMenu @1030 DATA
+    _ZTS8GamePlay @1031 DATA
+    _ZTS9GameState @1032 DATA
+    _ZTS9HUDShader @1033 DATA
+    _ZTS9PlayerAir @1034 DATA
+    _ZTSFvvE @1035 DATA
+    _ZTSN12EntitySystem15EntityContainerI10NoWalljumpEE @1036 DATA
+    _ZTSN12EntitySystem15EntityContainerI10StaticPropEE @1037 DATA
+    _ZTSN12EntitySystem15EntityContainerI11HurtTriggerEE @1038 DATA
+    _ZTSN12EntitySystem15EntityContainerI12HealthPickupEE @1039 DATA
+    _ZTSN12EntitySystem15EntityContainerI3BatEE @1040 DATA
+    _ZTSN12EntitySystem15EntityContainerI5LightEE @1041 DATA
+    _ZTSN12EntitySystem15EntityContainerI6CameraEE @1042 DATA
+    _ZTSN12EntitySystem15EntityContainerI6PlayerEE @1043 DATA
+    _ZTSN12EntitySystem15EntityContainerI6SpringEE @1044 DATA
+    _ZTSN12EntitySystem15EntityContainerI7FirebarEE @1045 DATA
+    _ZTSN12EntitySystem15EntityContainerI8FireballEE @1046 DATA
+    _ZTSN12EntitySystem19BaseEntityContainerE @1047 DATA
+    _ZTSN8rapidxml11parse_errorE @1048 DATA
+    _ZTSPFvvE @1049 DATA
+    _ZTSSt11logic_error @1050 DATA
+    _ZTSSt12out_of_range @1051 DATA
+    _ZTSSt13runtime_error @1052 DATA
+    _ZTSSt17_Weak_result_typeISt7_Mem_fnIM10PlayerDataFvvEEE @1053 DATA
+    _ZTSSt17_Weak_result_typeISt7_Mem_fnIM11PlayerClimbFvvEEE @1054 DATA
+    _ZTSSt17_Weak_result_typeISt7_Mem_fnIM11PlayerStandFvvEEE @1055 DATA
+    _ZTSSt17_Weak_result_typeISt7_Mem_fnIM12PlayerOnWallFvvEEE @1056 DATA
+    _ZTSSt17_Weak_result_typeISt7_Mem_fnIM14PlayerWallJumpFvvEEE @1057 DATA
+    _ZTSSt22_Maybe_get_result_typeISt7_Mem_fnIM10PlayerDataFvvEEvE @1058 DATA
+    _ZTSSt22_Maybe_get_result_typeISt7_Mem_fnIM11PlayerClimbFvvEEvE @1059 DATA
+    _ZTSSt22_Maybe_get_result_typeISt7_Mem_fnIM11PlayerStandFvvEEvE @1060 DATA
+    _ZTSSt22_Maybe_get_result_typeISt7_Mem_fnIM12PlayerOnWallFvvEEvE @1061 DATA
+    _ZTSSt22_Maybe_get_result_typeISt7_Mem_fnIM14PlayerWallJumpFvvEEvE @1062 DATA
+    _ZTSSt22_Weak_result_type_implISt7_Mem_fnIM10PlayerDataFvvEEE @1063 DATA
+    _ZTSSt22_Weak_result_type_implISt7_Mem_fnIM11PlayerClimbFvvEEE @1064 DATA
+    _ZTSSt22_Weak_result_type_implISt7_Mem_fnIM11PlayerStandFvvEEE @1065 DATA
+    _ZTSSt22_Weak_result_type_implISt7_Mem_fnIM12PlayerOnWallFvvEEE @1066 DATA
+    _ZTSSt22_Weak_result_type_implISt7_Mem_fnIM14PlayerWallJumpFvvEEE @1067 DATA
+    _ZTSSt5_BindIFSt7_Mem_fnIM10PlayerDataFvvEEPS1_EE @1068 DATA
+    _ZTSSt5_BindIFSt7_Mem_fnIM11PlayerClimbFvvEEPS1_EE @1069 DATA
+    _ZTSSt5_BindIFSt7_Mem_fnIM11PlayerStandFvvEEPS1_EE @1070 DATA
+    _ZTSSt5_BindIFSt7_Mem_fnIM12PlayerOnWallFvvEEPS1_EE @1071 DATA
+    _ZTSSt5_BindIFSt7_Mem_fnIM14PlayerWallJumpFvvEEPS1_EE @1072 DATA
+    _ZTSSt9exception @1073 DATA
+    _ZTV10BaseEntity @1074 DATA
+    _ZTV10NoWalljump @1075 DATA
+    _ZTV10PlayerDuck @1076 DATA
+    _ZTV10PlayerHang @1077 DATA
+    _ZTV10StaticProp @1078 DATA
+    _ZTV11HurtTrigger @1079 DATA
+    _ZTV11LevelSelect @1080 DATA
+    _ZTV11LightShader @1081 DATA
+    _ZTV11LogicEntity @1082 DATA
+    _ZTV11PlayerClimb @1083 DATA
+    _ZTV11PlayerStand @1084 DATA
+    _ZTV12HealthPickup @1085 DATA
+    _ZTV12PlayerOnWall @1086 DATA
+    _ZTV12SpriteShader @1087 DATA
+    _ZTV13ShaderProgram @1088 DATA
+    _ZTV14DeferredShader @1089 DATA
+    _ZTV14PhysicalEntity @1090 DATA
+    _ZTV14PlayerWallJump @1091 DATA
+    _ZTV14RGBSplitShader @1092 DATA
+    _ZTV16BackgroundShader @1093 DATA
+    _ZTV17FBOtoScreenShader @1094 DATA
+    _ZTV18GaussianBlurShader @1095 DATA
+    _ZTV19GlowThresholdShader @1096 DATA
+    _ZTV3Bat @1097 DATA
+    _ZTV5Enemy @1098 DATA
+    _ZTV5Light @1099 DATA
+    _ZTV6Camera @1100 DATA
+    _ZTV6Pickup @1101 DATA
+    _ZTV6Player @1102 DATA
+    _ZTV6Spring @1103 DATA
+    _ZTV6dModel @1104 DATA
+    _ZTV7Firebar @1105 DATA
+    _ZTV7Trigger @1106 DATA
+    _ZTV7dSprite @1107 DATA
+    _ZTV8Drawable @1108 DATA
+    _ZTV8Fireball @1109 DATA
+    _ZTV8GameMenu @1110 DATA
+    _ZTV8GamePlay @1111 DATA
+    _ZTV9HUDShader @1112 DATA
+    _ZTV9PlayerAir @1113 DATA
+    _ZTVN12EntitySystem15EntityContainerI10NoWalljumpEE @1114 DATA
+    _ZTVN12EntitySystem15EntityContainerI10StaticPropEE @1115 DATA
+    _ZTVN12EntitySystem15EntityContainerI11HurtTriggerEE @1116 DATA
+    _ZTVN12EntitySystem15EntityContainerI12HealthPickupEE @1117 DATA
+    _ZTVN12EntitySystem15EntityContainerI3BatEE @1118 DATA
+    _ZTVN12EntitySystem15EntityContainerI5LightEE @1119 DATA
+    _ZTVN12EntitySystem15EntityContainerI6CameraEE @1120 DATA
+    _ZTVN12EntitySystem15EntityContainerI6PlayerEE @1121 DATA
+    _ZTVN12EntitySystem15EntityContainerI6SpringEE @1122 DATA
+    _ZTVN12EntitySystem15EntityContainerI7FirebarEE @1123 DATA
+    _ZTVN12EntitySystem15EntityContainerI8FireballEE @1124 DATA
+    _ZTVN8rapidxml11parse_errorE @1125 DATA
+    _ZZN8rapidxml8xml_baseIcE7nullstrEvE4zero @1126 DATA
+    _ZlsRSoRK5Fixed @1127
+    __deregister_frame @1128
+    __deregister_frame_info @1129
+    __deregister_frame_info_bases @1130
+    __emutls_get_address @1131
+    __emutls_register_common @1132
+    __frame_state_for @1133
+    __register_frame @1134
+    __register_frame_info @1135
+    __register_frame_info_bases @1136
+    __register_frame_info_table @1137
+    __register_frame_info_table_bases @1138
+    __register_frame_table @1139
+    _nm____glewActiveTexture @1140 DATA
+    _nm____glewAttachShader @1141 DATA
+    _nm____glewBindBuffer @1142 DATA
+    _nm____glewBindBufferRange @1143 DATA
+    _nm____glewBindFragDataLocation @1144 DATA
+    _nm____glewBindFramebuffer @1145 DATA
+    _nm____glewBindRenderbuffer @1146 DATA
+    _nm____glewBindVertexArray @1147 DATA
+    _nm____glewBlendFuncSeparate @1148 DATA
+    _nm____glewBufferData @1149 DATA
+    _nm____glewBufferSubData @1150 DATA
+    _nm____glewCompileShader @1151 DATA
+    _nm____glewCreateProgram @1152 DATA
+    _nm____glewCreateShader @1153 DATA
+    _nm____glewDeleteBuffers @1154 DATA
+    _nm____glewDeleteProgram @1155 DATA
+    _nm____glewDeleteShader @1156 DATA
+    _nm____glewDeleteVertexArrays @1157 DATA
+    _nm____glewDisableVertexAttribArray @1158 DATA
+    _nm____glewDrawBuffers @1159 DATA
+    _nm____glewEnableVertexAttribArray @1160 DATA
+    _nm____glewFramebufferRenderbuffer @1161 DATA
+    _nm____glewFramebufferTexture @1162 DATA
+    _nm____glewGenBuffers @1163 DATA
+    _nm____glewGenFramebuffers @1164 DATA
+    _nm____glewGenRenderbuffers @1165 DATA
+    _nm____glewGenVertexArrays @1166 DATA
+    _nm____glewGetAttribLocation @1167 DATA
+    _nm____glewGetProgramInfoLog @1168 DATA
+    _nm____glewGetProgramiv @1169 DATA
+    _nm____glewGetShaderiv @1170 DATA
+    _nm____glewGetUniformBlockIndex @1171 DATA
+    _nm____glewGetUniformLocation @1172 DATA
+    _nm____glewIsProgram @1173 DATA
+    _nm____glewLinkProgram @1174 DATA
+    _nm____glewRenderbufferStorage @1175 DATA
+    _nm____glewShaderSource @1176 DATA
+    _nm____glewUniform1f @1177 DATA
+    _nm____glewUniform1i @1178 DATA
+    _nm____glewUniform2f @1179 DATA
+    _nm____glewUniform3fv @1180 DATA
+    _nm____glewUniformBlockBinding @1181 DATA
+    _nm____glewUseProgram @1182 DATA
+    _nm____glewVertexAttribPointer @1183 DATA
+    _nm__glewExperimental @1184 DATA
+    exchange @1185 DATA
+    game @1186 DATA
+    runner_initialize @1187
+    runner_play @1188

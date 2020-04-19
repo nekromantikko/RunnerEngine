@@ -1,3 +1,9 @@
+/backup/
+/bin/
+/lib/
+/obj/
+/res/
+
 # Prerequisites
 *.d
 

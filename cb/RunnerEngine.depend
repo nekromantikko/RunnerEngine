@@ -1,0 +1,5746 @@
+# depslib dependency file v1.0
+1436052810 source:e:\gamedev\runnerengine\runnerengine\src\audio.cpp
+	"audio.h"
+	<iostream>
+	"resource.h"
+
+1438947368 e:\gamedev\runnerengine\runnerengine\src\audio.h
+	<string>
+	<SDL2/SDL_mixer.h>
+
+1376156426 e:\gamedev\runnerengine\runnerengine\lib\sdl2_mixer-2.0.0\i686-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\begin_code.h
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\close_code.h
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<intrin.h>
+	<libkern/OSAtomic.h>
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1403550690 source:e:\gamedev\runnerengine\runnerengine\src\block.cpp
+	"block.h"
+	<iostream>
+	<stdexcept>
+	"geometry.h"
+	"mediator.h"
+	"renderer.h"
+	"sprites.h"
+	"level.h"
+
+1403217788 e:\gamedev\runnerengine\runnerengine\src\block.h
+	<glm/glm.hpp>
+	<vector>
+
+1450205847 source:e:\gamedev\runnerengine\runnerengine\src\compression.cpp
+	<vector>
+	<zlib.h>
+	"compression.h"
+
+1368446224 e:\gamedev\runnerengine\runnerengine\lib\zlib128-dll\include\zlib.h
+	"zconf.h"
+
+1368446224 e:\gamedev\runnerengine\runnerengine\lib\zlib128-dll\include\zconf.h
+	<windows.h>
+	<limits.h>
+	<sys/types.h>
+	<stdarg.h>
+	<stddef.h>
+	<unistd.h>
+	<unixio.h>
+
+1450205847 e:\gamedev\runnerengine\runnerengine\src\compression.h
+	<vector>
+	"typedef.h"
+
+1398630569 source:e:\gamedev\runnerengine\runnerengine\src\databases.cpp
+	"databases.h"
+
+1401306949 e:\gamedev\runnerengine\runnerengine\src\databases.h
+	<vector>
+	<cstddef>
+	<iostream>
+	"textures.h"
+	"tileset.h"
+	"audio.h"
+
+1402036245 e:\gamedev\runnerengine\runnerengine\src\textures.h
+	<vector>
+	<SDL.h>
+	"geometry.h"
+	"resource.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_pixels.h
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1428068478 e:\gamedev\runnerengine\runnerengine\src\geometry.h
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+	<cmath>
+	<glm/glm.hpp>
+
+1449879912 e:\gamedev\runnerengine\runnerengine\src\tileset.h
+	<iostream>
+	<vector>
+	"shared.h"
+	"file_formats.h"
+
+1443257235 e:\gamedev\runnerengine\runnerengine\src\rconst.h
+	<map>
+	<vector>
+	<cmath>
+
+1410369540 source:e:\gamedev\runnerengine\runnerengine\src\enemies.cpp
+	"enemies.h"
+	"exchange.h"
+	"sprites.h"
+	"renderer.h"
+	"level.h"
+
+1410460471 e:\gamedev\runnerengine\runnerengine\src\enemies.h
+	"entity.h"
+
+1404858834 e:\gamedev\runnerengine\runnerengine\src\entities.h
+	<map>
+	<cmath>
+	<list>
+	"geometry.h"
+	"resource.h"
+	"draw_thread.h"
+
+1400002828 e:\gamedev\runnerengine\runnerengine\src\draw_thread.h
+	<iostream>
+	<atomic>
+
+1402867422 e:\gamedev\runnerengine\runnerengine\src\mediator.h
+
+1404512063 e:\gamedev\runnerengine\runnerengine\src\sprites.h
+	<SDL.h>
+	<vector>
+	<iostream>
+	"geometry.h"
+	<glm/glm.hpp>
+
+1400408601 e:\gamedev\runnerengine\runnerengine\src\screen.h
+	<SDL.h>
+	<vector>
+	<string>
+	<iostream>
+
+1466248305 e:\gamedev\runnerengine\runnerengine\src\level.h
+	<SDL.h>
+	<memory>
+	<list>
+	"resource.h"
+	"tiles.h"
+	"leveltimer.h"
+
+1464688913 e:\gamedev\runnerengine\runnerengine\src\player.h
+	<memory>
+	"playerstate.h"
+	"component.h"
+
+1401874717 e:\gamedev\runnerengine\runnerengine\src\weapons.h
+	"entities.h"
+
+1465150254 e:\gamedev\runnerengine\runnerengine\src\timer.h
+	<functional>
+	"typedef.h"
+
+1404858834 source:e:\gamedev\runnerengine\runnerengine\src\entities.cpp
+	"entities.h"
+	"level.h"
+	"renderer.h"
+	"player.h"
+	"enemies.h"
+	"sprites.h"
+	"mediator.h"
+
+1398635635 source:e:\gamedev\runnerengine\runnerengine\src\fileloader.cpp
+	"fileloader.h"
+	<fstream>
+	<string>
+	<iostream>
+	<vector>
+	"level.h"
+	"exceptions.h"
+	"tileset.h"
+	"textures.h"
+	"compression.h"
+	"format.h"
+
+1401940896 e:\gamedev\runnerengine\runnerengine\src\fileloader.h
+	<string>
+	<memory>
+	<SDL.h>
+	"resource.h"
+
+1392385020 e:\gamedev\runnerengine\runnerengine\src\exceptions.h
+
+1400408667 e:\gamedev\runnerengine\runnerengine\src\format.h
+	<iostream>
+	<string>
+	<cstdint>
+	<SDL.h>
+
+1400408672 source:e:\gamedev\runnerengine\runnerengine\src\format.cpp
+	<iostream>
+	<string>
+	<cstdint>
+	<SDL.h>
+	"format.h"
+
+1464688525 source:e:\gamedev\runnerengine\runnerengine\src\input.cpp
+	"input.h"
+
+1464688525 e:\gamedev\runnerengine\runnerengine\src\input.h
+	"shared.h"
+
+1450206716 e:\gamedev\runnerengine\runnerengine\src\signal.h
+	<iostream>
+	"typedef.h"
+	"math.h"
+
+1466352414 source:e:\gamedev\runnerengine\runnerengine\src\level.cpp
+	<iostream>
+	<algorithm>
+	<cmath>
+	<sstream>
+	"level.h"
+	"resource.h"
+	"tiles.h"
+	<sstream>
+	"Platform/platform.h"
+	"renderer.h"
+	"entitymanager.h"
+	"file_formats.h"
+	<fstream>
+	"soundmanager.h"
+
+1463299480 source:e:\gamedev\runnerengine\runnerengine\src\main.cpp
+	<string>
+	<iostream>
+	<map>
+	<sstream>
+	<memory>
+	"game.h"
+	<thread>
+	"Platform/platform.h"
+	"input.h"
+	"entitymanager.h"
+	"units.h"
+	"debug.h"
+
+1402867402 source:e:\gamedev\runnerengine\runnerengine\src\mediator.cpp
+	"mediator.h"
+	<iostream>
+
+1464851512 source:e:\gamedev\runnerengine\runnerengine\src\player.cpp
+	"player.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"input.h"
+	"level.h"
+	"collision.h"
+	"units.h"
+	"entitymanager.h"
+	"renderer.h"
+	"debug.h"
+
+1400408702 source:e:\gamedev\runnerengine\runnerengine\src\screen.cpp
+	<SDL.h>
+	<iostream>
+	<string>
+	<list>
+	"screen.h"
+	"format.h"
+	"rconst.h"
+
+1404247146 source:e:\gamedev\runnerengine\runnerengine\src\sprites.cpp
+	<SDL.h>
+	<iostream>
+	<string>
+	<cmath>
+	"sprites.h"
+
+1402037043 source:e:\gamedev\runnerengine\runnerengine\src\textures.cpp
+	<iostream>
+	"textures.h"
+	<stdexcept>
+
+1449931586 source:e:\gamedev\runnerengine\runnerengine\src\tileset.cpp
+	"tileset.h"
+	"resource.h"
+	<limits>
+	"Platform/platform.h"
+	<sstream>
+	<fstream>
+
+1465333193 source:e:\gamedev\runnerengine\runnerengine\src\timer.cpp
+	"timer.h"
+
+1400402825 source:e:\gamedev\runnerengine\runnerengine\src\weapons.cpp
+	"weapons.h"
+	"sprites.h"
+	"mediator.h"
+	"screen.h"
+	"level.h"
+
+1463511867 e:\gamedev\runnerengine\runnerengine\src\resource.h
+	<vector>
+	<cstddef>
+	<iostream>
+	<map>
+	"sprite.h"
+	"model.h"
+	"shared.h"
+	"particles.h"
+
+1466336184 e:\gamedev\runnerengine\runnerengine\src\renderer.h
+	"shared.h"
+	<functional>
+
+1443727782 source:e:\gamedev\runnerengine\runnerengine\src\filemanager.cpp
+	"filemanager.h"
+	<fstream>
+	<string>
+	<iostream>
+	<vector>
+	"level.h"
+	"compression.h"
+	"tileset.h"
+	<IL/il.h>
+	"rapidxml/rapidxml.hpp"
+	"rapidxml/rapidxml_utils.hpp"
+	"exchange.h"
+
+1443725339 e:\gamedev\runnerengine\runnerengine\src\filemanager.h
+	<string>
+	<memory>
+	"tileset.h"
+
+1466336184 source:e:\gamedev\runnerengine\runnerengine\src\renderer.cpp
+	"renderer.h"
+	"Platform/platform.h"
+	<algorithm>
+	"units.h"
+	"resource.h"
+	"debug.h"
+	"level.h"
+
+1465634698 source:e:\gamedev\runnerengine\runnerengine\src\resource.cpp
+	"resource.h"
+	<stdexcept>
+	<sstream>
+	"Platform/platform.h"
+	"tiles.h"
+	"file_formats.h"
+	<fstream>
+
+1465471935 source:e:\gamedev\runnerengine\runnerengine\src\particles.cpp
+	"particles.h"
+	"renderer.h"
+	"entitymanager.h"
+	"sprite.h"
+	"resource.h"
+	"Platform/platform.h"
+	"debug.h"
+
+1465471935 e:\gamedev\runnerengine\runnerengine\src\particles.h
+	"shared.h"
+	"pool.h"
+	"component.h"
+
+1466355727 e:\gamedev\runnerengine\runnerengine\src\tiles.h
+	<string>
+	"shared.h"
+
+1382587623 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.1\i686-w64-mingw32\include\sdl2\sdl_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<GL/gl.h>
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1466355727 source:e:\gamedev\runnerengine\runnerengine\src\tiles.cpp
+	"tiles.h"
+	<fstream>
+	"file_formats.h"
+	"resource.h"
+	"renderer.h"
+	"Platform/platform.h"
+	"debug.h"
+
+1466333004 source:e:\gamedev\runnerengine\runnerengine\src\game.cpp
+	"game.h"
+	<sstream>
+	"level.h"
+	"Platform/platform.h"
+	"units.h"
+	"input.h"
+	"renderer.h"
+	<algorithm>
+	"config.h"
+	"entitymanager.h"
+	"debug.h"
+
+1462735008 e:\gamedev\runnerengine\runnerengine\src\game.h
+	"resource.h"
+	"tiles.h"
+	"gamestate.h"
+	"fpstimer.h"
+	"level.h"
+
+1403026090 e:\gamedev\runnerengine\runnerengine\src\frand.h
+
+1403026090 source:e:\gamedev\runnerengine\runnerengine\src\frand.cpp
+	"frand.h"
+	<cstdlib>
+
+1438947346 e:\gamedev\runnerengine\runnerengine\src\texture.h
+	<string>
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+
+1438948158 source:e:\gamedev\runnerengine\runnerengine\src\texture.cpp
+	"texture.h"
+	<iostream>
+	<fstream>
+	<stdexcept>
+	"resource.h"
+	<IL/il.h>
+	<IL/ilu.h>
+
+1402307768 e:\gamedev\runnerengine\runnerengine\lib\glew-1.10.0-win32\glew-1.10.0\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1402316924 e:\gamedev\runnerengine\runnerengine\lib\glew-1.10.0\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1438946947 e:\gamedev\runnerengine\runnerengine\src\shader.h
+	<string>
+	"rconst.h"
+	"light.h"
+
+1438948138 source:e:\gamedev\runnerengine\runnerengine\src\shader.cpp
+	"shader.h"
+	<iostream>
+	<fstream>
+	<sstream>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\glm.hpp
+	"detail/_fixes.hpp"
+	<cmath>
+	<climits>
+	<cfloat>
+	<limits>
+	<cassert>
+	"fwd.hpp"
+	"vec2.hpp"
+	"vec3.hpp"
+	"vec4.hpp"
+	"mat2x2.hpp"
+	"mat2x3.hpp"
+	"mat2x4.hpp"
+	"mat3x2.hpp"
+	"mat3x3.hpp"
+	"mat3x4.hpp"
+	"mat4x2.hpp"
+	"mat4x3.hpp"
+	"mat4x4.hpp"
+	"trigonometric.hpp"
+	"exponential.hpp"
+	"common.hpp"
+	"packing.hpp"
+	"geometric.hpp"
+	"matrix.hpp"
+	"vector_relational.hpp"
+	"integer.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_fixes.hpp
+	<cmath>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\fwd.hpp
+	"detail/type_int.hpp"
+	"detail/type_float.hpp"
+	"detail/type_vec.hpp"
+	"detail/type_mat.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_int.hpp
+	"setup.hpp"
+	<cstdint>
+
+1396306860 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\setup.hpp
+	<cassert>
+	<cuda.h>
+	<intrin.h>
+	<immintrin.h>
+	<immintrin.h>
+	<smmintrin.h>
+	<pmmintrin.h>
+	<emmintrin.h>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_float.hpp
+	"setup.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec.hpp
+	"precision.hpp"
+	"type_int.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\precision.hpp
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat.hpp
+	"precision.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\vec2.hpp
+	"detail/type_vec2.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec2.hpp
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec2.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_swizzle.hpp
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_swizzle_func.hpp
+
+1393357678 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec2.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\vec3.hpp
+	"detail/type_vec3.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec3.hpp
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec3.inl"
+
+1393357678 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec3.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\vec4.hpp
+	"detail/type_vec4.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec4.hpp
+	"setup.hpp"
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec4.inl"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec4.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat2x2.hpp
+	"detail/type_mat2x2.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat2x2.inl"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x2.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat2x3.hpp
+	"detail/type_mat2x3.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x3.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat2x3.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x3.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat2x4.hpp
+	"detail/type_mat2x4.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x4.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat2x4.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x4.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat3x2.hpp
+	"detail/type_mat3x2.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat3x2.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x2.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat3x3.hpp
+	"detail/type_mat3x3.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x3.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat3x3.inl"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x3.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat3x4.hpp
+	"detail/type_mat3x4.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x4.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat3x4.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x4.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat4x2.hpp
+	"detail/type_mat4x2.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat4x2.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x2.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat4x3.hpp
+	"detail/type_mat4x3.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x3.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat4x3.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x3.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\mat4x4.hpp
+	"detail/type_mat4x4.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x4.hpp
+	"../fwd.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat4x4.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x4.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\trigonometric.hpp
+	"detail/func_trigonometric.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_trigonometric.hpp
+	"func_trigonometric.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_trigonometric.inl
+	"_vectorize.hpp"
+	<cmath>
+	<limits>
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_vectorize.hpp
+	"type_vec1.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec1.hpp
+	"../fwd.hpp"
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec1.inl"
+
+1393357678 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec1.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\exponential.hpp
+	"detail/func_exponential.hpp"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_exponential.hpp
+	"type_vec1.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	<cmath>
+	"func_exponential.inl"
+
+1396307706 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_exponential.inl
+	"func_vector_relational.hpp"
+	"_vectorize.hpp"
+	<limits>
+	<cassert>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_vector_relational.hpp
+	"precision.hpp"
+	"setup.hpp"
+	"func_vector_relational.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_vector_relational.inl
+	<limits>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\common.hpp
+	"detail/func_common.hpp"
+
+1391894902 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_common.hpp
+	"setup.hpp"
+	"precision.hpp"
+	"type_int.hpp"
+	"_fixes.hpp"
+	"func_common.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_common.inl
+	"func_vector_relational.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"_vectorize.hpp"
+	<limits>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\packing.hpp
+	"detail/func_packing.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_packing.hpp
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"func_packing.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_packing.inl
+	"func_common.hpp"
+	"type_half.hpp"
+	"../fwd.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_half.hpp
+	"setup.hpp"
+	"type_half.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_half.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\geometric.hpp
+	"detail/func_geometric.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_geometric.hpp
+	"type_vec3.hpp"
+	"func_geometric.inl"
+
+1396307136 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_geometric.inl
+	"func_exponential.hpp"
+	"func_common.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_float.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\matrix.hpp
+	"detail/func_matrix.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_matrix.hpp
+	"../detail/precision.hpp"
+	"../detail/setup.hpp"
+	"../detail/type_mat.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../mat2x2.hpp"
+	"../mat2x3.hpp"
+	"../mat2x4.hpp"
+	"../mat3x2.hpp"
+	"../mat3x3.hpp"
+	"../mat3x4.hpp"
+	"../mat4x2.hpp"
+	"../mat4x3.hpp"
+	"../mat4x4.hpp"
+	"func_matrix.inl"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_matrix.inl
+	"../geometric.hpp"
+	<limits>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\vector_relational.hpp
+	"detail/func_vector_relational.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\integer.hpp
+	"detail/func_integer.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_integer.hpp
+	"setup.hpp"
+	"func_integer.inl"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_integer.inl
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_int.hpp"
+	"_vectorize.hpp"
+	<intrin.h>
+	<limits>
+
+1394919948 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\transform.hpp
+	"../glm.hpp"
+	"../gtc/matrix_transform.hpp"
+	"transform.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\matrix_transform.hpp
+	"../mat4x4.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"matrix_transform.inl"
+
+1394938748 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\matrix_transform.inl
+	"../geometric.hpp"
+	"../trigonometric.hpp"
+	"../matrix.hpp"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\transform.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\type_ptr.hpp
+	"../gtc/quaternion.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../mat2x2.hpp"
+	"../mat2x3.hpp"
+	"../mat2x4.hpp"
+	"../mat3x2.hpp"
+	"../mat3x3.hpp"
+	"../mat3x4.hpp"
+	"../mat4x2.hpp"
+	"../mat4x3.hpp"
+	"../mat4x4.hpp"
+	<cstring>
+	"type_ptr.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\quaternion.hpp
+	"../mat3x3.hpp"
+	"../mat4x4.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../gtc/constants.hpp"
+	"quaternion.inl"
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\constants.hpp
+	"../detail/setup.hpp"
+	"constants.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\constants.inl
+	<limits>
+
+1393355594 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\quaternion.inl
+	"../trigonometric.hpp"
+	"../geometric.hpp"
+	"../exponential.hpp"
+	<limits>
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\type_ptr.inl
+	<cstring>
+
+1403042110 e:\gamedev\runnerengine\runnerengine\lib\devil-sdk-x86-1.7.8\include\il\il.h
+	<stdio.h>
+	<limits.h>
+	<wchar.h>
+
+1403042110 e:\gamedev\runnerengine\runnerengine\lib\devil-sdk-x86-1.7.8\include\il\ilu.h
+	<IL/il.h>
+
+1403615880 e:\gamedev\runnerengine\runnerengine\src\polygon.h
+	<glm/glm.hpp>
+	<vector>
+
+1403616274 source:e:\gamedev\runnerengine\runnerengine\src\polygon.cpp
+	"polygon.h"
+	<iostream>
+	<stdexcept>
+	"geometry.h"
+	"mediator.h"
+	"renderer.h"
+	"sprites.h"
+	"level.h"
+
+1394919948 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\vector_angle.hpp
+	"../glm.hpp"
+	"../gtc/epsilon.hpp"
+	"../gtx/quaternion.hpp"
+	"../gtx/rotate_vector.hpp"
+	"vector_angle.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\epsilon.hpp
+	"../detail/setup.hpp"
+	"../detail/precision.hpp"
+	"epsilon.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\epsilon.inl
+	"quaternion.hpp"
+	"../vector_relational.hpp"
+	"../common.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+
+1394919948 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\quaternion.hpp
+	"../glm.hpp"
+	"../gtc/constants.hpp"
+	"../gtc/quaternion.hpp"
+	"../gtx/norm.hpp"
+	"quaternion.inl"
+
+1394919948 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\norm.hpp
+	"../glm.hpp"
+	"../gtx/quaternion.hpp"
+	"norm.inl"
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\norm.inl
+
+1389483480 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\quaternion.inl
+	<limits>
+
+1394919948 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\rotate_vector.hpp
+	"../glm.hpp"
+	"../gtx/transform.hpp"
+	"rotate_vector.inl"
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\rotate_vector.inl
+
+1395793554 e:\gamedev\runnerengine\runnerengine\lib\glm\glm\gtx\vector_angle.inl
+
+1411203526 e:\gamedev\runnerengine\runnerengine\src\playerfx.h
+	"particles.h"
+
+1413845284 source:e:\gamedev\runnerengine\runnerengine\src\playerfx.cpp
+	"playerfx.h"
+	"frand.h"
+
+1242168378 e:\gamedev\runnerengine\runnerengine\src\rapidxml\rapidxml.hpp
+	<cstdlib>
+	<cassert>
+	<new>
+	<exception>
+
+1404588470 e:\gamedev\runnerengine\runnerengine\src\rapidxml\rapidxml_utils.hpp
+	"rapidxml.hpp"
+	<vector>
+	<string>
+	<fstream>
+	<stdexcept>
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1405009330 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\begin_code.h
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\close_code.h
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<GL/gl.h>
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1439489085 e:\gamedev\runnerengine\runnerengine\src\exchange.h
+	<iostream>
+	"resource.h"
+
+1409052562 source:e:\gamedev\runnerengine\runnerengine\src\drawablecomponent.cpp
+	"drawablecomponent.h"
+	"geometry.h"
+
+1409052579 e:\gamedev\runnerengine\runnerengine\src\drawablecomponent.h
+	"basecomponent.h"
+	<glm/glm.hpp>
+	<vector>
+
+1408455660 e:\gamedev\runnerengine\runnerengine\src\baseentitycomponent.h
+
+1464369718 e:\gamedev\runnerengine\runnerengine\src\entity.h
+	"shared.h"
+	"component.h"
+	"player.h"
+	"laser.h"
+	"switch.h"
+	"particles.h"
+	"hudcomponent.h"
+	"light.h"
+
+1464368702 source:e:\gamedev\runnerengine\runnerengine\src\entity.cpp
+	"entity.h"
+	"sprite.h"
+	"renderer.h"
+	"entitymanager.h"
+	"level.h"
+
+1439489383 source:e:\gamedev\runnerengine\runnerengine\src\exchange.cpp
+	"exchange.h"
+
+1409052528 source:e:\gamedev\runnerengine\runnerengine\src\playermovement.cpp
+	"playermovement.h"
+
+1409052477 e:\gamedev\runnerengine\runnerengine\src\playermovement.h
+	"movementcomponent.h"
+
+1409052459 e:\gamedev\runnerengine\runnerengine\src\movementcomponent.h
+	<cstdint>
+	"basecomponent.h"
+
+1450643755 e:\gamedev\runnerengine\runnerengine\src\basecomponent.h
+	"shared.h"
+	"pool.h"
+
+1454438605 e:\gamedev\runnerengine\runnerengine\src\pool.h
+	<iostream>
+	<stddef.h>
+	<memory>
+	<algorithm>
+	<utility>
+	<stdexcept>
+	"typedef.h"
+
+1413844510 e:\gamedev\runnerengine\runnerengine\src\entitytype.h
+	<iostream>
+	<limits>
+	<vector>
+	"pool.h"
+	"rapidxml/rapidxml.hpp"
+	"rapidxml/rapidxml_utils.hpp"
+
+1464275807 e:\gamedev\runnerengine\runnerengine\src\entitymanager.h
+	<queue>
+	<map>
+	"entity.h"
+
+1449931739 e:\gamedev\runnerengine\runnerengine\src\tilemanager.h
+	"tileset.h"
+	<memory>
+	"shared.h"
+	"file_formats.h"
+
+1410464349 e:\gamedev\runnerengine\runnerengine\src\levelheader.h
+	<cstdint>
+	<vector>
+
+1439324289 source:e:\gamedev\runnerengine\runnerengine\src\camera.cpp
+	"camera.h"
+	<iostream>
+	"rconst.h"
+	"entity.h"
+
+1438947385 e:\gamedev\runnerengine\runnerengine\src\camera.h
+	<cstdint>
+	"entity.h"
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+
+1466276698 source:e:\gamedev\runnerengine\runnerengine\src\entitymanager.cpp
+	"entitymanager.h"
+	"entity.h"
+	"resource.h"
+	<sstream>
+
+1449931739 source:e:\gamedev\runnerengine\runnerengine\src\tilemanager.cpp
+	"tilemanager.h"
+	"resource.h"
+	"renderer.h"
+	"Platform/platform.h"
+	"units.h"
+	<limits>
+
+1433794618 source:e:\gamedev\runnerengine\runnerengine\src\entitytype.cpp
+	"entitytype.h"
+	"entity.h"
+
+1410555228 e:\gamedev\runnerengine\runnerengine\src\visual.h
+	<SDL.h>
+	<vector>
+	<iostream>
+	"geometry.h"
+	<glm/glm.hpp>
+
+1410600285 source:e:\gamedev\runnerengine\runnerengine\src\visual.cpp
+	<SDL.h>
+	<iostream>
+	<string>
+	<cmath>
+	"visual.h"
+
+1411400928 e:\gamedev\runnerengine\runnerengine\src\soundclip.h
+	<SDL2/SDL_mixer.h>
+	<string>
+
+1436016838 source:e:\gamedev\runnerengine\runnerengine\src\soundclip.cpp
+	"soundclip.h"
+	<iostream>
+	"resource.h"
+
+1465648991 e:\gamedev\runnerengine\runnerengine\src\sprite.h
+	"typedef.h"
+	<vector>
+	<string>
+	"vector.h"
+
+1440591647 e:\gamedev\runnerengine\runnerengine\src\animation.h
+	<iostream>
+	<vector>
+
+1440591445 source:e:\gamedev\runnerengine\runnerengine\src\animation.cpp
+	"animation.h"
+
+1466328972 source:e:\gamedev\runnerengine\runnerengine\src\sprite.cpp
+	"sprite.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1435521027 e:\gamedev\runnerengine\runnerengine\src\hitbox.h
+
+1411321433 source:e:\gamedev\runnerengine\runnerengine\src\hitbox.cpp
+	"hitbox.h"
+
+1438948253 source:e:\gamedev\runnerengine\runnerengine\src\typereg.cpp
+	"player.h"
+	"camera.h"
+	"trigger.h"
+	"pickup.h"
+	"enemy.h"
+	"firebar.h"
+	"prop.h"
+	"light.h"
+	"spring.h"
+
+1411415560 source:e:\gamedev\runnerengine\runnerengine\src\geometry.cpp
+	"geometry.h"
+
+1439324590 source:e:\gamedev\runnerengine\runnerengine\src\trigger.cpp
+	"trigger.h"
+
+1433448988 e:\gamedev\runnerengine\runnerengine\src\trigger.h
+	"entity.h"
+
+1439324476 source:e:\gamedev\runnerengine\runnerengine\src\pickup.cpp
+	"pickup.h"
+
+1433448988 e:\gamedev\runnerengine\runnerengine\src\pickup.h
+	"entity.h"
+
+1438948027 source:e:\gamedev\runnerengine\runnerengine\src\mesh.cpp
+	"mesh.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<limits>
+	<glm/glm.hpp>
+
+1438947243 e:\gamedev\runnerengine\runnerengine\src\mesh.h
+	<vector>
+	"shared.h"
+	<string>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\importer.hpp
+	"types.h"
+	"config.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\types.h
+	<sys/types.h>
+	<memory.h>
+	<math.h>
+	<stddef.h>
+	<string.h>
+	<limits.h>
+	"defs.h"
+	"vector3.h"
+	"vector2.h"
+	"color4.h"
+	"matrix3x3.h"
+	"matrix4x4.h"
+	"quaternion.h"
+	<cstring>
+	<new>
+	<string>
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+	"vector2.inl"
+	"vector3.inl"
+	"color4.inl"
+	"quaternion.inl"
+	"matrix3x3.inl"
+	"matrix4x4.inl"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\defs.h
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\vector3.h
+	<cmath>
+	<math.h>
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\compiler\pushpack1.h
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\compiler\poppack1.h
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\vector2.h
+	<cmath>
+	<math.h>
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\color4.h
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\matrix3x3.h
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\matrix4x4.h
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\quaternion.h
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\vector2.inl
+	"vector2.h"
+	<cmath>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\vector3.inl
+	"vector3.h"
+	<cmath>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\color4.inl
+	"color4.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\quaternion.inl
+	"quaternion.h"
+	<cmath>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\matrix3x3.inl
+	"matrix3x3.h"
+	"matrix4x4.h"
+	<algorithm>
+	<cmath>
+	<limits>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\matrix4x4.inl
+	"matrix4x4.h"
+	"matrix3x3.h"
+	"quaternion.h"
+	<algorithm>
+	<limits>
+	<cmath>
+	<math.h>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\config.h
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\scene.h
+	"types.h"
+	"texture.h"
+	"mesh.h"
+	"light.h"
+	"camera.h"
+	"material.h"
+	"anim.h"
+	"metadata.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\texture.h
+	"types.h"
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\mesh.h
+	"types.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\light.h
+	"types.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\camera.h
+	"types.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\material.h
+	"types.h"
+	"./Compiler/pushpack1.h"
+	"./Compiler/poppack1.h"
+	"material.inl"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\material.inl
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\anim.h
+	"types.h"
+	"quaternion.h"
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\metadata.h
+	<assert.h>
+	"Compiler/pstdint.h"
+	<stdint.h>
+	<string>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\compiler\pstdint.h
+	<stddef.h>
+	<limits.h>
+	<signal.h>
+	<stdint.h>
+	<wchar.h>
+
+1402765209 e:\gamedev\runnerengine\runnerengine\lib\assimp-3.1.1-win-binaries\include\assimp\postprocess.h
+	"types.h"
+
+1439324321 source:e:\gamedev\runnerengine\runnerengine\src\enemy.cpp
+	"enemy.h"
+
+1433448891 e:\gamedev\runnerengine\runnerengine\src\enemy.h
+	"entity.h"
+
+1439324430 source:e:\gamedev\runnerengine\runnerengine\src\firebar.cpp
+	"firebar.h"
+	"camera.h"
+	"exchange.h"
+	"units.h"
+	<cmath>
+
+1433448988 e:\gamedev\runnerengine\runnerengine\src\firebar.h
+	"enemy.h"
+
+1439324559 source:e:\gamedev\runnerengine\runnerengine\src\prop.cpp
+	"prop.h"
+	"exchange.h"
+
+1438948102 e:\gamedev\runnerengine\runnerengine\src\prop.h
+	"entity.h"
+	<glm/glm.hpp>
+
+1439324094 e:\gamedev\runnerengine\runnerengine\src\drawable.h
+	<iostream>
+	"animation.h"
+	<algorithm>
+	"shared.h"
+
+1436128699 source:e:\gamedev\runnerengine\runnerengine\src\material.cpp
+	"material.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"exchange.h"
+	"resource.h"
+
+1436128526 e:\gamedev\runnerengine\runnerengine\src\material.h
+	<string>
+	"texture.h"
+
+1442571358 e:\gamedev\runnerengine\runnerengine\src\fsprite.h
+	"animation.h"
+
+1439345972 e:\gamedev\runnerengine\runnerengine\src\fmodel.h
+	<string>
+	"shared.h"
+
+1449852529 source:e:\gamedev\runnerengine\runnerengine\src\fmodel.cpp
+	"fmodel.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1449852529 source:e:\gamedev\runnerengine\runnerengine\src\fsprite.cpp
+	"fsprite.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+
+1439492950 source:e:\gamedev\runnerengine\runnerengine\src\drawable.cpp
+	<SDL.h>
+	<iostream>
+	<string>
+	<cmath>
+	"drawable.h"
+	"exchange.h"
+	"renderer.h"
+	"Platform/platform.h"
+	"units.h"
+
+1450298495 e:\gamedev\runnerengine\runnerengine\src\debug.h
+	"typedef.h"
+	"Platform/platform.h"
+
+1465597345 source:e:\gamedev\runnerengine\runnerengine\src\light.cpp
+	"light.h"
+	"renderer.h"
+	"entitymanager.h"
+
+1462816776 e:\gamedev\runnerengine\runnerengine\src\light.h
+	"component.h"
+
+1420566465 source:e:\gamedev\runnerengine\runnerengine\src\transform.cpp
+	"transform.h"
+
+1438930010 e:\gamedev\runnerengine\runnerengine\src\transform.h
+
+1464648426 e:\gamedev\runnerengine\runnerengine\src\playerstate.h
+	"timer.h"
+	"collision.h"
+
+1464651097 source:e:\gamedev\runnerengine\runnerengine\src\playerstate.cpp
+	"playerstate.h"
+	"player.h"
+	"units.h"
+	"Platform/platform.h"
+	"resource.h"
+
+1465471184 e:\gamedev\runnerengine\runnerengine\src\fixed.h
+	<cmath>
+	<cstdint>
+	<iostream>
+
+1464634549 source:e:\gamedev\runnerengine\runnerengine\src\fixed.cpp
+	"fixed.h"
+
+1438929987 e:\gamedev\runnerengine\runnerengine\src\vertexdata.h
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+	<cmath>
+	<glm/glm.hpp>
+
+1451144640 e:\gamedev\runnerengine\runnerengine\src\leveltimer.h
+	"typedef.h"
+
+1451144640 source:e:\gamedev\runnerengine\runnerengine\src\leveltimer.cpp
+	"leveltimer.h"
+	<iostream>
+	"Platform/platform.h"
+
+1465471935 source:e:\gamedev\runnerengine\runnerengine\src\collision.cpp
+	"collision.h"
+	"shared.h"
+	"units.h"
+	"entitymanager.h"
+	"renderer.h"
+
+1465471935 e:\gamedev\runnerengine\runnerengine\src\collision.h
+	"tiles.h"
+
+1453046915 e:\gamedev\runnerengine\runnerengine\src\gamestate.h
+	<string>
+	<vector>
+	"typedef.h"
+
+1466202187 source:e:\gamedev\runnerengine\runnerengine\src\gamestate.cpp
+	"gamestate.h"
+	"level.h"
+	"input.h"
+	<sstream>
+	"Platform/platform.h"
+	"entitymanager.h"
+	"renderer.h"
+	"config.h"
+
+1450205901 e:\gamedev\runnerengine\runnerengine\src\fpstimer.h
+	"typedef.h"
+
+1450205012 source:e:\gamedev\runnerengine\runnerengine\src\fpstimer.cpp
+	"fpstimer.h"
+	<iostream>
+
+1439324573 source:e:\gamedev\runnerengine\runnerengine\src\spring.cpp
+	"spring.h"
+
+1436901411 e:\gamedev\runnerengine\runnerengine\src\spring.h
+	"entity.h"
+
+1437128439 source:e:\gamedev\runnerengine\runnerengine\src\sprite_compiler\main.cpp
+	<fstream>
+	<iostream>
+	<string>
+	<IL/il.h>
+	<vector>
+	<sstream>
+	"..\compression.h"
+	<cstdint>
+
+1437126868 source:e:\gamedev\runnerengine\runnerengine\src\sprite_compiler.cpp
+	<fstream>
+	<iostream>
+	<string>
+	<IL/il.h>
+	<vector>
+	<sstream>
+	"compression2.h"
+	<cstdint>
+
+1437126847 source:e:\gamedev\runnerengine\runnerengine\src\compression2.cpp
+	<vector>
+	<cstdint>
+	<zlib.h>
+	"compression2.h"
+
+1437126889 e:\gamedev\runnerengine\runnerengine\src\compression2.h
+	<vector>
+	<cstdint>
+
+1464813501 e:\gamedev\runnerengine\runnerengine\src\units.h
+	"typedef.h"
+	<cmath>
+
+1452108352 source:e:\gamedev\runnerengine\runnerengine\src\units.cpp
+	"units.h"
+	<cmath>
+
+1438179343 source:e:\gamedev\runnerengine\runnerengine\src\runnerhost\main.cpp
+	<windows.h>
+	<iostream>
+
+1438193261 source:e:\gamedev\runnerengine\runnerengine\src\platform\main.cpp
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+	<IL/il.h>
+	<IL/ilu.h>
+	<SDL2/SDL_mixer.h>
+	<iostream>
+
+1466333755 source:e:\gamedev\runnerengine\runnerengine\src\platform\runneros.cpp
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+	<IL/il.h>
+	<IL/ilu.h>
+	<SDL2/SDL_mixer.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<iostream>
+	<fstream>
+	<cmath>
+	<vector>
+	"platform.h"
+	<sstream>
+	"../debug.h"
+
+1466333755 e:\gamedev\runnerengine\runnerengine\src\platform\platform.h
+	"../shared.h"
+
+1466281418 e:\gamedev\runnerengine\runnerengine\src\shared.h
+	"signal.h"
+	<vector>
+	"units.h"
+
+1450651721 source:e:\gamedev\runnerengine\runnerengine\src\basecomponent.cpp
+	"basecomponent.h"
+	"renderer.h"
+	"componentmanager.h"
+	"sprite.h"
+	"model.h"
+	"resource.h"
+	"Platform/platform.h"
+	"units.h"
+	<cmath>
+	"debug.h"
+	"level.h"
+
+1450651271 e:\gamedev\runnerengine\runnerengine\src\componentmanager.h
+	<queue>
+	<map>
+	"basecomponent.h"
+	"player.h"
+	"laser_beam.h"
+	"componentcontainer.h"
+
+1450651707 source:e:\gamedev\runnerengine\runnerengine\src\componentmanager.cpp
+	"componentmanager.h"
+
+1450651429 source:e:\gamedev\runnerengine\runnerengine\src\entityfactory.cpp
+	"entityfactory.h"
+	"componentmanager.h"
+	"resource.h"
+
+1450295298 e:\gamedev\runnerengine\runnerengine\src\entityfactory.h
+	<string>
+	<vector>
+	"typedef.h"
+
+1450204869 source:e:\gamedev\runnerengine\runnerengine\src\config.cpp
+	"config.h"
+	"Platform/platform.h"
+	<fstream>
+
+1450205795 e:\gamedev\runnerengine\runnerengine\src\config.h
+	"typedef.h"
+
+1466265341 source:e:\gamedev\runnerengine\runnerengine\src\asset_builder\main.cpp
+	<fstream>
+	<string>
+	<sstream>
+	"../file_formats.h"
+	<vector>
+	<iostream>
+	"../compression.h"
+	"../rapidxml/rapidxml.hpp"
+	"../rapidxml/rapidxml_utils.hpp"
+	<utility>
+	<IL/il.h>
+	<IL/ilu.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+
+1464808756 e:\gamedev\runnerengine\runnerengine\src\file_formats.h
+	"shared.h"
+
+1464633355 e:\gamedev\runnerengine\runnerengine\src\typedef.h
+	<cstdint>
+	"fixed.h"
+
+1465634604 e:\gamedev\runnerengine\runnerengine\src\model.h
+	<string>
+	"shared.h"
+
+1465632281 source:e:\gamedev\runnerengine\runnerengine\src\model.cpp
+	"model.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1466196828 e:\gamedev\runnerengine\runnerengine\src\math.h
+	<cmath>
+	"vector.h"
+
+1465239752 source:e:\gamedev\runnerengine\runnerengine\src\debug.cpp
+	"debug.h"
+	<map>
+	"renderer.h"
+	<sstream>
+
+1450897008 source:e:\gamedev\runnerengine\runnerengine\src\laser_beam.cpp
+	"laser_beam.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1450889618 e:\gamedev\runnerengine\runnerengine\src\laser_beam.h
+	"entity.h"
+
+1450895686 e:\gamedev\runnerengine\runnerengine\src\componentcontainer.h
+	"typedef.h"
+	"pool.h"
+
+1453139955 e:\gamedev\runnerengine\runnerengine\src\laser.h
+	"component.h"
+	"timer.h"
+
+1464275807 source:e:\gamedev\runnerengine\runnerengine\src\laser.cpp
+	"laser.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1464275807 e:\gamedev\runnerengine\runnerengine\src\switch.h
+	"component.h"
+	"timer.h"
+	"collision.h"
+
+1464275807 source:e:\gamedev\runnerengine\runnerengine\src\switch.cpp
+	"switch.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1465632354 e:\gamedev\runnerengine\runnerengine\src\component.h
+	"shared.h"
+	"collision.h"
+	"soundmanager.h"
+
+1466274781 source:e:\gamedev\runnerengine\runnerengine\src\component.cpp
+	"component.h"
+	"sprite.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+	"soundmanager.h"
+
+1465469576 source:e:\gamedev\runnerengine\runnerengine\src\hudcomponent.cpp
+	"hudcomponent.h"
+	"resource.h"
+	"renderer.h"
+
+1453139955 e:\gamedev\runnerengine\runnerengine\src\hudcomponent.h
+	"component.h"
+
+1465471935 source:e:\gamedev\runnerengine\runnerengine\src\soundmanager.cpp
+	"soundmanager.h"
+	"Platform/platform.h"
+	"pool.h"
+	"resource.h"
+	<list>
+
+1465471935 e:\gamedev\runnerengine\runnerengine\src\soundmanager.h
+	"shared.h"
+
+1465471935 e:\gamedev\runnerengine\runnerengine\src\vector.h
+
+1465471935 source:e:\library\gamedev\runnerengine\runnerengine\src\collision.cpp
+	"collision.h"
+	"shared.h"
+	"units.h"
+	"entitymanager.h"
+	"renderer.h"
+
+1465471935 e:\library\gamedev\runnerengine\runnerengine\src\collision.h
+	"tiles.h"
+
+1466355727 e:\library\gamedev\runnerengine\runnerengine\src\tiles.h
+	<string>
+	"shared.h"
+
+1466281418 e:\library\gamedev\runnerengine\runnerengine\src\shared.h
+	"signal.h"
+	<vector>
+	"units.h"
+
+1450206716 e:\library\gamedev\runnerengine\runnerengine\src\signal.h
+	<iostream>
+	"typedef.h"
+	"math.h"
+
+1464633355 e:\library\gamedev\runnerengine\runnerengine\src\typedef.h
+	<cstdint>
+	"fixed.h"
+
+1465471184 e:\library\gamedev\runnerengine\runnerengine\src\fixed.h
+	<cmath>
+	<cstdint>
+	<iostream>
+
+1466196828 e:\library\gamedev\runnerengine\runnerengine\src\math.h
+	<cmath>
+	"vector.h"
+
+1465471935 e:\library\gamedev\runnerengine\runnerengine\src\vector.h
+
+1464813501 e:\library\gamedev\runnerengine\runnerengine\src\units.h
+	"typedef.h"
+	<cmath>
+
+1464275807 e:\library\gamedev\runnerengine\runnerengine\src\entitymanager.h
+	<queue>
+	<map>
+	"entity.h"
+
+1464369718 e:\library\gamedev\runnerengine\runnerengine\src\entity.h
+	"shared.h"
+	"component.h"
+	"player.h"
+	"laser.h"
+	"switch.h"
+	"particles.h"
+	"hudcomponent.h"
+	"light.h"
+
+1465632354 e:\library\gamedev\runnerengine\runnerengine\src\component.h
+	"shared.h"
+	"collision.h"
+	"soundmanager.h"
+
+1465471935 e:\library\gamedev\runnerengine\runnerengine\src\soundmanager.h
+	"shared.h"
+
+1464688913 e:\library\gamedev\runnerengine\runnerengine\src\player.h
+	<memory>
+	"playerstate.h"
+	"component.h"
+
+1464648426 e:\library\gamedev\runnerengine\runnerengine\src\playerstate.h
+	"timer.h"
+	"collision.h"
+
+1465150254 e:\library\gamedev\runnerengine\runnerengine\src\timer.h
+	<functional>
+	"typedef.h"
+
+1453139955 e:\library\gamedev\runnerengine\runnerengine\src\laser.h
+	"component.h"
+	"timer.h"
+
+1464275807 e:\library\gamedev\runnerengine\runnerengine\src\switch.h
+	"component.h"
+	"timer.h"
+	"collision.h"
+
+1465471935 e:\library\gamedev\runnerengine\runnerengine\src\particles.h
+	"shared.h"
+	"pool.h"
+	"component.h"
+
+1454438605 e:\library\gamedev\runnerengine\runnerengine\src\pool.h
+	<iostream>
+	<stddef.h>
+	<memory>
+	<algorithm>
+	<utility>
+	<stdexcept>
+	"typedef.h"
+
+1453139955 e:\library\gamedev\runnerengine\runnerengine\src\hudcomponent.h
+	"component.h"
+
+1462816776 e:\library\gamedev\runnerengine\runnerengine\src\light.h
+	"component.h"
+
+1466336184 e:\library\gamedev\runnerengine\runnerengine\src\renderer.h
+	"shared.h"
+	<functional>
+
+1466274781 source:e:\library\gamedev\runnerengine\runnerengine\src\component.cpp
+	"component.h"
+	"sprite.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+	"soundmanager.h"
+
+1465648991 e:\library\gamedev\runnerengine\runnerengine\src\sprite.h
+	"typedef.h"
+	<vector>
+	<string>
+	"vector.h"
+
+1463511867 e:\library\gamedev\runnerengine\runnerengine\src\resource.h
+	<vector>
+	<cstddef>
+	<iostream>
+	<map>
+	"sprite.h"
+	"model.h"
+	"shared.h"
+	"particles.h"
+
+1465634604 e:\library\gamedev\runnerengine\runnerengine\src\model.h
+	<string>
+	"shared.h"
+
+1450205847 source:e:\library\gamedev\runnerengine\runnerengine\src\compression.cpp
+	<vector>
+	<zlib.h>
+	"compression.h"
+
+1368446224 e:\library\gamedev\runnerengine\runnerengine\lib\zlib128-dll\include\zlib.h
+	"zconf.h"
+
+1368446224 e:\library\gamedev\runnerengine\runnerengine\lib\zlib128-dll\include\zconf.h
+	<windows.h>
+	<limits.h>
+	<sys/types.h>
+	<stdarg.h>
+	<stddef.h>
+	<unistd.h>
+	<unixio.h>
+
+1450205847 e:\library\gamedev\runnerengine\runnerengine\src\compression.h
+	<vector>
+	"typedef.h"
+
+1450204869 source:e:\library\gamedev\runnerengine\runnerengine\src\config.cpp
+	"config.h"
+	"Platform/platform.h"
+	<fstream>
+
+1450205795 e:\library\gamedev\runnerengine\runnerengine\src\config.h
+	"typedef.h"
+
+1466333755 e:\library\gamedev\runnerengine\runnerengine\src\platform\platform.h
+	"../shared.h"
+
+1465239752 source:e:\library\gamedev\runnerengine\runnerengine\src\debug.cpp
+	"debug.h"
+	<map>
+	"renderer.h"
+	<sstream>
+
+1450298495 e:\library\gamedev\runnerengine\runnerengine\src\debug.h
+	"typedef.h"
+	"Platform/platform.h"
+
+1464368702 source:e:\library\gamedev\runnerengine\runnerengine\src\entity.cpp
+	"entity.h"
+	"sprite.h"
+	"renderer.h"
+	"entitymanager.h"
+	"level.h"
+
+1466248305 e:\library\gamedev\runnerengine\runnerengine\src\level.h
+	<SDL.h>
+	<memory>
+	<list>
+	"resource.h"
+	"tiles.h"
+	"leveltimer.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1405009330 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\begin_code.h
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\close_code.h
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940796 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451144640 e:\library\gamedev\runnerengine\runnerengine\src\leveltimer.h
+	"typedef.h"
+
+1466276698 source:e:\library\gamedev\runnerengine\runnerengine\src\entitymanager.cpp
+	"entitymanager.h"
+	"entity.h"
+	"resource.h"
+	<sstream>
+
+1464634549 source:e:\library\gamedev\runnerengine\runnerengine\src\fixed.cpp
+	"fixed.h"
+
+1450205012 source:e:\library\gamedev\runnerengine\runnerengine\src\fpstimer.cpp
+	"fpstimer.h"
+	<iostream>
+
+1450205901 e:\library\gamedev\runnerengine\runnerengine\src\fpstimer.h
+	"typedef.h"
+
+1466333004 source:e:\library\gamedev\runnerengine\runnerengine\src\game.cpp
+	"game.h"
+	<sstream>
+	"level.h"
+	"Platform/platform.h"
+	"units.h"
+	"input.h"
+	"renderer.h"
+	<algorithm>
+	"config.h"
+	"entitymanager.h"
+	"debug.h"
+
+1462735008 e:\library\gamedev\runnerengine\runnerengine\src\game.h
+	"resource.h"
+	"tiles.h"
+	"gamestate.h"
+	"fpstimer.h"
+	"level.h"
+
+1453046915 e:\library\gamedev\runnerengine\runnerengine\src\gamestate.h
+	<string>
+	<vector>
+	"typedef.h"
+
+1464688525 e:\library\gamedev\runnerengine\runnerengine\src\input.h
+	"shared.h"
+
+1466202187 source:e:\library\gamedev\runnerengine\runnerengine\src\gamestate.cpp
+	"gamestate.h"
+	"level.h"
+	"input.h"
+	<sstream>
+	"Platform/platform.h"
+	"entitymanager.h"
+	"renderer.h"
+	"config.h"
+
+1465469576 source:e:\library\gamedev\runnerengine\runnerengine\src\hudcomponent.cpp
+	"hudcomponent.h"
+	"resource.h"
+	"renderer.h"
+
+1464688525 source:e:\library\gamedev\runnerengine\runnerengine\src\input.cpp
+	"input.h"
+
+1464275807 source:e:\library\gamedev\runnerengine\runnerengine\src\laser.cpp
+	"laser.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1466352414 source:e:\library\gamedev\runnerengine\runnerengine\src\level.cpp
+	<iostream>
+	<algorithm>
+	<cmath>
+	<sstream>
+	"level.h"
+	"resource.h"
+	"tiles.h"
+	<sstream>
+	"Platform/platform.h"
+	"renderer.h"
+	"entitymanager.h"
+	"file_formats.h"
+	<fstream>
+	"soundmanager.h"
+
+1464808756 e:\library\gamedev\runnerengine\runnerengine\src\file_formats.h
+	"shared.h"
+
+1451144640 source:e:\library\gamedev\runnerengine\runnerengine\src\leveltimer.cpp
+	"leveltimer.h"
+	<iostream>
+	"Platform/platform.h"
+
+1465597345 source:e:\library\gamedev\runnerengine\runnerengine\src\light.cpp
+	"light.h"
+	"renderer.h"
+	"entitymanager.h"
+
+1463299480 source:e:\library\gamedev\runnerengine\runnerengine\src\main.cpp
+	<string>
+	<iostream>
+	<map>
+	<sstream>
+	<memory>
+	"game.h"
+	<thread>
+	"Platform/platform.h"
+	"input.h"
+	"entitymanager.h"
+	"units.h"
+	"debug.h"
+
+1465632281 source:e:\library\gamedev\runnerengine\runnerengine\src\model.cpp
+	"model.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1465471935 source:e:\library\gamedev\runnerengine\runnerengine\src\particles.cpp
+	"particles.h"
+	"renderer.h"
+	"entitymanager.h"
+	"sprite.h"
+	"resource.h"
+	"Platform/platform.h"
+	"debug.h"
+
+1466333755 source:e:\library\gamedev\runnerengine\runnerengine\src\platform\runneros.cpp
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+	<IL/il.h>
+	<IL/ilu.h>
+	<SDL2/SDL_mixer.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<iostream>
+	<fstream>
+	<cmath>
+	<vector>
+	"platform.h"
+	<sstream>
+	"../debug.h"
+
+1402316924 e:\library\gamedev\runnerengine\runnerengine\lib\glew-1.10.0\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1394940798 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<GL/gl.h>
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1403042110 e:\library\gamedev\runnerengine\runnerengine\lib\devil-sdk-x86-1.7.8\include\il\il.h
+	<stdio.h>
+	<limits.h>
+	<wchar.h>
+
+1403042110 e:\library\gamedev\runnerengine\runnerengine\lib\devil-sdk-x86-1.7.8\include\il\ilu.h
+	<IL/il.h>
+
+1376156426 e:\library\gamedev\runnerengine\runnerengine\lib\sdl2_mixer-2.0.0\i686-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\glm.hpp
+	"detail/_fixes.hpp"
+	<cmath>
+	<climits>
+	<cfloat>
+	<limits>
+	<cassert>
+	"fwd.hpp"
+	"vec2.hpp"
+	"vec3.hpp"
+	"vec4.hpp"
+	"mat2x2.hpp"
+	"mat2x3.hpp"
+	"mat2x4.hpp"
+	"mat3x2.hpp"
+	"mat3x3.hpp"
+	"mat3x4.hpp"
+	"mat4x2.hpp"
+	"mat4x3.hpp"
+	"mat4x4.hpp"
+	"trigonometric.hpp"
+	"exponential.hpp"
+	"common.hpp"
+	"packing.hpp"
+	"geometric.hpp"
+	"matrix.hpp"
+	"vector_relational.hpp"
+	"integer.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_fixes.hpp
+	<cmath>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\fwd.hpp
+	"detail/type_int.hpp"
+	"detail/type_float.hpp"
+	"detail/type_vec.hpp"
+	"detail/type_mat.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_int.hpp
+	"setup.hpp"
+	<cstdint>
+
+1396306860 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\setup.hpp
+	<cassert>
+	<cuda.h>
+	<intrin.h>
+	<immintrin.h>
+	<immintrin.h>
+	<smmintrin.h>
+	<pmmintrin.h>
+	<emmintrin.h>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_float.hpp
+	"setup.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec.hpp
+	"precision.hpp"
+	"type_int.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\precision.hpp
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat.hpp
+	"precision.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\vec2.hpp
+	"detail/type_vec2.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec2.hpp
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec2.inl"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_swizzle.hpp
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_swizzle_func.hpp
+
+1393357678 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec2.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\vec3.hpp
+	"detail/type_vec3.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec3.hpp
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec3.inl"
+
+1393357678 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec3.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\vec4.hpp
+	"detail/type_vec4.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec4.hpp
+	"setup.hpp"
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec4.inl"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec4.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat2x2.hpp
+	"detail/type_mat2x2.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat2x2.inl"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x2.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat2x3.hpp
+	"detail/type_mat2x3.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x3.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat2x3.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x3.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat2x4.hpp
+	"detail/type_mat2x4.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x4.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat2x4.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat2x4.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat3x2.hpp
+	"detail/type_mat3x2.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat3x2.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x2.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat3x3.hpp
+	"detail/type_mat3x3.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x3.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat3x3.inl"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x3.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat3x4.hpp
+	"detail/type_mat3x4.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x4.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat3x4.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat3x4.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat4x2.hpp
+	"detail/type_mat4x2.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat4x2.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x2.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat4x3.hpp
+	"detail/type_mat4x3.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x3.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	"type_mat4x3.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x3.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\mat4x4.hpp
+	"detail/type_mat4x4.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x4.hpp
+	"../fwd.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat4x4.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_mat4x4.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\trigonometric.hpp
+	"detail/func_trigonometric.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_trigonometric.hpp
+	"func_trigonometric.inl"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_trigonometric.inl
+	"_vectorize.hpp"
+	<cmath>
+	<limits>
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\_vectorize.hpp
+	"type_vec1.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec1.hpp
+	"../fwd.hpp"
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec1.inl"
+
+1393357678 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_vec1.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\exponential.hpp
+	"detail/func_exponential.hpp"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_exponential.hpp
+	"type_vec1.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	<cmath>
+	"func_exponential.inl"
+
+1396307706 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_exponential.inl
+	"func_vector_relational.hpp"
+	"_vectorize.hpp"
+	<limits>
+	<cassert>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_vector_relational.hpp
+	"precision.hpp"
+	"setup.hpp"
+	"func_vector_relational.inl"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_vector_relational.inl
+	<limits>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\common.hpp
+	"detail/func_common.hpp"
+
+1391894902 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_common.hpp
+	"setup.hpp"
+	"precision.hpp"
+	"type_int.hpp"
+	"_fixes.hpp"
+	"func_common.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_common.inl
+	"func_vector_relational.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"_vectorize.hpp"
+	<limits>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\packing.hpp
+	"detail/func_packing.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_packing.hpp
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"func_packing.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_packing.inl
+	"func_common.hpp"
+	"type_half.hpp"
+	"../fwd.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_half.hpp
+	"setup.hpp"
+	"type_half.inl"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\type_half.inl
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\geometric.hpp
+	"detail/func_geometric.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_geometric.hpp
+	"type_vec3.hpp"
+	"func_geometric.inl"
+
+1396307136 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_geometric.inl
+	"func_exponential.hpp"
+	"func_common.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_float.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\matrix.hpp
+	"detail/func_matrix.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_matrix.hpp
+	"../detail/precision.hpp"
+	"../detail/setup.hpp"
+	"../detail/type_mat.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../mat2x2.hpp"
+	"../mat2x3.hpp"
+	"../mat2x4.hpp"
+	"../mat3x2.hpp"
+	"../mat3x3.hpp"
+	"../mat3x4.hpp"
+	"../mat4x2.hpp"
+	"../mat4x3.hpp"
+	"../mat4x4.hpp"
+	"func_matrix.inl"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_matrix.inl
+	"../geometric.hpp"
+	<limits>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\vector_relational.hpp
+	"detail/func_vector_relational.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\integer.hpp
+	"detail/func_integer.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_integer.hpp
+	"setup.hpp"
+	"func_integer.inl"
+
+1395793554 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\detail\func_integer.inl
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_int.hpp"
+	"_vectorize.hpp"
+	<intrin.h>
+	<limits>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\matrix_transform.hpp
+	"../mat4x4.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"matrix_transform.inl"
+
+1394938748 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\matrix_transform.inl
+	"../geometric.hpp"
+	"../trigonometric.hpp"
+	"../matrix.hpp"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\type_ptr.hpp
+	"../gtc/quaternion.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../mat2x2.hpp"
+	"../mat2x3.hpp"
+	"../mat2x4.hpp"
+	"../mat3x2.hpp"
+	"../mat3x3.hpp"
+	"../mat3x4.hpp"
+	"../mat4x2.hpp"
+	"../mat4x3.hpp"
+	"../mat4x4.hpp"
+	<cstring>
+	"type_ptr.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\quaternion.hpp
+	"../mat3x3.hpp"
+	"../mat4x4.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../gtc/constants.hpp"
+	"quaternion.inl"
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\constants.hpp
+	"../detail/setup.hpp"
+	"constants.inl"
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\constants.inl
+	<limits>
+
+1393355594 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\quaternion.inl
+	"../trigonometric.hpp"
+	"../geometric.hpp"
+	"../exponential.hpp"
+	<limits>
+
+1389483480 e:\library\gamedev\runnerengine\runnerengine\lib\glm\glm\gtc\type_ptr.inl
+	<cstring>
+
+1464851512 source:e:\library\gamedev\runnerengine\runnerengine\src\player.cpp
+	"player.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"input.h"
+	"level.h"
+	"collision.h"
+	"units.h"
+	"entitymanager.h"
+	"renderer.h"
+	"debug.h"
+
+1464651097 source:e:\library\gamedev\runnerengine\runnerengine\src\playerstate.cpp
+	"playerstate.h"
+	"player.h"
+	"units.h"
+	"Platform/platform.h"
+	"resource.h"
+
+1466336184 source:e:\library\gamedev\runnerengine\runnerengine\src\renderer.cpp
+	"renderer.h"
+	"Platform/platform.h"
+	<algorithm>
+	"units.h"
+	"resource.h"
+	"debug.h"
+	"level.h"
+
+1465634698 source:e:\library\gamedev\runnerengine\runnerengine\src\resource.cpp
+	"resource.h"
+	<stdexcept>
+	<sstream>
+	"Platform/platform.h"
+	"tiles.h"
+	"file_formats.h"
+	<fstream>
+
+1465471935 source:e:\library\gamedev\runnerengine\runnerengine\src\soundmanager.cpp
+	"soundmanager.h"
+	"Platform/platform.h"
+	"pool.h"
+	"resource.h"
+	<list>
+
+1466328972 source:e:\library\gamedev\runnerengine\runnerengine\src\sprite.cpp
+	"sprite.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1464275807 source:e:\library\gamedev\runnerengine\runnerengine\src\switch.cpp
+	"switch.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1466355727 source:e:\library\gamedev\runnerengine\runnerengine\src\tiles.cpp
+	"tiles.h"
+	<fstream>
+	"file_formats.h"
+	"resource.h"
+	"renderer.h"
+	"Platform/platform.h"
+	"debug.h"
+
+1465333193 source:e:\library\gamedev\runnerengine\runnerengine\src\timer.cpp
+	"timer.h"
+
+1466265341 source:e:\library\gamedev\runnerengine\runnerengine\src\asset_builder\main.cpp
+	<fstream>
+	<string>
+	<sstream>
+	"../file_formats.h"
+	<vector>
+	<iostream>
+	"../compression.h"
+	"../rapidxml/rapidxml.hpp"
+	"../rapidxml/rapidxml_utils.hpp"
+	<utility>
+	<IL/il.h>
+	<IL/ilu.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+
+1242168378 e:\library\gamedev\runnerengine\runnerengine\src\rapidxml\rapidxml.hpp
+	<cstdlib>
+	<cassert>
+	<new>
+	<exception>
+
+1404588470 e:\library\gamedev\runnerengine\runnerengine\src\rapidxml\rapidxml_utils.hpp
+	"rapidxml.hpp"
+	<vector>
+	<string>
+	<fstream>
+	<stdexcept>
+
+1465475535 source:d:\work\gamedev\runnerengine\src\collision.cpp
+	"collision.h"
+	"shared.h"
+	"units.h"
+	"entitymanager.h"
+	"renderer.h"
+
+1465475535 d:\work\gamedev\runnerengine\src\collision.h
+	"tiles.h"
+
+1512143665 d:\work\gamedev\runnerengine\src\tiles.h
+	<string>
+	"shared.h"
+
+1498554885 d:\work\gamedev\runnerengine\src\shared.h
+	"signal.h"
+	<vector>
+	"units.h"
+
+1511883031 d:\work\gamedev\runnerengine\src\signal.h
+	<iostream>
+	"typedef.h"
+	"math.h"
+
+1464636955 d:\work\gamedev\runnerengine\src\typedef.h
+	<cstdint>
+	"fixed.h"
+
+1520335343 d:\work\gamedev\runnerengine\src\fixed.h
+	<cmath>
+	<cstdint>
+	<iostream>
+
+1467383270 d:\work\gamedev\runnerengine\src\math.h
+	<cmath>
+	<cstdlib>
+	"vector.h"
+
+1488063003 d:\work\gamedev\runnerengine\src\vector.h
+
+1464817101 d:\work\gamedev\runnerengine\src\units.h
+	"typedef.h"
+	<cmath>
+
+1498570451 d:\work\gamedev\runnerengine\src\entitymanager.h
+	<queue>
+	<map>
+	"entity.h"
+
+1512200998 d:\work\gamedev\runnerengine\src\entity.h
+	"player.h"
+	"laser.h"
+	"switch.h"
+	"hudcomponent.h"
+	"light.h"
+	"particles.h"
+
+1512197480 d:\work\gamedev\runnerengine\src\component.h
+	"collision.h"
+	"sprite.h"
+
+1487882305 d:\work\gamedev\runnerengine\src\soundmanager.h
+	"shared.h"
+
+1488385668 d:\work\gamedev\runnerengine\src\player.h
+	"playerstate.h"
+	"component.h"
+	<memory>
+
+1487884416 d:\work\gamedev\runnerengine\src\playerstate.h
+	"timer.h"
+
+1465153854 d:\work\gamedev\runnerengine\src\timer.h
+	<functional>
+	"typedef.h"
+
+1453139955 d:\work\gamedev\runnerengine\src\laser.h
+	"component.h"
+	"timer.h"
+
+1487887549 d:\work\gamedev\runnerengine\src\switch.h
+	"component.h"
+	"timer.h"
+
+1525773112 d:\work\gamedev\runnerengine\src\particles.h
+	"shared.h"
+	"pool.h"
+	"component.h"
+
+1525772671 d:\work\gamedev\runnerengine\src\pool.h
+	<iostream>
+	<stddef.h>
+	<memory>
+	<algorithm>
+	<utility>
+	<stdexcept>
+	"typedef.h"
+
+1453139955 d:\work\gamedev\runnerengine\src\hudcomponent.h
+	"component.h"
+
+1462820376 d:\work\gamedev\runnerengine\src\light.h
+	"component.h"
+
+1512196402 d:\work\gamedev\runnerengine\src\renderer.h
+	"shared.h"
+	<functional>
+
+1512203107 source:d:\work\gamedev\runnerengine\src\component.cpp
+	"component.h"
+	"sprite.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+
+1512120450 d:\work\gamedev\runnerengine\src\sprite.h
+	"typedef.h"
+	<vector>
+	<string>
+	"vector.h"
+
+1512408570 d:\work\gamedev\runnerengine\src\resource.h
+	<vector>
+	<cstddef>
+	<iostream>
+	<map>
+	"sprite.h"
+	"model.h"
+	"shared.h"
+	"particles.h"
+
+1465638204 d:\work\gamedev\runnerengine\src\model.h
+	<string>
+	"shared.h"
+
+1450205847 source:d:\work\gamedev\runnerengine\src\compression.cpp
+	<vector>
+	<zlib.h>
+	"compression.h"
+
+1339678712 d:\work\gamedev\runnerengine\lib\zlib128-dll\include\zlib.h
+	"zconf.h"
+
+1339678826 d:\work\gamedev\runnerengine\lib\zlib128-dll\include\zconf.h
+	<windows.h>
+	<limits.h>
+	<sys/types.h>
+	<stdarg.h>
+	<stddef.h>
+	<unistd.h>
+	<unixio.h>
+
+1450205847 d:\work\gamedev\runnerengine\src\compression.h
+	<vector>
+	"typedef.h"
+
+1487885275 source:d:\work\gamedev\runnerengine\src\config.cpp
+	"config.h"
+	"Platform/platform.h"
+	<fstream>
+
+1450205795 d:\work\gamedev\runnerengine\src\config.h
+	"typedef.h"
+
+1512200997 d:\work\gamedev\runnerengine\src\platform\platform.h
+	"../shared.h"
+
+1488388340 source:d:\work\gamedev\runnerengine\src\debug.cpp
+	"debug.h"
+	<map>
+	"renderer.h"
+	<sstream>
+
+1487885334 d:\work\gamedev\runnerengine\src\debug.h
+	"typedef.h"
+	"Platform/platform.h"
+
+1512203107 source:d:\work\gamedev\runnerengine\src\entity.cpp
+	"entity.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1512418357 d:\work\gamedev\runnerengine\src\level.h
+	<SDL.h>
+	<memory>
+	<list>
+	"leveltimer.h"
+	"vector.h"
+	"timer.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<iconv.h>
+	<sal.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\begin_code.h
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\close_code.h
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<mbarrier.h>
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1489172326 d:\work\gamedev\runnerengine\src\leveltimer.h
+	"typedef.h"
+
+1512415503 source:d:\work\gamedev\runnerengine\src\entitymanager.cpp
+	"entitymanager.h"
+	"entity.h"
+	"resource.h"
+	"Platform/platform.h"
+	<sstream>
+
+1464638149 source:d:\work\gamedev\runnerengine\src\fixed.cpp
+	"fixed.h"
+
+1450205012 source:d:\work\gamedev\runnerengine\src\fpstimer.cpp
+	"fpstimer.h"
+	<iostream>
+
+1450205901 d:\work\gamedev\runnerengine\src\fpstimer.h
+	"typedef.h"
+
+1537019646 source:d:\work\gamedev\runnerengine\src\game.cpp
+	"game.h"
+	<sstream>
+	"level.h"
+	"Platform/platform.h"
+	"units.h"
+	"input.h"
+	"renderer.h"
+	<algorithm>
+	"config.h"
+	"entitymanager.h"
+	"debug.h"
+	"resource.h"
+	"gamestate.h"
+	"macro.h"
+
+1487886729 d:\work\gamedev\runnerengine\src\game.h
+	"fpstimer.h"
+
+1512418401 d:\work\gamedev\runnerengine\src\gamestate.h
+	<string>
+	<vector>
+	<atomic>
+	<thread>
+	"typedef.h"
+	"sprite.h"
+
+1511885249 d:\work\gamedev\runnerengine\src\input.h
+	"shared.h"
+
+1512456294 source:d:\work\gamedev\runnerengine\src\gamestate.cpp
+	"gamestate.h"
+	"level.h"
+	"input.h"
+	<sstream>
+	"Platform/platform.h"
+	"entitymanager.h"
+	"renderer.h"
+	"config.h"
+	"resource.h"
+	"macro.h"
+	<atomic>
+
+1512412515 source:d:\work\gamedev\runnerengine\src\hudcomponent.cpp
+	"hudcomponent.h"
+	"resource.h"
+	"renderer.h"
+
+1511886946 source:d:\work\gamedev\runnerengine\src\input.cpp
+	"input.h"
+	"macro.h"
+
+1464279407 source:d:\work\gamedev\runnerengine\src\laser.cpp
+	"laser.h"
+	"renderer.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1512454995 source:d:\work\gamedev\runnerengine\src\level.cpp
+	<iostream>
+	<algorithm>
+	<cmath>
+	<sstream>
+	"level.h"
+	"resource.h"
+	"tiles.h"
+	<sstream>
+	"Platform/platform.h"
+	"renderer.h"
+	"entitymanager.h"
+	"file_formats.h"
+	<fstream>
+	<atomic>
+
+1511882321 d:\work\gamedev\runnerengine\src\file_formats.h
+	"shared.h"
+
+1489182132 source:d:\work\gamedev\runnerengine\src\leveltimer.cpp
+	"leveltimer.h"
+	<iostream>
+	"Platform/platform.h"
+
+1470440153 source:d:\work\gamedev\runnerengine\src\light.cpp
+	"light.h"
+	"renderer.h"
+	"entitymanager.h"
+
+1512154871 source:d:\work\gamedev\runnerengine\src\main.cpp
+	<string>
+	<iostream>
+	<map>
+	<sstream>
+	<memory>
+	"game.h"
+	<thread>
+	"Platform/platform.h"
+	"input.h"
+	"entitymanager.h"
+	"units.h"
+	"debug.h"
+
+1512203107 source:d:\work\gamedev\runnerengine\src\model.cpp
+	"model.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1487884824 source:d:\work\gamedev\runnerengine\src\particles.cpp
+	"particles.h"
+	"renderer.h"
+	"entitymanager.h"
+	"sprite.h"
+	"resource.h"
+	"Platform/platform.h"
+	"debug.h"
+	"particlemanager.h"
+
+1512419681 source:d:\work\gamedev\runnerengine\src\platform\runneros.cpp
+	<windows.h>
+	<Objbase.h>
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+	<GL\GLU.h>
+	<IL/il.h>
+	<IL/ilu.h>
+	<fmod.hpp>
+	<fmod_errors.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<iostream>
+	<fstream>
+	<cmath>
+	<vector>
+	"platform.h"
+	<sstream>
+	"../debug.h"
+
+1467410533 d:\work\gamedev\runnerengine\lib\glew-1.13.0\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_opengl.h
+	"SDL_config.h"
+	"gl_mangle.h"
+	<windows.h>
+	"SDL_opengl_glext.h"
+
+1451768293 d:\work\gamedev\runnerengine\lib\sdl2-2.0.4\i686-w64-mingw32\include\sdl2\sdl_opengl_glext.h
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1236470606 d:\work\gamedev\runnerengine\lib\devil-sdk-x86-1.7.8\include\il\il.h
+	<stdio.h>
+	<limits.h>
+	<wchar.h>
+
+1236470606 d:\work\gamedev\runnerengine\lib\devil-sdk-x86-1.7.8\include\il\ilu.h
+	<IL/il.h>
+
+1451801791 d:\work\gamedev\runnerengine\lib\sdl2_mixer-2.0.1\i686-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\glm.hpp
+	"detail/_fixes.hpp"
+	<cmath>
+	<climits>
+	<cfloat>
+	<limits>
+	<cassert>
+	"fwd.hpp"
+	"vec2.hpp"
+	"vec3.hpp"
+	"vec4.hpp"
+	"mat2x2.hpp"
+	"mat2x3.hpp"
+	"mat2x4.hpp"
+	"mat3x2.hpp"
+	"mat3x3.hpp"
+	"mat3x4.hpp"
+	"mat4x2.hpp"
+	"mat4x3.hpp"
+	"mat4x4.hpp"
+	"trigonometric.hpp"
+	"exponential.hpp"
+	"common.hpp"
+	"packing.hpp"
+	"geometric.hpp"
+	"matrix.hpp"
+	"vector_relational.hpp"
+	"integer.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\_fixes.hpp
+	<cmath>
+
+1438468536 d:\work\gamedev\runnerengine\lib\glm\glm\fwd.hpp
+	"detail/type_int.hpp"
+	"detail/type_float.hpp"
+	"detail/type_vec.hpp"
+	"detail/type_mat.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_int.hpp
+	"setup.hpp"
+	<type_traits>
+	<cstdint>
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\detail\setup.hpp
+	<cassert>
+	<cstddef>
+	<cuda.h>
+	<intrin.h>
+	<immintrin.h>
+	<immintrin.h>
+	<smmintrin.h>
+	<pmmintrin.h>
+	<emmintrin.h>
+	<__config>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_float.hpp
+	"setup.hpp"
+
+1438468703 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec.hpp
+	"precision.hpp"
+	"type_int.hpp"
+
+1457816885 d:\work\gamedev\runnerengine\lib\glm\glm\detail\precision.hpp
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat.hpp
+	"precision.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\vec2.hpp
+	"detail/type_vec2.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec2.hpp
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec2.inl"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\_swizzle.hpp
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\_swizzle_func.hpp
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec2.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\vec3.hpp
+	"detail/type_vec3.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec3.hpp
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec3.inl"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec3.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\vec4.hpp
+	"detail/type_vec4.hpp"
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec4.hpp
+	"setup.hpp"
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec4.inl"
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec4.inl
+	"type_vec4_sse2.inl"
+	"type_vec4_avx.inl"
+	"type_vec4_avx2.inl"
+
+1441042492 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec4_sse2.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec4_avx.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec4_avx2.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat2x2.hpp
+	"detail/type_mat2x2.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat2x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat2x2.inl"
+
+1457873225 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat2x2.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat2x3.hpp
+	"detail/type_mat2x3.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat2x3.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat2x3.inl"
+
+1457873225 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat2x3.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat2x4.hpp
+	"detail/type_mat2x4.hpp"
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat2x4.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat2x4.inl"
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat2x4.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat3x2.hpp
+	"detail/type_mat3x2.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat3x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat3x2.inl"
+
+1457873032 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat3x2.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat3x3.hpp
+	"detail/type_mat3x3.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat3x3.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat3x3.inl"
+
+1457873032 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat3x3.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat3x4.hpp
+	"detail/type_mat3x4.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat3x4.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat3x4.inl"
+
+1457873031 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat3x4.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat4x2.hpp
+	"detail/type_mat4x2.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat4x2.hpp
+	"../fwd.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat4x2.inl"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat4x2.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat4x3.hpp
+	"detail/type_mat4x3.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat4x3.hpp
+	"../fwd.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat4x3.inl"
+
+1457873031 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat4x3.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\mat4x4.hpp
+	"detail/type_mat4x4.hpp"
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat4x4.hpp
+	"../fwd.hpp"
+	"type_vec4.hpp"
+	"type_mat.hpp"
+	<limits>
+	<cstddef>
+	"type_mat4x4.inl"
+
+1457873043 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_mat4x4.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\trigonometric.hpp
+	"detail/func_trigonometric.hpp"
+
+1441055437 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_trigonometric.hpp
+	"setup.hpp"
+	"precision.hpp"
+	"func_trigonometric.inl"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_trigonometric.inl
+	"_vectorize.hpp"
+	<cmath>
+	<limits>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\_vectorize.hpp
+	"type_vec1.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec1.hpp
+	"../fwd.hpp"
+	"type_vec.hpp"
+	"_swizzle.hpp"
+	"_swizzle_func.hpp"
+	<cstddef>
+	"type_vec1.inl"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_vec1.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\exponential.hpp
+	"detail/func_exponential.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_exponential.hpp
+	"type_vec1.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	<cmath>
+	"func_exponential.inl"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_exponential.inl
+	"func_vector_relational.hpp"
+	"_vectorize.hpp"
+	<limits>
+	<cmath>
+	<cassert>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_vector_relational.hpp
+	"precision.hpp"
+	"setup.hpp"
+	"func_vector_relational.inl"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_vector_relational.inl
+	<limits>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\common.hpp
+	"detail/func_common.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_common.hpp
+	"setup.hpp"
+	"precision.hpp"
+	"type_int.hpp"
+	"_fixes.hpp"
+	"func_common.inl"
+
+1451845234 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_common.inl
+	"func_vector_relational.hpp"
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"_vectorize.hpp"
+	<limits>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\packing.hpp
+	"detail/func_packing.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_packing.hpp
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"func_packing.inl"
+
+1437265717 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_packing.inl
+	"func_common.hpp"
+	"type_half.hpp"
+	"../fwd.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_half.hpp
+	"setup.hpp"
+	"type_half.inl"
+
+1451845614 d:\work\gamedev\runnerengine\lib\glm\glm\detail\type_half.inl
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\geometric.hpp
+	"detail/func_geometric.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_geometric.hpp
+	"type_vec3.hpp"
+	"func_geometric.inl"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_geometric.inl
+	"func_exponential.hpp"
+	"func_common.hpp"
+	"type_vec2.hpp"
+	"type_vec4.hpp"
+	"type_float.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\matrix.hpp
+	"detail/func_matrix.hpp"
+
+1457221879 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_matrix.hpp
+	"../detail/precision.hpp"
+	"../detail/setup.hpp"
+	"../detail/type_mat.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../mat2x2.hpp"
+	"../mat2x3.hpp"
+	"../mat2x4.hpp"
+	"../mat3x2.hpp"
+	"../mat3x3.hpp"
+	"../mat3x4.hpp"
+	"../mat4x2.hpp"
+	"../mat4x3.hpp"
+	"../mat4x4.hpp"
+	"func_matrix.inl"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_matrix.inl
+	"../geometric.hpp"
+	<limits>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\vector_relational.hpp
+	"detail/func_vector_relational.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\integer.hpp
+	"detail/func_integer.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_integer.hpp
+	"setup.hpp"
+	"precision.hpp"
+	"func_common.hpp"
+	"func_vector_relational.hpp"
+	"func_integer.inl"
+
+1426538703 d:\work\gamedev\runnerengine\lib\glm\glm\detail\func_integer.inl
+	"type_vec2.hpp"
+	"type_vec3.hpp"
+	"type_vec4.hpp"
+	"type_int.hpp"
+	"_vectorize.hpp"
+	<intrin.h>
+	<limits>
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\matrix_transform.hpp
+	"../mat4x4.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../gtc/constants.hpp"
+	"matrix_transform.inl"
+
+1441055054 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\constants.hpp
+	"../detail/setup.hpp"
+	"constants.inl"
+
+1441056294 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\constants.inl
+	<limits>
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\matrix_transform.inl
+	"../geometric.hpp"
+	"../trigonometric.hpp"
+	"../matrix.hpp"
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\type_ptr.hpp
+	"../gtc/quaternion.hpp"
+	"../vec2.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../mat2x2.hpp"
+	"../mat2x3.hpp"
+	"../mat2x4.hpp"
+	"../mat3x2.hpp"
+	"../mat3x3.hpp"
+	"../mat3x4.hpp"
+	"../mat4x2.hpp"
+	"../mat4x3.hpp"
+	"../mat4x4.hpp"
+	<cstring>
+	"type_ptr.inl"
+
+1458396418 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\quaternion.hpp
+	"../mat3x3.hpp"
+	"../mat4x4.hpp"
+	"../vec3.hpp"
+	"../vec4.hpp"
+	"../gtc/constants.hpp"
+	"quaternion.inl"
+
+1458396381 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\quaternion.inl
+	"../trigonometric.hpp"
+	"../geometric.hpp"
+	"../exponential.hpp"
+	<limits>
+
+1424017883 d:\work\gamedev\runnerengine\lib\glm\glm\gtc\type_ptr.inl
+	<cstring>
+
+1512197963 source:d:\work\gamedev\runnerengine\src\player.cpp
+	"player.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"input.h"
+	"level.h"
+	"collision.h"
+	"units.h"
+	"entitymanager.h"
+	"renderer.h"
+	"debug.h"
+
+1512121825 source:d:\work\gamedev\runnerengine\src\playerstate.cpp
+	"playerstate.h"
+	"player.h"
+	"units.h"
+	"resource.h"
+	"entity.h"
+
+1512414852 source:d:\work\gamedev\runnerengine\src\renderer.cpp
+	"renderer.h"
+	"Platform/platform.h"
+	<algorithm>
+	"units.h"
+	"resource.h"
+	"debug.h"
+	"level.h"
+
+1512418920 source:d:\work\gamedev\runnerengine\src\resource.cpp
+	"resource.h"
+	<stdexcept>
+	<sstream>
+	"Platform/platform.h"
+	"tiles.h"
+	"file_formats.h"
+	<fstream>
+	<atomic>
+
+1487871494 source:d:\work\gamedev\runnerengine\src\soundmanager.cpp
+	"soundmanager.h"
+	"Platform/platform.h"
+	"pool.h"
+	"resource.h"
+	<list>
+
+1512414956 source:d:\work\gamedev\runnerengine\src\sprite.cpp
+	"sprite.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	"resource.h"
+	"Platform/platform.h"
+
+1487882055 source:d:\work\gamedev\runnerengine\src\switch.cpp
+	"switch.h"
+	"entitymanager.h"
+	"resource.h"
+	"Platform/platform.h"
+
+1512456721 source:d:\work\gamedev\runnerengine\src\tiles.cpp
+	"tiles.h"
+	<fstream>
+	"file_formats.h"
+	"resource.h"
+	"renderer.h"
+	"Platform/platform.h"
+	"debug.h"
+
+1465336793 source:d:\work\gamedev\runnerengine\src\timer.cpp
+	"timer.h"
+
+1488388710 source:d:\work\gamedev\runnerengine\src\particlemanager.cpp
+	"particlemanager.h"
+	<algorithm>
+	<list>
+	"renderer.h"
+
+1470366912 d:\work\gamedev\runnerengine\src\particlemanager.h
+	"particles.h"
+
+1498570853 source:d:\work\gamedev\runnerengine\src\asset_builder\main.cpp
+	<fstream>
+	<string>
+	<sstream>
+	"../file_formats.h"
+	<vector>
+	<iostream>
+	"../compression.h"
+	"../rapidxml/rapidxml.hpp"
+	"../rapidxml/rapidxml_utils.hpp"
+	<utility>
+	<IL/il.h>
+	<IL/ilu.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+
+1242171978 d:\work\gamedev\runnerengine\src\rapidxml\rapidxml.hpp
+	<cstdlib>
+	<cassert>
+	<new>
+	<exception>
+
+1404592070 d:\work\gamedev\runnerengine\src\rapidxml\rapidxml_utils.hpp
+	"rapidxml.hpp"
+	<vector>
+	<string>
+	<fstream>
+	<stdexcept>
+
+1165588258 d:\work\gamedev\runnerengine\lib\openal 1.1 sdk\include\al.h
+
+1176472968 d:\work\gamedev\runnerengine\lib\openal 1.1 sdk\include\alc.h
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod.hpp
+	"fmod_common.h"
+	"fmod.h"
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod_common.h
+	"fmod_codec.h"
+	"fmod_dsp.h"
+	"fmod_output.h"
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod_codec.h
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod_dsp.h
+	"fmod_dsp_effects.h"
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod_dsp_effects.h
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod_output.h
+
+1486596556 d:\work\gamedev\runnerengine\lib\fmod_lowlevel\inc\fmod.h
+	"fmod_common.h"
+
+1377092292 c:\program files (x86)\windows kits\8.1\include\um\windows.h
+	<winapifamily.h>
+	<sdkddkver.h>
+	<winresrc.h>
+	<excpt.h>
+	<stdarg.h>
+	<windef.h>
+	<winbase.h>
+	<wingdi.h>
+	<winuser.h>
+	<winnls.h>
+	<wincon.h>
+	<winver.h>
+	<winreg.h>
+	<winnetwk.h>
+	<cderr.h>
+	<dde.h>
+	<ddeml.h>
+	<dlgs.h>
+	<lzexpand.h>
+	<mmsystem.h>
+	<nb30.h>
+	<rpc.h>
+	<shellapi.h>
+	<winperf.h>
+	<winsock.h>
+	<wincrypt.h>
+	<winefs.h>
+	<winscard.h>
+	<winspool.h>
+	<ole.h>
+	<ole2.h>
+	<commdlg.h>
+	<stralign.h>
+	<winwlm.h>
+	<ole2.h>
+	<winsvc.h>
+	<mcx.h>
+	<imm.h>
+
+1371523954 c:\program files (x86)\windows kits\8.1\include\um\winresrc.h
+	<winuser.rh>
+	<commctrl.rh>
+	<dde.rh>
+	<winnt.rh>
+	<dlgs.h>
+	<winver.h>
+
+1377092288 c:\program files (x86)\windows kits\8.1\include\um\winuser.rh
+
+1377092714 c:\program files (x86)\windows kits\8.1\include\um\commctrl.rh
+
+1371523950 c:\program files (x86)\windows kits\8.1\include\um\dde.rh
+
+1377092120 c:\program files (x86)\windows kits\8.1\include\um\winnt.rh
+
+1371522630 c:\program files (x86)\windows kits\8.1\include\um\dlgs.h
+	<winapifamily.h>
+
+1377092726 c:\program files (x86)\windows kits\8.1\include\um\winver.h
+	<winapifamily.h>
+	<SpecStrings.h>
+	<verrsrc.h>
+
+1371522514 c:\program files (x86)\windows kits\8.1\include\um\verrsrc.h
+	<winapifamily.h>
+
+1414149218 c:\program files (x86)\windows kits\8.1\include\um\winbase.h
+	<winapifamily.h>
+	<macwin32.h>
+	<apisetcconv.h>
+	<minwinbase.h>
+	<processenv.h>
+	<fileapi.h>
+	<debugapi.h>
+	<utilapiset.h>
+	<handleapi.h>
+	<errhandlingapi.h>
+	<fibersapi.h>
+	<namedpipeapi.h>
+	<profileapi.h>
+	<heapapi.h>
+	<ioapiset.h>
+	<synchapi.h>
+	<interlockedapi.h>
+	<processthreadsapi.h>
+	<sysinfoapi.h>
+	<memoryapi.h>
+	<threadpoollegacyapiset.h>
+	<threadpoolapiset.h>
+	<bemapiset.h>
+	<jobapi.h>
+	<wow64apiset.h>
+	<libloaderapi.h>
+	<securitybaseapi.h>
+	<namespaceapi.h>
+	<systemtopologyapi.h>
+	<processtopologyapi.h>
+	<securityappcontainer.h>
+	<realtimeapiset.h>
+	<winerror.h>
+	<timezoneapi.h>
+	"winbase.inl"
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\minwinbase.h
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\processenv.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\fileapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\debugapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\utilapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\handleapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\errhandlingapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\fibersapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\namedpipeapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\profileapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\heapapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\ioapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1414149210 c:\program files (x86)\windows kits\8.1\include\um\synchapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\interlockedapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1414149210 c:\program files (x86)\windows kits\8.1\include\um\processthreadsapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+	<fibersapi.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1414149212 c:\program files (x86)\windows kits\8.1\include\um\memoryapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\threadpoollegacyapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\threadpoolapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092110 c:\program files (x86)\windows kits\8.1\include\um\bemapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092110 c:\program files (x86)\windows kits\8.1\include\um\jobapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\wow64apiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\libloaderapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\securitybaseapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\namespaceapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\systemtopologyapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092112 c:\program files (x86)\windows kits\8.1\include\um\processtopologyapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092110 c:\program files (x86)\windows kits\8.1\include\um\securityappcontainer.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\realtimeapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\timezoneapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1420206202 c:\program files (x86)\windows kits\8.1\include\um\winbase.inl
+
+1377092294 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h
+	<winapifamily.h>
+	<macwin32.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack2.h>
+	<poppack.h>
+	<pshpack2.h>
+	<poppack.h>
+	<pshpack4.h>
+	<poppack.h>
+	<pshpack4.h>
+	<poppack.h>
+	"pshpack4.h"
+	"poppack.h"
+
+1414149390 c:\program files (x86)\windows kits\8.1\include\um\winuser.h
+	<winapifamily.h>
+	<macwin32.h>
+	<stdarg.h>
+	<libloaderapi.h>
+	<pshpack2.h>
+	<poppack.h>
+	<tvout.h>
+	"winuser.inl"
+
+1420206380 c:\program files (x86)\windows kits\8.1\include\um\winuser.inl
+
+1377092120 c:\program files (x86)\windows kits\8.1\include\um\winnls.h
+	<winapifamily.h>
+	<datetimeapi.h>
+	<libloaderapi.h>
+	<macwin32.h>
+	<stringapiset.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\datetimeapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\stringapiset.h
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<winnls.h>
+
+1377092292 c:\program files (x86)\windows kits\8.1\include\um\wincon.h
+	<winapifamily.h>
+	<wingdi.h>
+	<consoleapi.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\consoleapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<windows.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\winreg.h
+	<winapifamily.h>
+	<apiset.h>
+	<apisetcconv.h>
+	<minwindef.h>
+	<minwinbase.h>
+	<macwin32.h>
+	<reason.h>
+
+1371523950 c:\program files (x86)\windows kits\8.1\include\um\reason.h
+	<winapifamily.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\winnetwk.h
+	<winapifamily.h>
+	<wnnc.h>
+
+1371523950 c:\program files (x86)\windows kits\8.1\include\um\dde.h
+	<windef.h>
+	<winapifamily.h>
+
+1377092286 c:\program files (x86)\windows kits\8.1\include\um\ddeml.h
+	<winapifamily.h>
+
+1377092256 c:\program files (x86)\windows kits\8.1\include\um\lzexpand.h
+	<winapifamily.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\mmsystem.h
+	<winapifamily.h>
+	<mmsyscom.h>
+	<pshpack1.h>
+	<mciapi.h>
+	<mmiscapi.h>
+	<mmiscapi2.h>
+	<playsoundapi.h>
+	<mmeapi.h>
+	<timeapi.h>
+	<joystickapi.h>
+	<poppack.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\mmsyscom.h
+	<winapifamily.h>
+	<pshpack1.h>
+	<macwin32.h>
+	<poppack.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\mciapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\mmiscapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\mmiscapi2.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\playsoundapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\mmeapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\timeapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\joystickapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<mmsyscom.h>
+
+1371522006 c:\program files (x86)\windows kits\8.1\include\um\nb30.h
+	<winapifamily.h>
+
+1377092722 c:\program files (x86)\windows kits\8.1\include\um\shellapi.h
+	<winapifamily.h>
+	<SpecStrings.h>
+	<pshpack1.h>
+	<poppack.h>
+
+1371522516 c:\program files (x86)\windows kits\8.1\include\um\winperf.h
+	<winapifamily.h>
+	<pshpack8.h>
+	<poppack.h>
+
+1377092164 c:\program files (x86)\windows kits\8.1\include\um\winsock.h
+	<winapifamily.h>
+	<windows.h>
+	<inaddr.h>
+
+1414149212 c:\program files (x86)\windows kits\8.1\include\um\wincrypt.h
+	<specstrings.h>
+	<winapifamily.h>
+	<bcrypt.h>
+	<ncrypt.h>
+	<dpapi.h>
+
+1377092140 c:\program files (x86)\windows kits\8.1\include\um\ncrypt.h
+	<winapifamily.h>
+	<bcrypt.h>
+
+1371521998 c:\program files (x86)\windows kits\8.1\include\um\dpapi.h
+
+1371522400 c:\program files (x86)\windows kits\8.1\include\um\winefs.h
+	<winapifamily.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\winscard.h
+	<wtypes.h>
+	<winioctl.h>
+	"winsmcrd.h"
+	"SCardErr.h"
+	<winapifamily.h>
+
+1414149234 c:\program files (x86)\windows kits\8.1\include\um\winioctl.h
+	<pshpack1.h>
+	<poppack.h>
+	<winapifamily.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\um\scarderr.h
+
+1414149214 c:\program files (x86)\windows kits\8.1\include\um\winspool.h
+	<winapifamily.h>
+	<prsht.h>
+
+1377092720 c:\program files (x86)\windows kits\8.1\include\um\prsht.h
+	<winapifamily.h>
+	<pshpack8.h>
+	<pshpack4.h>
+	"prsht.inl"
+	<poppack.h>
+
+1420206788 c:\program files (x86)\windows kits\8.1\include\um\prsht.inl
+
+1371522788 c:\program files (x86)\windows kits\8.1\include\um\ole.h
+	<winapifamily.h>
+	<pshpack1.h>
+	<poppack.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\ole2.h
+	<winapifamily.h>
+	<pshpack8.h>
+	<winerror.h>
+	<objbase.h>
+	<oleauto.h>
+	<oleidl.h>
+	<poppack.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\objbase.h
+	<winapifamily.h>
+	<rpc.h>
+	<rpcndr.h>
+	<pshpack8.h>
+	<combaseapi.h>
+	<objidl.h>
+	<urlmon.h>
+	<propidl.h>
+	<poppack.h>
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\um\combaseapi.h
+	<apiset.h>
+	<apisetcconv.h>
+	<rpc.h>
+	<rpcndr.h>
+	<pshpack8.h>
+	<stdlib.h>
+	<wtypesbase.h>
+	<unknwnbase.h>
+	<objidlbase.h>
+	<guiddef.h>
+	<cguid.h>
+	<poppack.h>
+
+1377092290 c:\program files (x86)\windows kits\8.1\include\um\unknwnbase.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"wtypesbase.h"
+	<winapifamily.h>
+
+1377092286 c:\program files (x86)\windows kits\8.1\include\um\objidlbase.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"unknwnbase.h"
+	<winapifamily.h>
+
+1371522788 c:\program files (x86)\windows kits\8.1\include\um\cguid.h
+	<winapifamily.h>
+
+1377092286 c:\program files (x86)\windows kits\8.1\include\um\objidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"unknwn.h"
+	<winapifamily.h>
+	<winapifamily.h>
+
+1377092290 c:\program files (x86)\windows kits\8.1\include\um\unknwn.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"wtypes.h"
+	<winapifamily.h>
+
+1416485766 c:\program files (x86)\windows kits\8.1\include\um\urlmon.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	"oleidl.h"
+	"servprov.h"
+	"msxml.h"
+	<winapifamily.h>
+
+1377092288 c:\program files (x86)\windows kits\8.1\include\um\oleidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	<winapifamily.h>
+
+1377092226 c:\program files (x86)\windows kits\8.1\include\um\servprov.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	<winapifamily.h>
+
+1377092252 c:\program files (x86)\windows kits\8.1\include\um\msxml.h
+	"rpc.h"
+	"rpcndr.h"
+	"unknwn.h"
+	"objidl.h"
+	"oaidl.h"
+	<winapifamily.h>
+
+1377092286 c:\program files (x86)\windows kits\8.1\include\um\oaidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	<winapifamily.h>
+
+1377092288 c:\program files (x86)\windows kits\8.1\include\um\propidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	"oaidl.h"
+	<winapifamily.h>
+
+1371522788 c:\program files (x86)\windows kits\8.1\include\um\oleauto.h
+	<winapifamily.h>
+	<pshpack8.h>
+	<oaidl.h>
+	<poppack.h>
+
+1377092716 c:\program files (x86)\windows kits\8.1\include\um\commdlg.h
+	<winapifamily.h>
+	<prsht.h>
+	<pshpack1.h>
+	"commdlg.inl"
+	<poppack.h>
+
+1420206782 c:\program files (x86)\windows kits\8.1\include\um\commdlg.inl
+
+1377092120 c:\program files (x86)\windows kits\8.1\include\um\winsvc.h
+	<winapifamily.h>
+
+1371522730 c:\program files (x86)\windows kits\8.1\include\um\mcx.h
+
+1377092288 c:\program files (x86)\windows kits\8.1\include\um\imm.h
+	<winapifamily.h>
+	<ime_cmodes.h>
+
+1371522518 c:\program files (x86)\windows kits\8.1\include\um\ime_cmodes.h
+
+1371523938 c:\program files (x86)\windows kits\8.1\include\um\gl\glu.h
+	<winapifamily.h>
+	<GL/gl.h>
+
+1371523938 c:\program files (x86)\windows kits\8.1\include\um\gl\gl.h
+	<winapifamily.h>
+
+1371524660 c:\program files (x86)\windows kits\8.1\include\shared\winapifamily.h
+
+1377092256 c:\program files (x86)\windows kits\8.1\include\shared\sdkddkver.h
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\specstrings.h
+	<sal.h>
+	<specstrings_strict.h>
+	<driverspecs.h>
+	<no_sal2.h>
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\sal.h
+	"codeanalysis\sourceannotations.h"
+	<ConcurrencySal.h>
+
+1371522504 c:\program files (x86)\windows kits\8.1\include\shared\concurrencysal.h
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\specstrings_strict.h
+	<specstrings_undef.h>
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\specstrings_undef.h
+
+1377092122 c:\program files (x86)\windows kits\8.1\include\shared\driverspecs.h
+	<specstrings.h>
+	"sdv_driverspecs.h"
+	<concurrencysal.h>
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\sdv_driverspecs.h
+
+1377092614 c:\program files (x86)\windows kits\8.1\include\shared\no_sal2.h
+
+1377092292 c:\program files (x86)\windows kits\8.1\include\shared\windef.h
+	<winapifamily.h>
+	<minwindef.h>
+	<winnt.h>
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h
+	<specstrings.h>
+	<winapifamily.h>
+	<winnt.h>
+
+1422879248 c:\program files (x86)\windows kits\8.1\include\um\winnt.h
+	<ctype.h>
+	<winapifamily.h>
+	<specstrings.h>
+	<kernelspecs.h>
+	<basetsd.h>
+	<guiddef.h>
+	<excpt.h>
+	<sdkddkver.h>
+	<intrin.h>
+	"pshpack4.h"
+	"poppack.h"
+	"pshpack4.h"
+	"poppack.h"
+	<pshpack4.h>
+	<poppack.h>
+	"pshpack4.h"
+	"pshpack2.h"
+	"pshpack1.h"
+	"poppack.h"
+	"pshpack2.h"
+	<pshpack2.h>
+	<poppack.h>
+	"poppack.h"
+	"pshpack8.h"
+	"poppack.h"
+	"poppack.h"
+	<apiset.h>
+	<string.h>
+	<string.h>
+	<ktmtypes.h>
+
+1371522506 c:\program files (x86)\windows kits\8.1\include\shared\kernelspecs.h
+	"DriverSpecs.h"
+
+1371522504 c:\program files (x86)\windows kits\8.1\include\shared\basetsd.h
+
+1371522506 c:\program files (x86)\windows kits\8.1\include\shared\guiddef.h
+	<string.h>
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\pshpack4.h
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\poppack.h
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\pshpack2.h
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\pshpack1.h
+
+1371522512 c:\program files (x86)\windows kits\8.1\include\shared\pshpack8.h
+
+1371521842 c:\program files (x86)\windows kits\8.1\include\shared\apiset.h
+
+1371524656 c:\program files (x86)\windows kits\8.1\include\shared\ktmtypes.h
+
+1371522504 c:\program files (x86)\windows kits\8.1\include\shared\apisetcconv.h
+
+1414149218 c:\program files (x86)\windows kits\8.1\include\shared\winerror.h
+	<specstrings.h>
+
+1371523954 c:\program files (x86)\windows kits\8.1\include\shared\tvout.h
+	<winapifamily.h>
+	<guiddef.h>
+
+1377092110 c:\program files (x86)\windows kits\8.1\include\shared\wnnc.h
+	<winapifamily.h>
+
+1371522626 c:\program files (x86)\windows kits\8.1\include\shared\cderr.h
+
+1377092114 c:\program files (x86)\windows kits\8.1\include\shared\rpc.h
+	<windows.h>
+	<pshpack2.h>
+	<basetsd.h>
+	<pshpack8.h>
+	<setjmp.h>
+	<rpcdce.h>
+	<rpcnsi.h>
+	<rpcerr.h>
+	<rpcmac.h>
+	<poppack.h>
+	<rpcdce.h>
+	<rpcnsi.h>
+	<rpcnterr.h>
+	<excpt.h>
+	<winerror.h>
+	<rpcasync.h>
+	<poppack.h>
+
+1371522028 c:\program files (x86)\windows kits\8.1\include\shared\rpcdce.h
+	<winapifamily.h>
+	<specstrings.h>
+	<guiddef.h>
+	<rpcdcep.h>
+
+1374484092 c:\program files (x86)\windows kits\8.1\include\shared\rpcdcep.h
+	<winapifamily.h>
+
+1371522788 c:\program files (x86)\windows kits\8.1\include\um\rpcnsi.h
+	<winapifamily.h>
+
+1371522028 c:\program files (x86)\windows kits\8.1\include\shared\rpcnterr.h
+	<winapifamily.h>
+
+1371522028 c:\program files (x86)\windows kits\8.1\include\shared\rpcasync.h
+	<winapifamily.h>
+	<pshpack8.h>
+	<ntddk.h>
+	<windef.h>
+	<poppack.h>
+
+1371522004 c:\program files (x86)\windows kits\8.1\include\shared\inaddr.h
+
+1414149214 c:\program files (x86)\windows kits\8.1\include\shared\bcrypt.h
+	<winapifamily.h>
+
+1377092290 c:\program files (x86)\windows kits\8.1\include\shared\wtypes.h
+	"rpc.h"
+	"rpcndr.h"
+	"wtypesbase.h"
+
+1371522028 c:\program files (x86)\windows kits\8.1\include\shared\rpcndr.h
+	<winapifamily.h>
+	<pshpack8.h>
+	<basetsd.h>
+	<rpcnsip.h>
+	<rpcsal.h>
+	<poppack.h>
+
+1371522788 c:\program files (x86)\windows kits\8.1\include\um\rpcnsip.h
+	<winapifamily.h>
+
+1371522028 c:\program files (x86)\windows kits\8.1\include\shared\rpcsal.h
+	<specstrings.h>
+
+1414149386 c:\program files (x86)\windows kits\8.1\include\shared\wtypesbase.h
+	"rpc.h"
+	"rpcndr.h"
+	"basetsd.h"
+	"guiddef.h"
+
+1377092116 c:\program files (x86)\windows kits\8.1\include\shared\winsmcrd.h
+
+1371524660 c:\program files (x86)\windows kits\8.1\include\shared\stralign.h
+	<winapifamily.h>
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod.hpp
+	"fmod_common.h"
+	"fmod.h"
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_common.h
+	"fmod_codec.h"
+	"fmod_dsp.h"
+	"fmod_output.h"
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_codec.h
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_dsp.h
+	"fmod_dsp_effects.h"
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_dsp_effects.h
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_output.h
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod.h
+	"fmod_common.h"
+
+1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_errors.h
+	"fmod.h"
+
+1511883530 d:\work\gamedev\runnerengine\src\macro.h
+	"typedef.h"
+	"shared.h"
+	<vector>
+
+1512143045 source:d:\work\gamedev\runnerengine\src\macro.cpp
+	"macro.h"
+	"file_formats.h"
+	<iostream>
+	"compression.h"
+	<utility>
+	<fstream>
+	"input.h"
+
