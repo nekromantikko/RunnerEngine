@@ -91,6 +91,7 @@
 		<Unit filename="../src/asset_builder/main.cpp">
 			<Option target="asset_builder" />
 		</Unit>
+		<Unit filename="../src/bsp.h" />
 		<Unit filename="../src/collision.cpp">
 			<Option target="Release" />
 			<Option target="Debug" />

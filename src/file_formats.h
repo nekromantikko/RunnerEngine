@@ -76,7 +76,7 @@ struct LevelHeader
 {
     #define LEVEL_SIGNATURE SIGNATURE('r','l','v','l')
     u32 signature;
-    #define LEVEL_VERSION 2
+    #define LEVEL_VERSION 3
     u32 version;
 
     //level properties
@@ -102,26 +102,33 @@ struct LevelHeader
 
 struct TilesetInfo
 {
-    u32 firstGid;
     u64 filenameOffset;
     u64 onePastFilenameOffset;
+};
+
+struct TileBSPNodeInfo
+{
+    Rectangle2 bounds;
+    u32 tileCount;
+    u32 offset;
+};
+
+struct TileBSPTreeInfo
+{
+    u32 nodeCount;
+    u32 fullTreeSize;
 };
 
 struct TileLayerInfo
 {
     u32 width;
     u32 height;
-    r32 xSpeed;
-    r32 ySpeed;
+    r32 xScroll;
+    r32 yScroll;
     bool32 xTiling;
     bool32 yTiling;
     u32 z;
     bool32 collision;
-
-    u32 tileAmount;
-
-    u64 tilesOffset;
-    u64 onePastTilesOffset;
 };
 
 struct EntityInfo

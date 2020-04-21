@@ -2,6 +2,7 @@
 #define TILES_H
 #include <string>
 #include "shared.h"
+#include "bsp.h"
 
 class Texture;
 
@@ -68,27 +69,25 @@ struct TilesetAndGid
     u32 gid;
 };
 
-struct TileLayerData
+struct TilesetGroup
 {
     Tileset *tileset;
-    std::vector<u32*> tiles;
-    Texture *layout;
+    TileBSPNode rootNode;
 };
 
 struct TileLayer
 {
     u32 width;
     u32 height;
-    r32 xSpeed;
-    r32 ySpeed;
+    r32 xScroll;
+    r32 yScroll;
     bool32 xTiling;
     bool32 yTiling;
     u32 z;
     bool32 collision;
 
-    u32 tileAmount;
-
-    std::vector<TileLayerData> data;
+    u32 groupCount;
+    TilesetGroup *tilesetGroups;
 
     Transform previous;
 };
@@ -99,7 +98,7 @@ struct TileLayerInfo;
 namespace TileManager
 {
     //void load_tile_layer(rapidxml::xml_node<> *layer, glm::ivec2 levelDimensions, TilesetData &tileset);
-    void create_layer(std::vector<TilesetAndGid>, TileLayerInfo &info, u32 *tiles);
+    void create_layer(TileLayerInfo &info, u32 groupCount, TilesetGroup *groups);
     void create_layer_textures();
     void update();
     void update_textures(TileLayer *layer);

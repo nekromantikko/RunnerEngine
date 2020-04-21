@@ -15,6 +15,13 @@ struct vec2
         result.y = y * a;
         return result;
     }
+    inline vec2 operator*(vec2<T> a) const
+    {
+        vec2 result;
+        result.x = x * a.x;
+        result.y = y * a.y;
+        return result;
+    }
     inline vec2 &operator*=(T a)
     {
         x *= a;

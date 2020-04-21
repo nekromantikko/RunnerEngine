@@ -7,7 +7,7 @@
 
 TileHit Collision::box_tile_collision(Rectangle2 rect, TileType type)
 {
-    TileLayer *layers = TileManager::get_layers();
+    /*TileLayer *layers = TileManager::get_layers();
     u32 layerAmount = TileManager::get_layer_amount();
 
     //loop thru layers
@@ -63,26 +63,31 @@ TileHit Collision::box_tile_collision(Rectangle2 rect, TileType type)
         {
             for (u32 j = 0; j < widthTiles; j++)
             {
-                u32 tileIndex = 0;
                 u32 currentTset = 0;
+                Tileset *tileset = nullptr;
+                Tile *tile = nullptr;
 
-                for (TileLayerData &data : layer.data)
+                for (; currentTset < layer.groupCount; currentTset++)
                 {
-                    if (data.tiles.at(i+j))
+                    TilesetGroup &group = layer.tilesetGroups[currentTset];
+                    tileset = group.tileset;
+                    for (int c = 0; c < group.chunkCount; c++)
                     {
-                        tileIndex = data.tileset->get_tile(*data.tiles.at(i + j))->index;
-                        break;
+                        TileChunk &chunk = group.chunks[c];
+                        if (chunk.tiles[i+j] > 0)
+                        {
+                            tile = tileset->get_tile(chunk.tiles[i+j]-1);
+                            break;
+                        }
                     }
-                    currentTset++;
+                    if (tile)
+                        break;
                 }
 
-                if (currentTset >= layer.data.size())
+                if (!tile)
                     continue;
 
-                Tileset *tileset = layer.data.at(currentTset).tileset;
-
                 //tile information
-                Tile *tile = tileset->get_tile(tileIndex);
                 s32 xTile = ((i + j) % layerWidth) * runnerTileSize;
                 s32 yTile = ((i + j) / layerWidth) * runnerTileSize;
 
@@ -100,7 +105,7 @@ TileHit Collision::box_tile_collision(Rectangle2 rect, TileType type)
 
             }
         }
-    }
+    }*/
     TileHit hit;
     hit.hit = false;
     return hit;
@@ -109,7 +114,7 @@ TileHit Collision::box_tile_collision(Rectangle2 rect, TileType type)
 std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, TileType type)
 {
     std::vector<TileHit> tempTiles;
-
+    /*
     TileLayer *layers = TileManager::get_layers();
     u32 layerAmount = TileManager::get_layer_amount();
 
@@ -121,7 +126,7 @@ std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, Til
         if (!layer.collision)
             continue;
 
-        //do stuff
+        //corners in world space
         s32 left = rect.x1 / runnerTileSize;
         s32 right = rect.x2 / runnerTileSize;
         s32 top = rect.y1 / runnerTileSize;
@@ -166,26 +171,31 @@ std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, Til
         {
             for (u32 j = 0; j < widthTiles; j++)
             {
-                u32 tileIndex = 0;
                 u32 currentTset = 0;
+                Tileset *tileset = nullptr;
+                Tile *tile = nullptr;
 
-                for (TileLayerData &data : layer.data)
+                for (; currentTset < layer.groupCount; currentTset++)
                 {
-                    if (data.tiles.at(i+j))
+                    TilesetGroup &group = layer.tilesetGroups[currentTset];
+                    tileset = group.tileset;
+                    for (int c = 0; c < group.chunkCount; c++)
                     {
-                        tileIndex = data.tileset->get_tile(*data.tiles.at(i + j))->index;
-                        break;
+                        TileChunk &chunk = group.chunks[c];
+                        if (chunk.tiles[i+j] > 0)
+                        {
+                            tile = tileset->get_tile(chunk.tiles[i+j]-1);
+                            break;
+                        }
                     }
-                    currentTset++;
+                    if (tile)
+                        break;
                 }
 
-                if (currentTset >= layer.data.size())
+                if (!tile)
                     continue;
 
-                Tileset *tileset = layer.data.at(currentTset).tileset;
-
                 //tile information
-                Tile *tile = tileset->get_tile(tileIndex);
                 s32 xTile = ((i + j) % layerWidth) * runnerTileSize;
                 s32 yTile = ((i + j) / layerWidth) * runnerTileSize;
 
@@ -203,7 +213,7 @@ std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, Til
 
             }
         }
-    }
+    }*/
     return tempTiles;
 }
 
@@ -1040,7 +1050,7 @@ bool Collision::tile_point_free(Tile *tile, fvec2 relativePos)
 
 bool Collision::collision_tile_mask(fvec2 positionInPx)
 {
-    bool result = false;
+    bool result = false;/*
     u32 tilex = (u32)positionInPx.x / runnerTileSize;
     u32 tiley = (u32)positionInPx.y / runnerTileSize;
     u32 relativex = positionInPx.x - (tilex * runnerTileSize);
@@ -1057,35 +1067,39 @@ bool Collision::collision_tile_mask(fvec2 positionInPx)
         if (!layer.collision)
             continue;
 
-        u32 layerWidthInTiles = layer.width;
-
-        u32 tileIndex = (layer.width * tiley) + tilex;
-        if (tileIndex >= layer.tileAmount)
-            continue;
-
-        u32 tileGid = 0;
         u32 currentTset = 0;
+        Tileset *tileset = nullptr;
+        Tile *tile = nullptr;
 
-        for (TileLayerData &data : layer.data)
+        for (; currentTset < layer.groupCount; currentTset++)
         {
-            if (data.tiles.at(tileIndex))
+            TilesetGroup &group = layer.tilesetGroups[currentTset];
+            tileset = group.tileset;
+            for (int c = 0; c < group.chunkCount; c++)
             {
-                tileGid = *data.tiles.at(tileIndex);
-                break;
+                TileChunk &chunk = group.chunks[c];
+
+                u32 tileIndex = (chunk.width * (tiley - chunk.yOffset)) + (tilex - chunk.xOffset);
+                if (tileIndex < chunk.height * chunk.width)
+                {
+                    u32 tileGid = chunk.tiles[tileIndex];
+                    if (tileGid > 0)
+                    {
+                        tile = tileset->get_tile(tileGid - 1);
+                        break;
+                    }
+                }
             }
-            currentTset++;
+            if (tile)
+                break;
         }
 
-        if (currentTset >= layer.data.size())
-            continue;
 
-        Tileset *tileset = layer.data.at(currentTset).tileset;
 
-        Tile *tile = tileset->get_tile(tileGid);
         bool tilePointFree = tile_point_free(tile, {relativex, relativey});
         if (!tilePointFree)
             result = true;
-    }
+    }*/
     return result;
 }
 

@@ -228,24 +228,24 @@ bool Level::load_level(std::string fname)
 
             //load tilesets
             TileManager::clear_layers();
-            std::vector<TilesetAndGid> tilesets;
+            std::vector<Tileset*> tilesets;
             for (u32 i = 0; i < header.tilesetAmount; i++)
             {
                 TilesetInfo tilesetInfo;
                 levelIn.read((char*)&tilesetInfo, sizeof(tilesetInfo));
 
                 //set first gid for tileset
-                TilesetAndGid tileset;
-                tileset.gid = tilesetInfo.firstGid;
+                Tileset *tileset;
 
                 //get filename for tileset
                 u32 tilesetFilenameLength = tilesetInfo.onePastFilenameOffset - tilesetInfo.filenameOffset;
                 char *tilesetFilenameBuffer = new char[tilesetFilenameLength];
                 levelIn.read(tilesetFilenameBuffer, tilesetFilenameLength);
                 std::string tilesetFilename(tilesetFilenameBuffer, tilesetFilenameLength);
+                std::cout << "level has tileset " << tilesetFilename << std::endl;
                 //get pointer to tileset
-                tileset.tileset = Resource::get_tileset(tilesetFilename);
-                if (!tileset.tileset)
+                tileset = Resource::get_tileset(tilesetFilename);
+                if (!tileset)
                     throw std::runtime_error("Tileset " + tilesetFilename + " not found!");
 
                 tilesets.push_back(tileset);
@@ -253,18 +253,62 @@ bool Level::load_level(std::string fname)
                 delete[] tilesetFilenameBuffer;
             }
 
+            std::cout << header.tileLayerAmount << " tile layers\n";
+
             //load tileLayers
             for (u32 i = 0; i < header.tileLayerAmount; i++)
             {
                 TileLayerInfo layerInfo;
                 levelIn.read((char*)&layerInfo, sizeof(layerInfo));
 
-                u32 *tiles = new u32[layerInfo.tileAmount];
-                levelIn.read((char*)tiles, layerInfo.tileAmount * sizeof(u32));
+                TilesetGroup *tilesetGroups = new TilesetGroup[header.tilesetAmount];
 
-                TileManager::create_layer(tilesets, layerInfo, tiles);
+                //std::cout << "layer " << i << " has " << header.tilesetAmount << " tileset groups\n";
 
-                delete[] tiles;
+                for (int j = 0; j < header.tilesetAmount; j++)
+                {
+                    //std::cout << "Reading tree data at position " << levelIn.tellg() << std::endl;
+                    TileBSPTreeInfo treeData;
+                    levelIn.read((char*)&treeData, sizeof(treeData));
+
+                    //std::cout << "Nodes: " << treeData.nodeCount << ", Full Size: " << treeData.fullTreeSize << std::endl;
+
+                    int nodeDataIndices[treeData.fullTreeSize];
+                    //std::cout << "Reading indices at position " << levelIn.tellg() << std::endl;
+                    levelIn.read((char*)nodeDataIndices, sizeof(int) * treeData.fullTreeSize);
+
+                    /*std::cout << "Read indices from file: ";
+                    for (int i = 0; i < treeData.fullTreeSize; i++)
+                    {
+                        std::cout << nodeDataIndices[i] << ", ";
+                    }
+                    std::cout << std::endl;*/
+
+                    std::vector<TileBSPNodeInfo> nodeInfos;
+                    std::vector<std::vector<u32>> chunkData;
+
+                    for (int k = 0; k < treeData.nodeCount; k++)
+                    {
+                        TileBSPNodeInfo nodeInfo;
+                        //std::cout << "Reading BSP Node at position " << levelIn.tellg() << std::endl;
+                        levelIn.read((char*)&nodeInfo, sizeof(nodeInfo));
+
+                        nodeInfos.push_back(nodeInfo);
+
+                        if (nodeInfo.tileCount > 0)
+                        {
+                            u32 tiles[nodeInfo.tileCount];
+                            //std::cout << "Reading " << nodeInfo.tileCount << " tiles at position " << levelIn.tellg() << std::endl;
+                            levelIn.read((char*)tiles, sizeof(u32) * nodeInfo.tileCount);
+                            chunkData.push_back(std::vector<u32>(tiles, tiles + nodeInfo.tileCount));
+                        }
+                    }
+
+                    tilesetGroups[j].tileset = tilesets.at(j);
+                    tilesetGroups[j].rootNode.populate_from_arrays(nodeDataIndices, nodeInfos, chunkData, 0, treeData.fullTreeSize);
+                }
+
+                TileManager::create_layer(layerInfo, header.tilesetAmount, tilesetGroups);
             }
 
             //load entities

@@ -207,25 +207,29 @@ namespace TileManager
     #define MAX_TILELAYER_AMOUNT 64
     u32 layerAmount = 0;
     TileLayer layers[MAX_TILELAYER_AMOUNT];
+
+    int chosenTileset = 0;
+    int chosenLayer = 0;
 }
 
 //TILEMANAGER FUNCTIONS
 
-void TileManager::create_layer(std::vector<TilesetAndGid> tilesets, TileLayerInfo &info, u32 *tiles)
+void TileManager::create_layer(TileLayerInfo &info, u32 groupCount, TilesetGroup *groups)
 {
     TileLayer &layer = layers[layerAmount++];
 
     layer.width = info.width;
     layer.height = info.height;
     layer.z = info.z;
-    layer.xSpeed = info.xSpeed;
-    layer.ySpeed = info.ySpeed;
+    layer.xScroll = info.xScroll;
+    layer.yScroll = info.yScroll;
     layer.xTiling = info.xTiling;
     layer.yTiling = info.yTiling;
     layer.collision = info.collision;
-    layer.tileAmount = info.tileAmount;
+    layer.groupCount = groupCount;
+    layer.tilesetGroups = groups;
 
-    for (auto it = tilesets.rbegin(); it != tilesets.rend(); it++)
+    /*for (auto it = tilesets.rbegin(); it != tilesets.rend(); it++)
     {
         TileLayerData temp;
         temp.tileset = it->tileset;
@@ -244,76 +248,63 @@ void TileManager::create_layer(std::vector<TilesetAndGid> tilesets, TileLayerInf
         }
 
         layer.data.push_back(temp);
-    }
-}
-
-void TileManager::create_layer_textures()
-{
-    //loop thry layers
-    for (int i = 0; i < layerAmount; i++)
-    {
-        TileLayer &layer = layers[i];
-        for (auto it = layer.data.rbegin(); it != layer.data.rend(); it++)
-        {
-            //try a thing
-            std::vector<v3> texels;
-            for (u32 *tile : it->tiles)
-            {
-                v3 texel = {0,0,0};
-
-                if (tile)
-                {
-                    texel.xy() = it->tileset->get_coord(*tile);
-                    texel.z = 1.0;
-                }
-
-                texels.push_back(texel);
-            }
-
-            it->layout = platform_create_tile_layer_texture(texels.data(), layer.width, layer.height);
-        }
-    }
+    }*/
 }
 
 //draws tiles if the layer is not invisible (disabled)
 void TileManager::update()
 {
-    //Resource::animate_tilesets();
+    Resource::animate_tilesets();
 
     for (u32 i = 0; i < layerAmount; i++)
     {
         TileLayer *layer = &layers[i];
-        //update_textures(layer);
         draw_layer(layer);
-    }
-}
-
-void TileManager::update_textures(TileLayer *layer)
-{
-    u32 tilesetAmount = layer->data.size();
-
-    for (u32 i = 0; i < tilesetAmount; i++)
-    {
-        Tileset *tileset = layer->data[i].tileset;
-        std::vector<v3> texels;
-        for (u32 *tile : layer->data[i].tiles)
-        {
-            v3 texel = {0,0,0};
-
-            if (tile)
-            {
-                texel.xy() = tileset->get_coord(*tile);
-                texel.z = 1.0;
-            }
-
-            texels.push_back(texel);
-        }
-        platform_update_tile_layer_texture(layer->data[i].layout, texels.data(), layer->width, layer->height);
     }
 }
 
 void TileManager::draw_layer(TileLayer *layer)
 {
+    //Draw boxes around chunks!
+    TileBSPNode *rootNode = &layer->tilesetGroups[chosenTileset].rootNode;
+
+    std::vector<TileBSPNode*> nodes;
+
+    rootNode->to_vector(nodes);
+
+    DrawOrigin origin = ORIGIN_TOPLEFT;
+    v4 green = {0,1,0,1};
+    v4 red = {1,0,0,1};
+
+    int maxDepth = 10;
+
+    int counter = 0;
+
+    fvec2 camPos = Renderer::get_camera_position();
+    f32 xCamera = camPos.x, yCamera = camPos.y;
+
+    for(TileBSPNode* node : nodes)
+    {
+        if (node->chunk)
+        {
+            counter++;
+            int nodeLevel = node->level;
+
+            v4 drawColor = Lerp(green,nodeLevel / maxDepth, red);
+
+            Rectangle2 nodeBounds = node->bounds;
+
+            int x, y, w, h;
+            x = nodeBounds.x1 * runnerTileSize - xCamera;
+            y = (nodeBounds.y2 - nodeBounds.y1) * runnerTileSize - yCamera;
+            w = node->get_width() * runnerTileSize;
+            h = node->get_height() * runnerTileSize;
+
+            Renderer::draw_rectangle(x,y,w,h, &origin, &drawColor);
+        }
+    }
+
+    /*
     if (layer->width == 0 || layer->height == 0)
         return;
 
@@ -330,8 +321,8 @@ void TileManager::draw_layer(TileLayer *layer)
     //amount of times the layer should be repeated on a given axis (default is 1)
     //u32 xRepetitions = 1, yRepetitions = 1;
     //the layer's position relative to the camera and layer's parallax scrolling rate
-    r32 xScrollDistance = xCamera * layer->xSpeed;
-    r32 yScrollDistance = yCamera * layer->ySpeed;
+    r32 xScrollDistance = xCamera * layer->xScroll;
+    r32 yScrollDistance = yCamera * layer->yScroll;
     //where should the drawing begin (the first tiles might be  partially outside the drawing area)
     r32 xStart = -xScrollDistance;
     r32 yStart = -yScrollDistance;
@@ -381,22 +372,28 @@ void TileManager::draw_layer(TileLayer *layer)
         }
     }
 
-    u32 tilesetAmount = layer->data.size();
+    u32 tilesetAmount = layer->groupCount;
 
     for (u32 i = 0; i < tilesetAmount; i++)
     {
-        TileCall call;
-        call.z = layer->z;
-        call.texture = layer->data[i].tileset->get_diffuse();
-        call.lightmap = layer->data[i].tileset->get_lightmap();
-        call.normal = layer->data[i].tileset->get_normal();
-        call.a = xform.position;
-        call.b = previous.position;
-        call.layout = layer->data[i].layout;
-        Renderer::add_tile_layer(call);
+        TilesetGroup &group = layer->tilesetGroups[i];
+
+        for (u32 j = 0; j < group.chunkCount; j++)
+        {
+            TileChunk &chunk = group.chunks[j];
+            TileCall call;
+            call.z = layer->z;
+            call.texture = group.tileset->get_diffuse();
+            call.lightmap = group.tileset->get_lightmap();
+            call.normal = group.tileset->get_normal();
+            call.a = xform.position;
+            call.b = previous.position;
+            call.layout = chunk.layout;
+            Renderer::add_tile_layer(call);
+        }
     }
 
-    previous = xform;
+    previous = xform;*/
 }
 
 void TileManager::clear_layers()
@@ -408,11 +405,8 @@ void TileManager::clear_layers()
 
         TileLayer *layer = &layers[i];
 
-        u32 tilesetAmount = layer->data.size();
-        for (u32 i = 0; i < tilesetAmount; i++)
-            platform_delete_texture(layer->data[i].layout);
+        delete[] layer->tilesetGroups;
 
-        layer->data.clear();
     }
 
     layerAmount = 0;

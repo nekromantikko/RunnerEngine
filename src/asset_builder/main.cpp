@@ -14,6 +14,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "../bsp.h"
 
 rImage load_image(const char* fname)
 {
@@ -133,6 +134,7 @@ void build_assets()
     PUSH_ASSET(TEXTURE, "tileset_debug_mask", "res/textures/tilesets/tileset_debug_mask.png", assets);
     PUSH_ASSET(TEXTURE, "tex_logo", "res/textures/tex_logo.png", assets);
     PUSH_ASSET(TEXTURE, "test_screenshot", "res/textures/test_screenshot.png", assets);
+    PUSH_ASSET(TEXTURE, "rect_outline", "res/textures/tex_rect.png", assets);
 
     //load tilesets
     PUSH_ASSET(TILESET, "debug", "res/tilesets/debug.tsx", assets);
@@ -183,6 +185,191 @@ void build_assets()
     std::cout << "ASSETS PACKED!\n";
 }
 
+#define CHUNK_MAX_SIZE 32
+#define CHUNK_MIN_SIZE 8
+
+void split_binary_tree(TileBSPNode *root);
+
+bool split_binary_tree_vertically(TileBSPNode *root, bool force = false)
+{
+    u32 width = root->get_width();
+    u32 height = root->get_height();
+
+    if (!force)
+    {
+        bool holeFound;
+        //search right from center to find hole
+        for(int x = width/2; x < width - CHUNK_MIN_SIZE; x++)
+        {
+            holeFound = true;
+            for(int y = 0; y < height; y++)
+            {
+                if (root->get_tile(x,y) != 0)
+                    holeFound = false;
+            }
+            if (holeFound)
+            {
+                std::cout << "Splitting a level " << root->level << " tree " << root << " (" << width << "x" << height << ") vertically! (x = " << x << ")\n";
+                root->split_vertically(x);
+                split_binary_tree(root->children);
+                split_binary_tree(root->children + 1);
+                std::cout << "Level " << root->level << " tree " << root << " splitting completed!\n";
+                return true;
+            }
+        }
+        //search left from center to find hole
+        for(int x = width/2; x >= CHUNK_MIN_SIZE; x--)
+        {
+            holeFound = true;
+            for(int y = 0; y < height; y++)
+            {
+                if (root->get_tile(x,y) != 0)
+                    holeFound = false;
+            }
+            if (holeFound)
+            {
+                std::cout << "Splitting a level " << root->level << " tree " << root << " (" << width << "x" << height << ") vertically! (x = " << x << ")\n";
+                root->split_vertically(x);
+                split_binary_tree(root->children);
+                split_binary_tree(root->children + 1);
+                return true;
+            }
+        }
+
+        return false;
+    }
+    else
+    {
+        std::cout << "Forcing vertical split!\n";
+        std::cout << "Splitting a level " << root->level << " tree " << root << " (" << width << "x" << height << ") vertically! (x = " << width/2 << ")\n";
+        root->split_vertically(width/2);
+        split_binary_tree(root->children);
+        split_binary_tree(root->children + 1);
+        return true;
+    }
+}
+
+bool split_binary_tree_horizontally(TileBSPNode *root, bool force = false)
+{
+    u32 width = root->get_width();
+    u32 height = root->get_height();
+
+    if (!force)
+    {
+        bool holeFound;
+        //search down from center to find hole
+        for(int y = height/2; y < height - CHUNK_MIN_SIZE; y++)
+        {
+            holeFound = true;
+            for(int x = 0; x < width; x++)
+            {
+                if (root->get_tile(x,y) != 0)
+                    holeFound = false;
+            }
+            if (holeFound)
+            {
+                std::cout << "Splitting a level " << root->level << " tree " << root << " (" << width << "x" << height << ") horizontally! (y = " << y << ")\n";
+                root->split_horizontally(y);
+                split_binary_tree(root->children);
+                split_binary_tree(root->children + 1);
+                return true;
+            }
+        }
+        //search up from center to find hole
+        for(int y = height/2; y >= CHUNK_MIN_SIZE; y--)
+        {
+            holeFound = true;
+            for(int x = 0; x < width; x++)
+            {
+                if (root->get_tile(x,y) != 0)
+                    holeFound = false;
+            }
+            if (holeFound)
+            {
+                std::cout << "Splitting a level " << root->level << " tree " << root << " (" << width << "x" << height << ") horizontally! (y = " << y << ")\n";
+                root->split_horizontally(y);
+                split_binary_tree(root->children);
+                split_binary_tree(root->children + 1);
+                return true;
+            }
+        }
+
+        return false;
+    }
+    else
+    {
+        std::cout << "Forcing horizontal split!\n";
+        std::cout << "Splitting a level " << root->level << " tree " << root << " (" << width << "x" << height << ") horizontally! (y = " << height/2 << ")\n";
+        root->split_horizontally(height/2);
+        split_binary_tree(root->children);
+        split_binary_tree(root->children + 1);
+        return true;
+    }
+}
+
+void split_binary_tree(TileBSPNode *root)
+{
+    u32 width = root->get_width();
+    u32 height = root->get_height();
+
+    std::cout << "Attempting to split level " << root->level << " tree " << root << " (" << width << "x" << height << ")!\n";
+
+    if (root->is_empty())
+    {
+        std::cout << "Level " << root->level << " tree " << root << " (" << width << "x" << height << ") is empty, not splitting!\n";
+        return;
+    }
+
+    if (width >= CHUNK_MIN_SIZE || height >= CHUNK_MIN_SIZE)
+    {
+        //split vertically
+        if (width >= height)
+        {
+            if (split_binary_tree_vertically(root))
+            {
+                return;
+            }
+            else if (split_binary_tree_horizontally(root))
+            {
+                return;
+            }
+            else if (width > CHUNK_MAX_SIZE)
+            {
+                split_binary_tree_vertically(root, true);
+                return;
+            }
+            else
+            {
+                std::cout << "No need to split level " << root->level << " tree " << root << " (" << width << "x" << height << ") any further!\n";
+            }
+        }
+        else //split horizontally
+        {
+            if (split_binary_tree_horizontally(root))
+            {
+                return;
+            }
+            else if (split_binary_tree_vertically(root))
+            {
+                return;
+            }
+            else if (height > CHUNK_MAX_SIZE)
+            {
+                split_binary_tree_horizontally(root, true);
+                return;
+            }
+            else
+            {
+                std::cout << "No need to split level " << root->level << " tree " << root << " (" << width << "x" << height << ") any further!\n";
+            }
+        }
+    }
+    else
+    {
+        std::cout << "Cannot split level " << root->level << " tree " << root << " (" << width << "x" << height << ") any further!\n";
+    }
+}
+
 void compile_level(const char *in, const char *out)
 {
     std::cout << "COMPILING LEVEL...\n";
@@ -200,6 +387,8 @@ void compile_level(const char *in, const char *out)
 
     header.width = atoi(map->first_attribute("width")->value());
     header.height = atoi(map->first_attribute("height")->value());
+
+    std::vector<u32> tilesetOffsets;
 
     std::string levelName;
 
@@ -306,7 +495,7 @@ void compile_level(const char *in, const char *out)
         ////////////////////////////////////////////////
 
         TilesetInfo tileset = {};
-        tileset.firstGid = atoi(tset->first_attribute("firstgid")->value());
+        tilesetOffsets.push_back(atoi(tset->first_attribute("firstgid")->value()));
         tileset.filenameOffset = currentOffset + sizeof(TilesetInfo);
         tileset.onePastFilenameOffset = tileset.filenameOffset + tilesetFname.size();
 
@@ -330,9 +519,13 @@ void compile_level(const char *in, const char *out)
         //assign some initial values
         tileLayer.width = header.width;
         tileLayer.height = header.height;
-        tileLayer.xSpeed = 1.f;
-        tileLayer.ySpeed = 1.f;
-        tileLayer.tilesOffset = currentOffset + sizeof(TileLayerInfo);
+        tileLayer.xScroll = 1.f;
+        tileLayer.yScroll = 1.f;
+        tileLayer.xTiling = false;
+        tileLayer.yTiling = false;
+        tileLayer.z = 0;
+        tileLayer.collision = false;
+        //tileLayer.tilesOffset = currentOffset + sizeof(TileLayerInfo);
 
         //loop through layer's properties
         rapidxml::xml_node<> *properties = layer->first_node("properties");
@@ -363,14 +556,14 @@ void compile_level(const char *in, const char *out)
                     tileLayer.z = atoi(property->first_attribute("value")->value());
                     continue;
                 }
-                if (pname.compare("xSpeed") == 0)
+                if (pname.compare("xScroll") == 0)
                 {
-                    tileLayer.xSpeed = atof(property->first_attribute("value")->value());
+                    tileLayer.xScroll = atof(property->first_attribute("value")->value());
                     continue;
                 }
-                if (pname.compare("ySpeed") == 0)
+                if (pname.compare("yScroll") == 0)
                 {
-                    tileLayer.ySpeed = atof(property->first_attribute("value")->value());
+                    tileLayer.yScroll = atof(property->first_attribute("value")->value());
                     continue;
                 }
                 if (pname.compare("xTiling") == 0)
@@ -395,10 +588,10 @@ void compile_level(const char *in, const char *out)
             }
         }
 
-        tileLayer.tileAmount = (tileLayer.width * tileLayer.height);
-        tileLayer.onePastTilesOffset = tileLayer.tilesOffset + (sizeof(u32) * tileLayer.tileAmount);
+        //tileLayer.onePastTilesOffset = tileLayer.tilesOffset + (sizeof(u32) * tileLayer.tileAmount);
 
         fileBody.insert(fileBody.end(), (u8*)&tileLayer, ((u8*)&tileLayer) + sizeof(TileLayerInfo));
+        currentOffset += sizeof(TileLayerInfo);
         /*
         std::cout << "tileLayer written at " << currentOffset << std::endl
         << tileLayer.width << std::endl
@@ -413,26 +606,124 @@ void compile_level(const char *in, const char *out)
         << tileLayer.tilesOffset << std::endl
         << tileLayer.onePastTilesOffset << std::endl;*/
 
-        if (tileLayer.tileAmount == 0)
-            continue;
+        //u32 tileAmount = (tileLayer.width * tileLayer.height);
+        //if (tileAmount == 0)
+            //continue;
 
-        u32 tileIndex = 0;
-        u32 counter = 0;
         rapidxml::xml_node<> *data = layer->first_node("data");
-        for (rapidxml::xml_node<> *tile = data->first_node("tile"); tile; tile = tile->next_sibling("tile"), tileIndex++)
+
+        //tileset groups
+        for (int i = 0; i < tilesetOffsets.size(); i++)
         {
-            //ignore tiles outside layer bounds!
-            if (tileIndex % header.width >= tileLayer.width || tileIndex / header.width >= tileLayer.height)
-                continue;
+            //make a binary tree!
+            TileBSPNode root(tileLayer.width,tileLayer.height);
 
-            u32 t = atoi(tile->first_attribute("gid")->value());
+            int row = 0, col = 0;
 
-            fileBody.insert(fileBody.end(), (u8*)&t, ((u8*)&t) + sizeof(u32));
-            counter++;
+            int counter = 0;
+
+            for (rapidxml::xml_node<> *tile = data->first_node("tile"); tile; tile = tile->next_sibling("tile"),col++,counter++)
+            {
+                if (col >= tileLayer.width)
+                {
+                    col = 0;
+                    row++;
+                }
+                if (row >= tileLayer.height)
+                    break;
+
+                u32 t;
+                rapidxml::xml_attribute<> *gid = tile->first_attribute("gid");
+                if (gid)
+                {
+                    t = atoi(gid->value());
+                    if (t >= tilesetOffsets[i])
+                    {
+                        if ((i+1 < tilesetOffsets.size()) && (t >= tilesetOffsets[i + 1]))
+                        {
+                            t = 0;
+                        }
+                        else
+                        {
+                            t -= (tilesetOffsets[i] - 1);
+                        }
+                    }
+                    else
+                    {
+                        t = 0;
+                    }
+                }
+                else t = 0;
+
+                root.chunk[counter] = t;
+            }
+
+            std::cout << "Processing binary tree " << &root << " in tileset group " << i << std::endl;
+            split_binary_tree(&root);
+
+            u32 nodeCount = root.get_size();
+            u32 treeDepth = root.get_depth();
+
+            u32 fullTreeSize = 0;
+            for (int i = 0; i <= treeDepth; i++)
+            {
+                fullTreeSize += std::pow(2,i);
+            }
+            std::cout << "Tree has " << nodeCount << " nodes and is " << treeDepth << " levels deep!\n";
+            std::cout << "Full tree size is " << fullTreeSize << std::endl;
+
+            int nodeDataIndices[fullTreeSize];
+            std::vector<TileBSPNodeInfo> nodeInfo;
+            std::vector<std::vector<u32>> chunkData;
+
+            TileBSPTreeInfo treeInfo;
+            treeInfo.nodeCount = nodeCount;
+            treeInfo.fullTreeSize = fullTreeSize;
+
+            std::cout << "Writing tree at position " << currentOffset << " (" << currentOffset - fileBody.size() << ")\n";
+
+            fileBody.insert(fileBody.end(), (u8*)&treeInfo, ((u8*)&treeInfo) + sizeof(TileBSPTreeInfo));
+            currentOffset += sizeof(TileBSPTreeInfo);
+
+            for(int i=0; i<fullTreeSize; i++)
+                nodeDataIndices[i] = -1;
+
+            int skippedChunks = 0;
+            skippedChunks = root.populate_arrays(nodeDataIndices, nodeInfo, chunkData, 0, skippedChunks);
+
+            std::cout << "Indices: ";
+            for (int i = 0; i < fullTreeSize; i++)
+            {
+                std::cout << nodeDataIndices[i] << ", ";
+            }
+            std::cout << std::endl;
+
+            std::cout << "Writing indices at position " << currentOffset << " (" << currentOffset - fileBody.size() << ")\n";
+            fileBody.insert(fileBody.end(), (u8*)nodeDataIndices, (u8*)nodeDataIndices + (sizeof(int) * fullTreeSize));
+            currentOffset += (sizeof(int) * fullTreeSize);
+
+            std::cout << "NodeInfo size is " << nodeInfo.size() << " (should be " << nodeCount << std::endl;
+
+            for (int i = 0; i < nodeInfo.size(); i++)
+            {
+                int chunkOffset = nodeInfo.at(i).offset;
+
+                std::cout << "Writing BSP Node at position " << currentOffset << ", tile count " << nodeInfo.at(i).tileCount << ", offset " << nodeInfo.at(i).offset << std::endl;
+                fileBody.insert(fileBody.end(), (u8*)&nodeInfo.at(i), ((u8*)&nodeInfo.at(i)) + sizeof(TileBSPNodeInfo));
+                currentOffset += sizeof(TileBSPNodeInfo);
+
+                if (i-chunkOffset >= 0 && nodeInfo.at(i).tileCount > 0)
+                {
+                    std::cout << "Writing " << chunkData.at(i-chunkOffset).size() << " tiles! (" << i << ", " << i-chunkOffset << ") at position " << currentOffset << "\n";
+
+                    fileBody.insert(fileBody.end(), (u8*)chunkData.at(i-chunkOffset).data(), (u8*)chunkData.at(i-chunkOffset).data() + (sizeof(u32) * chunkData.at(i-chunkOffset).size()));
+                    currentOffset += (sizeof(u32) * chunkData.at(i-chunkOffset).size());
+                }
+
+            }
+            std::cout << skippedChunks << " chunks skipped because they were empty!\n";
         }
-        std::cout << "wrote " << counter << "tiles!\n";
 
-        currentOffset = tileLayer.onePastTilesOffset;
         header.tileLayerAmount += 1;
     }
 
@@ -1408,10 +1699,10 @@ void compile_multisounds()
 s32 main(s32 argc, char **argv)
 {
     ilInit();
-    //build_assets();
+    build_assets();
     compile_tileset("res/tilesets/tileset_city.tsx", "res/tilesets/tileset_city.rtil");
     compile_tileset("res/tilesets/debug.tsx", "res/tilesets/debug.rtil");
-    compile_level("res/levels/testmap.tmx", "res/levels/testmap.rlvl");
+    //compile_level("res/levels/testmap.tmx", "res/levels/testmap.rlvl");
     compile_level("res/levels/bigmap.tmx", "res/levels/bigmap.rlvl");
     compile_sprites();
     compile_models();

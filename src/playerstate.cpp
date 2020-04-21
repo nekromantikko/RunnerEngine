@@ -293,7 +293,7 @@ void PlayerDuck::setup_sprite(Player &player, SpriteComponent *sprite)
 
 ///////////////////////////////////////////////////////////
 //AIR
-const f32 PlayerAir::maxFallSpd = 13.3125, PlayerAir::gravity = 0.3125;
+const f32 PlayerAir::maxFallSpd = 13.3125, PlayerAir::gravity = 0;//0.3125;
 
 PlayerState *PlayerAir::update(Player &player)
 {

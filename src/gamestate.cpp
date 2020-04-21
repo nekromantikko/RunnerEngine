@@ -382,7 +382,7 @@ GameState *LoadingScreen::update()
         case RELOAD_LEVEL:
             {
                 nextState = new GamePlay(UNLOAD_LEVEL);
-                TileManager::create_layer_textures();
+                //TileManager::create_layer_textures();
                 break;
             }
         case UNLOAD_LEVEL:
