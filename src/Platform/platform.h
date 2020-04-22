@@ -66,7 +66,7 @@ void platform_bind_vao(VertexArrayHandle *vao);
 
 void platform_use_ui_shader();
 void platform_set_projection();
-void platform_render_hud_element(Transform xform, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color);
+void platform_render_hud_element(Transform xform, Texture *palette, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color);
 
 void platform_use_mirror_shader();
 void platform_render_mirror(Transform xform, v4 *clipRect);
@@ -75,7 +75,7 @@ void platform_render_reflections();
 void platform_use_sprite_shader();
 void platform_set_lights(Light *lights, u32 lightCount);
 void platform_set_ambient_color(v3 *color);
-void platform_render_sprite(Transform xform, Texture *texture, Texture *lightmap, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow);
+void platform_render_sprite(Transform xform, Texture *palette, Texture *texture, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow);
 
 void platform_enable_depth_test();
 void platform_disable_depth_test();
@@ -83,7 +83,7 @@ void platform_use_model_shader();
 void platform_render_model(Transform xform, VertexArrayHandle *vao, Texture *texture, Texture *lightmap, Texture *normal, r32 glow);
 
 void platform_use_tile_shader();
-void platform_render_tiles(v3 *position, Texture *layout, Texture *texture, Texture *lightmap, Texture *normal);
+void platform_render_tiles(v3 *position, Texture *palette, Texture *layout, Texture *texture, Texture *lightmap, Texture *normal);
 
 void platform_set_camera_pos(v2 current, v2 previous);
 void platform_use_particle_shader(u32 lightCount);

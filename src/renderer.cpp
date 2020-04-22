@@ -374,12 +374,14 @@ void Renderer::draw_tiles(r64 a, v3 *ambientColor)
         platform_set_lights(lerpedLights.data(), lightCount);
     }
 
+    Texture *palette = Resource::get_texture("palette_01");
+
     platform_set_ambient_color(ambientColor);
     for (TileCall &call : tileBuffer)
     {
         v2 c = Lerp(call.b, a, call.a);
         v3 pos = {c.x, c.y, call.z};
-        platform_render_tiles(&pos, call.layout, call.texture, call.lightmap, call.normal);
+        platform_render_tiles(&pos, palette, call.layout, call.texture, call.lightmap, call.normal);
     }
 }
 
@@ -407,6 +409,9 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
     platform_bind_vao(rectangle);
     platform_set_projection();
     platform_set_ambient_color(ambientColor);
+
+    Texture *palette = Resource::get_texture("palette_01");
+
     for (SpriteCall &call : spriteBuffer)
     {
         Transform c = call.b.lerp(call.a, a);
@@ -423,7 +428,7 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
         if (!normal)
             normal = Resource::no_normal();
 
-        platform_render_sprite(c, tex, lightmap, normal, &call.clipRect, &call.offset, &call.flip, &call.color, call.glow);
+        platform_render_sprite(c, palette, tex, normal, &call.clipRect, &call.offset, &call.flip, &call.color, call.glow);
     }
     platform_bind_vao(NULL);
 }
@@ -478,6 +483,9 @@ void Renderer::draw_ui(r64 a)
     platform_use_ui_shader();
     platform_bind_vao(rectangle);
     platform_set_projection();
+
+    Texture *palette = Resource::get_texture("palette_01");
+
     for (UICall &call : uiBuffer)
     {
         Transform c = call.b.lerp(call.a, a);
@@ -488,7 +496,7 @@ void Renderer::draw_ui(r64 a)
         if (!tex)
             tex = Resource::no_texture();
 
-        platform_render_hud_element(c, tex, &call.clipRect, &call.offset, &call.flip, &call.color);
+        platform_render_hud_element(c, palette, tex, &call.clipRect, &call.offset, &call.flip, &call.color);
     }
     platform_bind_vao(NULL);
 }

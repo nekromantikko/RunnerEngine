@@ -93,7 +93,12 @@ Texture *Resource::get_texture(std::string handle)
     auto found = textures.find(handle);
     if (found != textures.end())
         return (*found).second;
-    else return NULL;
+    else
+    {
+        std::cout << "Resource manager couldn't find texture " << handle << std::endl;
+        return NULL;
+    }
+
 }
 
 ParticleSystemPrefab *Resource::get_particle_system(std::string handle)
@@ -531,11 +536,11 @@ void Resource::Loader::load_multisounds()
 
 void Resource::Loader::load_assets()
 {
-    load_texture("tex_ascii", true);
+    load_texture("sprites/ascii_ndx", false);
     load_texture("fireball", true);
     load_texture("medkit", true);
     load_texture("medkit_normal", false);
-    load_texture("player", true);
+    load_texture("sprites/alpha_ndx", false);
     load_texture("tex_beam", true);
     load_texture("tex_beam_lightmap", false);
     load_texture("tex_door", true);
@@ -548,11 +553,14 @@ void Resource::Loader::load_assets()
     load_texture("loading", true);
 
     load_texture("tilesets/tileset_city", true);
+    load_texture("tilesets/tileset_city_indices", false);
     load_texture("tilesets/tileset_city_light", false);
     load_texture("tilesets/tileset_city_normal", false);
     load_texture("tilesets/tileset_debug", true);
+    load_texture("tilesets/tileset_debug_indices", false);
     load_texture("tilesets/tileset_debug_light", false);
     load_texture("tilesets/tileset_debug_normal", false);
+    load_texture("palette_01", true);
 
     load_sound("sfx_jump1");
     load_sound("sfx_jump2");

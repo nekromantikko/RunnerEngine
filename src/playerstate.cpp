@@ -150,18 +150,18 @@ void PlayerStand::move(Player &player)
 {
     bool keyDashHeld = player.input.keyDashHeld;
 
-    f32 maxSpeed;
+    f32 maxScroll;
     //set maximum velocity based on whether the dash key is being held
     if (keyDashHeld)
-        maxSpeed = maxDashSpd;
-    else maxSpeed = maxWalkSpd;
+        maxScroll = maxDashSpd;
+    else maxScroll = maxWalkSpd;
 
     if (player.direction == RIGHT)
     {
         if (player.collision.bottomTileAngle < 0)
             player.hSpeed += 0.125*sin(player.collision.bottomTileAngle);
 
-        if (player.hSpeed < maxSpeed)
+        if (player.hSpeed < maxScroll)
             player.hSpeed += acceleration;
         else if (!keyDashHeld && player.collision.bottomTileAngle == 0)
             player.hSpeed -= acceleration;
@@ -171,7 +171,7 @@ void PlayerStand::move(Player &player)
         if (player.collision.bottomTileAngle > 0)
             player.hSpeed -= 0.125*sin(player.collision.bottomTileAngle);
 
-        if (player.hSpeed > -maxSpeed)
+        if (player.hSpeed > -maxScroll)
             player.hSpeed -= acceleration;
         else if (!keyDashHeld && player.collision.bottomTileAngle == 0)
             player.hSpeed += acceleration;
@@ -262,23 +262,23 @@ void PlayerDuck::move(Player &player)
 {
     bool keyDashHeld = player.input.keyDashHeld;
 
-    f32 maxSpeed;
+    f32 maxScroll;
     //set maximum velocity based on whether the dash key is being held
     if (keyDashHeld)
-        maxSpeed = maxDashSpd / 4;
-    else maxSpeed = maxWalkSpd / 4;
+        maxScroll = maxDashSpd / 4;
+    else maxScroll = maxWalkSpd / 4;
 
     if (player.direction == RIGHT)
     {
-        if (player.hSpeed < maxSpeed)
+        if (player.hSpeed < maxScroll)
             player.hSpeed += acceleration;
-        else player.hSpeed -= fixed_min(player.hSpeed - maxSpeed, acceleration);
+        else player.hSpeed -= fixed_min(player.hSpeed - maxScroll, acceleration);
     }
     else
     {
-        if (player.hSpeed > -maxSpeed)
+        if (player.hSpeed > -maxScroll)
             player.hSpeed -= acceleration;
-        else player.hSpeed -= fixed_max(maxSpeed + player.hSpeed, -acceleration);
+        else player.hSpeed -= fixed_max(maxScroll + player.hSpeed, -acceleration);
     }
 }
 

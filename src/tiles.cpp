@@ -218,8 +218,8 @@ void TileManager::create_layer(std::vector<TilesetAndGid> tilesets, TileLayerInf
     layer.width = info.width;
     layer.height = info.height;
     layer.z = info.z;
-    layer.xSpeed = info.xSpeed;
-    layer.ySpeed = info.ySpeed;
+    layer.xScroll = info.xScroll;
+    layer.yScroll = info.yScroll;
     layer.xTiling = info.xTiling;
     layer.yTiling = info.yTiling;
     layer.collision = info.collision;
@@ -330,8 +330,8 @@ void TileManager::draw_layer(TileLayer *layer)
     //amount of times the layer should be repeated on a given axis (default is 1)
     //u32 xRepetitions = 1, yRepetitions = 1;
     //the layer's position relative to the camera and layer's parallax scrolling rate
-    r32 xScrollDistance = xCamera * layer->xSpeed;
-    r32 yScrollDistance = yCamera * layer->ySpeed;
+    r32 xScrollDistance = xCamera * layer->xScroll;
+    r32 yScrollDistance = yCamera * layer->yScroll;
     //where should the drawing begin (the first tiles might be  partially outside the drawing area)
     r32 xStart = -xScrollDistance;
     r32 yStart = -yScrollDistance;

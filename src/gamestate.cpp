@@ -349,6 +349,7 @@ LoadingScreen::LoadingScreen(LoadingScreenType t)
     case UNLOAD_LEVEL:
         {
             CurrentLevel::clear_entities_and_tiles();
+            loadingThread = NULL;
             done = true;
             break;
         }
@@ -370,8 +371,12 @@ GameState *LoadingScreen::update()
 
     if (done && currentTime >= minFramesVisible)
     {
-        if (loadingThread)
+        if (loadingThread && loadingThread->joinable())
+        {
             loadingThread->join();
+            delete loadingThread;
+            loadingThread = NULL;
+        }
 
         if (done == LOADING_FAILED)
             throw std::runtime_error("Loading failed!");

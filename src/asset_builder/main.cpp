@@ -126,9 +126,11 @@ void build_assets()
     PUSH_ASSET(TEXTURE, "prop_wall2", "res/textures/prop_wall2.png", assets);
     PUSH_ASSET(TEXTURE, "tex_spike", "res/textures/tex_spike.png", assets);
     PUSH_ASSET(TEXTURE, "tileset_city", "res/textures/tilesets/tileset_city.png", assets);
+    PUSH_ASSET(TEXTURE, "tilesets/tileset_city_indices", "res/textures/tilesets/tileset_city_indices.png", assets);
     PUSH_ASSET(TEXTURE, "tileset_city_light", "res/textures/tilesets/tileset_city_light.png", assets);
     PUSH_ASSET(TEXTURE, "tileset_city_mask", "res/textures/tilesets/tileset_city_mask.png", assets);
     PUSH_ASSET(TEXTURE, "tileset_debug", "res/textures/tilesets/tileset_debug.png", assets);
+    PUSH_ASSET(TEXTURE, "tilesets/tileset_debug_indices", "res/textures/tilesets/tileset_debug_indices.png", assets);
     PUSH_ASSET(TEXTURE, "tileset_debug_light", "res/textures/tilesets/tileset_debug_light.png", assets);
     PUSH_ASSET(TEXTURE, "tileset_debug_mask", "res/textures/tilesets/tileset_debug_mask.png", assets);
     PUSH_ASSET(TEXTURE, "tex_logo", "res/textures/tex_logo.png", assets);
@@ -330,8 +332,8 @@ void compile_level(const char *in, const char *out)
         //assign some initial values
         tileLayer.width = header.width;
         tileLayer.height = header.height;
-        tileLayer.xSpeed = 1.f;
-        tileLayer.ySpeed = 1.f;
+        tileLayer.xScroll = 1.f;
+        tileLayer.yScroll = 1.f;
         tileLayer.tilesOffset = currentOffset + sizeof(TileLayerInfo);
 
         //loop through layer's properties
@@ -363,14 +365,14 @@ void compile_level(const char *in, const char *out)
                     tileLayer.z = atoi(property->first_attribute("value")->value());
                     continue;
                 }
-                if (pname.compare("xSpeed") == 0)
+                if (pname.compare("xScroll") == 0)
                 {
-                    tileLayer.xSpeed = atof(property->first_attribute("value")->value());
+                    tileLayer.xScroll = atof(property->first_attribute("value")->value());
                     continue;
                 }
-                if (pname.compare("ySpeed") == 0)
+                if (pname.compare("yScroll") == 0)
                 {
-                    tileLayer.ySpeed = atof(property->first_attribute("value")->value());
+                    tileLayer.yScroll = atof(property->first_attribute("value")->value());
                     continue;
                 }
                 if (pname.compare("xTiling") == 0)
@@ -403,8 +405,8 @@ void compile_level(const char *in, const char *out)
         std::cout << "tileLayer written at " << currentOffset << std::endl
         << tileLayer.width << std::endl
         << tileLayer. height << std::endl
-        << tileLayer.xSpeed << std::endl
-        << tileLayer.ySpeed << std::endl
+        << tileLayer.xScroll << std::endl
+        << tileLayer.yScroll << std::endl
         << tileLayer.xTiling << std::endl
         << tileLayer.yTiling << std::endl
         << tileLayer.depth << std::endl
@@ -425,7 +427,13 @@ void compile_level(const char *in, const char *out)
             if (tileIndex % header.width >= tileLayer.width || tileIndex / header.width >= tileLayer.height)
                 continue;
 
-            u32 t = atoi(tile->first_attribute("gid")->value());
+            u32 t;
+            rapidxml::xml_attribute<> *gid = tile->first_attribute("gid");
+            if (gid)
+            {
+                t = atoi(gid->value());
+            }
+            else t = 0;
 
             fileBody.insert(fileBody.end(), (u8*)&t, ((u8*)&t) + sizeof(u32));
             counter++;

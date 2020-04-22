@@ -79,8 +79,8 @@ struct TileLayer
 {
     u32 width;
     u32 height;
-    r32 xSpeed;
-    r32 ySpeed;
+    r32 xScroll;
+    r32 yScroll;
     bool32 xTiling;
     bool32 yTiling;
     u32 z;

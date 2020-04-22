@@ -25,7 +25,7 @@
 #define MODELVIEW_LOCATION 0
 #define PROJECTION_LOCATION 1
 
-#define TEXTURE_LOCATION 2
+#define BASE_COLOR_LOCATION 2
 #define LIGHTMAP_LOCATION 3
 #define NORMALMAP_LOCATION 4
 
@@ -47,6 +47,9 @@
 
 #define LIGHT_AMOUNT_LOCATION 16
 #define LIGHT_LOCATION 17
+
+#define PALETTE_LOCATION 256
+#define PALETTE_TEXTURE_UNIT GL_TEXTURE0
 
 #define V_POS_LOCATION 0
 #define V_TEXCOORD_LOCATION 1
@@ -1287,6 +1290,10 @@ void platform_bind_vao(VertexArrayHandle *vao)
 void platform_use_ui_shader()
 {
     glUseProgram(texturedShader);
+
+    //setup texture units
+    glUniform1i(PALETTE_LOCATION, 0);
+    glUniform1i(BASE_COLOR_LOCATION, 1);
 }
 
 void platform_set_projection()
@@ -1294,7 +1301,7 @@ void platform_set_projection()
     glUniformMatrix4fv(PROJECTION_LOCATION, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
 }
 
-void platform_render_hud_element(Transform xform, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color)
+void platform_render_hud_element(Transform xform, Texture *palette, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color)
 {
     glm::mat4 modelview = glm::mat4(1.0f);
     modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
@@ -1310,8 +1317,11 @@ void platform_render_hud_element(Transform xform, Texture *texture, v4 *clipRect
     glUniform4fv(SPRITE_COLOR_LOCATION, 1, (GLfloat*)color);
 
     glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, palette->id);
+
+    glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(TEXTURE_LOCATION, 0);
+    //glUniform1i(BASE_COLOR_LOCATION, 1);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 }
@@ -1319,6 +1329,9 @@ void platform_render_hud_element(Transform xform, Texture *texture, v4 *clipRect
 void platform_use_mirror_shader()
 {
     glUseProgram(mirrorShader);
+
+    //setup texture units
+    glUniform1i(BASE_COLOR_LOCATION, 0);
 }
 
 void platform_render_mirror(Transform xform, v4 *clipRect)
@@ -1335,7 +1348,7 @@ void platform_render_mirror(Transform xform, v4 *clipRect)
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, postProcessTexture);
-    glUniform1i(TEXTURE_LOCATION, 0);
+    //glUniform1i(BASE_COLOR_LOCATION, 0);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 }
@@ -1359,6 +1372,11 @@ void platform_render_reflections()
 void platform_use_sprite_shader()
 {
     glUseProgram(spriteShader);
+
+    //setup texture units
+    glUniform1i(PALETTE_LOCATION, 0);
+    glUniform1i(BASE_COLOR_LOCATION, 1);
+    glUniform1i(NORMALMAP_LOCATION, 2);
 }
 
 void platform_set_lights(Light *lights, u32 lightCount)
@@ -1376,7 +1394,7 @@ void platform_set_ambient_color(v3 *color)
     glUniform3fv(AMBIENT_COLOR_LOCATION, 1, (GLfloat*)color);
 }
 
-void platform_render_sprite(Transform xform, Texture *texture, Texture *lightmap, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow)
+void platform_render_sprite(Transform xform, Texture *palette, Texture *texture, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow)
 {
     glm::mat4 modelview = glm::mat4(1.0f);
     modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
@@ -1393,16 +1411,20 @@ void platform_render_sprite(Transform xform, Texture *texture, Texture *lightmap
     glUniform1f(GLOW_LOCATION, glow);
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(TEXTURE_LOCATION, 0);
+    glBindTexture(GL_TEXTURE_2D, palette->id);
+    //glUniform1i(PALETTE_LOCATION, 0);
 
     glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(LIGHTMAP_LOCATION, 1);
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+    //glUniform1i(BASE_COLOR_LOCATION, 0);
+
+    //glActiveTexture(GL_TEXTURE3);
+    //glBindTexture(GL_TEXTURE_2D, lightmap->id);
+    //glUniform1i(LIGHTMAP_LOCATION, 3);
 
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, normal->id);
-    glUniform1i(NORMALMAP_LOCATION, 2);
+    //glUniform1i(NORMALMAP_LOCATION, 2);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 }
@@ -1424,6 +1446,11 @@ void platform_disable_depth_test()
 void platform_use_model_shader()
 {
     glUseProgram(modelShader);
+
+    //setup texture units
+    glUniform1i(PALETTE_LOCATION, 0);
+    glUniform1i(BASE_COLOR_LOCATION, 1);
+    glUniform1i(NORMALMAP_LOCATION, 2);
 }
 
 void platform_render_model(Transform xform, VertexArrayHandle *vao, Texture *texture, Texture *lightmap, Texture *normal, r32 glow)
@@ -1440,17 +1467,17 @@ void platform_render_model(Transform xform, VertexArrayHandle *vao, Texture *tex
 
     glUniform1f(GLOW_LOCATION, glow);
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(TEXTURE_LOCATION, 0);
-
     glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+    //glUniform1i(BASE_COLOR_LOCATION, 0);
+
+    glActiveTexture(GL_TEXTURE3);
     glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(LIGHTMAP_LOCATION, 1);
+    glUniform1i(LIGHTMAP_LOCATION, 3);
 
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, normal->id);
-    glUniform1i(NORMALMAP_LOCATION, 2);
+    //glUniform1i(NORMALMAP_LOCATION, 2);
 
     glDrawElements(GL_TRIANGLES, vao->triangleCount * 3, GL_UNSIGNED_INT, NULL);
     glBindVertexArray(0);
@@ -1459,21 +1486,26 @@ void platform_render_model(Transform xform, VertexArrayHandle *vao, Texture *tex
 void platform_use_tile_shader()
 {
     glUseProgram(tileShader);
+
+    //setup texture units
+    glUniform1i(PALETTE_LOCATION, 0);
+    glUniform1i(BASE_COLOR_LOCATION, 1);
+    glUniform1i(NORMALMAP_LOCATION, 2);
 }
 
-void platform_render_tiles(v3 *position, Texture *layout, Texture *texture, Texture *lightmap, Texture *normal)
+void platform_render_tiles(v3 *position, Texture *palette, Texture *layout, Texture *texture, Texture *lightmap, Texture *normal)
 {
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(TEXTURE_LOCATION, 0);
+    glBindTexture(GL_TEXTURE_2D, palette->id);
+    //glUniform1i(PALETTE_LOCATION, 0);
 
     glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(LIGHTMAP_LOCATION, 1);
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+    //glUniform1i(BASE_COLOR_LOCATION, 1);
 
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, normal->id);
-    glUniform1i(NORMALMAP_LOCATION, 2);
+    //glUniform1i(NORMALMAP_LOCATION, 2);
 
     glActiveTexture(GL_TEXTURE3);
     glBindTexture(GL_TEXTURE_2D, layout->id);
@@ -1504,17 +1536,17 @@ void platform_render_particles(ParticleVertexArrayHandle *vao, float a, Texture 
     glUniform2fv(SPRITE_OFFSET_LOCATION, 1, (GLfloat*)offset);
     glUniform2fv(SPRITE_FLIP_LOCATION, 1, (GLfloat*)flip);
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(TEXTURE_LOCATION, 0);
-
     glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+    //glUniform1i(BASE_COLOR_LOCATION, 0);
+
+    glActiveTexture(GL_TEXTURE3);
     glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(LIGHTMAP_LOCATION, 1);
+    glUniform1i(LIGHTMAP_LOCATION, 3);
 
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, normal->id);
-    glUniform1i(NORMALMAP_LOCATION, 2);
+    //glUniform1i(NORMALMAP_LOCATION, 2);
 
     glDrawArrays(GL_POINTS, 0, vao->vertexCount);
     glBindVertexArray(0);
@@ -2047,6 +2079,44 @@ void platform_controller_rumble(r32 strength, u32 lengthInMs)
 }
 
 //RESOURCES
+
+Texture *platform_load_indexed_sprite_sheet(const char* fname)
+{
+    //generate and set current image ID
+    ILuint imgID;
+    ilGenImages(1, &imgID);
+    ilBindImage(imgID);
+
+    //load
+    ilLoadImage(fname);
+    //convert to R8
+    ilConvertImage(IL_COLOUR_INDEX, IL_UNSIGNED_BYTE);
+
+    Texture *texture = new Texture;
+    //create gl texture
+    glGenTextures(1, (GLuint*)texture);
+    texture->w = ilGetInteger(IL_IMAGE_WIDTH);
+    texture->h = ilGetInteger(IL_IMAGE_HEIGHT);
+
+    //bind texture ID
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+
+    GLint format = GL_R8;
+
+    glTexImage2D(GL_TEXTURE_2D, 0, format, ilGetInteger(IL_IMAGE_WIDTH), ilGetInteger(IL_IMAGE_HEIGHT), 0, GL_RED, GL_UNSIGNED_BYTE, ilGetData());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    //unbind texture
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    //delete file from memory
+    ilDeleteImages(1, &imgID);
+
+    return texture;
+}
 
 Texture *platform_load_texture(const char* fname, bool srgb)
 {
