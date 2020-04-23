@@ -46,28 +46,15 @@ void platform_render_circle_transition(v2 pos, r32 radius);
 
 void platform_bind_vao(VertexArrayHandle *vao);
 
-void platform_use_ui_shader();
 void platform_set_projection();
-void platform_render_hud_element(Transform xform, Texture *palette, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color);
-
-void platform_use_mirror_shader();
-void platform_render_mirror(Transform xform, v4 *clipRect);
-void platform_render_reflections();
-
-void platform_use_sprite_shader();
-void platform_render_sprite(Transform xform, Texture *palette, Texture *texture, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow);
 
 void platform_enable_depth_test();
 void platform_disable_depth_test();
-void platform_use_model_shader();
-void platform_render_model(Transform xform, VertexArrayHandle *vao, Texture *texture, Texture *lightmap, Texture *normal, r32 glow);
 
 void platform_use_tile_shader();
 void platform_render_tiles(v3 *position, Texture *palette, Texture *layout, Texture *texture, Texture *lightmap, Texture *normal);
 
 void platform_set_camera_pos(v2 current, v2 previous);
-void platform_use_particle_shader(u32 lightCount);
-void platform_render_particles(ParticleVertexArrayHandle *vao, float a, Texture *texture, Texture *lightmap, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, r32 glow);
 
 void platform_bind_framebuffer_reflect();
 void platform_bind_framebuffer_post_process();
@@ -130,15 +117,6 @@ void platform_calculate_tangent(Mesh *mesh);
 
 VertexArrayHandle *platform_create_vertex_array(Mesh *mesh);
 void platform_delete_vertex_array(VertexArrayHandle *buf);
-
-ParticleVertexArrayHandle *platform_create_particle_vertex_array(u32 pcount,
-                                           ParticlePosition *pPosition,
-                                           ParticleRotation *pRotation,
-                                           ParticleScale *pScale,
-                                           v4 *pColor,
-                                           float *pStatus);
-void platform_update_particle_vertex_array(ParticleVertexArrayHandle *buf);
-void platform_delete_particle_vertex_array(ParticleVertexArrayHandle *buf);
 
 //void platform_delete_texture(Texture* texture);
 

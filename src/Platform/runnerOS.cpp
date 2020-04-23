@@ -31,21 +31,10 @@
 #define LIGHTMAP_LOCATION 3
 #define NORMALMAP_LOCATION 4
 
-#define SPRITE_CLIPRECT_LOCATION 5
-#define SPRITE_OFFSET_LOCATION 6
-#define SPRITE_FLIP_LOCATION 7
-
-#define SPRITE_COLOR_LOCATION 8
-#define GLOW_LOCATION 9
-#define AMBIENT_COLOR_LOCATION 10
-
 #define TIME_ALPHA_LOCATION 11
 
 #define CAMERA_POS_LOCATION 12
 #define CAMERA_PREV_POS_LOCATION 13
-
-#define TILES_POSITION_LOCATION 14
-#define TILES_LAYOUT_LOCATION 15
 
 #define LIGHT_AMOUNT_LOCATION 16
 #define LIGHT_LOCATION 17
@@ -57,15 +46,6 @@
 #define V_TEXCOORD_LOCATION 1
 #define V_NORMAL_LOCATION 2
 #define V_TANGENT_LOCATION 3
-
-#define PARTICLE_V_CURRENT_POS_LOCATION 0;
-#define PARTICLE_V_PREVIOUS_POS_LOCATION 1;
-#define PARTICLE_V_CURRENT_ROT_LOCATION 2;
-#define PARTICLE_V_PREVIOUS_ROT_LOCATION 3;
-#define PARTICLE_V_CURRENT_SCALE_LOCATION 4;
-#define PARTICLE_V_PREVIOUS_SCALE_LOCATION 5;
-#define PARTICLE_V_COLOR_LOCATION 6;
-#define PARTICLE_V_STATE_LOCATION 7;
 
 #define OGG_MUSIC
 #define OGG_USE_TREMOR
@@ -122,15 +102,6 @@ struct BackgroundShader
 };
 
 BackgroundShader backgroundShader;
-
-//t shader
-GLuint texturedShader;
-GLuint mirrorShader;
-GLuint spriteShader;
-GLuint particleShader;
-GLuint modelShader;
-
-GLuint tileShader;
 
 //glow threashold shader
 struct GlowThresholdShader
@@ -331,150 +302,6 @@ void gl_load_circle_transition_shader()
 
     circleTransitionShader.positionID = glGetUniformLocation(circleTransitionShader.programID, "circlePos");
     circleTransitionShader.radiusID = glGetUniformLocation(circleTransitionShader.programID, "circleRadius");
-}
-
-void gl_load_textured_shader()
-{
-    texturedShader = glCreateProgram();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    gl_load_shader_source(vertexShader, "res/shaders/textured_vshader.glvs");
-    glCompileShader(vertexShader);
-    glAttachShader(texturedShader, vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    gl_load_shader_source(fragmentShader, "res/shaders/textured_fshader.glfs");
-    glCompileShader(fragmentShader);
-    glAttachShader(texturedShader, fragmentShader);
-
-    glLinkProgram(texturedShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    ///////////////////////////////////////////////////
-
-    glBindFragDataLocation(texturedShader, 0, "colorOutput");
-}
-
-void gl_load_mirror_shader()
-{
-    mirrorShader = glCreateProgram();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    gl_load_shader_source(vertexShader, "res/shaders/mirror_vshader.glvs");
-    glCompileShader(vertexShader);
-    glAttachShader(mirrorShader, vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    gl_load_shader_source(fragmentShader, "res/shaders/mirror_fshader.glfs");
-    glCompileShader(fragmentShader);
-    glAttachShader(mirrorShader, fragmentShader);
-
-    glLinkProgram(mirrorShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    ///////////////////////////////////////////////////
-
-    glBindFragDataLocation(mirrorShader, 0, "colorOutput");
-}
-
-void gl_load_sprite_shader()
-{
-    spriteShader = glCreateProgram();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    gl_load_shader_source(vertexShader, "res/shaders/sprite_vshader.txt");
-    glCompileShader(vertexShader);
-    glAttachShader(spriteShader, vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    gl_load_shader_source(fragmentShader, "res/shaders/sprite_fshader.txt");
-    glCompileShader(fragmentShader);
-    glAttachShader(spriteShader, fragmentShader);
-
-    glLinkProgram(spriteShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    ///////////////////////////////////////////////////
-
-    glBindFragDataLocation(spriteShader, 0, "colorOutput");
-}
-
-void gl_load_particle_shader()
-{
-    particleShader = glCreateProgram();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    gl_load_shader_source(vertexShader, "res/shaders/particle_vshader.txt");
-    glCompileShader(vertexShader);
-    glAttachShader(particleShader, vertexShader);
-
-    GLuint geometryShader = glCreateShader(GL_GEOMETRY_SHADER);
-    gl_load_shader_source(geometryShader, "res/shaders/particle_gshader.txt");
-    glCompileShader(geometryShader);
-    glAttachShader(particleShader, geometryShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    gl_load_shader_source(fragmentShader, "res/shaders/particle_fshader.txt");
-    glCompileShader(fragmentShader);
-    glAttachShader(particleShader, fragmentShader);
-
-    glLinkProgram(particleShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(geometryShader);
-    glDeleteShader(fragmentShader);
-
-    ///////////////////////////////////////////////////
-
-    glBindFragDataLocation(particleShader, 0, "colorOutput");
-}
-
-void gl_load_model_shader()
-{
-    modelShader = glCreateProgram();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    gl_load_shader_source(vertexShader, "res/shaders/model_vshader.txt");
-    glCompileShader(vertexShader);
-    glAttachShader(modelShader, vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    gl_load_shader_source(fragmentShader, "res/shaders/model_fshader.txt");
-    glCompileShader(fragmentShader);
-    glAttachShader(modelShader, fragmentShader);
-
-    glLinkProgram(modelShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    ///////////////////////////////////////////////////
-
-    glBindFragDataLocation(modelShader, 0, "colorOutput");
-}
-
-void gl_load_tile_shader()
-{
-    tileShader= glCreateProgram();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    gl_load_shader_source(vertexShader, "res/shaders/tile_vshader.txt");
-    glCompileShader(vertexShader);
-    glAttachShader(tileShader, vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    gl_load_shader_source(fragmentShader, "res/shaders/tile_fshader.txt");
-    glCompileShader(fragmentShader);
-    glAttachShader(tileShader, fragmentShader);
-
-    glLinkProgram(tileShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    ///////////////////////////////////////////////////
-
-    glBindFragDataLocation(tileShader, 0, "colorOutput");
 }
 
 void gl_load_glow_threshold_shader()
@@ -714,12 +541,6 @@ void init_renderer()
     gl_load_usable_shaders();
     gl_load_background_shader();
     gl_load_circle_transition_shader();
-    gl_load_textured_shader();
-    gl_load_mirror_shader();
-    gl_load_sprite_shader();
-    gl_load_particle_shader();
-    gl_load_model_shader();
-    gl_load_tile_shader();
     //gl_load_line_shader();
 
     //gl_load_world_shader();
@@ -760,12 +581,6 @@ void close_renderer()
     //delete background shader
     glDeleteProgram(backgroundShader.programID);
     glDeleteProgram(circleTransitionShader.programID);
-    glDeleteProgram(texturedShader);
-    glDeleteProgram(mirrorShader);
-    glDeleteProgram(spriteShader);
-    glDeleteProgram(modelShader);
-    glDeleteProgram(tileShader);
-    glDeleteProgram(particleShader);
 
     //glDeleteProgram(lineShaderProgram);
 
@@ -857,24 +672,6 @@ void platform_swap_buffer()
     SDL_GL_SwapWindow(runnerWindow);
 }
 
-struct ParticleVertexArrayHandle
-{
-    GLuint vao;
-    GLuint posBuffer;
-    GLuint rotBuffer;
-    GLuint scaleBuffer;
-    GLuint colorBuffer;
-    GLuint stateBuffer;
-
-    ParticlePosition *position;
-    ParticleRotation *rotation;
-    ParticleScale *scale;
-    v4 *color;
-    float *status;
-
-    u32 vertexCount;
-};
-
 struct VertexArrayHandle
 {
     GLuint vao;
@@ -945,98 +742,6 @@ void platform_delete_vertex_array(VertexArrayHandle *buf)
     delete buf;
 }
 
-ParticleVertexArrayHandle *platform_create_particle_vertex_array(u32 pcount,
-                                           ParticlePosition *pPosition,
-                                           ParticleRotation *pRotation,
-                                           ParticleScale *pScale,
-                                           v4 *pColor,
-                                           float *pStatus)
-{
-    ParticleVertexArrayHandle *handle = new ParticleVertexArrayHandle;
-    handle->vertexCount = pcount;
-    handle->position = pPosition;
-    handle->rotation = pRotation;
-    handle->scale = pScale;
-    handle->color = pColor;
-    handle->status = pStatus;
-
-    glGenVertexArrays(1, &handle->vao);
-    glBindVertexArray(handle->vao);
-
-    glGenBuffers(1, &handle->posBuffer);
-    glGenBuffers(1, &handle->rotBuffer);
-    glGenBuffers(1, &handle->scaleBuffer);
-    glGenBuffers(1, &handle->colorBuffer);
-    glGenBuffers(1, &handle->stateBuffer);
-
-    glBindBuffer(GL_ARRAY_BUFFER, handle->posBuffer);
-    glBufferData(GL_ARRAY_BUFFER, pcount * sizeof(ParticlePosition), NULL, GL_DYNAMIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(ParticlePosition), (GLvoid*)offsetof(ParticlePosition, current));
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(ParticlePosition), (GLvoid*)offsetof(ParticlePosition, previous));
-
-    glBindBuffer(GL_ARRAY_BUFFER, handle->rotBuffer);
-    glBufferData(GL_ARRAY_BUFFER, pcount * sizeof(ParticleRotation), NULL, GL_DYNAMIC_DRAW);
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(ParticleRotation), (GLvoid*)offsetof(ParticleRotation, current));
-    glEnableVertexAttribArray(3);
-    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(ParticleRotation), (GLvoid*)offsetof(ParticleRotation, previous));
-
-    glBindBuffer(GL_ARRAY_BUFFER, handle->scaleBuffer);
-    glBufferData(GL_ARRAY_BUFFER, pcount * sizeof(ParticleScale), NULL, GL_DYNAMIC_DRAW);
-    glEnableVertexAttribArray(4);
-    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(ParticleScale), (GLvoid*)offsetof(ParticleScale, current));
-    glEnableVertexAttribArray(5);
-    glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(ParticleScale), (GLvoid*)offsetof(ParticleScale, previous));
-
-    glBindBuffer(GL_ARRAY_BUFFER, handle->colorBuffer);
-    glBufferData(GL_ARRAY_BUFFER, pcount * sizeof(v4), NULL, GL_DYNAMIC_DRAW);
-    glEnableVertexAttribArray(6);
-    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 0, 0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, handle->stateBuffer);
-    glBufferData(GL_ARRAY_BUFFER, pcount * sizeof(float), NULL, GL_DYNAMIC_DRAW);
-    glEnableVertexAttribArray(7);
-    glVertexAttribPointer(7, 1, GL_FLOAT, GL_FALSE, 0, 0);
-
-    glBindVertexArray(0);
-
-    return handle;
-}
-
-void platform_update_particle_vertex_array(ParticleVertexArrayHandle *buf)
-{
-    glBindBuffer(GL_ARRAY_BUFFER, buf->posBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, buf->vertexCount * sizeof(ParticlePosition), (GLvoid*)buf->position);
-
-    glBindBuffer(GL_ARRAY_BUFFER, buf->rotBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, buf->vertexCount * sizeof(ParticleRotation), (GLvoid*)buf->rotation);
-
-    glBindBuffer(GL_ARRAY_BUFFER, buf->scaleBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, buf->vertexCount * sizeof(ParticleScale), (GLvoid*)buf->scale);
-
-    glBindBuffer(GL_ARRAY_BUFFER, buf->colorBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, buf->vertexCount * sizeof(v4), (GLvoid*)buf->color);
-
-    glBindBuffer(GL_ARRAY_BUFFER, buf->stateBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, buf->vertexCount * sizeof(float), (GLvoid*)buf->status);
-
-    glBindBuffer(GL_ARRAY_BUFFER, NULL);
-}
-
-void platform_delete_particle_vertex_array(ParticleVertexArrayHandle *buf)
-{
-    glDeleteVertexArrays(1, &buf->vao);
-    glDeleteBuffers(1, &buf->posBuffer);
-    glDeleteBuffers(1, &buf->rotBuffer);
-    glDeleteBuffers(1, &buf->scaleBuffer);
-    glDeleteBuffers(1, &buf->colorBuffer);
-    glDeleteBuffers(1, &buf->stateBuffer);
-
-    delete buf;
-}
-
 ////////////////////////////
 void gl_render_generic_framebuffer()
 {
@@ -1082,15 +787,6 @@ void platform_bind_vao(VertexArrayHandle *vao)
     else glBindVertexArray(0);
 }
 
-void platform_use_ui_shader()
-{
-    glUseProgram(texturedShader);
-
-    //setup texture units
-    glUniform1i(PALETTE_LOCATION, 0);
-    glUniform1i(BASE_COLOR_LOCATION, 1);
-}
-
 void platform_set_projection()
 {
     glUniformMatrix4fv(PROJECTION_LOCATION, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
@@ -1114,119 +810,6 @@ void platform_blit()
     gl_render_generic_framebuffer();
 }
 
-void platform_render_hud_element(Transform xform, Texture *palette, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color)
-{
-    glm::mat4 modelview = glm::mat4(1.0f);
-    modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.x, glm::vec3(1, 0, 0));
-    modelview= glm::rotate(modelview, (float)xform.rotation.y, glm::vec3(0, 1, 0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.z, glm::vec3(0, 0, 1));
-    modelview = glm::scale(modelview, glm::vec3(xform.scale.x,xform.scale.y,xform.scale.z));
-    glUniformMatrix4fv(MODELVIEW_LOCATION, 1, GL_FALSE, glm::value_ptr(modelview));
-
-    glUniform4fv(SPRITE_CLIPRECT_LOCATION, 1, (GLfloat*)clipRect);
-    glUniform2fv(SPRITE_OFFSET_LOCATION, 1, (GLfloat*)offset);
-    glUniform2fv(SPRITE_FLIP_LOCATION, 1, (GLfloat*)flip);
-    glUniform4fv(SPRITE_COLOR_LOCATION, 1, (GLfloat*)color);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, palette->id);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    //glUniform1i(BASE_COLOR_LOCATION, 1);
-
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
-}
-
-void platform_use_mirror_shader()
-{
-    glUseProgram(mirrorShader);
-
-    //setup texture units
-    glUniform1i(BASE_COLOR_LOCATION, 0);
-}
-
-void platform_render_mirror(Transform xform, v4 *clipRect)
-{
-    glm::mat4 modelview = glm::mat4(1.0f);
-    modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.x, glm::vec3(1, 0, 0));
-    modelview= glm::rotate(modelview, (float)xform.rotation.y, glm::vec3(0, 1, 0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.z, glm::vec3(0, 0, 1));
-    modelview = glm::scale(modelview, glm::vec3(xform.scale.x,xform.scale.y,xform.scale.z));
-    glUniformMatrix4fv(MODELVIEW_LOCATION, 1, GL_FALSE, glm::value_ptr(modelview));
-
-    glUniform4fv(SPRITE_CLIPRECT_LOCATION, 1, (GLfloat*)clipRect);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, postProcessTexture);
-    //glUniform1i(BASE_COLOR_LOCATION, 0);
-
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
-}
-
-void platform_render_reflections()
-{
-    glUseProgram(finalImageShader.programID);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, reflectTexture);
-
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
-    glBindFramebuffer(GL_FRAMEBUFFER, postProcessFBO);
-    //glClear(GL_COLOR_BUFFER_BIT);
-
-    gl_render_generic_framebuffer();
-
-    glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-void platform_use_sprite_shader()
-{
-    glUseProgram(spriteShader);
-
-    //setup texture units
-    glUniform1i(PALETTE_LOCATION, 0);
-    glUniform1i(BASE_COLOR_LOCATION, 1);
-    glUniform1i(NORMALMAP_LOCATION, 2);
-}
-
-void platform_render_sprite(Transform xform, Texture *palette, Texture *texture, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow)
-{
-    glm::mat4 modelview = glm::mat4(1.0f);
-    modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.x, glm::vec3(1, 0, 0));
-    modelview= glm::rotate(modelview, (float)xform.rotation.y, glm::vec3(0, 1, 0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.z, glm::vec3(0, 0, 1));
-    modelview = glm::scale(modelview, glm::vec3(xform.scale.x,xform.scale.y,xform.scale.z));
-    glUniformMatrix4fv(MODELVIEW_LOCATION, 1, GL_FALSE, glm::value_ptr(modelview));
-
-    glUniform4fv(SPRITE_CLIPRECT_LOCATION, 1, (GLfloat*)clipRect);
-    glUniform2fv(SPRITE_OFFSET_LOCATION, 1, (GLfloat*)offset);
-    glUniform2fv(SPRITE_FLIP_LOCATION, 1, (GLfloat*)flip);
-    glUniform4fv(SPRITE_COLOR_LOCATION, 1, (GLfloat*)color);
-    glUniform1f(GLOW_LOCATION, glow);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, palette->id);
-    //glUniform1i(PALETTE_LOCATION, 0);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    //glUniform1i(BASE_COLOR_LOCATION, 0);
-
-    //glActiveTexture(GL_TEXTURE3);
-    //glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    //glUniform1i(LIGHTMAP_LOCATION, 3);
-
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, normal->id);
-    //glUniform1i(NORMALMAP_LOCATION, 2);
-
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
-}
-
 void platform_enable_depth_test()
 {
     glDisable(GL_BLEND);
@@ -1241,113 +824,10 @@ void platform_disable_depth_test()
     glEnable(GL_BLEND);
 }
 
-void platform_use_model_shader()
-{
-    glUseProgram(modelShader);
-
-    //setup texture units
-    glUniform1i(PALETTE_LOCATION, 0);
-    glUniform1i(BASE_COLOR_LOCATION, 1);
-    glUniform1i(NORMALMAP_LOCATION, 2);
-}
-
-void platform_render_model(Transform xform, VertexArrayHandle *vao, Texture *texture, Texture *lightmap, Texture *normal, r32 glow)
-{
-    glBindVertexArray(vao->vao);
-
-    glm::mat4 modelview = glm::mat4(1.0f);
-    modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.x, glm::vec3(1, 0, 0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.y, glm::vec3(0, 1, 0));
-    modelview = glm::rotate(modelview, (float)xform.rotation.z, glm::vec3(0, 0, 1));
-    modelview = glm::scale(modelview, glm::vec3(xform.scale.x,xform.scale.y,xform.scale.z));
-    glUniformMatrix4fv(MODELVIEW_LOCATION, 1, GL_FALSE, glm::value_ptr(modelview));
-
-    glUniform1f(GLOW_LOCATION, glow);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    //glUniform1i(BASE_COLOR_LOCATION, 0);
-
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(LIGHTMAP_LOCATION, 3);
-
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, normal->id);
-    //glUniform1i(NORMALMAP_LOCATION, 2);
-
-    glDrawElements(GL_TRIANGLES, vao->triangleCount * 3, GL_UNSIGNED_INT, NULL);
-    glBindVertexArray(0);
-}
-
-void platform_use_tile_shader()
-{
-    glUseProgram(tileShader);
-
-    //setup texture units
-    glUniform1i(PALETTE_LOCATION, 0);
-    glUniform1i(BASE_COLOR_LOCATION, 1);
-    glUniform1i(NORMALMAP_LOCATION, 2);
-}
-
-void platform_render_tiles(v3 *position, Texture *palette, Texture *layout, Texture *texture, Texture *lightmap, Texture *normal)
-{
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, palette->id);
-    //glUniform1i(PALETTE_LOCATION, 0);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    //glUniform1i(BASE_COLOR_LOCATION, 1);
-
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, normal->id);
-    //glUniform1i(NORMALMAP_LOCATION, 2);
-
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D, layout->id);
-    glUniform1i(TILES_LAYOUT_LOCATION, 3);
-
-    glUniform3fv(TILES_POSITION_LOCATION, 1, (GLfloat*)position);
-
-    gl_render_generic_framebuffer();
-}
-
 void platform_set_camera_pos(v2 current, v2 previous)
 {
     glUniform2fv(CAMERA_POS_LOCATION, 1, (GLfloat*)&current);
     glUniform2fv(CAMERA_PREV_POS_LOCATION, 1, (GLfloat*)&previous);
-}
-void platform_use_particle_shader(u32 lightCount)
-{
-    glUseProgram(particleShader);
-}
-void platform_render_particles(ParticleVertexArrayHandle *vao, float a, Texture *texture, Texture *lightmap, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, r32 glow)
-{
-    glBindVertexArray(vao->vao);
-
-    glUniform1f(GLOW_LOCATION, glow);
-    glUniform1f(TIME_ALPHA_LOCATION, a);
-
-    glUniform4fv(SPRITE_CLIPRECT_LOCATION, 1, (GLfloat*)clipRect);
-    glUniform2fv(SPRITE_OFFSET_LOCATION, 1, (GLfloat*)offset);
-    glUniform2fv(SPRITE_FLIP_LOCATION, 1, (GLfloat*)flip);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    //glUniform1i(BASE_COLOR_LOCATION, 0);
-
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(LIGHTMAP_LOCATION, 3);
-
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, normal->id);
-    //glUniform1i(NORMALMAP_LOCATION, 2);
-
-    glDrawArrays(GL_POINTS, 0, vao->vertexCount);
-    glBindVertexArray(0);
 }
 
 //////////////////////////////

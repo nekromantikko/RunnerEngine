@@ -23,7 +23,7 @@ void ParticleEmitter::allocate(u32 size)
     pColor = ParticleManager::get_color(particleOffset);
     pStatus = ParticleManager::get_status(particleOffset);
 
-    vao = platform_create_particle_vertex_array(particleCount, pPosition, pRotation, pScale, pColor, pStatus);
+    //vao = platform_create_particle_vertex_array(particleCount, pPosition, pRotation, pScale, pColor, pStatus);
 }
 
 ParticleEmitter::~ParticleEmitter()
@@ -36,7 +36,7 @@ void ParticleEmitter::reset()
     indices.deinit_all();
     ParticleManager::deallocate(particleOffset);
     deinitBuffer.clear();
-    platform_delete_particle_vertex_array(vao);
+    //platform_delete_particle_vertex_array(vao);
 }
 
 bool ParticleEmitter::update(Transform xform)
@@ -75,16 +75,6 @@ bool ParticleEmitter::update(Transform xform)
         for (auto it = indices.begin(); it != indices.partition(); it++)
         {
             u32 index = *it;
-            /*ParticleData &p = pData[index];
-            Transform &xform = pTransform[index];
-            Transform &prev = pPrevious[index];
-            v4 &color = pColor[index];
-
-            Transform currentTransform = xform;
-            currentTransform.translate(-Renderer::get_camera_position());
-            currentTransform.do_scale({sprite->width, sprite->height, 1});
-
-            prev = currentTransform;*/
 
             update_particle(index);
         }

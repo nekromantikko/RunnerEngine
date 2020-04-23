@@ -81,14 +81,14 @@ void Level::draw(r32 drawRatio)
     Renderer::draw_tiles(drawRatio, &ambientColor);
     Renderer::draw_models(drawRatio, &ambientColor);
     Renderer::draw_sprites(drawRatio, &ambientColor);
-    Renderer::draw_particles(drawRatio, &ambientColor);
 
     //platform_render_to_pp();
 
+    /*
     platform_bind_framebuffer_reflect();
     Renderer::draw_reflections(drawRatio);
     platform_use_ui_shader();
-    platform_render_reflections();
+    platform_render_reflections();*/
 
     //platform_bind_framebuffer_post_process();
     platform_render_bloom();

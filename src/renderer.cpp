@@ -469,47 +469,6 @@ void Renderer::draw_ui(r64 a)
     platform_bind_vao(NULL);
 }
 
-void Renderer::draw_particles(r64 a, v3 *ambientColor)
-{
-    platform_use_particle_shader(0);
-    platform_set_camera_pos(camPos, prevCamPos);
-    platform_set_projection();
-    platform_set_ambient_color(ambientColor);
-    for (ParticleCall &call : particleBuffer)
-    {
-        Texture *tex = call.texture;
-        if (!tex)
-            tex = Resource::no_texture();
-        Texture *lightmap = call.lightmap;
-        if (!lightmap)
-            lightmap = Resource::no_lightmap();
-        Texture *normal = call.normal;
-        if (!normal)
-            normal = Resource::no_normal();
-
-        platform_update_particle_vertex_array(call.vao);
-        platform_render_particles(call.vao, a, tex, lightmap, normal, &call.clipRect, &call.offset, &call.flip, call.glow);
-    }
-}
-
-void Renderer::draw_reflections(r64 a)
-{
-    platform_use_mirror_shader();
-    platform_bind_vao(rectangle);
-    platform_set_projection();
-    for (MirrorCall &call : mirrorBuffer)
-    {
-        Transform c = call.b.lerp(call.a, a);
-        c.position.x = std::round((r32)c.position.x);
-        c.position.y = std::round((r32)c.position.y);
-
-        v4 clipInterpolated = Lerp(call.clipB, a, call.clipA);
-
-        platform_render_mirror(c, &clipInterpolated);
-    }
-    platform_bind_vao(NULL);
-}
-
 void Renderer::sort_buffers()
 {
     //worldBuffer.sort();
