@@ -13,6 +13,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <iostream>
 #include <fstream>
@@ -174,6 +176,18 @@ GLuint blendVertexLocation;
 GLuint blendTextureLocation;
 GLuint blendColorUniformIndex;
 
+
+//////////////////////////////////////////
+
+GLuint lightDataUBO;
+GLuint lightDataBindingIndex;
+
+GLuint currentShaderProgram;
+
+GLuint usableShaders[USABLE_SHADER_COUNT];
+
+//////////////////////////////////////////
+
 void *platform_get_pp_texture()
 {
     return (void*)&postProcessTexture;
@@ -202,6 +216,63 @@ void gl_load_shader_source(GLuint shader, std::string fname, std::string preproc
     {
         std::cout << "Unable to open shader file " << fname.c_str() << std::endl;
     }
+}
+
+void platform_load_string_from_file(const char *fname, char *contents)
+{
+    std::string temp;
+    std::ifstream sourceFile(fname);
+
+    temp.assign((std::istreambuf_iterator<char>(sourceFile)), std::istreambuf_iterator<char>());
+    memcpy(contents, temp.c_str(), temp.length());
+    contents[temp.length()] = NULL;
+}
+
+void gl_load_shader(Shader shader, const char* vert, const char* frag)
+{
+    GLuint &shaderID = usableShaders[shader];
+    shaderID = glCreateProgram();
+
+    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader, 1, (const GLchar**)&vert, NULL);
+    glCompileShader(vertexShader);
+    glAttachShader(shaderID, vertexShader);
+
+    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader, 1, (const GLchar**)&frag, NULL);
+    glCompileShader(fragmentShader);
+    glAttachShader(shaderID, fragmentShader);
+
+    glLinkProgram(shaderID);
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+
+    if (shader == SHADER_SPRITE_LIT ||
+        shader == SHADER_SPRITE_LIT_NORMAL ||
+        shader == SHADER_TILES_LIT ||
+        shader == SHADER_TILES_LIT_NORMAL)
+    {
+        GLuint lightDataIndex = glGetUniformBlockIndex(shaderID, "LightData");
+        glUniformBlockBinding(shaderID, lightDataIndex, lightDataBindingIndex);
+    }
+}
+
+void gl_load_usable_shaders()
+{
+    char vertexSource[4096];
+    char fragmentSource[4096];
+
+    platform_load_string_from_file("src/shaders/sprite_unlit_vert.glsl", vertexSource);
+    platform_load_string_from_file("src/shaders/sprite_unlit_frag.glsl", fragmentSource);
+    gl_load_shader(SHADER_SPRITE_UNLIT, vertexSource, fragmentSource);
+
+    platform_load_string_from_file("src/shaders/sprite_lit_vert.glsl", vertexSource);
+    platform_load_string_from_file("src/shaders/sprite_lit_frag.glsl", fragmentSource);
+    gl_load_shader(SHADER_SPRITE_LIT, vertexSource, fragmentSource);
+
+    platform_load_string_from_file("src/shaders/sprite_lit_vert.glsl", vertexSource);
+    platform_load_string_from_file("src/shaders/sprite_lit_normal_frag.glsl", fragmentSource);
+    gl_load_shader(SHADER_SPRITE_LIT_NORMAL, vertexSource, fragmentSource);
 }
 
 //load, compile, attach and link background shader
@@ -617,7 +688,17 @@ void init_renderer()
     screenshot.w = runnerScreenWidth;
     screenshot.h = runnerScreenHeight;
 
+    //Uniform buffers
+    glGenBuffers(1, &lightDataUBO);
+    glBindBuffer(GL_UNIFORM_BUFFER, lightDataUBO);
+    glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::vec4) * 33, NULL, GL_STREAM_DRAW);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
+    glBindBufferRange(GL_UNIFORM_BUFFER, lightDataBindingIndex,
+    lightDataUBO, 0, sizeof(glm::vec4) * 33);
+
     //LOAD SHADERS
+    gl_load_usable_shaders();
     gl_load_background_shader();
     gl_load_circle_transition_shader();
     gl_load_textured_shader();
@@ -659,6 +740,10 @@ void init_renderer()
 
 void close_renderer()
 {
+    //delete usable shaders
+    for (int i = 0; i < USABLE_SHADER_COUNT; i++)
+        glDeleteProgram(usableShaders[i]);
+
     //delete background shader
     glDeleteProgram(backgroundShader.programID);
     glDeleteProgram(circleTransitionShader.programID);
@@ -690,7 +775,63 @@ void close_renderer()
     glDeleteTextures(4, blurTexture);
     glDeleteTextures(1, &screenshotTexture);
 
+    glDeleteBuffers(1, &lightDataUBO);
+
     delete_screen_vbo();
+}
+
+void platform_use_shader(Shader shader)
+{
+    currentShaderProgram = usableShaders[shader];
+    glUseProgram(currentShaderProgram);
+}
+
+void platform_set_lights(Light *lights, u32 lightCount)
+{
+    glBindBuffer(GL_UNIFORM_BUFFER, lightDataUBO);
+    glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec3), sizeof(glm::uint), &lightCount);
+    glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4), sizeof(glm::vec4) * lightCount * 2, (GLfloat*)lights);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+}
+
+void platform_set_ambient_color(v3 *color)
+{
+    glBindBuffer(GL_UNIFORM_BUFFER, lightDataUBO);
+    glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::vec3), (GLfloat*)color);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+}
+
+void platform_shader_set_texture(const char* propertyName, Texture *tex, TextureType type = TEXTURE_BASE_COLOR)
+{
+    GLint textureLocation = glGetUniformLocation(currentShaderProgram, propertyName);
+
+    glActiveTexture(GL_TEXTURE0 + type);
+    glBindTexture(GL_TEXTURE_2D, tex->id);
+    glUniform1i(textureLocation, type);
+}
+void platform_shader_set_float(const char* propertyName, float f)
+{
+    GLint floatLocation = glGetUniformLocation(currentShaderProgram, propertyName);
+
+    glUniform1f(floatLocation, (GLfloat)f);
+}
+void platform_shader_set_vector(const char* propertyName, v2 vec)
+{
+    GLint vecLocation = glGetUniformLocation(currentShaderProgram, propertyName);
+
+    glUniform2f(vecLocation, (GLfloat)vec.x, (GLfloat)vec.y);
+}
+void platform_shader_set_vector(const char* propertyName, v3 vec)
+{
+    GLint vecLocation = glGetUniformLocation(currentShaderProgram, propertyName);
+
+    glUniform3f(vecLocation, (GLfloat)vec.x, (GLfloat)vec.y, (GLfloat)vec.z);
+}
+void platform_shader_set_vector(const char* propertyName, v4 vec)
+{
+    GLint vecLocation = glGetUniformLocation(currentShaderProgram, propertyName);
+
+    glUniform4f(vecLocation, (GLfloat)vec.x, (GLfloat)vec.y, (GLfloat)vec.z, (GLfloat)vec.w);
 }
 
 void platform_clear_buffer()
@@ -906,6 +1047,7 @@ void platform_render_background(v3 *colors)
 
     //Set color data
     glUniform3fv(backgroundShader.colorsID, 2, (GLfloat*)colors);
+    //glUniform1fv(backgroundShader.colorsID, 6, (GLfloat*)colors);
 
     gl_render_generic_framebuffer();
 }
@@ -1301,6 +1443,19 @@ void platform_set_projection()
     glUniformMatrix4fv(PROJECTION_LOCATION, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
 }
 
+void platform_render(Transform xform)
+{
+    glm::mat4 modelview = glm::mat4(1.0f);
+    modelview = glm::translate(modelview, glm::vec3(xform.position.x,xform.position.y,0));
+    modelview = glm::rotate(modelview, (float)xform.rotation.x, glm::vec3(1, 0, 0));
+    modelview= glm::rotate(modelview, (float)xform.rotation.y, glm::vec3(0, 1, 0));
+    modelview = glm::rotate(modelview, (float)xform.rotation.z, glm::vec3(0, 0, 1));
+    modelview = glm::scale(modelview, glm::vec3(xform.scale.x,xform.scale.y,xform.scale.z));
+    glUniformMatrix4fv(MODELVIEW_LOCATION, 1, GL_FALSE, glm::value_ptr(modelview));
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+}
+
 void platform_render_hud_element(Transform xform, Texture *palette, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color)
 {
     glm::mat4 modelview = glm::mat4(1.0f);
@@ -1377,21 +1532,6 @@ void platform_use_sprite_shader()
     glUniform1i(PALETTE_LOCATION, 0);
     glUniform1i(BASE_COLOR_LOCATION, 1);
     glUniform1i(NORMALMAP_LOCATION, 2);
-}
-
-void platform_set_lights(Light *lights, u32 lightCount)
-{
-    glUniform1ui(LIGHT_AMOUNT_LOCATION, lightCount);
-    for (size_t j = 0; j < lightCount; j++)
-    {
-        glUniform3fv(LIGHT_LOCATION + j*2, 1, (GLfloat*)&lights[j].position);
-        glUniform4fv(LIGHT_LOCATION + 1 + j*2, 1, (GLfloat*)&lights[j].color);
-    }
-}
-
-void platform_set_ambient_color(v3 *color)
-{
-    glUniform3fv(AMBIENT_COLOR_LOCATION, 1, (GLfloat*)color);
 }
 
 void platform_render_sprite(Transform xform, Texture *palette, Texture *texture, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow)

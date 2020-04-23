@@ -149,7 +149,7 @@ struct ParticleScale
 
 struct Light
 {
-    v3 position;
+    v4 position;
     v4 color;
     Light lerp(const Light &other, r32 alpha)
     {

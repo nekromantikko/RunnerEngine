@@ -342,6 +342,10 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="../src/tileset.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="../src/timer.cpp">
 			<Option target="Release" />
 			<Option target="Debug" />

@@ -387,9 +387,8 @@ void Renderer::draw_tiles(r64 a, v3 *ambientColor)
 
 void Renderer::draw_sprites(r64 a, v3 *ambientColor)
 {
+    platform_set_ambient_color(ambientColor);
     u32 lightCount = lightBuffer.size();
-
-    platform_use_sprite_shader();
 
     if (lightCount)
     {
@@ -406,11 +405,13 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
         platform_set_lights(lerpedLights.data(), lightCount);
     }
 
+    platform_use_shader(SHADER_SPRITE_UNLIT);
     platform_bind_vao(rectangle);
     platform_set_projection();
-    platform_set_ambient_color(ambientColor);
 
     Texture *palette = Resource::get_texture("palette_01");
+
+    platform_shader_set_texture("_palette", palette, TEXTURE_PALETTE);
 
     for (SpriteCall &call : spriteBuffer)
     {
@@ -428,7 +429,13 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
         if (!normal)
             normal = Resource::no_normal();
 
-        platform_render_sprite(c, palette, tex, normal, &call.clipRect, &call.offset, &call.flip, &call.color, call.glow);
+        platform_shader_set_texture("_indexedColor", tex, TEXTURE_BASE_COLOR);
+        platform_shader_set_vector("_clipRect", call.clipRect);
+        platform_shader_set_vector("_offset", call.offset);
+        platform_shader_set_vector("_flip", call.flip);
+        platform_shader_set_vector("_color", call.color);
+
+        platform_render(c);
     }
     platform_bind_vao(NULL);
 }
@@ -480,11 +487,13 @@ void Renderer::draw_models(r64 a, v3 *ambientColor)
 
 void Renderer::draw_ui(r64 a)
 {
-    platform_use_ui_shader();
+    platform_use_shader(SHADER_SPRITE_UNLIT);
     platform_bind_vao(rectangle);
     platform_set_projection();
 
     Texture *palette = Resource::get_texture("palette_01");
+
+    platform_shader_set_texture("_palette", palette, TEXTURE_PALETTE);
 
     for (UICall &call : uiBuffer)
     {
@@ -496,7 +505,13 @@ void Renderer::draw_ui(r64 a)
         if (!tex)
             tex = Resource::no_texture();
 
-        platform_render_hud_element(c, palette, tex, &call.clipRect, &call.offset, &call.flip, &call.color);
+        platform_shader_set_texture("_indexedColor", tex, TEXTURE_BASE_COLOR);
+        platform_shader_set_vector("_clipRect", call.clipRect);
+        platform_shader_set_vector("_offset", call.offset);
+        platform_shader_set_vector("_flip", call.flip);
+        platform_shader_set_vector("_color", call.color);
+
+        platform_render(c);
     }
     platform_bind_vao(NULL);
 }

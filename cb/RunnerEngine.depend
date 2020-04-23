@@ -3594,7 +3594,7 @@
 	<string>
 	"shared.h"
 
-1498554885 d:\work\gamedev\runnerengine\src\shared.h
+1587649502 d:\work\gamedev\runnerengine\src\shared.h
 	"signal.h"
 	<vector>
 	"units.h"
@@ -3744,7 +3744,7 @@
 1450205795 d:\work\gamedev\runnerengine\src\config.h
 	"typedef.h"
 
-1587595555 d:\work\gamedev\runnerengine\src\platform\platform.h
+1587652793 d:\work\gamedev\runnerengine\src\platform\platform.h
 	"../shared.h"
 
 1488388340 source:d:\work\gamedev\runnerengine\src\debug.cpp
@@ -4229,7 +4229,7 @@
 	"debug.h"
 	"particlemanager.h"
 
-1587595437 source:d:\work\gamedev\runnerengine\src\platform\runneros.cpp
+1587653477 source:d:\work\gamedev\runnerengine\src\platform\runneros.cpp
 	<windows.h>
 	<Objbase.h>
 	<GL/glew.h>
@@ -4243,6 +4243,8 @@
 	<glm/glm.hpp>
 	<glm/gtc/matrix_transform.hpp>
 	<glm/gtc/type_ptr.hpp>
+	<stdio.h>
+	<stdlib.h>
 	<iostream>
 	<fstream>
 	<cmath>
@@ -4760,7 +4762,7 @@
 	"resource.h"
 	"entity.h"
 
-1587592297 source:d:\work\gamedev\runnerengine\src\renderer.cpp
+1587652863 source:d:\work\gamedev\runnerengine\src\renderer.cpp
 	"renderer.h"
 	"Platform/platform.h"
 	<algorithm>

@@ -3,64 +3,45 @@
 
 #include "../shared.h"
 
+//rendering
 #define MAX_LIGHTS 16
+#define USABLE_SHADER_COUNT 3
+
+enum Shader
+{
+    SHADER_SPRITE_UNLIT,
+    SHADER_SPRITE_LIT,
+    SHADER_SPRITE_LIT_NORMAL,
+    SHADER_TILES_LIT,
+    SHADER_TILES_LIT_NORMAL,
+    SHADER_SKY,
+};
+
+enum TextureType
+{
+    TEXTURE_PALETTE = 0,
+    TEXTURE_BASE_COLOR = 1,
+    TEXTURE_NORMAL = 2,
+    TEXTURE_OTHER = 3
+};
 
 void *platform_get_pp_texture();
 
-//rendering
+//void platform_set_palette(blablabla)
+void platform_use_shader(Shader shader);
+void platform_set_lights(Light *lights, u32 lightCount);
+void platform_set_ambient_color(v3 *color);
+void platform_shader_set_texture(const char* propertyName, Texture *tex, TextureType type);
+void platform_shader_set_float(const char* propertyName, float f);
+void platform_shader_set_vector(const char* propertyName, v2 vec);
+void platform_shader_set_vector(const char* propertyName, v3 vec);
+void platform_shader_set_vector(const char* propertyName, v4 vec);
+void platform_render(Transform xform);
+
 void platform_clear_buffer();
 void platform_swap_buffer();
 void platform_render_background(v3 *colors);
 void platform_render_circle_transition(v2 pos, r32 radius);
-/*
-void platform_render_world_element(InstanceDataProcessed *instanceData,
-                                   v4 *color,
-                                   u32 *frame,
-                                   u32 instanceCount,
-                            Texture *diffuse,
-                            Texture *lightmap,
-                            Texture *normal,
-                            VertexArrayHandle *vbuffer,
-                            ClipBufferHandle *clipBuffer,
-                            r32 glow,
-                            bool32 blend,
-                            v4 ambient,
-                            u32 lightAmount,
-                            Light *lights);
-void platform_render_world(InstanceDataProcessed *instanceData,
-                           v4 *color,
-                            u32 *frame,
-                           u32 instanceCount,
-                           Texture *texture,
-                            Texture *lightmap,
-                            VertexArrayHandle *vbuffer,
-                            ClipBufferHandle *clipBuffer,
-                            r32 glow,
-                            v4 ambient);
-void platform_render_world_light(InstanceDataProcessed *instanceData,
-                                 v4 *color,
-                                   u32 *frame,
-                                 u32 instanceCount,
-                                 Texture *texture,
-                                    Texture *lightmap,
-                                    Texture *normal,
-                                    VertexArrayHandle *vbuffer,
-                                    ClipBufferHandle *clipBuffer,
-                                    r32 glow,
-                                    v4 ambient,
-                                    u32 lightAmount,
-                                    Light *lights);
-void platform_render_textured(VertexArrayHandle *vao, v4 *color,
-                              v4 *color,
-                                   u32 *frame,
-                              u32 instanceCount,
-                              Texture *texture,
-                              VertexArrayHandle *vbuffer);
-void platform_render_shape(InstanceDataProcessed *instanceData,
-                           v4 *color,
-                           u32 instanceCount,
-                           VertexArrayHandle *vbuffer,
-                           bool32 fill = false);*/
 
 void platform_bind_vao(VertexArrayHandle *vao);
 
@@ -73,8 +54,6 @@ void platform_render_mirror(Transform xform, v4 *clipRect);
 void platform_render_reflections();
 
 void platform_use_sprite_shader();
-void platform_set_lights(Light *lights, u32 lightCount);
-void platform_set_ambient_color(v3 *color);
 void platform_render_sprite(Transform xform, Texture *palette, Texture *texture, Texture *normal, v4 *clipRect, v2 *offset, v2 *flip, v4 *color, r32 glow);
 
 void platform_enable_depth_test();
