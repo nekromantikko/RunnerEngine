@@ -36,7 +36,7 @@ vec3 lambert(int index)
     float cosTheta = max(dot(n,l), 0.0);
     vec3 lightColor = _lights[index].color.rgb * _lights[index].color.a;
     float attenuation = 10000.0 / (dist*dist);
-    vec3 diffuse = lightColor * cosTheta;
+    vec3 diffuse = lightColor * cosTheta * attenuation;
     return diffuse;
 }
 

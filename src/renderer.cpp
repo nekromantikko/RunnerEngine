@@ -292,72 +292,15 @@ void Renderer::draw_sprite_instance_hud(SpriteInstance* inst, s32 x, s32 y, bool
 
     add_ui_element(call);
 }
-/*
-void Renderer::draw_world(r64 a, v4 ambient)
-{
-    TIMED_BLOCK;
 
-    Drawcall call;
-
-    call.depth = -1;
-    Sprite *sprite = Resource::get_sprite("spr_particle_debug");
-    call.vbuffer = sprite->vbuffer;
-    call.clipBuffer = NO_CLIP;
-    call.texture = sprite->texture;
-    call.lightmap = sprite->lightmap;
-    call.normal = sprite->normal;
-    call.glow = sprite->glow;
-    call.blend = true;
-
-    call.instanceData = test.data();
-    call.instanceColor = colorTest.data();
-    call.instanceFrame = frameTest.data();
-    call.instanceCount = test.size();
-
-    add_world_element(call);
-
-    u32 lightAmount = lightBuffer.size();
-    if (lightAmount > MAX_LIGHTS)
-        lightAmount = MAX_LIGHTS;
-
-    std::vector<Light> lerpedLights;
-    lerpedLights.reserve(lightAmount);
-    for (u32 i = 0; i < lightAmount; i++)
-    {
-        Light &aLight = lightBuffer.at(i).a;
-        Light &bLight = lightBuffer.at(i).b;
-
-        Light temp = bLight.lerp(aLight, a);
-        lerpedLights.push_back(temp);
-    }
-
-    for (Drawcall &call : worldBuffer)
-    {
-        if (!call.instanceData)
-            continue;
-
-        Texture *lightmap = call.lightmap;
-        if (!lightmap)
-            lightmap = Resource::get_texture("lightmap_none");
-        Texture *normal = call.normal;
-        if (!normal)
-            normal = Resource::get_texture("normal_none", false);
-
-        InstanceDataProcessed *processedData = platform_process_instance_data(call.instanceData, call.instanceCount, a, call.depth);
-        platform_render_world_element(processedData, call.instanceColor, call.instanceFrame, call.instanceCount, call.texture, lightmap, normal, call.vbuffer, call.clipBuffer, call.glow, call.blend, ambient, lightAmount, lerpedLights.data());
-        delete[] processedData;
-    }
-}
-*/
 void Renderer::set_up_lights(r64 a)
 {
 
 }
 void Renderer::draw_tiles(r64 a, v3 *ambientColor)
 {
+    platform_set_ambient_color(ambientColor);
     u32 lightCount = lightBuffer.size();
-
-    platform_use_tile_shader();
 
     if (lightCount)
     {
@@ -374,14 +317,23 @@ void Renderer::draw_tiles(r64 a, v3 *ambientColor)
         platform_set_lights(lerpedLights.data(), lightCount);
     }
 
+    platform_use_shader(SHADER_TILES_LIT_NORMAL);
+
     Texture *palette = Resource::get_texture("palette_01");
+
+    platform_shader_set_texture("_palette", palette, TEXTURE_PALETTE);
 
     platform_set_ambient_color(ambientColor);
     for (TileCall &call : tileBuffer)
     {
         v2 c = Lerp(call.b, a, call.a);
         v3 pos = {c.x, c.y, call.z};
-        platform_render_tiles(&pos, palette, call.layout, call.texture, call.lightmap, call.normal);
+
+        platform_shader_set_texture("_indexedColor", call.texture, TEXTURE_BASE_COLOR);
+        platform_shader_set_texture("_normalMap", call.normal, TEXTURE_NORMAL);
+        platform_shader_set_texture("_tileLayout", call.layout, TEXTURE_OTHER);
+        platform_shader_set_vector("_position", pos);
+        platform_blit();
     }
 }
 
@@ -405,7 +357,7 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
         platform_set_lights(lerpedLights.data(), lightCount);
     }
 
-    platform_use_shader(SHADER_SPRITE_UNLIT);
+    platform_use_shader(SHADER_SPRITE_LIT);
     platform_bind_vao(rectangle);
     platform_set_projection();
 
@@ -442,6 +394,7 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
 
 void Renderer::draw_models(r64 a, v3 *ambientColor)
 {
+    /*
     u32 lightCount = lightBuffer.size();
 
     platform_enable_depth_test();
@@ -482,7 +435,7 @@ void Renderer::draw_models(r64 a, v3 *ambientColor)
 
         platform_render_model(c, call.vao, tex, lightmap, normal, call.glow);
     }
-    platform_disable_depth_test();
+    platform_disable_depth_test();*/
 }
 
 void Renderer::draw_ui(r64 a)

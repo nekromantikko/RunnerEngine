@@ -5,7 +5,7 @@
 
 //rendering
 #define MAX_LIGHTS 16
-#define USABLE_SHADER_COUNT 3
+#define USABLE_SHADER_COUNT 5
 
 enum Shader
 {
@@ -37,6 +37,7 @@ void platform_shader_set_vector(const char* propertyName, v2 vec);
 void platform_shader_set_vector(const char* propertyName, v3 vec);
 void platform_shader_set_vector(const char* propertyName, v4 vec);
 void platform_render(Transform xform);
+void platform_blit();
 
 void platform_clear_buffer();
 void platform_swap_buffer();

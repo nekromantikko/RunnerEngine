@@ -180,7 +180,9 @@ GLuint blendColorUniformIndex;
 //////////////////////////////////////////
 
 GLuint lightDataUBO;
-GLuint lightDataBindingIndex;
+GLuint lightDataBindingIndex = 0;
+GLint lightDataSize = 0;
+
 
 GLuint currentShaderProgram;
 
@@ -273,6 +275,14 @@ void gl_load_usable_shaders()
     platform_load_string_from_file("src/shaders/sprite_lit_vert.glsl", vertexSource);
     platform_load_string_from_file("src/shaders/sprite_lit_normal_frag.glsl", fragmentSource);
     gl_load_shader(SHADER_SPRITE_LIT_NORMAL, vertexSource, fragmentSource);
+
+    platform_load_string_from_file("src/shaders/tiles_lit_vert.glsl", vertexSource);
+    platform_load_string_from_file("src/shaders/tiles_lit_frag.glsl", fragmentSource);
+    gl_load_shader(SHADER_TILES_LIT, vertexSource, fragmentSource);
+
+    platform_load_string_from_file("src/shaders/tiles_lit_vert.glsl", vertexSource);
+    platform_load_string_from_file("src/shaders/tiles_lit_normal_frag.glsl", fragmentSource);
+    gl_load_shader(SHADER_TILES_LIT_NORMAL, vertexSource, fragmentSource);
 }
 
 //load, compile, attach and link background shader
@@ -688,14 +698,17 @@ void init_renderer()
     screenshot.w = runnerScreenWidth;
     screenshot.h = runnerScreenHeight;
 
+    //////////////////////////////////////////////////////////////////////////
+
     //Uniform buffers
     glGenBuffers(1, &lightDataUBO);
     glBindBuffer(GL_UNIFORM_BUFFER, lightDataUBO);
-    glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::vec4) * 33, NULL, GL_STREAM_DRAW);
+    glBufferData(GL_UNIFORM_BUFFER, 528, NULL, GL_DYNAMIC_DRAW);
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
-    glBindBufferRange(GL_UNIFORM_BUFFER, lightDataBindingIndex,
-    lightDataUBO, 0, sizeof(glm::vec4) * 33);
+    glBindBufferBase(GL_UNIFORM_BUFFER, lightDataBindingIndex, lightDataUBO);
+
+    ///////////////////////////////////////////////////////////////////////////
 
     //LOAD SHADERS
     gl_load_usable_shaders();
@@ -719,7 +732,7 @@ void init_renderer()
     gl_load_final_image_shader();
     //gl_load_blend_shader();
 
-    /////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
 
     //Set blending
     glEnable(GL_BLEND);
@@ -789,8 +802,8 @@ void platform_use_shader(Shader shader)
 void platform_set_lights(Light *lights, u32 lightCount)
 {
     glBindBuffer(GL_UNIFORM_BUFFER, lightDataUBO);
-    glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec3), sizeof(glm::uint), &lightCount);
-    glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4), sizeof(glm::vec4) * lightCount * 2, (GLfloat*)lights);
+    glBufferSubData(GL_UNIFORM_BUFFER, 12, sizeof(glm::uint), &lightCount);
+    glBufferSubData(GL_UNIFORM_BUFFER, 16, sizeof(glm::vec4) * lightCount * 2, (GLfloat*)lights);
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
@@ -1062,366 +1075,6 @@ void platform_render_circle_transition(v2 pos, r32 radius)
     gl_render_generic_framebuffer();
 }
 
-/*
-void platform_render_world_element(InstanceDataProcessed *instanceData,
-                                   v4 *color,
-                                   u32 *frame,
-                                   u32 instanceCount,
-                            Texture *diffuse,
-                            Texture *lightmap,
-                            Texture *normal,
-                            VertexArrayHandle *vbuffer,
-                            ClipBufferHandle *clipBuffer,
-                            r32 glow,
-                            bool32 blend,
-                            v4 ambient,
-                            u32 lightAmount,
-                            Light *lights)
-{
-    if (!blend)
-        return;
-
-    if (!blend)
-    {
-        glDisable(GL_BLEND);
-        glEnable(GL_DEPTH_TEST);
-        glDepthRange(1,0);
-        glBindFramebuffer(GL_FRAMEBUFFER, buffer3dFBO);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    }
-
-    if (!lightAmount)
-        platform_render_world(instanceData, color, frame, instanceCount, diffuse, lightmap, vbuffer, clipBuffer, glow, ambient);
-    else platform_render_world_light(instanceData, color, frame, instanceCount, diffuse, lightmap, normal, vbuffer, clipBuffer, glow, ambient, lightAmount, lights);
-
-    if (!blend)
-    {
-        glDisable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glBindFramebuffer(GL_FRAMEBUFFER, reflectFBO);
-
-        glUseProgram(blendShaderProgram);
-        glEnableVertexAttribArray(blendVertexLocation);
-
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, buffer3dTexture);
-
-        //set color
-        glBindBuffer(GL_UNIFORM_BUFFER, colorBuffer);
-        glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::vec4), &color);
-        glBindBuffer(GL_UNIFORM_BUFFER, 0);
-
-        gl_render_generic_framebuffer(blendVertexLocation);
-
-        glBindTexture(GL_TEXTURE_2D, 0);
-    }
-}
-
-void platform_render_world(InstanceDataProcessed *instanceData,
-                           v4 *color,
-                            u32 *frame,
-                           u32 instanceCount,
-                           Texture *texture,
-                            Texture *lightmap,
-                            VertexArrayHandle *vbuffer,
-                            ClipBufferHandle *clipBuffer,
-                            r32 glow,
-                            v4 ambient)
-{
-    //if (frame >= vbuffer->bufferCount)
-        //throw std::runtime_error("render frame is larger than max!");
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
-    glUseProgram(worldShaderProgram);
-    glEnableVertexAttribArray(worldVertexLocation);
-    glEnableVertexAttribArray(worldTexcoordLocation);
-
-    glEnableVertexAttribArray(worldModelviewLocation);
-    glEnableVertexAttribArray(worldModelviewLocation + 1);
-    glEnableVertexAttribArray(worldModelviewLocation + 2);
-    glEnableVertexAttribArray(worldModelviewLocation + 3);
-    glEnableVertexAttribArray(worldFrameLocation);
-    glEnableVertexAttribArray(worldColorLocation);
-
-    //set matrices
-    glm::mat4 orthoMatrix(glm::ortho(0.f, (r32)runnerScreenWidth, (r32)runnerScreenHeight, 0.f, -16384.f, 16384.f));
-
-    //bind textures
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(worldTextureLocation, 0);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(worldLightmapLocation, 1);
-
-    //glow
-    glUniform1f(worldGlowLocation, glow);
-
-    //ambient color
-    glUniform3fv(worldAmbientColorLocation, 1, (GLfloat*)&ambient);
-
-    //matrices
-    glUniformMatrix4fv(worldProjectionLocation, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
-
-    //instance buffer stuffer
-    glBindBuffer(GL_ARRAY_BUFFER, instanceMatrixBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(InstanceDataProcessed) * instanceCount, instanceData);
-    glVertexAttribPointer(worldModelviewLocation, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix));
-    glVertexAttribPointer(worldModelviewLocation + 1, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 16);
-    glVertexAttribPointer(worldModelviewLocation + 2, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 32);
-    glVertexAttribPointer(worldModelviewLocation + 3, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 48);
-    glVertexAttribDivisor(worldModelviewLocation, 1);
-    glVertexAttribDivisor(worldModelviewLocation + 1, 1);
-    glVertexAttribDivisor(worldModelviewLocation + 2, 1);
-    glVertexAttribDivisor(worldModelviewLocation + 3, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceFrameBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(u32) * instanceCount, frame);
-    glVertexAttribIPointer(worldFrameLocation, 1, GL_UNSIGNED_INT, sizeof(u32), 0);
-    glVertexAttribDivisor(worldFrameLocation, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceColorBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(v4) * instanceCount, color);
-    glVertexAttribPointer(worldColorLocation, 4, GL_FLOAT, GL_FALSE, sizeof(v4), 0);
-    glVertexAttribDivisor(worldColorLocation, 1);
-
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, clipBuffer->id);
-    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, clipBuffer->id);
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
-
-    //give the vertex / index data to the buffers
-    glBindBuffer(GL_ARRAY_BUFFER, vbuffer->vbo);
-    glVertexAttribPointer(worldVertexLocation, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, pos));
-    glVertexAttribPointer(worldTexcoordLocation, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, uv));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbuffer->ibo);
-
-    //draw vertex arrays
-    glDrawElementsInstanced(GL_TRIANGLES, vbuffer->triangleCount * 3, GL_UNSIGNED_INT, NULL, instanceCount);
-}
-
-void platform_render_world_light(InstanceDataProcessed *instanceData,
-                                 v4 *color,
-                                   u32 *frame,
-                                 u32 instanceCount,
-                                 Texture *texture,
-                                    Texture *lightmap,
-                                    Texture *normal,
-                                    VertexArrayHandle *vbuffer,
-                                    ClipBufferHandle *clipBuffer,
-                                    r32 glow,
-                                    v4 ambient,
-                                    u32 lightAmount,
-                                    Light *lights)
-{
-    //if (frame >= vbuffer->bufferCount)
-        //throw std::runtime_error("render frame is larger than max!");
-    TIMED_BLOCK;
-
-    u32 i = lightAmount - 1;
-
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
-    glUseProgram(worldLightShaders[i].shaderProgram);
-    glEnableVertexAttribArray(worldLightShaders[i].vertexLocation);
-    glEnableVertexAttribArray(worldLightShaders[i].texcoordLocation);
-    glEnableVertexAttribArray(worldLightShaders[i].vertNormLocation);
-    glEnableVertexAttribArray(worldLightShaders[i].vertTanLocation);
-
-    glEnableVertexAttribArray(worldLightShaders[i].modelviewLocation);
-    glEnableVertexAttribArray(worldLightShaders[i].modelviewLocation + 1);
-    glEnableVertexAttribArray(worldLightShaders[i].modelviewLocation + 2);
-    glEnableVertexAttribArray(worldLightShaders[i].modelviewLocation + 3);
-    glEnableVertexAttribArray(worldLightShaders[i].frameLocation);
-    glEnableVertexAttribArray(worldLightShaders[i].colorLocation);
-
-    //set matrices
-    glm::mat4 orthoMatrix(glm::ortho(0.f, (r32)runnerScreenWidth, (r32)runnerScreenHeight, 0.f, -16384.f, 16384.f));
-
-
-    //bind textures
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(worldLightShaders[i].textureLocation, 0);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, lightmap->id);
-    glUniform1i(worldLightShaders[i].lightmapLocation, 1);
-
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, normal->id);
-    glUniform1i(worldLightShaders[i].normalLocation, 2);
-
-    //glow
-    glUniform1f(worldLightShaders[i].glowLocation, glow);
-
-    //ambient color
-    glUniform3fv(worldLightShaders[i].ambientColorLocation, 1, (GLfloat*)&ambient);
-
-    //matrices
-    glUniformMatrix4fv(worldLightShaders[i].projectionLocation, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
-
-    //set lights
-    for (size_t j = 0; j < lightAmount; j++)
-    {
-        glUniform3fv(worldLightShaders[i].lightPosLocation + j*2, 1, (GLfloat*)&lights[j].position);
-        glUniform4fv(worldLightShaders[i].lightColorLocation + j*2, 1, (GLfloat*)&lights[j].color);
-    }
-
-    //instance buffer stuffer
-    glBindBuffer(GL_ARRAY_BUFFER, instanceMatrixBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(InstanceDataProcessed) * instanceCount, instanceData);
-    glVertexAttribPointer(worldLightShaders[i].modelviewLocation, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix));
-    glVertexAttribPointer(worldLightShaders[i].modelviewLocation + 1, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 16);
-    glVertexAttribPointer(worldLightShaders[i].modelviewLocation + 2, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 32);
-    glVertexAttribPointer(worldLightShaders[i].modelviewLocation + 3, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 48);
-    glVertexAttribDivisor(worldLightShaders[i].modelviewLocation, 1);
-    glVertexAttribDivisor(worldLightShaders[i].modelviewLocation + 1, 1);
-    glVertexAttribDivisor(worldLightShaders[i].modelviewLocation + 2, 1);
-    glVertexAttribDivisor(worldLightShaders[i].modelviewLocation + 3, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceFrameBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(u32) * instanceCount, frame);
-    glVertexAttribIPointer(worldLightShaders[i].frameLocation, 1, GL_UNSIGNED_INT, sizeof(u32), 0);
-    glVertexAttribDivisor(worldLightShaders[i].frameLocation, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceColorBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(v4) * instanceCount, color);
-    glVertexAttribPointer(worldLightShaders[i].colorLocation, 4, GL_FLOAT, GL_FALSE, sizeof(v4), 0);
-    glVertexAttribDivisor(worldLightShaders[i].colorLocation, 1);
-
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, clipBuffer->id);
-    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, clipBuffer->id);
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
-
-    //give the vertex / index data to the buffers
-    glBindBuffer(GL_ARRAY_BUFFER, vbuffer->vbo);
-    glVertexAttribPointer(worldLightShaders[i].vertexLocation, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, pos));
-    glVertexAttribPointer(worldLightShaders[i].texcoordLocation, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, uv));
-    glVertexAttribPointer(worldLightShaders[i].vertNormLocation, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, normal));
-    glVertexAttribPointer(worldLightShaders[i].vertTanLocation, 4, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, tangent));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbuffer->ibo);
-
-    //draw vertex arrays
-    glDrawElementsInstanced(GL_TRIANGLES, vbuffer->triangleCount * 3, GL_UNSIGNED_INT, NULL, instanceCount);
-}
-
-void platform_render_textured(InstanceDataProcessed *instanceData,
-                              v4 *color,
-                                   u32 *frame,
-                                u32 instanceCount,
-                              Texture *texture,
-                              VertexArrayHandle *vbuffer,
-                              ClipBufferHandle *clipBuffer)
-{
-    //if (frame >= vbuffer->bufferCount)
-        //throw std::runtime_error("render frame is larger than max!");
-
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
-    glUseProgram(texturedShaderProgram);
-    glEnableVertexAttribArray(texturedVertexLocation);
-    glEnableVertexAttribArray(texturedTexcoordLocation);
-
-    glEnableVertexAttribArray(texturedModelviewLocation);
-    glEnableVertexAttribArray(texturedModelviewLocation + 1);
-    glEnableVertexAttribArray(texturedModelviewLocation + 2);
-    glEnableVertexAttribArray(texturedModelviewLocation + 3);
-    glEnableVertexAttribArray(texturedFrameLocation);
-    glEnableVertexAttribArray(texturedColorLocation);
-
-    //set matrices
-    glm::mat4 orthoMatrix(glm::ortho(0.f, (r32)runnerScreenWidth, (r32)runnerScreenHeight, 0.f, -16384.f, 16384.f));
-
-    //bind textures
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->id);
-    glUniform1i(texturedTextureLocation, 0);
-
-    //matrices
-    glUniformMatrix4fv(texturedProjectionLocation, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
-
-    //instance buffer stuffer
-    glBindBuffer(GL_ARRAY_BUFFER, instanceMatrixBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(InstanceDataProcessed) * instanceCount, instanceData);
-    glVertexAttribPointer(texturedModelviewLocation, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix));
-    glVertexAttribPointer(texturedModelviewLocation + 1, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 16);
-    glVertexAttribPointer(texturedModelviewLocation + 2, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 32);
-    glVertexAttribPointer(texturedModelviewLocation + 3, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 48);
-    glVertexAttribDivisor(texturedModelviewLocation, 1);
-    glVertexAttribDivisor(texturedModelviewLocation + 1, 1);
-    glVertexAttribDivisor(texturedModelviewLocation + 2, 1);
-    glVertexAttribDivisor(texturedModelviewLocation + 3, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceFrameBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(u32) * instanceCount, frame);
-    glVertexAttribIPointer(texturedFrameLocation, 1, GL_UNSIGNED_INT, sizeof(u32), 0);
-    glVertexAttribDivisor(texturedFrameLocation, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceColorBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(v4) * instanceCount, color);
-    glVertexAttribPointer(texturedColorLocation, 4, GL_FLOAT, GL_FALSE, sizeof(v4), 0);
-    glVertexAttribDivisor(texturedColorLocation, 1);
-
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, clipBuffer->id);
-    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, clipBuffer->id);
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
-
-    //give the vertex / index data to the buffers
-    glBindBuffer(GL_ARRAY_BUFFER, vbuffer->vbo);
-    glVertexAttribPointer(texturedVertexLocation, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, pos));
-    glVertexAttribPointer(texturedTexcoordLocation, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, uv));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbuffer->ibo);
-
-    //draw vertex arrays
-    glDrawElementsInstanced(GL_TRIANGLES, vbuffer->triangleCount * 3, GL_UNSIGNED_INT, NULL, instanceCount);
-}
-
-void platform_render_shape(InstanceDataProcessed *instanceData,
-                           v4 *color,
-                           u32 instanceCount,
-                           VertexArrayHandle *vbuffer,
-                           bool32 fill)
-{
-    //if (frame >= vbuffer->bufferCount)
-        //throw std::runtime_error("render frame is larger than max!");
-
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
-
-    glUseProgram(lineShaderProgram);
-    glEnableVertexAttribArray(lineVertexLocation);
-    glEnableVertexAttribArray(lineModelviewLocation);
-    glEnableVertexAttribArray(lineModelviewLocation + 1);
-    glEnableVertexAttribArray(lineModelviewLocation + 2);
-    glEnableVertexAttribArray(lineModelviewLocation + 3);
-    glEnableVertexAttribArray(lineColorLocation);
-
-    //set matrices
-    glm::mat4 orthoMatrix(glm::ortho(0.f, (r32)runnerScreenWidth, (r32)runnerScreenHeight, 0.f, -16384.f, 16384.f));
-
-    //matrices
-    glUniformMatrix4fv(lineProjectionLocation, 1, GL_FALSE, glm::value_ptr(orthoMatrix));
-
-    //instance buffer stuffer
-    glBindBuffer(GL_ARRAY_BUFFER, instanceMatrixBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(InstanceDataProcessed) * instanceCount, instanceData);
-    glVertexAttribPointer(lineModelviewLocation, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix));
-    glVertexAttribPointer(lineModelviewLocation + 1, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 16);
-    glVertexAttribPointer(lineModelviewLocation + 2, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 32);
-    glVertexAttribPointer(lineModelviewLocation + 3, 4, GL_FLOAT, GL_FALSE, sizeof(InstanceDataProcessed), (GLvoid*)offsetof(InstanceDataProcessed, modelviewMatrix) + 48);
-    glVertexAttribDivisor(lineModelviewLocation, 1);
-    glVertexAttribDivisor(lineModelviewLocation + 1, 1);
-    glVertexAttribDivisor(lineModelviewLocation + 2, 1);
-    glVertexAttribDivisor(lineModelviewLocation + 3, 1);
-    glBindBuffer(GL_ARRAY_BUFFER, instanceColorBuffer);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(v4) * instanceCount, color);
-    glVertexAttribPointer(lineColorLocation, 4, GL_FLOAT, GL_FALSE, sizeof(v4), 0);
-    glVertexAttribDivisor(lineColorLocation, 1);
-
-    //give the vertex / index data to the buffers
-    glBindBuffer(GL_ARRAY_BUFFER, vbuffer->vbo);
-    glVertexAttribPointer(lineVertexLocation, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, pos));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbuffer->ibo);
-
-    //draw vertex arrays
-    GLenum mode = GL_LINE_LOOP;
-    if (fill)
-        mode = GL_TRIANGLE_FAN;
-
-    glDrawElementsInstanced(mode, vbuffer->triangleCount * 3, GL_UNSIGNED_INT, NULL, instanceCount);
-}*/
-
 void platform_bind_vao(VertexArrayHandle *vao)
 {
     if (vao)
@@ -1454,6 +1107,11 @@ void platform_render(Transform xform)
     glUniformMatrix4fv(MODELVIEW_LOCATION, 1, GL_FALSE, glm::value_ptr(modelview));
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+}
+
+void platform_blit()
+{
+    gl_render_generic_framebuffer();
 }
 
 void platform_render_hud_element(Transform xform, Texture *palette, Texture *texture, v4 *clipRect, v2 *offset, v2 *flip, v4 *color)
