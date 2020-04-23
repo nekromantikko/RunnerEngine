@@ -3580,7 +3580,7 @@
 	<fstream>
 	<stdexcept>
 
-1587493615 source:d:\work\gamedev\runnerengine\src\collision.cpp
+1587667950 source:d:\work\gamedev\runnerengine\src\collision.cpp
 	"collision.h"
 	"shared.h"
 	"units.h"
@@ -3594,7 +3594,7 @@
 	<string>
 	"shared.h"
 
-1587649502 d:\work\gamedev\runnerengine\src\shared.h
+1587667691 d:\work\gamedev\runnerengine\src\shared.h
 	"signal.h"
 	<vector>
 	"units.h"
@@ -3684,7 +3684,7 @@
 1462820376 d:\work\gamedev\runnerengine\src\light.h
 	"component.h"
 
-1512196402 d:\work\gamedev\runnerengine\src\renderer.h
+1587667726 d:\work\gamedev\runnerengine\src\renderer.h
 	"shared.h"
 	<functional>
 
@@ -3744,7 +3744,7 @@
 1450205795 d:\work\gamedev\runnerengine\src\config.h
 	"typedef.h"
 
-1587663484 d:\work\gamedev\runnerengine\src\platform\platform.h
+1587667715 d:\work\gamedev\runnerengine\src\platform\platform.h
 	"../shared.h"
 
 1488388340 source:d:\work\gamedev\runnerengine\src\debug.cpp

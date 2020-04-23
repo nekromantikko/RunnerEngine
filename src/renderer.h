@@ -120,12 +120,46 @@ struct ParticleCall
     }
 };
 
+//////////////////////////////////////////////
+
+enum ShaderPropertyType
+{
+    SAMPLER,
+    FLOAT1,
+    FLOAT2,
+    FLOAT3,
+    FLOAT4
+};
+
+struct ShaderProperty
+{
+    ShaderPropertyType type;
+    void *payload;
+};
+
+#define MAX_SHADER_PROPERTIES
+
+struct RenderData
+{
+    Transform xform;
+    ShaderProperty properties[MAX_SHADER_PROPERTIES];
+};
+
+#define MAX_RENDER_QUEUE_SIZE 1024
+
+struct RenderQueue
+{
+    RenderData data[MAX_RENDER_QUEUE_SIZE];
+};
+
 struct SpriteInstance;
 
 namespace Renderer
 {
     void init();
     void deinit();
+
+    void swap_queues();
 
     ivec2 get_topleft(s32 x, s32 y, s32 w, s32 h, DrawOrigin origin);
     void draw_string(std::string str, s32 x, s32 y, DrawOrigin *originPos, v4 *color, r32 *scale, Sprite *sprite, s32 priority = 0);

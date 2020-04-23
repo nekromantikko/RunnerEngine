@@ -17,6 +17,11 @@ namespace Renderer
     std::list<ParticleCall> particleBuffer;
     std::vector<LerpLight> lightBuffer;
 
+    //render queues
+    RenderQueue renderQueue[2];
+    RenderQueue *frontRenderQueue;
+    RenderQueue *backRenderQueue;
+
     v3 lightPos[MAX_LIGHTS];
     v4 lightColor[MAX_LIGHTS];
 
@@ -59,10 +64,20 @@ void Renderer::init()
 
     camPos = {0,0};
     prevCamPos = camPos;
+
+    frontRenderQueue = renderQueue;
+    backRenderQueue = renderQueue + 1;
 }
 void Renderer::deinit()
 {
     platform_delete_vertex_array(rectangle);
+}
+
+void Renderer::swap_queues()
+{
+    RenderQueue *temp = frontRenderQueue;
+    frontRenderQueue = backRenderQueue;
+    backRenderQueue = temp;
 }
 
 ivec2 Renderer::get_topleft(s32 x, s32 y, s32 w, s32 h, DrawOrigin origin)
