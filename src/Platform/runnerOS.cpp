@@ -1506,6 +1506,84 @@ void platform_update_tile_layer_texture(Texture *texture, v3 *data, u32 w, u32 h
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+void platform_load_palette(const char *fname, void *output, int s = 16)
+{
+    FILE *file = fopen(fname, "r");
+    if (file != NULL)
+    {
+        char id1[9];
+        char id2[5];
+        char colorCountStr[8];
+
+        fscanf(file, "%s9", id1);
+        fscanf(file, "%s5", id2);
+        fscanf(file, "%s8", colorCountStr);
+
+        int colorCount = atoi(colorCountStr);
+        colorCount = std::min(s, colorCount);
+
+        char r[4];
+        char g[4];
+        char b[4];
+
+        for (int i = 0; i < colorCount; i++)
+        {
+            fscanf(file, "%s4", r);
+            fscanf(file, "%s4", g);
+            fscanf(file, "%s4", b);
+
+            //gamma correct
+            u8 r_gamma, g_gamma, b_gamma;
+            r_gamma = std::pow((atoi(r) / 255.f), 2.2) * 255.f;
+            g_gamma = std::pow((atoi(g) / 255.f), 2.2) * 255.f;
+            b_gamma = std::pow((atoi(b) / 255.f), 2.2) * 255.f;
+
+            u8 r5, g6, b5;
+            r5 = (r_gamma >> 3);
+            g6 = (g_gamma >> 2);
+            b5 = (b_gamma >> 3);
+
+            u8 *data = (u8*)output + i*2;
+
+            u8 hi, lo;
+            hi = (g6 >> 3) + (r5 << 3);
+            lo = (g6 << 5) + b5;
+
+            data[0] = lo;
+            data[1] = hi;
+
+
+        }
+
+    }
+}
+
+Texture *platform_create_palette_texture(Palette *palette)
+{
+    Texture *texture = new Texture;
+    glGenTextures(1, (GLuint*)texture);
+
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB565, 256, 1, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, palette);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    return texture;
+}
+
+void platform_update_palette_texture(Texture *texture, Palette *palette)
+{
+    glBindTexture(GL_TEXTURE_2D, texture->id);
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 256, 1, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, palette);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+
+
 Mesh platform_load_mesh(const char* fname)
 {
     Mesh mesh;

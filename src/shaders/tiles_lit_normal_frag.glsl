@@ -64,8 +64,8 @@ void main()
 
     vec4 colorIndex = texture(_indexedColor, finalTileCoord);
     vec4 baseColor = texture(_palette, colorIndex.xy);
-    float alpha = texel.z;
-    baseColor.a *= alpha;
+    float i = colorIndex.r * 255;
+    baseColor.a = sign(mod(i,16));
 
     vec3 normalColor = texture(_normalMap, finalTileCoord).rgb;
     normalColor = normalize(normalColor * 2.0 - 1.0);

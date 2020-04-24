@@ -5,7 +5,7 @@
 
 //rendering
 #define MAX_LIGHTS 16
-#define USABLE_SHADER_COUNT 5
+#define USABLE_SHADER_COUNT 7
 
 enum Shader
 {
@@ -14,16 +14,38 @@ enum Shader
     SHADER_SPRITE_LIT_NORMAL,
     SHADER_TILES_LIT,
     SHADER_TILES_LIT_NORMAL,
+    SHADER_DEBUG_COLOR,
+    SHADER_DEBUG_TEXTURED,
     SHADER_SKY,
 };
 
 enum TextureType
 {
-    TEXTURE_PALETTE = 0,
-    TEXTURE_BASE_COLOR = 1,
-    TEXTURE_NORMAL = 2,
-    TEXTURE_OTHER = 3
+    TEXTURE_BASE_COLOR,
+    TEXTURE_PALETTE,
+    TEXTURE_NDX,
+    TEXTURE_NORMAL,
+    TEXTURE_OTHER,
 };
+
+enum SubPaletteIndex
+{
+    TILESET1 = 0,
+    SUB_PALETTE_UI = 14,
+    SUB_PALETTE_PLAYER = 15
+};
+
+struct SubPalette
+{
+    //RGB565
+    u16 colors[256];
+};
+
+struct Palette
+{
+    SubPalette subPalette[16];
+};
+
 
 void *platform_get_pp_texture();
 
@@ -111,6 +133,10 @@ Texture *platform_create_empty_texture(s32 w, s32 h);
 
 Texture *platform_create_tile_layer_texture(v3 *data, u32 w, u32 h);
 void platform_update_tile_layer_texture(Texture *texture, v3 *data, u32 w, u32 h);
+
+void platform_load_palette(const char *fname, void *output, int s);
+Texture *platform_create_palette_texture(Palette *palette);
+void platform_update_palette_texture(Texture *texture, Palette *palette);
 
 Mesh platform_load_mesh(const char* fname);
 void platform_calculate_tangent(Mesh *mesh);

@@ -560,7 +560,6 @@ void Resource::Loader::load_assets()
     load_texture("tilesets/tileset_debug_indices", false);
     load_texture("tilesets/tileset_debug_light", false);
     load_texture("tilesets/tileset_debug_normal", false);
-    load_texture("palette_01", true);
 
     load_sound("sfx_jump1");
     load_sound("sfx_jump2");

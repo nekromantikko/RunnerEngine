@@ -45,6 +45,8 @@ void main()
     vec4 colorIndex = texture(_indexedColor, texCoord_v);
     vec4 baseColor = texture(_palette, colorIndex.xy);
     vec4 tintedColor = baseColor * _color;
+    float i = colorIndex.r * 255;
+    tintedColor.a = sign(mod(i,16));
 
     vec3 diffuseSum = vec3(0.0);
 

@@ -28,6 +28,9 @@ namespace Renderer
     fvec2 camPos;
     fvec2 prevCamPos;
     VertexArrayHandle *rectangle;
+
+    Palette palette;
+    Texture *paletteTexture;
 }
 
 void Renderer::init()
@@ -67,10 +70,14 @@ void Renderer::init()
 
     frontRenderQueue = renderQueue;
     backRenderQueue = renderQueue + 1;
+
+    platform_load_palette("res/palettes/palette01.pal", &palette, 256);
+    paletteTexture = platform_create_palette_texture(&palette);
 }
 void Renderer::deinit()
 {
     platform_delete_vertex_array(rectangle);
+    platform_delete_texture(paletteTexture);
 }
 
 void Renderer::swap_queues()
@@ -334,9 +341,7 @@ void Renderer::draw_tiles(r64 a, v3 *ambientColor)
 
     platform_use_shader(SHADER_TILES_LIT_NORMAL);
 
-    Texture *palette = Resource::get_texture("palette_01");
-
-    platform_shader_set_texture("_palette", palette, TEXTURE_PALETTE);
+    platform_shader_set_texture("_palette", paletteTexture, TEXTURE_PALETTE);
 
     platform_set_ambient_color(ambientColor);
     for (TileCall &call : tileBuffer)
@@ -344,7 +349,7 @@ void Renderer::draw_tiles(r64 a, v3 *ambientColor)
         v2 c = Lerp(call.b, a, call.a);
         v3 pos = {c.x, c.y, call.z};
 
-        platform_shader_set_texture("_indexedColor", call.texture, TEXTURE_BASE_COLOR);
+        platform_shader_set_texture("_indexedColor", call.texture, TEXTURE_NDX);
         platform_shader_set_texture("_normalMap", call.normal, TEXTURE_NORMAL);
         platform_shader_set_texture("_tileLayout", call.layout, TEXTURE_OTHER);
         platform_shader_set_vector("_position", pos);
@@ -376,9 +381,7 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
     platform_bind_vao(rectangle);
     platform_set_projection();
 
-    Texture *palette = Resource::get_texture("palette_01");
-
-    platform_shader_set_texture("_palette", palette, TEXTURE_PALETTE);
+    platform_shader_set_texture("_palette", paletteTexture, TEXTURE_PALETTE);
 
     for (SpriteCall &call : spriteBuffer)
     {
@@ -396,7 +399,7 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
         if (!normal)
             normal = Resource::no_normal();
 
-        platform_shader_set_texture("_indexedColor", tex, TEXTURE_BASE_COLOR);
+        platform_shader_set_texture("_indexedColor", tex, TEXTURE_NDX);
         platform_shader_set_vector("_clipRect", call.clipRect);
         platform_shader_set_vector("_offset", call.offset);
         platform_shader_set_vector("_flip", call.flip);
@@ -459,9 +462,7 @@ void Renderer::draw_ui(r64 a)
     platform_bind_vao(rectangle);
     platform_set_projection();
 
-    Texture *palette = Resource::get_texture("palette_01");
-
-    platform_shader_set_texture("_palette", palette, TEXTURE_PALETTE);
+    platform_shader_set_texture("_palette", paletteTexture, TEXTURE_PALETTE);
 
     for (UICall &call : uiBuffer)
     {
