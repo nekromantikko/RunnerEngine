@@ -151,7 +151,7 @@ GameState *MainMenu::update()
         if (menuResult == 0)
         {
             //nextState = new GamePlay();
-            CurrentLevel::set_fname("res/levels/bigmap.rlvl");
+            CurrentLevel::set_fname("res/levels/dev_room.tmx");
             nextState = new LoadingScreen(LOAD_LEVEL);
         }
 
@@ -387,13 +387,13 @@ GameState *LoadingScreen::update()
         case RELOAD_LEVEL:
             {
                 nextState = new GamePlay(UNLOAD_LEVEL);
-                TileManager::create_layer_textures();
+                //TileManager::create_layer_textures();
                 break;
             }
         case UNLOAD_LEVEL:
             {
                 nextState = new MainMenu(0);
-                //CurrentLevel::clear_entities_and_tiles();
+                CurrentLevel::clear_entities_and_tiles();
                 break;
             }
         default:

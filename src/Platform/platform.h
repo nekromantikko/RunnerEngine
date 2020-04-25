@@ -140,14 +140,18 @@ void platform_controller_rumble(r32 strength, u32 lengthInMs);
 
 //resource loading
 Texture *platform_load_texture(const char* fname, bool srgb = true);
-void platform_load_image(const char* fname, rImage *image);
-void platform_delete_texture(Texture* texture);
+rImage platform_load_image(const char* fname);
+void platform_delete_image(rImage image);
+void platform_delete_texture(Texture* texture, int texCount = 1);
 void platform_get_texture_width(Texture *texture, u32 *w);
 void platform_get_texture_height(Texture *texture, u32 *h);
 Texture *platform_create_empty_texture(s32 w, s32 h);
 
 Texture *platform_create_tile_layer_texture(v3 *data, u32 w, u32 h);
 void platform_update_tile_layer_texture(Texture *texture, v3 *data, u32 w, u32 h);
+
+Texture *platform_create_tile_index_map(int texCount, u32 w, u32 h);
+void platform_populate_tile_index_map(Texture *texture, int texCount, u32 w, u32 h, u8 *pixels);
 
 void platform_load_palette(const char *fname, void *output, int s);
 Texture *platform_create_palette_texture(Palette *palette);

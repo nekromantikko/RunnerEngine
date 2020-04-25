@@ -3,8 +3,8 @@
 #include <cmath>
 #include <sstream>
 #include "level.h"
+#include "world.h"
 #include "resource.h"
-#include "tiles.h"
 #include <sstream>
 #include "Platform/platform.h"
 #include "renderer.h"
@@ -138,7 +138,7 @@ void Level::update()
         {
             state = LEVEL_ENDED;
 
-            TileManager::clear_layers();
+            World::clear_index_maps();
             EntityManager::deinit_all();
             platform_stop_world_sounds();
             unload();
@@ -152,7 +152,7 @@ void Level::update()
     }
 
     EntityManager::update_entities(physicsUpdate);
-    TileManager::update();
+    World::update();
     draw_hud();
 }
 
@@ -196,6 +196,9 @@ void Level::draw_hud()
 
 bool Level::load_level(std::string fname)
 {
+    std::cout << "Trying to load level " << fname << std::endl;
+    return World::load_map(fname.c_str());
+    /*
     bool result = false;
 
     std::ifstream levelIn(fname, std::ios::binary);
@@ -335,7 +338,7 @@ bool Level::load_level(std::string fname)
     }
     else state = LEVEL_ERROR;
 
-    return result;
+    return result;*/
 }
 
 namespace CurrentLevel
@@ -376,7 +379,8 @@ bool CurrentLevel::level_loaded()
 }
 void CurrentLevel::clear_entities_and_tiles()
 {
-    TileManager::clear_layers();
+    //TileManager::clear_layers();
+    World::unload_map();
     EntityManager::deinit_all();
     platform_stop_world_sounds();
     //SoundManager::clear_queue();

@@ -15,8 +15,8 @@ enum CollisionFlag
 
 struct TileHit
 {
-    bool hit;
-    Tile *tile;
+    bool32 hit;
+    Tile tile;
     fvec2 pos;
 };
 
@@ -48,7 +48,7 @@ namespace Collision
     //tile type 0 (empty) could be any type? since no collision can happen with empty tiles anyway
     TileHit box_tile_collision(Rectangle2 rect, TileType type);
     //returns all tiles
-    std::vector<TileHit> box_tile_collision_multiple(Rectangle2 rect, TileType type);
+    TileHit *box_tile_collision_multiple(Rectangle2 rect, TileType type, int &count);
 
     bool separating_axis_rects(fvec2 aa, fvec2 ab, fvec2 ac, fvec2 ad, fvec2 ba, fvec2 bb, fvec2 bc, fvec2 bd);
     bool separating_axis_rect_circle(fvec2 aa, fvec2 ab, fvec2 ac, fvec2 ad, fvec2 cPos, u32 radius);
@@ -57,6 +57,7 @@ namespace Collision
     bool circle_point_collision(v2 cPos, u32 radius, fvec2 pPos);
 
     bool rect_AABB_collision(Rectangle2 rect, AABBCollider *aabb2, Transform b);
+    bool rect_rect_collision(Rectangle2 a, Rectangle2 b);
     bool rect_SATrect_collision(Rectangle2 rect1, SATRectCollider *rect2, Transform b);
     bool rect_circle_collision(Rectangle2 rect, CircleCollider *circle, Transform b);
 
@@ -91,7 +92,7 @@ namespace Collision
     std::vector<EntityHit> rect_entity_collision_multiple(Rectangle2 rect, CollisionFlag flags);
 
     std::vector<fvec2> bresenham_line(fvec2 a, fvec2 b);
-    bool tile_point_free(Tile *tile, fvec2 relativePos);
+    bool tile_point_free(Tile tile, fvec2 relativePos);
     bool collision_tile_mask(fvec2 position);
     RaycastHit cast_ray(fvec2 position, v2 direction, r32 lengthInPx);
 }

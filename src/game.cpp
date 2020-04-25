@@ -32,7 +32,6 @@ Game::~Game()
     Macro::save_current_macro("testmacro.rmac");
     platform_stop_music();
     Renderer::deinit();
-    TileManager::clear_layers();
 
     if (state)
         delete state;

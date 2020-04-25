@@ -1396,6 +1396,36 @@ Texture *platform_load_indexed_sprite_sheet(const char* fname)
     return texture;
 }
 
+rImage platform_load_image(const char* fname)
+{
+    //generate and set current image ID
+    ILuint imgID;
+    ilGenImages(1, &imgID);
+    ilBindImage(imgID);
+
+    //load
+    ilLoadImage(fname);
+    ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
+
+    rImage temp;
+    temp.width = ilGetInteger(IL_IMAGE_WIDTH);
+    temp.height = ilGetInteger(IL_IMAGE_HEIGHT);
+
+    s32 imageSize = temp.width * temp.height * 4;
+    temp.pixels = new u8[imageSize];
+
+    memcpy(temp.pixels, ilGetData(), imageSize);
+
+    //delete file from memory
+    ilDeleteImages(1, &imgID);
+
+    return temp;
+}
+void platform_delete_image(rImage image)
+{
+    delete[] image.pixels;
+}
+
 Texture *platform_load_texture(const char* fname, bool srgb)
 {
     //generate and set current image ID
@@ -1435,9 +1465,9 @@ Texture *platform_load_texture(const char* fname, bool srgb)
 
     return texture;
 }
-void platform_delete_texture(Texture *texture)
+void platform_delete_texture(Texture *texture, int texCount)
 {
-    glDeleteTextures(1, (GLuint*)texture);
+    glDeleteTextures(texCount, (GLuint*)texture);
     delete texture;
 }
 void platform_get_texture_width(Texture *texture, u32 *w)
@@ -1505,6 +1535,40 @@ void platform_update_tile_layer_texture(Texture *texture, v3 *data, u32 w, u32 h
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, GL_RGB, GL_FLOAT, data);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+
+Texture *platform_create_tile_index_map(int texCount, u32 w, u32 h)
+{
+    Texture *texture = new Texture;
+    glGenTextures(texCount, (GLuint*)texture);
+    texture->w = w;
+    texture->h = h;
+
+    for (int i = 0; i < texCount; i++)
+    {
+        glBindTexture(GL_TEXTURE_2D, texture->id + i);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    }
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    return texture;
+}
+
+void platform_populate_tile_index_map(Texture *texture, int texCount, u32 w, u32 h, u8 *pixels)
+{
+    for (int i = 0; i < texCount; i++)
+    {
+        glBindTexture(GL_TEXTURE_2D, texture->id + i);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, GL_RED, GL_UNSIGNED_BYTE, pixels+i*w*h);
+    }
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 
 void platform_load_palette(const char *fname, void *output, int s = 16)
 {

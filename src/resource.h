@@ -25,7 +25,6 @@ namespace Resource
 
     Sound *get_sound(std::string handle);
     MultiSound *get_multisound(std::string handle);
-    Tileset *get_tileset(std::string handle);
     Model *get_model(std::string handle);
     Sprite *get_sprite(std::string handle);
     Texture *get_texture(std::string handle);
@@ -42,7 +41,6 @@ namespace Resource
     namespace Loader
     {
         Sound *load_sound(std::string fname);
-        bool load_tileset(const char *fname, Tileset *tileset);
         //Model *load_model(std::string fname);
         //Sprite *load_sprite(std::string fname);
         Texture *load_texture(std::string fname, bool srgb = true);

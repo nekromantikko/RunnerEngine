@@ -10,193 +10,227 @@ TileHit Collision::box_tile_collision(Rectangle2 rect, TileType type)
 {
     TileLayer *layer = World::get_main_layer();
 
-    //do stuff
-    s32 left = rect.x1 / TILE_SIZE;
-    s32 right = rect.x2 / TILE_SIZE;
-    s32 top = rect.y1 / TILE_SIZE;
-    s32 bottom = rect.y2 / TILE_SIZE;
+    TileHit result;
+    result.hit = false;
 
-    if (left < 0)
-    {
-        if (right < 0)
-            continue;
-        else left = 0;
-    }
-    if (right > layer.width)
-    {
-        if (left > layer.width)
-            continue;
-        else right = layer.width;
-    }
-    if (top < 0)
-    {
-        if (bottom < 0)
-            continue;
-        else top = 0;
-    }
-    if (bottom > layer.height)
-    {
-        if (top > layer.height)
-            continue;
-        else bottom = layer.height;
-    }
-    /////////////////////////////////////////////////////
+    Rectangle2 boxInTileSpace = rect;
+    boxInTileSpace.x1 /= TILE_SIZE;
+    boxInTileSpace.x2 /= TILE_SIZE;
+    boxInTileSpace.y1 /= TILE_SIZE;
+    boxInTileSpace.y2 /= TILE_SIZE;
 
-    //calculate tile indices for the tiles inside the box
-    s32 layerWidth = layer.width;
-    //upper left
-    u32 upperLeft = left + (top * layerWidth);
-    u32 upperRight  = right + (top * layerWidth);
-    u32 lowerLeft = left + (bottom * layerWidth);
-    //u32 lowerRight  = right + (bottom * layerWidth);
-
-    u32 widthTiles = upperRight - (upperLeft - 1);
-    for (u32 i = upperLeft; i != lowerLeft; i += layerWidth)
+    //find out how many chunks the box is intersecting with and store their indices
+    u32 chunkCount = layer->chunkCount;
+    u32 overlappingChunkCount = 0;
+    u32 overlappingChunks[4];
+    for (u32 i = 0; i < chunkCount, overlappingChunkCount < 4; i++)
     {
-        for (u32 j = 0; j < widthTiles; j++)
+        fvec2 chunkOffset = layer->chunkOffset[i];
+        Rectangle2 layerRect = {chunkOffset.x, chunkOffset.x + TILE_CHUNK_WIDTH, chunkOffset.y, chunkOffset.y + TILE_CHUNK_HEIGHT};
+
+        if (rect_rect_collision(boxInTileSpace, layerRect))
         {
-            u32 tileIndex = 0;
-            u32 currentTset = 0;
+            overlappingChunks[overlappingChunkCount] = i;
+            overlappingChunkCount++;
+        }
 
-            for (TileLayerData &data : layer.data)
+    }
+
+    if (overlappingChunkCount != 0)
+    {
+        Tileset *tileset = World::get_tileset();
+
+        for (u32 i = 0; i < overlappingChunkCount, result.hit == false; i++)
+        {
+            fvec2 chunkOffset = layer->chunkOffset[overlappingChunks[i]];
+
+            //transform into chunk space and clip box to fit inside chunk
+            s32 left = boxInTileSpace.x1 - chunkOffset.x;
+            s32 right = boxInTileSpace.x2 - chunkOffset.x;
+            s32 top = boxInTileSpace.y1 - chunkOffset.y;
+            s32 bottom = boxInTileSpace.y2 - chunkOffset.y;
+
+            if (left < 0)
             {
-                if (data.tiles.at(i+j))
-                {
-                    tileIndex = data.tileset->get_tile(*data.tiles.at(i + j))->index;
-                    break;
-                }
-                currentTset++;
+                if (right < 0)
+                    continue;
+                else left = 0;
+            }
+            if (right > TILE_CHUNK_WIDTH)
+            {
+                if (left > TILE_CHUNK_WIDTH)
+                    continue;
+                else right = TILE_CHUNK_WIDTH;
+            }
+            if (top < 0)
+            {
+                if (bottom < 0)
+                    continue;
+                else top = 0;
+            }
+            if (bottom > TILE_CHUNK_HEIGHT)
+            {
+                if (top > TILE_CHUNK_HEIGHT)
+                    continue;
+                else bottom = TILE_CHUNK_HEIGHT;
             }
 
-            if (currentTset >= layer.data.size())
-                continue;
+            //calculate tile indices for the tiles inside the box
+            u32 upperLeft = left + (top * TILE_CHUNK_WIDTH);
+            u32 upperRight  = right + (top * TILE_CHUNK_WIDTH);
+            u32 lowerLeft = left + (bottom * TILE_CHUNK_WIDTH);
 
-            Tileset *tileset = layer.data.at(currentTset).tileset;
+            u32 widthTiles = upperRight - (upperLeft - 1);
 
-            //tile information
-            Tile *tile = tileset->get_tile(tileIndex);
-            s32 xTile = ((i + j) % layerWidth) * TILE_SIZE;
-            s32 yTile = ((i + j) / layerWidth) * TILE_SIZE;
-
-            if ((type != EMPTY && type != tile->type) || tile->type == EMPTY)
-                continue;
-            else
+            //loop through all the tiles within the rectangle and try to find a hit
+            for (u32 t1 = upperLeft; t1 != lowerLeft, result.hit == false; t1 += TILE_CHUNK_WIDTH)
             {
-                TileHit hit;
-                hit.tile = tile;
-                hit.pos = {xTile, yTile};
-                hit.hit = true;
+                for (u32 t2 = 0; t2 < widthTiles, result.hit == false; t2++)
+                {
+                    u32 chunkTileIndex = t1+t2;
+                    u8 tilesetTileIndex = layer->chunk[overlappingChunks[i]].tile[chunkTileIndex];
 
-                return hit;
+                    const Tile tile = tileset->tiles[tilesetTileIndex];
+
+                    if ((type != TILE_ANY && type != tile.type) || tile.type == TILE_EMPTY)
+                        continue;
+
+                    //hit found:
+
+                    s32 xTile = (chunkTileIndex % TILE_CHUNK_WIDTH + chunkOffset.x) * TILE_SIZE;
+                    s32 yTile = (chunkTileIndex / TILE_CHUNK_WIDTH + chunkOffset.y) * TILE_SIZE;
+
+                    result.tile = tile;
+                    result.pos = {xTile, yTile};
+                    result.hit = true;
+                }
             }
 
         }
     }
 
-    TileHit hit;
-    hit.hit = false;
-    return hit;
+    return result;
 }
 
-std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, TileType type)
+TileHit *Collision::box_tile_collision_multiple(Rectangle2 rect, TileType type, int &count)
 {
-    std::vector<TileHit> tempTiles;
+    TileLayer *layer = World::get_main_layer();
 
-    TileLayer *layers = TileManager::get_layers();
-    u32 layerAmount = TileManager::get_layer_amount();
+    TileHit *result = NULL;
 
-    //loop thru layers
-    for (u32 l = 0; l < layerAmount; l++)
+    Rectangle2 boxInTileSpace = rect;
+    boxInTileSpace.x1 /= TILE_SIZE;
+    boxInTileSpace.x2 /= TILE_SIZE;
+    boxInTileSpace.y1 /= TILE_SIZE;
+    boxInTileSpace.y2 /= TILE_SIZE;
+
+    //calculate how many tiles in box
+    u32 boxWidthInTiles = std::ceil(boxInTileSpace.x2 - boxInTileSpace.x1);
+    u32 boxHeightInTiles = std::ceil(boxInTileSpace.y2 - boxInTileSpace.y1);
+    u32 tileCount = boxWidthInTiles * boxHeightInTiles;
+
+    //reserve max amount of hits there can be
+    TileHit hits[tileCount];
+    for (int i = 0; i < tileCount; i++)
+        hits[i].hit = false;
+    u32 hitCount = 0;
+
+    //find out how many chunks the box is intersecting with and store their indices
+    u32 chunkCount = layer->chunkCount;
+    u32 overlappingChunkCount = 0;
+    u32 overlappingChunks[4];
+    for (u32 i = 0; i < chunkCount, overlappingChunkCount < 4; i++)
     {
-        TileLayer &layer = layers[l];
-        //if not colliding, skip
-        if (!layer.collision)
-            continue;
+        fvec2 chunkOffset = layer->chunkOffset[i];
+        Rectangle2 layerRect = {chunkOffset.x, chunkOffset.x + TILE_CHUNK_WIDTH, chunkOffset.y, chunkOffset.y + TILE_CHUNK_HEIGHT};
 
-        //do stuff
-        s32 left = rect.x1 / TILE_SIZE;
-        s32 right = rect.x2 / TILE_SIZE;
-        s32 top = rect.y1 / TILE_SIZE;
-        s32 bottom = rect.y2 / TILE_SIZE;
+        if (rect_rect_collision(boxInTileSpace, layerRect))
+        {
+            overlappingChunks[overlappingChunkCount] = i;
+            overlappingChunkCount++;
+        }
 
-        if (left < 0)
-        {
-            if (right < 0)
-                continue;
-            else left = 0;
-        }
-        if (right > layer.width)
-        {
-            if (left > layer.width)
-                continue;
-            else right = layer.width;
-        }
-        if (top < 0)
-        {
-            if (bottom < 0)
-                continue;
-            else top = 0;
-        }
-        if (bottom > layer.height)
-        {
-            if (top > layer.height)
-                continue;
-            else bottom = layer.height;
-        }
-        /////////////////////////////////////////////////////
+    }
 
-        //calculate tile indices for the tiles inside the box
-        s32 layerWidth = layer.width;
-        //upper left
-        u32 upperLeft = left + (top * layerWidth);
-        u32 upperRight  = right + (top * layerWidth);
-        u32 lowerLeft = left + (bottom * layerWidth);
-        //u32 lowerRight  = right + (bottom * layerWidth);
+    if (overlappingChunkCount != 0)
+    {
+        Tileset *tileset = World::get_tileset();
 
-        u32 widthTiles = upperRight - (upperLeft - 1);
-        for (u32 i = upperLeft; i != lowerLeft; i += layerWidth)
+        for (u32 i = 0; i < overlappingChunkCount; i++)
         {
-            for (u32 j = 0; j < widthTiles; j++)
+            fvec2 chunkOffset = layer->chunkOffset[overlappingChunks[i]];
+
+            //transform into chunk space and clip box to fit inside chunk
+            s32 left = boxInTileSpace.x1 - chunkOffset.x;
+            s32 right = boxInTileSpace.x2 - chunkOffset.x;
+            s32 top = boxInTileSpace.y1 - chunkOffset.y;
+            s32 bottom = boxInTileSpace.y2 - chunkOffset.y;
+
+            if (left < 0)
             {
-                u32 tileIndex = 0;
-                u32 currentTset = 0;
-
-                for (TileLayerData &data : layer.data)
-                {
-                    if (data.tiles.at(i+j))
-                    {
-                        tileIndex = data.tileset->get_tile(*data.tiles.at(i + j))->index;
-                        break;
-                    }
-                    currentTset++;
-                }
-
-                if (currentTset >= layer.data.size())
+                if (right < 0)
                     continue;
-
-                Tileset *tileset = layer.data.at(currentTset).tileset;
-
-                //tile information
-                Tile *tile = tileset->get_tile(tileIndex);
-                s32 xTile = ((i + j) % layerWidth) * TILE_SIZE;
-                s32 yTile = ((i + j) / layerWidth) * TILE_SIZE;
-
-                if ((type != EMPTY && type != tile->type) || tile->type == EMPTY)
-                    continue;
-                else
-                {
-                    TileHit hit;
-                    hit.tile = tile;
-                    hit.pos = {xTile, yTile};
-                    hit.hit = true;
-
-                    tempTiles.push_back(hit);
-                }
-
+                else left = 0;
             }
+            if (right > TILE_CHUNK_WIDTH)
+            {
+                if (left > TILE_CHUNK_WIDTH)
+                    continue;
+                else right = TILE_CHUNK_WIDTH;
+            }
+            if (top < 0)
+            {
+                if (bottom < 0)
+                    continue;
+                else top = 0;
+            }
+            if (bottom > TILE_CHUNK_HEIGHT)
+            {
+                if (top > TILE_CHUNK_HEIGHT)
+                    continue;
+                else bottom = TILE_CHUNK_HEIGHT;
+            }
+
+            //calculate tile indices for the tiles inside the box
+            u32 upperLeft = left + (top * TILE_CHUNK_WIDTH);
+            u32 upperRight  = right + (top * TILE_CHUNK_WIDTH);
+            u32 lowerLeft = left + (bottom * TILE_CHUNK_WIDTH);
+
+            u32 widthTiles = upperRight - (upperLeft - 1);
+
+            //loop through all the tiles within the rectangle and try to find a hit
+            for (u32 t1 = upperLeft; t1 != lowerLeft; t1 += TILE_CHUNK_WIDTH)
+            {
+                for (u32 t2 = 0; t2 < widthTiles; t2++)
+                {
+                    u32 chunkTileIndex = t1+t2;
+                    u8 tilesetTileIndex = layer->chunk[overlappingChunks[i]].tile[chunkTileIndex];
+
+                    const Tile tile = tileset->tiles[tilesetTileIndex];
+
+                    if ((type != TILE_ANY && type != tile.type) || tile.type == TILE_EMPTY)
+                        continue;
+
+                    //hit found:
+
+                    s32 xTile = (chunkTileIndex % TILE_CHUNK_WIDTH + chunkOffset.x) * TILE_SIZE;
+                    s32 yTile = (chunkTileIndex / TILE_CHUNK_WIDTH + chunkOffset.y) * TILE_SIZE;
+
+                    hits[hitCount].tile = tile;
+                    hits[hitCount].pos = {xTile, yTile};
+                    hits[hitCount].hit = true;
+                    hitCount++;
+
+                    if(result == NULL)
+                        result = hits;
+
+                }
+            }
+
         }
     }
-    return tempTiles;
+    count = hitCount;
+    return result;
 }
 
 /////////////////////////////////////////////
@@ -428,6 +462,12 @@ bool Collision::rect_AABB_collision(Rectangle2 rect, AABBCollider *aabb2, Transf
     Renderer::add_rect_to_buffer({ax1, ay1}, {ax2, ay1}, {ax2, ay2}, {ax1, ay2}, color, &aabb1->mesh, Transform());
     Renderer::add_rect_to_buffer({bx1, by1}, {bx2, by1}, {bx2, by2}, {bx1, by2}, color, &aabb2->mesh, Transform());*/
 
+    return result;
+}
+bool Collision::rect_rect_collision(Rectangle2 a, Rectangle2 b)
+{
+    bool result;
+    result = ((a.x1 < b.x2 && b.x1 < a.x2) && (a.y1 < b.y2 && b.y1 < a.y2));
     return result;
 }
 bool Collision::rect_SATrect_collision(Rectangle2 rect1, SATRectCollider *rect2, Transform b)
@@ -994,30 +1034,30 @@ std::vector<fvec2> Collision::bresenham_line(fvec2 a, fvec2 b)
     return result;
 }
 
-bool Collision::tile_point_free(Tile *tile, fvec2 relativePos)
+bool Collision::tile_point_free(Tile tile, fvec2 relativePos)
 {
     if (relativePos.x >= TILE_SIZE || relativePos.y >= TILE_SIZE)
         throw std::runtime_error("tile collision weirdness");
 
-    u32 height = tile->mask[(u32)relativePos.x];
+    u32 height = tile.height[relativePos.x];
     bool result;
 
-    switch (tile->type)
+    switch (tile.type)
     {
-    case EMPTY:
+    case TILE_EMPTY:
         result = true;
         break;
-    case SOLID:
-    case LEDGE:
+    case TILE_SOLID:
+    case TILE_LEDGE:
         result = false;
         break;
-    case PASS_THROUGH:
-    case JUMP_THROUGH:
+    case TILE_PASS_THROUGH:
+    case TILE_JUMP_THROUGH:
         if (relativePos.y < (TILE_SIZE - height))
             result = true;
         else result = false;
         break;
-    case PASS_THROUGH_FLIP:
+    case TILE_PASS_THROUGH_FLIP:
         if (relativePos.y < height)
             result = false;
         else result = true;
@@ -1033,51 +1073,40 @@ bool Collision::tile_point_free(Tile *tile, fvec2 relativePos)
 bool Collision::collision_tile_mask(fvec2 positionInPx)
 {
     bool result = false;
-    u32 tilex = (u32)positionInPx.x / TILE_SIZE;
-    u32 tiley = (u32)positionInPx.y / TILE_SIZE;
-    u32 relativex = positionInPx.x - (tilex * TILE_SIZE);
-    u32 relativey = positionInPx.y - (tiley * TILE_SIZE);
 
-    TileLayer *layers = TileManager::get_layers();
-    u32 layerAmount = TileManager::get_layer_amount();
+    TileLayer *layer = World::get_main_layer();
+    Tileset *tileset = World::get_tileset();
 
-    //loop thru layers
-    for (u32 l = 0; l < layerAmount; l++)
+    u32 chunkCount = layer->chunkCount;
+    for (u32 i = 0; i < chunkCount; i++)
     {
-        TileLayer &layer = layers[l];
-        //if not colliding, skip
-        if (!layer.collision)
+        ivec2 chunkOffset = layer->chunkOffset[i];
+        //position in chunk space
+        f32 x = positionInPx.x - chunkOffset.x;
+        f32 y = positionInPx.y - chunkOffset.y;
+        u32 floor_x = std::floor((r32)x);
+        u32 floor_y = std::floor((r32)y);
+        f32 mod_x = x - floor_x;
+        f32 mod_y = y - floor_y;
+        //offsets to tile
+        u32 tileSpace_x = mod_x * TILE_SIZE;
+        u32 tileSpace_y = mod_y * TILE_SIZE;
+
+        u32 tileIndex = (TILE_CHUNK_WIDTH * floor_y) + floor_x;
+        if (tileIndex >= TILE_CHUNK_WIDTH * TILE_CHUNK_HEIGHT)
             continue;
 
-        u32 layerWidthInTiles = layer.width;
+        u32 indexToTileset = layer->chunk[i].tile[tileIndex];
 
-        u32 tileIndex = (layer.width * tiley) + tilex;
-        if (tileIndex >= layer.tileAmount)
-            continue;
-
-        u32 tileGid = 0;
-        u32 currentTset = 0;
-
-        for (TileLayerData &data : layer.data)
-        {
-            if (data.tiles.at(tileIndex))
-            {
-                tileGid = *data.tiles.at(tileIndex);
-                break;
-            }
-            currentTset++;
-        }
-
-        if (currentTset >= layer.data.size())
-            continue;
-
-        Tileset *tileset = layer.data.at(currentTset).tileset;
-
-        Tile *tile = tileset->get_tile(tileGid);
-        bool tilePointFree = tile_point_free(tile, {relativex, relativey});
+        const Tile tile = tileset->tiles[indexToTileset];
+        bool tilePointFree = tile_point_free(tile, {tileSpace_x, tileSpace_y});
         if (!tilePointFree)
+        {
             result = true;
+            break;
+        }
     }
+
     return result;
 }
 

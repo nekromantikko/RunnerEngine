@@ -176,7 +176,9 @@ void Player::handle_collisions(AABBCollider *hitbox)
                         hitbox->y1 + xform.position.y - TILE_SIZE * 2,
                         hitbox->y2 + xform.position.y + TILE_SIZE *2};
 
-    std::vector<TileHit> tiles = Collision::box_tile_collision_multiple(rect, ANY);
+    int hitCount;
+    TileHit *hits = Collision::box_tile_collision_multiple(rect, TILE_ANY, hitCount);
+    std::vector<TileHit> tiles(hits, hits + hitCount);
 
     for (s32 i = 0; i < iterations; i++)
         for (TileHit &tile : tiles)
@@ -206,8 +208,8 @@ void Player::handle_collisions(AABBCollider *hitbox)
 void Player::handle_h_collisions(AABBCollider *hitbox,  TileHit &tile)
 {
     //only collide with solids
-    TileType tType = (TileType)tile.tile->type;
-    if (tType != SOLID && tType != LEDGE)
+    TileType tType = (TileType)tile.tile.type;
+    if (tType != TILE_SOLID && tType != TILE_LEDGE)
         return;
 
     Transform &xform = parent->transform;
@@ -233,7 +235,7 @@ void Player::handle_h_collisions(AABBCollider *hitbox,  TileHit &tile)
             tempSpeedTimer = 60;
         }
 
-        if (tType == LEDGE && input.xAxis > 0 && grabTimer.is_stopped())
+        if (tType == TILE_LEDGE && input.xAxis > 0 && grabTimer.is_stopped())
         {
             //collision.walljump = false;
             if (aTop >= bTop && vSpeed > 0 && vSpeed >= aTop - bTop)
@@ -260,7 +262,7 @@ void Player::handle_h_collisions(AABBCollider *hitbox,  TileHit &tile)
             tempSpeedTimer = 60;
         }
 
-        if (tType == LEDGE && input.xAxis < 0 && grabTimer.is_stopped())
+        if (tType == TILE_LEDGE && input.xAxis < 0 && grabTimer.is_stopped())
         {
             //collision.walljump = false;
             if (aTop >= bTop && vSpeed > 0 && vSpeed >= aTop - bTop)
@@ -309,7 +311,7 @@ void Player::handle_h_collisions(AABBCollider *hitbox,  TileHit &tile)
 
 void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
 {
-    TileType tType = (TileType)tile.tile->type;
+    TileType tType = (TileType)tile.tile.type;
 
     Transform &xform = parent->transform;
 
@@ -326,7 +328,7 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
     bool top = false;
     bool bottom = false;
 
-    if (tType != SOLID && tType != LEDGE)
+    if (tType != TILE_SOLID && tType != TILE_LEDGE)
     {
         f32 xPos = xform.position.x;
         aLeft = xPos - 1;
@@ -336,9 +338,9 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
         if (tileOffset < 0 || tileOffset >= TILE_SIZE)
             return;
 
-        f32 tileHeight = TileManager::get_tile_height(tile.tile, tileOffset);
+        f32 tileHeight = tile.tile.height[tileOffset];
         //std::cout << tileHeight << std::endl;
-        if (tType == PASS_THROUGH_FLIP)
+        if (tType == TILE_PASS_THROUGH_FLIP)
             bBottom = bTop + tileHeight;
         else bTop = bBottom - tileHeight;
 
@@ -356,12 +358,12 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
 
     //register top collision with the top of the (standing) hitbox
     f32 yPos = xform.position.y;
-    if (yPos - 28 >= bTop && yPos - 28 < bBottom && tType != JUMP_THROUGH)
+    if (yPos - 28 >= bTop && yPos - 28 < bBottom && tType != TILE_JUMP_THROUGH)
         top = true;
 
     if (aBottom > bTopCheck && aBottom - vSpeed <= bBottom)
     {
-        if (tType  == JUMP_THROUGH && vSpeed < aBottom - bTop)
+        if (tType  == TILE_JUMP_THROUGH && vSpeed < aBottom - bTop)
             return;
         bottom = true;
     }
@@ -393,7 +395,7 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
 
         if (vSpeed > 0)
             vSpeed = 0;
-        collision.bottomTileAngle = slope_to_angle(tile.tile->slope);
+        collision.bottomTileAngle = slope_to_angle(tile.tile.slope);
         collision.bottom = true;
     }
     //if from the top |---->>>|
@@ -406,7 +408,7 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
 
         if (vSpeed < 0)
             vSpeed = 0;
-        collision.topTileAngle = slope_to_angle(tile.tile->slope);
+        collision.topTileAngle = slope_to_angle(tile.tile.slope);
         collision.top = true;
     }
 
