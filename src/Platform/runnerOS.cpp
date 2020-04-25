@@ -448,7 +448,7 @@ void init_renderer()
 
     glGenTextures(1, &postProcessTexture);
     glBindTexture(GL_TEXTURE_2D, postProcessTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, runnerScreenWidth, runnerScreenHeight + runnerScreenMarginal, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT + SCREEN_MARGINAL, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -463,7 +463,7 @@ void init_renderer()
 
     glGenTextures(1, &reflectTexture);
     glBindTexture(GL_TEXTURE_2D, reflectTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, runnerScreenWidth, runnerScreenHeight + runnerScreenMarginal, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT + SCREEN_MARGINAL, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -479,7 +479,7 @@ void init_renderer()
 
     glGenTextures(1, &glowTexture);
     glBindTexture(GL_TEXTURE_2D, glowTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, runnerScreenWidth, runnerScreenHeight  + runnerScreenMarginal, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT  + SCREEN_MARGINAL, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -493,7 +493,7 @@ void init_renderer()
     {
         glGenTextures(1, blurTexture + i);
         glBindTexture(GL_TEXTURE_2D, blurTexture[i]);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, runnerScreenWidth / pow(2, i), (runnerScreenHeight + runnerScreenMarginal) / pow(2, i), 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH / pow(2, i), (SCREEN_HEIGHT + SCREEN_MARGINAL) / pow(2, i), 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -509,7 +509,7 @@ void init_renderer()
 
     glGenTextures(1, &screenshotTexture);
     glBindTexture(GL_TEXTURE_2D, screenshotTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, runnerScreenWidth, runnerScreenHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -522,8 +522,8 @@ void init_renderer()
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     screenshot.id = screenshotTexture;
-    screenshot.w = runnerScreenWidth;
-    screenshot.h = runnerScreenHeight;
+    screenshot.w = SCREEN_WIDTH;
+    screenshot.h = SCREEN_HEIGHT;
 
     //////////////////////////////////////////////////////////////////////////
 
@@ -569,7 +569,7 @@ void init_renderer()
     glEnable(GL_CULL_FACE);
 
     //projectionmatrix
-    orthoMatrix = glm::mat4(glm::ortho(0.f, (r32)runnerScreenWidth, (r32)runnerScreenHeight, 0.f, -16384.f, 16384.f));
+    orthoMatrix = glm::mat4(glm::ortho(0.f, (r32)SCREEN_WIDTH, (r32)SCREEN_HEIGHT, 0.f, -16384.f, 16384.f));
 }
 
 void close_renderer()
@@ -760,7 +760,7 @@ void gl_render_generic_framebuffer()
 
 void platform_render_background(v3 *colors)
 {
-    //glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
+    //glViewport(0.f, 0.f, SCREEN_WIDTH, SCREEN_HEIGHT);
     glUseProgram(backgroundShader.programID);
 
     //Set color data
@@ -774,7 +774,7 @@ void platform_render_circle_transition(v2 pos, r32 radius)
 {
     glUseProgram(circleTransitionShader.programID);
 
-    glUniform2f(circleTransitionShader.positionID, pos.x, runnerScreenHeight - pos.y);
+    glUniform2f(circleTransitionShader.positionID, pos.x, SCREEN_HEIGHT - pos.y);
     glUniform1f(circleTransitionShader.radiusID, radius);
 
     gl_render_generic_framebuffer();
@@ -855,7 +855,7 @@ void gl_render_glow_threshold()
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, postProcessTexture);
 
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
+    glViewport(0.f, 0.f, SCREEN_WIDTH, SCREEN_HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, glowFBO);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -881,8 +881,8 @@ void gl_render_gaussian_blur()
 
         glBindTexture(GL_TEXTURE_2D, glowTexture);
 
-        r32 texWidth = runnerScreenWidth / pow(2, i);
-        r32 texHeight = runnerScreenHeight /  pow(2, i);
+        r32 texWidth = SCREEN_WIDTH / pow(2, i);
+        r32 texHeight = SCREEN_HEIGHT /  pow(2, i);
         glUniform2f(gaussianBlurShader.resolutionID, texWidth, texHeight);
 
         glViewport(0.f, 0.f, texWidth, texHeight);
@@ -894,7 +894,7 @@ void gl_render_gaussian_blur()
     glUniform2f(gaussianBlurShader.blurDirectionID, 0.0, 1.0);
 
     glBindFramebuffer(GL_FRAMEBUFFER, postProcessFBO);
-    glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
+    glViewport(0.f, 0.f, SCREEN_WIDTH, SCREEN_HEIGHT);
     //set blending to additive
     glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE, GL_ONE);
 
@@ -902,8 +902,8 @@ void gl_render_gaussian_blur()
     {
         glBindTexture(GL_TEXTURE_2D, blurTexture[i]);
 
-        r32 texWidth = runnerScreenWidth / pow(2, i);
-        r32 texHeight = runnerScreenHeight /  pow(2, i);
+        r32 texWidth = SCREEN_WIDTH / pow(2, i);
+        r32 texHeight = SCREEN_HEIGHT /  pow(2, i);
         glUniform2f(gaussianBlurShader.resolutionID, texWidth, texHeight);
 
         gl_render_generic_framebuffer();
@@ -925,7 +925,7 @@ void platform_take_screenshot()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, screenshotFBO);
     glClear(GL_COLOR_BUFFER_BIT);
-    //glViewport(0.f, 0.f, runnerScreenWidth, runnerScreenHeight);
+    //glViewport(0.f, 0.f, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     glUseProgram(finalImageShader.programID);
 
@@ -1865,7 +1865,7 @@ void platform_init()
     init_SDL();
 
     //create window and opengl context
-    runnerWindow = SDL_CreateWindow("Parcool", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, runnerScreenWidth, runnerScreenHeight, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+    runnerWindow = SDL_CreateWindow("Parcool", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
     runnerGlContext = SDL_GL_CreateContext(runnerWindow);
 
     //initialize GLEW

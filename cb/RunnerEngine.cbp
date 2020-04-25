@@ -334,14 +334,6 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="../src/tiles.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/tiles.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="../src/tileset.h">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -364,6 +356,14 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/vector.h" />
+		<Unit filename="../src/world.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/world.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

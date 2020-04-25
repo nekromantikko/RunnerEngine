@@ -253,8 +253,8 @@ void Renderer::draw_mirror(Transform &a, Transform &b, s32 w, s32 h)
     call.a.scale = {w, h, 1};
     call.b = b;
     call.b.scale = {w, h, 1};
-    call.clipA = {(r32)a.position.x/runnerScreenWidth, (r32)(runnerScreenHeight - a.position.y ) /(runnerScreenHeight + runnerScreenMarginal), (r32)w/runnerScreenWidth, (r32)h/(runnerScreenHeight + runnerScreenMarginal)};
-    call.clipB = {(r32)b.position.x/runnerScreenWidth, (r32)(runnerScreenHeight - b.position.y ) /(runnerScreenHeight + runnerScreenMarginal), (r32)w/runnerScreenWidth, (r32)h/(runnerScreenHeight + runnerScreenMarginal)};
+    call.clipA = {(r32)a.position.x/SCREEN_WIDTH, (r32)(SCREEN_HEIGHT - a.position.y ) /(SCREEN_HEIGHT + SCREEN_MARGINAL), (r32)w/SCREEN_WIDTH, (r32)h/(SCREEN_HEIGHT + SCREEN_MARGINAL)};
+    call.clipB = {(r32)b.position.x/SCREEN_WIDTH, (r32)(SCREEN_HEIGHT - b.position.y ) /(SCREEN_HEIGHT + SCREEN_MARGINAL), (r32)w/SCREEN_WIDTH, (r32)h/(SCREEN_HEIGHT + SCREEN_MARGINAL)};
 
     call.priority = 0;
 
@@ -349,9 +349,9 @@ void Renderer::draw_tiles(r64 a, v3 *ambientColor)
         v2 c = Lerp(call.b, a, call.a);
         v3 pos = {c.x, c.y, call.z};
 
-        platform_shader_set_texture("_indexedColor", call.texture, TEXTURE_NDX);
+        platform_shader_set_texture("_indexedColor", call.texture, TEXTURE_COLOR_NDX);
         platform_shader_set_texture("_normalMap", call.normal, TEXTURE_NORMAL);
-        platform_shader_set_texture("_tileLayout", call.layout, TEXTURE_OTHER);
+        platform_shader_set_texture("_tileLayout", call.layout, TEXTURE_TILE_NDX);
         platform_shader_set_vector("_position", pos);
         platform_blit();
     }
@@ -399,7 +399,7 @@ void Renderer::draw_sprites(r64 a, v3 *ambientColor)
         if (!normal)
             normal = Resource::no_normal();
 
-        platform_shader_set_texture("_indexedColor", tex, TEXTURE_NDX);
+        platform_shader_set_texture("_indexedColor", tex, TEXTURE_COLOR_NDX);
         platform_shader_set_vector("_clipRect", call.clipRect);
         platform_shader_set_vector("_offset", call.offset);
         platform_shader_set_vector("_flip", call.flip);
@@ -554,14 +554,14 @@ void Renderer::add_light(Light current, Light previous)
 
 void Renderer::set_camera_position(fvec2 pos)
 {
-    camPos.x = std::round((r32)pos.x - (runnerScreenWidth / 2));
-    camPos.y = std::round((r32)pos.y - (runnerScreenHeight / 2));
+    camPos.x = std::round((r32)pos.x - (SCREEN_WIDTH / 2));
+    camPos.y = std::round((r32)pos.y - (SCREEN_HEIGHT / 2));
 
     f32 a, b, c, d;
     a = -camPos.x;
     b = -camPos.y;
-    c = (camPos.x + runnerScreenWidth) - (CurrentLevel::get_width() * runnerTileSize);
-    d = (camPos.y + runnerScreenHeight) - (CurrentLevel::get_height() * runnerTileSize);
+    c = (camPos.x + SCREEN_WIDTH) - (CurrentLevel::get_width() * TILE_SIZE);
+    d = (camPos.y + SCREEN_HEIGHT) - (CurrentLevel::get_height() * TILE_SIZE);
 
     if (a > 0)
         camPos.x += a;
@@ -575,8 +575,8 @@ void Renderer::set_camera_position(fvec2 pos)
 
     //listener
     fvec2 lisp;
-    lisp.x = camPos.x + (runnerScreenWidth / 2);
-    lisp.y = camPos.y + (runnerScreenHeight / 2);
+    lisp.x = camPos.x + (SCREEN_WIDTH / 2);
+    lisp.y = camPos.y + (SCREEN_HEIGHT / 2);
     platform_set_listener_attributes(&lisp, NULL);
 }
 

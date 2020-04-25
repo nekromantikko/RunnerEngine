@@ -5,10 +5,10 @@
 #include <vector>
 #include "units.h"
 
-constexpr u32 runnerScreenWidth = 1024;
-constexpr u32 runnerScreenHeight = 576;
-constexpr u32 runnerTileSize = 32;
-constexpr u32 runnerScreenMarginal = 128;
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 576
+#define TILE_SIZE 32
+#define SCREEN_MARGINAL 128
 
 //DEFINITIONS FOR STUFF SHARED BETWEEN THE PLATFORM LAYER AND GAME
 

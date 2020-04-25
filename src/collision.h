@@ -1,7 +1,7 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-#include "tiles.h"
+#include "tileset.h"
 
 enum CollisionFlag
 {

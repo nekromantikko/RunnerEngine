@@ -42,7 +42,7 @@ namespace Resource
     namespace Loader
     {
         Sound *load_sound(std::string fname);
-        Tileset *load_tileset(std::string fname);
+        bool load_tileset(const char *fname, Tileset *tileset);
         //Model *load_model(std::string fname);
         //Sprite *load_sprite(std::string fname);
         Texture *load_texture(std::string fname, bool srgb = true);

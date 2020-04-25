@@ -90,7 +90,7 @@ void Player::update()
 {
     TIMED_BLOCK;
 
-    if (parent->transform.position.y > (CurrentLevel::get_height() * runnerTileSize) && !dead)
+    if (parent->transform.position.y > (CurrentLevel::get_height() * TILE_SIZE) && !dead)
         die();
 
     //parent->transform.rotation.y += 0.01;
@@ -171,10 +171,10 @@ void Player::handle_collisions(AABBCollider *hitbox)
 
     Transform &xform = parent->transform;
 
-    Rectangle2 rect = {hitbox->x1 + xform.position.x - runnerTileSize * 2,
-                        hitbox->x2 + xform.position.x + runnerTileSize * 2,
-                        hitbox->y1 + xform.position.y - runnerTileSize * 2,
-                        hitbox->y2 + xform.position.y + runnerTileSize *2};
+    Rectangle2 rect = {hitbox->x1 + xform.position.x - TILE_SIZE * 2,
+                        hitbox->x2 + xform.position.x + TILE_SIZE * 2,
+                        hitbox->y1 + xform.position.y - TILE_SIZE * 2,
+                        hitbox->y2 + xform.position.y + TILE_SIZE *2};
 
     std::vector<TileHit> tiles = Collision::box_tile_collision_multiple(rect, ANY);
 
@@ -218,9 +218,9 @@ void Player::handle_h_collisions(AABBCollider *hitbox,  TileHit &tile)
     f32 aBottom = hitbox->y2 + xform.position.y;
 
     f32 bLeft = tile.pos.x;
-    f32 bRight = tile.pos.x + runnerTileSize;
+    f32 bRight = tile.pos.x + TILE_SIZE;
     f32 bTop = tile.pos.y;
-    f32 bBottom = tile.pos.y + runnerTileSize;
+    f32 bBottom = tile.pos.y + TILE_SIZE;
 
     //check if there's a solid tile one pixel left or right of the player
     if ((aRight < bRight) && (aRight + 1 > bLeft) && (aTop < bBottom) && (aBottom > bTop))
@@ -319,9 +319,9 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
     f32 aBottom = hitbox->y2 + xform.position.y;
 
     f32 bLeft = tile.pos.x;
-    f32 bRight = tile.pos.x + runnerTileSize;
+    f32 bRight = tile.pos.x + TILE_SIZE;
     f32 bTop = tile.pos.y;
-    f32 bBottom = tile.pos.y + runnerTileSize;
+    f32 bBottom = tile.pos.y + TILE_SIZE;
 
     bool top = false;
     bool bottom = false;
@@ -333,7 +333,7 @@ void Player::handle_v_collisions(AABBCollider *hitbox, TileHit &tile)
         aRight = xPos + 1;
 
         f32 tileOffset = xPos - bLeft;
-        if (tileOffset < 0 || tileOffset >= runnerTileSize)
+        if (tileOffset < 0 || tileOffset >= TILE_SIZE)
             return;
 
         f32 tileHeight = TileManager::get_tile_height(tile.tile, tileOffset);

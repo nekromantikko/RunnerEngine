@@ -60,7 +60,7 @@ struct TileInfo
 {
     u32 type;
     r32 slope;
-    u32 mask[runnerTileSize];
+    u32 mask[TILE_SIZE];
     u32 frameCount;
 };
 

@@ -6,6 +6,8 @@
 #include "file_formats.h"
 #include <fstream>
 #include <atomic>
+#include "../rapidxml/rapidxml.hpp"
+#include "../rapidxml/rapidxml_utils.hpp"
 
 namespace Resource
 {
@@ -141,30 +143,157 @@ Music *Resource::Loader::load_music(std::string fname)
     return music;
 }
 
-Tileset *Resource::Loader::load_tileset(std::string fname)
+bool Resource::Loader::load_tileset(const char* fname, Tileset *tileset)
 {
-    //process filename
-    std::stringstream file;
-    file << "res/tilesets/" << fname << ".rtil";
-    return &((*tilesets.emplace(fname, file.str()).first).second);
-}
-/*
-Model *ResourceLoader::load_model(std::string fname)
-{
-    //process filename
-    std::stringstream file;
-    file << "res/models/" << fname << ".mdl";
-    return &((*models.emplace(fname, file.str()).first).second);
+    bool result = false;
+
+    rapidxml::file<> xmlFile(in);
+    rapidxml::xml_document<> doc;
+    doc.parse<0>(xmlFile.data());
+
+    rapidxml::xml_node<> *tilesetNode = doc.first_node("tileset");
+
+    char *version;
+    version = tilesetNode->first_attribute("version")->value();
+
+    //check for correct version (to reduce headaches later if the format changes)
+    if (strcmp(version, "1.2") == 0)
+    {
+        char *name;
+        name = tilesetNode->first_attribute("name")->value();
+
+        const char* ndx, mask, normal;
+        ndx = name + "_ndx";
+        mask = name + "_mask";
+        normal = name + "_normal";
+
+        tileset->baseColor = load_texture(ndx, false);
+        tileset->normalMap = load_texture(normal, false)
+
+        //generate height masks
+        rImage = maskImage = load_image("res/textures/" + mask + ".png");
+        u32 tilesetSideLength = TILE_SIZE * 16;
+
+        if (maskImage.width == tilesetSideLength && maskImage.height == tilesetSideLength)
+        {
+            for(int i = 0; i < tilesetWidth * tilesetHeight; i++)
+            {
+                //check alpha
+                if (maskImage.pixels[(4 * i) + 3] == 0)
+                    continue;
+
+                s32 xTile = (i % tilesetSideLength) / TILE_SIZE;
+                s32 yTile = (i / tilesetSideLength) / TILE_SIZE;
+                s32 x = (i % tilesetSideLength) % TILE_SIZE;
+
+                s32 tilesPerRow = tilesetSideLength / TILE_SIZE;
+                s32 tile = yTile * tilesPerRow + xTile;
+
+                tileset->tiles[tile].height[x] += 1;
+            }
+            delete_image(maskImage);
+
+            //load tile data into memory
+            int counter = 0;
+            for (rapidxml::xml_node<> *xmlTile = tileset->first_node("tile"); xmlTile, counter < 256; xmlTile = xmlTile->next_sibling("tile"), counter++)
+            {
+                u8 tileIndex = atoi(xmlTile->first_attribute("id")->value());
+
+                //not all tiles are in the tileset, so put those in as empty tiles
+                while (tileIndex > counter)
+                {
+                    tileset->tiles[counter].slope = 0.0;
+                    tileset->tiles[counter].type = TILE_EMPTY;
+                    counter++;
+                }
+
+                char *type;
+                type = xmlTile->first_attribute("type")->value();
+
+                if (strcmp(type, "TILE_ANY") == 0
+                    || strcmp(type, "ANY") == 0
+                    || strcmp(type, "TILE_EMPTY") == 0
+                    || strcmp(type, "EMPTY") == 0)
+                {
+                    tileset->tiles[tileIndex].type = TILE_EMPTY;
+                }
+                else if (strcmp(type, "TILE_SOLID") == 0
+                    || strcmp(type, "SOLID") == 0)
+                {
+                    tileset->tiles[tileIndex].type = TILE_SOLID;
+                }
+                else if (strcmp(type, "TILE_PASS_THROUGH") == 0
+                    || strcmp(type, "PASS_THROUGH") == 0
+                    || strcmp(type, "TILE_PASS_THRU") == 0
+                    || strcmp(type, "PASS_THRU") == 0
+                    || strcmp(type, "TILE_SLOPE") == 0
+                    || strcmp(type, "SLOPE") == 0)
+                {
+                    tileset->tiles[tileIndex].type = TILE_SLOPE;
+                }
+                else if (strcmp(type, "TILE_JUMP_THROUGH") == 0
+                    || strcmp(type, "JUMP_THROUGH") == 0
+                    || strcmp(type, "TILE_JUMP_THRU") == 0
+                    || strcmp(type, "JUMP_THRU") == 0)
+                {
+                    tileset->tiles[tileIndex].type = TILE_JUMP_THRU;
+                }
+                else if (strcmp(type, "TILE_PASS_THROUGH_FLIP") == 0
+                    || strcmp(type, "PASS_THROUGH_FLIP") == 0
+                    || strcmp(type, "TILE_PASS_THRU_FLIP") == 0
+                    || strcmp(type, "PASS_THRU_FLIP") == 0
+                    || strcmp(type, "TILE_SLOPE_FLIP") == 0
+                    || strcmp(type, "SLOPE_FLIP") == 0)
+                {
+                    tileset->tiles[tileIndex].type = TILE_SLOPE_FLIP;
+                }
+                else if (strcmp(type, "TILE_LEDGE") == 0
+                    || strcmp(type, "LEDGE") == 0)
+                {
+                    tileset->tiles[tileIndex].type = TILE_LEDGE;
+                }
+
+                //loop thru properties
+                rapidxml::xml_node<> *properties = xmlTile->first_node("properties");
+                if (properties)
+                {
+                    for (rapidxml::xml_node<> *property = properties->first_node("property"); property; property = property->next_sibling("property"))
+                    {
+                        char *pname = property->first_attribute("name")->value();
+
+                        //figure out which attribute this is
+                        if (strcmp(pname, "slope") == 0)
+                        {
+                            tileset->tiles[tileIndex].slope = atof(property->first_attribute("value")->value());
+                            continue;
+                        }
+
+                        //obviously, if there are multiples, they will overwrite the previous values
+                        //also, any properties not listed here will be ignored
+                        //it's also ok if none of these are present, cause we already initialized the struct with some values
+                    }
+                }
+
+                std::cout << "Tileset " << fname << "loaded successfully!\n";
+
+            }
+        }
+        else
+        {
+            std::cout << "Tileset " << fname << " mask image is not the correct size!\nShould be "
+            << tilesetSideLength << " x " << tilesetSideLength << std::endl;
+            delete_image(maskImage);
+        }
+
+    }
+    else
+    {
+        std::cout << "Tileset " << fname << " is not the correct version\n";
+    }
+
+    return result;
 }
 
-Sprite *ResourceLoader::load_sprite(std::string fname)
-{
-    //process filename
-    std::stringstream file;
-    file << "res/sprites/" << fname << ".spr";
-    return &((*sprites.emplace(fname,file.str()).first).second);
-}
-*/
 Texture *Resource::Loader::load_texture(std::string fname, bool srgb)
 {
     //process filename
@@ -551,15 +680,6 @@ void Resource::Loader::load_assets()
     load_texture("tex_sewer_normal", false);
     load_texture("tex_switch", true);
     load_texture("loading", true);
-
-    load_texture("tilesets/tileset_city", true);
-    load_texture("tilesets/tileset_city_indices", false);
-    load_texture("tilesets/tileset_city_light", false);
-    load_texture("tilesets/tileset_city_normal", false);
-    load_texture("tilesets/tileset_debug", true);
-    load_texture("tilesets/tileset_debug_indices", false);
-    load_texture("tilesets/tileset_debug_light", false);
-    load_texture("tilesets/tileset_debug_normal", false);
 
     load_sound("sfx_jump1");
     load_sound("sfx_jump2");

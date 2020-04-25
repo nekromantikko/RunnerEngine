@@ -3,104 +3,96 @@
 #include "units.h"
 #include "entitymanager.h"
 #include "renderer.h"
+#include "world.h"
 
 
 TileHit Collision::box_tile_collision(Rectangle2 rect, TileType type)
 {
-    TileLayer *layers = TileManager::get_layers();
-    u32 layerAmount = TileManager::get_layer_amount();
+    TileLayer *layer = World::get_main_layer();
 
-    //loop thru layers
-    for (u32 l = 0; l < layerAmount; l++)
+    //do stuff
+    s32 left = rect.x1 / TILE_SIZE;
+    s32 right = rect.x2 / TILE_SIZE;
+    s32 top = rect.y1 / TILE_SIZE;
+    s32 bottom = rect.y2 / TILE_SIZE;
+
+    if (left < 0)
     {
-        TileLayer &layer = layers[l];
-        //if not colliding, skip
-        if (!layer.collision)
+        if (right < 0)
             continue;
+        else left = 0;
+    }
+    if (right > layer.width)
+    {
+        if (left > layer.width)
+            continue;
+        else right = layer.width;
+    }
+    if (top < 0)
+    {
+        if (bottom < 0)
+            continue;
+        else top = 0;
+    }
+    if (bottom > layer.height)
+    {
+        if (top > layer.height)
+            continue;
+        else bottom = layer.height;
+    }
+    /////////////////////////////////////////////////////
 
-        //do stuff
-        s32 left = rect.x1 / runnerTileSize;
-        s32 right = rect.x2 / runnerTileSize;
-        s32 top = rect.y1 / runnerTileSize;
-        s32 bottom = rect.y2 / runnerTileSize;
+    //calculate tile indices for the tiles inside the box
+    s32 layerWidth = layer.width;
+    //upper left
+    u32 upperLeft = left + (top * layerWidth);
+    u32 upperRight  = right + (top * layerWidth);
+    u32 lowerLeft = left + (bottom * layerWidth);
+    //u32 lowerRight  = right + (bottom * layerWidth);
 
-        if (left < 0)
+    u32 widthTiles = upperRight - (upperLeft - 1);
+    for (u32 i = upperLeft; i != lowerLeft; i += layerWidth)
+    {
+        for (u32 j = 0; j < widthTiles; j++)
         {
-            if (right < 0)
-                continue;
-            else left = 0;
-        }
-        if (right > layer.width)
-        {
-            if (left > layer.width)
-                continue;
-            else right = layer.width;
-        }
-        if (top < 0)
-        {
-            if (bottom < 0)
-                continue;
-            else top = 0;
-        }
-        if (bottom > layer.height)
-        {
-            if (top > layer.height)
-                continue;
-            else bottom = layer.height;
-        }
-        /////////////////////////////////////////////////////
+            u32 tileIndex = 0;
+            u32 currentTset = 0;
 
-        //calculate tile indices for the tiles inside the box
-        s32 layerWidth = layer.width;
-        //upper left
-        u32 upperLeft = left + (top * layerWidth);
-        u32 upperRight  = right + (top * layerWidth);
-        u32 lowerLeft = left + (bottom * layerWidth);
-        //u32 lowerRight  = right + (bottom * layerWidth);
-
-        u32 widthTiles = upperRight - (upperLeft - 1);
-        for (u32 i = upperLeft; i != lowerLeft; i += layerWidth)
-        {
-            for (u32 j = 0; j < widthTiles; j++)
+            for (TileLayerData &data : layer.data)
             {
-                u32 tileIndex = 0;
-                u32 currentTset = 0;
-
-                for (TileLayerData &data : layer.data)
+                if (data.tiles.at(i+j))
                 {
-                    if (data.tiles.at(i+j))
-                    {
-                        tileIndex = data.tileset->get_tile(*data.tiles.at(i + j))->index;
-                        break;
-                    }
-                    currentTset++;
+                    tileIndex = data.tileset->get_tile(*data.tiles.at(i + j))->index;
+                    break;
                 }
-
-                if (currentTset >= layer.data.size())
-                    continue;
-
-                Tileset *tileset = layer.data.at(currentTset).tileset;
-
-                //tile information
-                Tile *tile = tileset->get_tile(tileIndex);
-                s32 xTile = ((i + j) % layerWidth) * runnerTileSize;
-                s32 yTile = ((i + j) / layerWidth) * runnerTileSize;
-
-                if ((type != EMPTY && type != tile->type) || tile->type == EMPTY)
-                    continue;
-                else
-                {
-                    TileHit hit;
-                    hit.tile = tile;
-                    hit.pos = {xTile, yTile};
-                    hit.hit = true;
-
-                    return hit;
-                }
-
+                currentTset++;
             }
+
+            if (currentTset >= layer.data.size())
+                continue;
+
+            Tileset *tileset = layer.data.at(currentTset).tileset;
+
+            //tile information
+            Tile *tile = tileset->get_tile(tileIndex);
+            s32 xTile = ((i + j) % layerWidth) * TILE_SIZE;
+            s32 yTile = ((i + j) / layerWidth) * TILE_SIZE;
+
+            if ((type != EMPTY && type != tile->type) || tile->type == EMPTY)
+                continue;
+            else
+            {
+                TileHit hit;
+                hit.tile = tile;
+                hit.pos = {xTile, yTile};
+                hit.hit = true;
+
+                return hit;
+            }
+
         }
     }
+
     TileHit hit;
     hit.hit = false;
     return hit;
@@ -122,10 +114,10 @@ std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, Til
             continue;
 
         //do stuff
-        s32 left = rect.x1 / runnerTileSize;
-        s32 right = rect.x2 / runnerTileSize;
-        s32 top = rect.y1 / runnerTileSize;
-        s32 bottom = rect.y2 / runnerTileSize;
+        s32 left = rect.x1 / TILE_SIZE;
+        s32 right = rect.x2 / TILE_SIZE;
+        s32 top = rect.y1 / TILE_SIZE;
+        s32 bottom = rect.y2 / TILE_SIZE;
 
         if (left < 0)
         {
@@ -186,8 +178,8 @@ std::vector<TileHit> Collision::box_tile_collision_multiple(Rectangle2 rect, Til
 
                 //tile information
                 Tile *tile = tileset->get_tile(tileIndex);
-                s32 xTile = ((i + j) % layerWidth) * runnerTileSize;
-                s32 yTile = ((i + j) / layerWidth) * runnerTileSize;
+                s32 xTile = ((i + j) % layerWidth) * TILE_SIZE;
+                s32 yTile = ((i + j) / layerWidth) * TILE_SIZE;
 
                 if ((type != EMPTY && type != tile->type) || tile->type == EMPTY)
                     continue;
@@ -1004,7 +996,7 @@ std::vector<fvec2> Collision::bresenham_line(fvec2 a, fvec2 b)
 
 bool Collision::tile_point_free(Tile *tile, fvec2 relativePos)
 {
-    if (relativePos.x >= runnerTileSize || relativePos.y >= runnerTileSize)
+    if (relativePos.x >= TILE_SIZE || relativePos.y >= TILE_SIZE)
         throw std::runtime_error("tile collision weirdness");
 
     u32 height = tile->mask[(u32)relativePos.x];
@@ -1021,7 +1013,7 @@ bool Collision::tile_point_free(Tile *tile, fvec2 relativePos)
         break;
     case PASS_THROUGH:
     case JUMP_THROUGH:
-        if (relativePos.y < (runnerTileSize - height))
+        if (relativePos.y < (TILE_SIZE - height))
             result = true;
         else result = false;
         break;
@@ -1041,10 +1033,10 @@ bool Collision::tile_point_free(Tile *tile, fvec2 relativePos)
 bool Collision::collision_tile_mask(fvec2 positionInPx)
 {
     bool result = false;
-    u32 tilex = (u32)positionInPx.x / runnerTileSize;
-    u32 tiley = (u32)positionInPx.y / runnerTileSize;
-    u32 relativex = positionInPx.x - (tilex * runnerTileSize);
-    u32 relativey = positionInPx.y - (tiley * runnerTileSize);
+    u32 tilex = (u32)positionInPx.x / TILE_SIZE;
+    u32 tiley = (u32)positionInPx.y / TILE_SIZE;
+    u32 relativex = positionInPx.x - (tilex * TILE_SIZE);
+    u32 relativey = positionInPx.y - (tiley * TILE_SIZE);
 
     TileLayer *layers = TileManager::get_layers();
     u32 layerAmount = TileManager::get_layer_amount();
