@@ -19,7 +19,7 @@ struct TileLayer
     ivec2 *chunkOffset = NULL;
     u32 chunkCount = 0;
 
-    Texture *chunkTexture = NULL;
+    Texture **chunkTexture = NULL;
     u32 chunkTextureCount = 0;
 
     v2 scroll = {1.0f,1.0f};

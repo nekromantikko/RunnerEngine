@@ -5,7 +5,7 @@
 #include <string>
 #include "vector.h"
 
-class Texture;
+class InternalTexture;
 
 struct Animation
 {
@@ -18,9 +18,9 @@ struct Animation
 //a class that will be opened from file
 struct Sprite
 {
-    Texture *texture;
-    Texture *lightmap;
-    Texture *normal;
+    InternalTexture *texture;
+    InternalTexture *lightmap;
+    InternalTexture *normal;
     std::vector<Animation> animations;
     std::vector<v4> clipFrames;
 

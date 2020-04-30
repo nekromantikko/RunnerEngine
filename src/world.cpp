@@ -34,26 +34,35 @@ Tileset *World::get_tileset()
 void World::create_index_maps()
 {
     mainLayer.chunkTextureCount = mainLayer.chunkCount / CHUNKS_PER_TEXTURE + 1;
+
+    std::cout << "Creating " << mainLayer.chunkTextureCount << " tile chunk textures\n";
+
     u32 chunkSize = TILE_CHUNK_WIDTH * TILE_CHUNK_HEIGHT;
-    mainLayer.chunkTexture = platform_create_tile_index_map(mainLayer.chunkTextureCount, chunkSize, CHUNKS_PER_TEXTURE);
+    mainLayer.chunkTexture = new Texture*[mainLayer.chunkTextureCount];
 
-    u8 pixels[(CHUNKS_PER_TEXTURE * chunkSize)*mainLayer.chunkTextureCount];
+    u32 textureSize = CHUNKS_PER_TEXTURE * chunkSize;
+    u8 pixels[textureSize * mainLayer.chunkTextureCount];
 
+    int chunksRemaining = mainLayer.chunkCount;
     for (int i = 0; i < mainLayer.chunkTextureCount; i++)
     {
+        std::cout << "Creating chunk texture with " << std::min(chunksRemaining, CHUNKS_PER_TEXTURE) << " chunks\n";
+        mainLayer.chunkTexture[i] = platform_create_tile_index_map(chunkSize, CHUNKS_PER_TEXTURE);
         for (u32 chunkIndex = 0; chunkIndex < CHUNKS_PER_TEXTURE * (i+1); chunkIndex++)
         {
-            memcpy(pixels + i*chunkSize*CHUNKS_PER_TEXTURE + chunkIndex*chunkSize, &mainLayer.chunk[chunkIndex], chunkSize);
+            if (chunksRemaining > 0)
+                memcpy(pixels + i * textureSize + chunkIndex * chunkSize, &mainLayer.chunk[chunkIndex], chunkSize);
+            chunksRemaining--;
         }
+        platform_populate_tile_index_map(mainLayer.chunkTexture[i], chunkSize, CHUNKS_PER_TEXTURE, pixels + i * textureSize);
     }
-
-    platform_populate_tile_index_map(mainLayer.chunkTexture, mainLayer.chunkTextureCount, chunkSize, CHUNKS_PER_TEXTURE, pixels);
 }
 
 void World::clear_index_maps()
 {
-    platform_delete_texture(mainLayer.chunkTexture, mainLayer.chunkTextureCount);
-    mainLayer.chunkTexture = NULL;
+    for (int i = 0; i < mainLayer.chunkTextureCount; i++)
+        platform_delete_texture(mainLayer.chunkTexture[i]);
+    delete[] mainLayer.chunkTexture;
 }
 
 void World::update()
@@ -328,7 +337,7 @@ bool World::load_map(const char *fname)
     }
     else
     {
-        std::cout << "Tileset " << fname << " is not the correct version\n";
+        std::cout << "Map " << fname << " is not the correct version\n";
     }
 
     return result;

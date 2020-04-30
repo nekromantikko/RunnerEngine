@@ -3595,7 +3595,7 @@
 	<string>
 	"shared.h"
 
-1587805339 d:\work\gamedev\runnerengine\src\shared.h
+1588234212 d:\work\gamedev\runnerengine\src\shared.h
 	"signal.h"
 	<vector>
 	"units.h"
@@ -3614,7 +3614,7 @@
 	<cstdint>
 	<iostream>
 
-1467383270 d:\work\gamedev\runnerengine\src\math.h
+1588234169 d:\work\gamedev\runnerengine\src\math.h
 	<cmath>
 	<cstdlib>
 	"vector.h"
@@ -3625,12 +3625,12 @@
 	"typedef.h"
 	<cmath>
 
-1587805339 d:\work\gamedev\runnerengine\src\entitymanager.h
+1588199237 d:\work\gamedev\runnerengine\src\entitymanager.h
 	<queue>
 	<map>
 	"entity.h"
 
-1587805339 d:\work\gamedev\runnerengine\src\entity.h
+1588199221 d:\work\gamedev\runnerengine\src\entity.h
 	"player.h"
 	"laser.h"
 	"switch.h"
@@ -3638,7 +3638,7 @@
 	"light.h"
 	"particles.h"
 
-1587805339 d:\work\gamedev\runnerengine\src\component.h
+1588199204 d:\work\gamedev\runnerengine\src\component.h
 	"collision.h"
 	"sprite.h"
 
@@ -3665,7 +3665,7 @@
 	"component.h"
 	"timer.h"
 
-1587712838 d:\work\gamedev\runnerengine\src\particles.h
+1588198583 d:\work\gamedev\runnerengine\src\particles.h
 	"shared.h"
 	"pool.h"
 	"component.h"
@@ -3685,36 +3685,37 @@
 1462820376 d:\work\gamedev\runnerengine\src\light.h
 	"component.h"
 
-1587805339 d:\work\gamedev\runnerengine\src\renderer.h
+1588198894 d:\work\gamedev\runnerengine\src\renderer.h
 	"shared.h"
+	"Rendering/mesh.h"
 	<functional>
 
-1587805338 source:d:\work\gamedev\runnerengine\src\component.cpp
+1588199210 source:d:\work\gamedev\runnerengine\src\component.cpp
 	"component.h"
 	"sprite.h"
 	"renderer.h"
 	"entitymanager.h"
 	"resource.h"
 
-1512120450 d:\work\gamedev\runnerengine\src\sprite.h
+1588184599 d:\work\gamedev\runnerengine\src\sprite.h
 	"typedef.h"
 	<vector>
 	<string>
 	"vector.h"
 
-1587836516 d:\work\gamedev\runnerengine\src\resource.h
+1588199250 d:\work\gamedev\runnerengine\src\resource.h
 	<vector>
 	<cstddef>
 	<iostream>
 	<map>
 	"sprite.h"
-	"model.h"
+	"Rendering/shader.h"
 	"shared.h"
 	"particles.h"
 
-1465638204 d:\work\gamedev\runnerengine\src\model.h
+1588198583 d:\work\gamedev\runnerengine\src\model.h
 	<string>
-	"shared.h"
+	"Rendering/texture.h"
 
 1450205847 source:d:\work\gamedev\runnerengine\src\compression.cpp
 	<vector>
@@ -3745,7 +3746,7 @@
 1450205795 d:\work\gamedev\runnerengine\src\config.h
 	"typedef.h"
 
-1587840526 d:\work\gamedev\runnerengine\src\platform\platform.h
+1588233278 d:\work\gamedev\runnerengine\src\platform\platform.h
 	"../shared.h"
 
 1488388340 source:d:\work\gamedev\runnerengine\src\debug.cpp
@@ -4093,7 +4094,7 @@
 1489172326 d:\work\gamedev\runnerengine\src\leveltimer.h
 	"typedef.h"
 
-1587805339 source:d:\work\gamedev\runnerengine\src\entitymanager.cpp
+1588199294 source:d:\work\gamedev\runnerengine\src\entitymanager.cpp
 	"entitymanager.h"
 	"entity.h"
 	"resource.h"
@@ -4140,9 +4141,10 @@
 1511885249 d:\work\gamedev\runnerengine\src\input.h
 	"shared.h"
 
-1587840920 source:d:\work\gamedev\runnerengine\src\gamestate.cpp
+1588183766 source:d:\work\gamedev\runnerengine\src\gamestate.cpp
 	"gamestate.h"
 	"level.h"
+	"world.h"
 	"input.h"
 	<sstream>
 	"Platform/platform.h"
@@ -4153,7 +4155,7 @@
 	"macro.h"
 	<atomic>
 
-1587805339 source:d:\work\gamedev\runnerengine\src\hudcomponent.cpp
+1588183766 source:d:\work\gamedev\runnerengine\src\hudcomponent.cpp
 	"hudcomponent.h"
 	"resource.h"
 	"renderer.h"
@@ -4185,7 +4187,7 @@
 	<fstream>
 	<atomic>
 
-1587805339 d:\work\gamedev\runnerengine\src\file_formats.h
+1588183701 d:\work\gamedev\runnerengine\src\file_formats.h
 	"shared.h"
 
 1489182132 source:d:\work\gamedev\runnerengine\src\leveltimer.cpp
@@ -4212,7 +4214,7 @@
 	"units.h"
 	"debug.h"
 
-1512203107 source:d:\work\gamedev\runnerengine\src\model.cpp
+1588183766 source:d:\work\gamedev\runnerengine\src\model.cpp
 	"model.h"
 	<iostream>
 	<fstream>
@@ -4220,7 +4222,7 @@
 	"resource.h"
 	"Platform/platform.h"
 
-1587805339 source:d:\work\gamedev\runnerengine\src\particles.cpp
+1588183766 source:d:\work\gamedev\runnerengine\src\particles.cpp
 	"particles.h"
 	"renderer.h"
 	"entitymanager.h"
@@ -4230,7 +4232,7 @@
 	"debug.h"
 	"particlemanager.h"
 
-1587840518 source:d:\work\gamedev\runnerengine\src\platform\runneros.cpp
+1588109327 source:d:\work\gamedev\runnerengine\src\platform\runneros.cpp
 	<windows.h>
 	<Objbase.h>
 	<GL/glew.h>
@@ -5746,18 +5748,25 @@
 	<fstream>
 	"input.h"
 
-1587840638 d:\work\gamedev\runnerengine\src\tileset.h
+1588183951 d:\work\gamedev\runnerengine\src\tileset.h
 	<string>
 	"shared.h"
 
-1587837983 d:\work\gamedev\runnerengine\src\world.h
+1588183951 d:\work\gamedev\runnerengine\src\world.h
 	"tileset.h"
 
-1587846385 source:d:\work\gamedev\runnerengine\src\world.cpp
+1588111997 source:d:\work\gamedev\runnerengine\src\world.cpp
 	"world.h"
 	"rapidxml/rapidxml.hpp"
 	"rapidxml/rapidxml_utils.hpp"
 	"Platform/platform.h"
 	<cstring>
 	"resource.h"
+
+1588186475 d:\work\gamedev\runnerengine\src\rendering\shader.h
+
+1588187130 d:\work\gamedev\runnerengine\src\rendering\texture.h
+	"../shared.h"
+
+1588199056 d:\work\gamedev\runnerengine\src\rendering\mesh.h
 

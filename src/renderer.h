@@ -1,15 +1,10 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 #include "shared.h"
+#include "Rendering/mesh.h"
 #include <functional>
 
 class Sprite;
-
-enum DrawLayerType
-{
-    DRAWLAYER_TILES = 0,
-    DRAWLAYER_SPRITES = 1
-};
 
 enum DrawOrigin
 {
@@ -31,7 +26,7 @@ struct UICall
 {
     Transform a;
     Transform b;
-    Texture *texture;
+    InternalTexture *texture;
     v4 clipRect;
     v2 offset;
     v4 color;
@@ -61,8 +56,8 @@ struct MirrorCall
 
 struct SpriteCall : UICall
 {
-    Texture *lightmap;
-    Texture *normal;
+    InternalTexture *lightmap;
+    InternalTexture *normal;
     r32 glow;
 };
 
@@ -70,10 +65,10 @@ struct ModelCall
 {
     Transform a;
     Transform b;
-    VertexArrayHandle *vao;
-    Texture *texture;
-    Texture *lightmap;
-    Texture *normal;
+    InternalMesh *vao;
+    InternalTexture *texture;
+    InternalTexture *lightmap;
+    InternalTexture *normal;
     r32 glow;
 
     bool operator< (const ModelCall &b)
@@ -86,10 +81,10 @@ struct TileCall
 {
     v2 a;
     v2 b;
-    Texture *texture;
-    Texture *lightmap;
-    Texture *normal;
-    Texture *layout;
+    InternalTexture *texture;
+    InternalTexture *lightmap;
+    InternalTexture *normal;
+    InternalTexture *layout;
 
     s32 z;
 
@@ -101,11 +96,11 @@ struct TileCall
 
 struct ParticleCall
 {
-    ParticleVertexArrayHandle *vao;
+    ParticleInternalMesh *vao;
 
-    Texture *texture;
-    Texture *lightmap;
-    Texture *normal;
+    InternalTexture *texture;
+    InternalTexture *lightmap;
+    InternalTexture *normal;
 
     v4 clipRect;
     v2 offset;
@@ -122,27 +117,11 @@ struct ParticleCall
 
 //////////////////////////////////////////////
 
-enum ShaderPropertyType
-{
-    SAMPLER,
-    FLOAT1,
-    FLOAT2,
-    FLOAT3,
-    FLOAT4
-};
-
-struct ShaderProperty
-{
-    ShaderPropertyType type;
-    void *payload;
-};
-
 #define MAX_SHADER_PROPERTIES
 
 struct RenderData
 {
-    Transform xform;
-    ShaderProperty properties[MAX_SHADER_PROPERTIES];
+
 };
 
 #define MAX_RENDER_QUEUE_SIZE 1024
@@ -164,7 +143,7 @@ namespace Renderer
     ivec2 get_topleft(s32 x, s32 y, s32 w, s32 h, DrawOrigin origin);
     void draw_string(std::string str, s32 x, s32 y, DrawOrigin *originPos, v4 *color, r32 *scale, Sprite *sprite, s32 priority = 0);
     void draw_rectangle(s32 x, s32 y, s32 w, s32 h, DrawOrigin *originPos, v4 *color, s32 priority = 0);
-    void draw_texture(Texture *tex, s32 x, s32 y, DrawOrigin *originPos, bool32 *hFlip, bool32 *vFlip, v4 *color, s32 priority = 0);
+    void draw_texture(InternalTexture *tex, s32 x, s32 y, DrawOrigin *originPos, bool32 *hFlip, bool32 *vFlip, v4 *color, s32 priority = 0);
     void draw_texture(const char *name, s32 x, s32 y, DrawOrigin *originPos, bool32 *hFlip, bool32 *vFlip, v4 *color, s32 priority = 0);
     void draw_mirror(Transform &a, Transform &b, s32 w, s32 h);
     void draw_sprite_instance(SpriteInstance* inst, Transform &a, Transform &b, bool32 hFlip =0, bool32 vFlip = 0, v4 *color = NULL, s32 priority = 0);

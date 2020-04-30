@@ -43,13 +43,6 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
-			<Target title="Platform">
-				<Option output="../bin/Platform/RunnerEngine" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../RunnerEngine" />
-				<Option object_output="../obj/Platform/" />
-				<Option type="1" />
-				<Option compiler="copy_of_mingw32_720_posix_dwarf" />
-			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-pedantic" />
@@ -76,17 +69,53 @@
 			<Add directory="../lib/DevIL-SDK-x86-1.7.8/lib" />
 			<Add directory="../lib/FMOD/lowlevel/lib" />
 		</Linker>
-		<Unit filename="../src/Platform/platform.h">
-			<Option target="Debug" />
-			<Option target="Platform" />
-		</Unit>
-		<Unit filename="../src/Platform/runnerOS.cpp">
-			<Option target="Platform" />
+		<Unit filename="../src/Platform/Win/platform_audio_win.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="../src/Platform/test.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+		<Unit filename="../src/Platform/Win/platform_loading_win.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Platform/Win/platform_main_win.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Platform/Win/platform_rendering_win.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Platform/platform_audio.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Platform/platform_loading.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Platform/platform_main.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Platform/platform_rendering.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Rendering/mesh.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Rendering/rendering_util.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Rendering/shader.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/Rendering/texture.h">
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/asset_builder/main.cpp">
 			<Option target="asset_builder" />
@@ -99,28 +128,11 @@
 			<Option target="Release" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="../src/component.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/component.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/compression.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-			<Option target="asset_builder" />
-		</Unit>
-		<Unit filename="../src/compression.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-			<Option target="asset_builder" />
-		</Unit>
+		<Unit filename="../src/compression.cpp" />
+		<Unit filename="../src/compression.h" />
 		<Unit filename="../src/config.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
-			<Option target="Platform" />
 		</Unit>
 		<Unit filename="../src/config.h">
 			<Option target="Debug" />
@@ -133,26 +145,6 @@
 		<Unit filename="../src/debug.h">
 			<Option target="Release" />
 			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../src/enemy.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/entity.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/entity.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/entitymanager.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/entitymanager.h">
-			<Option target="Debug" />
-			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/file_formats.h" />
 		<Unit filename="../src/fixed.cpp" />
@@ -181,27 +173,11 @@
 			<Option target="Release" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="../src/hudcomponent.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/hudcomponent.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="../src/input.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/input.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/laser.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/laser.h">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
@@ -221,14 +197,6 @@
 			<Option target="Release" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="../src/light.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/light.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="../src/macro.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -242,53 +210,9 @@
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="../src/math.h" />
-		<Unit filename="../src/model.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/model.h">
-			<Option target="Release" />
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../src/particlemanager.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/particlemanager.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/particles.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/particles.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/player.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/player.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/playerstate.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/playerstate.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="../src/pool.h">
 			<Option target="Release" />
 			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../src/powerup.h">
-			<Option target="Debug" />
-			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/renderer.cpp">
 			<Option target="Debug" />
@@ -309,7 +233,6 @@
 		<Unit filename="../src/shared.h">
 			<Option target="Debug" />
 			<Option target="Release" />
-			<Option target="Platform" />
 		</Unit>
 		<Unit filename="../src/signal.h">
 			<Option target="Release" />
@@ -326,14 +249,6 @@
 		<Unit filename="../src/sprite_compiler/main.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="../src/switch.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/switch.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="../src/tileset.h">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -349,7 +264,6 @@
 		<Unit filename="../src/typedef.h">
 			<Option target="Debug" />
 			<Option target="Release" />
-			<Option target="Platform" />
 		</Unit>
 		<Unit filename="../src/units.h">
 			<Option target="Debug" />

@@ -4,6 +4,11 @@
 #include <cstdlib>
 #include "vector.h"
 
+struct Rectangle2
+{
+    r32 x1, x2, y1, y2;
+};
+
 inline f32
 fixed_min(f32 a, f32 b)
 {

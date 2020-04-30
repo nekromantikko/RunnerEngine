@@ -12,14 +12,15 @@ namespace Resource
     std::map<std::string, MultiSound> multiSounds;
     std::map<std::string, Model> models;
     std::map<std::string, Sprite> sprites;
-    std::map<std::string, Texture*> textures;
+    std::map<std::string, Texture> textures;
+    std::map<std::string, Shader> shaders;
     std::map<std::string, Music*> musics;
     std::map<std::string, ParticleSystemPrefab> particleSystems;
     //std::list<TempImage> tempImages;
 
-    Texture *error;
-    Texture *noNormal;
-    Texture *noLightmap;
+    InternalTexture *error;
+    InternalTexture *noNormal;
+    InternalTexture *noLightmap;
 }
 
 void Resource::init()

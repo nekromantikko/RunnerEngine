@@ -27,7 +27,7 @@ namespace Renderer
 
     fvec2 camPos;
     fvec2 prevCamPos;
-    VertexArrayHandle *rectangle;
+    InternalMesh *rectangle;
 
     Palette palette;
     Texture *paletteTexture;

@@ -1,5 +1,6 @@
 #include "gamestate.h"
 #include "level.h"
+#include "world.h"
 #include "input.h"
 #include <sstream>
 #include "Platform/platform.h"
@@ -387,7 +388,7 @@ GameState *LoadingScreen::update()
         case RELOAD_LEVEL:
             {
                 nextState = new GamePlay(UNLOAD_LEVEL);
-                //TileManager::create_layer_textures();
+                World::create_index_maps();
                 break;
             }
         case UNLOAD_LEVEL:
