@@ -1,14 +1,12 @@
 #include "gamestate.h"
-#include "level.h"
 #include "world.h"
 #include "input.h"
 #include <sstream>
-#include "Platform/platform.h"
-#include "entitymanager.h"
 #include "renderer.h"
 #include "config.h"
 #include "resource.h"
 #include "macro.h"
+#include "audio.h"
 #include <atomic>
 
 GenericMenu::GenericMenu(s32 x, s32 y, s32 w, s32 h, std::vector<const char*> i, u32 pos) : xPos(x), yPos(y), width(w), height(h), items(i), currentChoice(pos)
@@ -24,12 +22,12 @@ u8 GenericMenu::update()
     {
         if (yAxis > 0 && currentChoice > 0)
         {
-            platform_play_menu_sound(Resource::get_sound("sfx_menu1"), 0);
+            AudioManager::play_menu_sfx(Resource::get_sound("sfx_menu1"), 0);
             currentChoice -= 1;
         }
         else if (yAxis < 0 && currentChoice < (items.size() - 1))
         {
-            platform_play_menu_sound(Resource::get_sound("sfx_menu1"), 0);
+            AudioManager::play_menu_sfx(Resource::get_sound("sfx_menu1"), 0);
             currentChoice += 1;
         }
         buttonDown = true;
@@ -100,7 +98,7 @@ GameState *GamePlay::update()
 {
     GameState *nextState = this;
 
-    LevelState levelState = CurrentLevel::get_state();
+    /*LevelState levelState = CurrentLevel::get_state();
     switch (levelState)
     {
     case LEVEL_PLAYING:
@@ -120,14 +118,14 @@ GameState *GamePlay::update()
 
     //update level
     CurrentLevel::update_level();
-    Macro::update();
+    Macro::update();*/
 
     return nextState;
 }
 
 void GamePlay::draw(r32 a)
 {
-    CurrentLevel::draw_level(a);
+    //CurrentLevel::draw_level(a);
 }
 
 ////////////////////////////
@@ -151,8 +149,7 @@ GameState *MainMenu::update()
     {
         if (menuResult == 0)
         {
-            //nextState = new GamePlay();
-            CurrentLevel::set_fname("res/levels/dev_room.tmx");
+            //CurrentLevel::set_fname("res/levels/dev_room.tmx");
             nextState = new LoadingScreen(LOAD_LEVEL);
         }
 
@@ -195,14 +192,13 @@ GameState *PauseMenu::update()
         if (menuResult == 0)
         {
             nextState = new GamePlay(UNLOAD_LEVEL);
-            platform_resume_world_sounds();
+            AudioManager::resume_world_sounds();
         }
 
         if (menuResult == 1)
         {
-            //CurrentLevel::reload_level();
-            CurrentLevel::end_level(true);
-            platform_resume_world_sounds();
+            //CurrentLevel::end_level(true);
+            AudioManager::resume_world_sounds();
             nextState = new GamePlay(RELOAD_LEVEL);
         }
 
@@ -211,10 +207,9 @@ GameState *PauseMenu::update()
 
         if (menuResult == 3)
         {
-            //CurrentLevel::unload_level();
-            CurrentLevel::end_level(false);
-            platform_resume_world_sounds();
-            platform_stop_world_sounds();
+            //CurrentLevel::end_level(false);
+            AudioManager::resume_world_sounds();
+            AudioManager::stop_world_sounds();
             nextState = new GamePlay(UNLOAD_LEVEL);
         }
 
@@ -229,12 +224,12 @@ GameState *PauseMenu::update()
     if (InputManager::button_down(PAUSE))
     {
         nextState = new GamePlay(UNLOAD_LEVEL);
-        platform_resume_world_sounds();
+        AudioManager::resume_world_sounds();
     }
 
-    v4 grey = {0.5,0.5,0.5,1};
-    bool32 vFlip = true;
-    Renderer::draw_texture(platform_get_screenshot(), 0, 0, NULL, NULL, &vFlip, &grey, -1);
+    //v4 grey = {0.5,0.5,0.5,1};
+    //bool32 vFlip = true;
+    //Renderer::draw_texture(platform_get_screenshot(), 0, 0, NULL, NULL, &vFlip, &grey, -1);
 
     return nextState;
 }
@@ -328,7 +323,7 @@ void LevelSelect::draw(r32 a)
 ////////////////////////////////////////
 LoadingScreen::LoadingScreen(LoadingScreenType t)
 {
-    loadingSprite.sprite = Resource::get_sprite("spr_loading");
+    /*loadingSprite.sprite = Resource::get_sprite("spr_loading");
     done = false;
     currentTime = 0;
     minFramesVisible = 0;
@@ -356,7 +351,7 @@ LoadingScreen::LoadingScreen(LoadingScreenType t)
         }
     default:
         break;
-    }
+    }*/
 
 }
 LoadingScreen::~LoadingScreen()
@@ -367,7 +362,7 @@ GameState *LoadingScreen::update()
 {
     GameState *nextState = this;
 
-    loadingSprite.update(0.1);
+    /*loadingSprite.update(0.1);
     Renderer::draw_sprite_instance_hud(&loadingSprite, 32, 512);
 
     if (done && currentTime >= minFramesVisible)
@@ -402,7 +397,7 @@ GameState *LoadingScreen::update()
         }
     }
 
-    currentTime++;
+    currentTime++;*/
 
     return nextState;
 }

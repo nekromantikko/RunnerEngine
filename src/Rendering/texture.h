@@ -1,8 +1,6 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include "../shared.h"
-
 struct InternalTexture;
 
 enum TextureType

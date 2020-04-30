@@ -1,6 +1,8 @@
 #ifndef INPUT_H
 #define INPUT_H
-#include "shared.h"
+
+#include "Platform/platform_main.h"
+
 enum InputAxis
 {
     AXIS_RIGHT,

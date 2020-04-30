@@ -7,8 +7,8 @@
 #include <map>
 #include "sprite.h"
 #include "Rendering/shader.h"
-#include "shared.h"
-#include "particles.h"
+#include "Platform/platform_rendering.h"
+#include "audio.h"
 
 struct TempImage
 {
@@ -24,12 +24,10 @@ namespace Resource
     void deinit();
 
     Sound *get_sound(std::string handle);
-    MultiSound *get_multisound(std::string handle);
     Sprite *get_sprite(std::string handle);
     Texture *get_texture(std::string handle);
     Shader *get_shader(std::string handle);
     Music *get_music(std::string handle);
-    ParticleSystemPrefab *get_particle_system(std::string handle);
     ////////////////////////////////
 
     void animate_tilesets();

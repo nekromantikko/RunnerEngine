@@ -1,7 +1,9 @@
 #ifndef TILESET_H
 #define TILESET_H
 #include <string>
-#include "shared.h"
+#include "typedef.h"
+
+#define TILE_SIZE 32
 
 class Texture;
 

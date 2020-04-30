@@ -1,6 +1,8 @@
 #ifndef MESH_H
 #define MESH_H
 
+#include <vector>
+
 struct Triangle
 {
     u32 index[3];
@@ -18,12 +20,13 @@ struct InternalMesh;
 
 struct MeshData
 {
-    v3 *position;
-    v2 *texCoord;
-    v3 *normal;
-    v4 *tangent;
+    //TODO: replace vectors with C arrays
+    std::vector<v3> positions;
+    std::vector<v2> texCoords;
+    std::vector<v3> normals;
+    std::vector<v4> tangents;
 
-    Triangle *tris;
+    std::vector<Triangle> tris;
 };
 
 struct Mesh

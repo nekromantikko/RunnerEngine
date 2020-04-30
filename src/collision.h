@@ -2,6 +2,9 @@
 #define COLLISION_H
 
 #include "tileset.h"
+#include "vector.h"
+#include "math.h"
+#include <vector>
 
 enum CollisionFlag
 {
@@ -35,11 +38,6 @@ struct RaycastHit
     fvec2 pos;
 };
 
-class ColliderComponent;
-class AABBCollider;
-class SATRectCollider;
-class CircleCollider;
-
 //collision functions return first collision found, whether or not it is the closest
 //this pretty much requires two collision checks, one for horizontal and another for vertical movement
 //which is fine though
@@ -56,40 +54,7 @@ namespace Collision
     bool rect_point_collision(Rectangle2 rect, fvec2 pPos);
     bool circle_point_collision(v2 cPos, u32 radius, fvec2 pPos);
 
-    bool rect_AABB_collision(Rectangle2 rect, AABBCollider *aabb2, Transform b);
     bool rect_rect_collision(Rectangle2 a, Rectangle2 b);
-    bool rect_SATrect_collision(Rectangle2 rect1, SATRectCollider *rect2, Transform b);
-    bool rect_circle_collision(Rectangle2 rect, CircleCollider *circle, Transform b);
-
-    bool AABB_AABB_collision(AABBCollider *aabb1, Transform a, AABBCollider *aabb2, Transform b);
-    bool AABB_SATrect_collision(AABBCollider *aabb, Transform a, SATRectCollider *rect, Transform b);
-    bool AABB_circle_collision(AABBCollider *aabb, Transform a, CircleCollider *circle, Transform b);
-
-    bool SATrect_SATrect_collision(SATRectCollider *rect1, Transform a, SATRectCollider *rect2, Transform b);
-    bool SATrect_circle_collision(SATRectCollider *rect, Transform a, CircleCollider *circle, Transform b);
-
-    bool circle_circle_collision(CircleCollider *circle1, Transform a, CircleCollider *circle2, Transform b);
-
-    bool collider_point_collision(ColliderComponent *coll1, Transform a, v2 pPos);
-
-    EntityHit AABB_entity_collision(AABBCollider *aabb, Transform a, CollisionFlag flags);
-    EntityHit AABB_entity_collision_specific(AABBCollider *aabb, Transform a, CollisionFlag flags, Entity *entity);
-    std::vector<EntityHit> AABB_entity_collision_multiple(AABBCollider *aabb, Transform a, CollisionFlag flags);
-
-    EntityHit SATrect_entity_collision(SATRectCollider *rect, Transform a, CollisionFlag flags);
-    EntityHit SATrect_entity_collision_specific(SATRectCollider *rect, Transform a, CollisionFlag flags, Entity *entity);
-    std::vector<EntityHit> SATrect_entity_collision_multiple(SATRectCollider *rect, Transform a, CollisionFlag flags);
-
-    EntityHit circle_entity_collision(CircleCollider *circle, Transform a, CollisionFlag flags);
-    EntityHit circle_entity_collision_specific(CircleCollider *circle, Transform a, CollisionFlag flags, Entity *entity);
-    std::vector<EntityHit> circle_entity_collision_multiple(CircleCollider *circle, Transform a, CollisionFlag flags);
-
-    EntityHit entity_collision(ColliderComponent *coll, Transform a, CollisionFlag flags);
-    EntityHit entity_collision_specific(ColliderComponent *coll, Transform a, CollisionFlag flags, Entity *entity);
-    std::vector<EntityHit> entity_collision_multiple(ColliderComponent *coll, Transform a, CollisionFlag flags);
-
-    EntityHit rect_entity_collision(Rectangle2 rect, CollisionFlag flags);
-    std::vector<EntityHit> rect_entity_collision_multiple(Rectangle2 rect, CollisionFlag flags);
 
     std::vector<fvec2> bresenham_line(fvec2 a, fvec2 b);
     bool tile_point_free(Tile tile, fvec2 relativePos);

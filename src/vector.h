@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include "typedef.h"
+
 template <typename T>
 struct vec2
 {

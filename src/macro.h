@@ -1,8 +1,8 @@
 #ifndef MACRO_H
 #define MACRO_H
 #include "typedef.h"
-#include "shared.h"
 #include <vector>
+#include "signal.h"
 
 //max macro length is 5 minutes
 #define MACRO_MAX_LENGTH 18000

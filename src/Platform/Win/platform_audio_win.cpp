@@ -1,4 +1,8 @@
-#include "../../platform_audio.h"
+#include "../platform_audio.h"
+#include "../../units.h"
+#include <fmod.hpp>
+#include <fmod_errors.h>
+#include <windows.h>
 
 #define OGG_MUSIC
 #define OGG_USE_TREMOR
@@ -49,6 +53,68 @@ void close_FMOD()
 
 /////////////////////////////////////////////////////////////////////
 
+bool platform_load_sound(InternalSound *sound, const char* fname)
+{
+    /*Mix_Chunk *chunk = Mix_LoadWAV(fname);
+    if (chunk)
+    {
+        Sound *sound = new Sound;
+        sound->chunk = chunk;
+        return sound;
+    }
+
+    return NULL;*/
+    FMOD_RESULT result;
+    sound = new InternalSound;
+    result = FMOD_System_CreateSound(soundSystem, fname, FMOD_CREATESAMPLE | FMOD_3D | FMOD_LOOP_NORMAL | FMOD_3D_LINEARSQUAREROLLOFF, NULL, &sound->sound);
+
+    if (result == FMOD_OK)
+        return true;
+
+    delete sound;
+    return false;
+}
+void platform_delete_sound(InternalSound *sound)
+{
+    //Mix_FreeChunk(sound->chunk);
+    //delete sound;
+    if (sound)
+    {
+        FMOD_Sound_Release(sound->sound);
+        delete sound;
+    }
+}
+
+bool platform_load_music(InternalMusic *music, const char* fname)
+{
+    /*Music *music = new Music;
+    music->music = Mix_LoadMUS(fname);
+    if (!music->music)
+        std::cout << "problem loading " << fname << ": " << Mix_GetError() << std::endl;
+    return music;*/
+    FMOD_RESULT result;
+    music = new InternalMusic;
+    result = FMOD_System_CreateSound(soundSystem, fname, FMOD_CREATESTREAM | FMOD_2D | FMOD_LOOP_NORMAL, NULL, &music->sound);
+
+    if (result == FMOD_OK)
+        return true;
+
+    delete music;
+    return false;
+}
+void platform_delete_music(InternalMusic *music)
+{
+    /*Mix_FreeMusic(music->music);
+    delete music;*/
+    if (music)
+    {
+        FMOD_Sound_Release(music->sound);
+        delete music;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////
+
 struct InternalSound
 {
     //Mix_Chunk *chunk;
@@ -60,7 +126,7 @@ struct InternalMusic
     FMOD_SOUND *sound;
 };
 
-u32 platform_play_world_sound(Sound *sound, s32 loops, fvec2 *pos, fvec2 *vel)
+u32 platform_play_world_sound(InternalSound *sound, s32 loops, fvec2 *pos, fvec2 *vel)
 {
     if (!sound)
         return NULL;
@@ -95,7 +161,7 @@ u32 platform_play_world_sound(Sound *sound, s32 loops, fvec2 *pos, fvec2 *vel)
     return (intptr_t)chan;
 
 }
-u32 platform_play_menu_sound(Sound *sound, s32 loops)
+u32 platform_play_menu_sound(InternalSound *sound, s32 loops)
 {
     if (!sound)
         return NULL;
@@ -133,7 +199,7 @@ void platform_resume_channel(u32 channel)
         FMOD_Channel_SetPaused((FMOD_CHANNEL*)channel, false);
     }
 }
-u32 platform_play_music(Music *music, bool32 mute, s32 fade, r64 pos)
+u32 platform_play_music(InternalMusic *music, bool32 mute, s32 fade, r64 pos)
 {
     if (!music)
         return NULL;

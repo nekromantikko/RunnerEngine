@@ -1,6 +1,8 @@
 #ifndef SHADER_H
 #define SHADER_H
 
+#include "../vector.h"
+
 #define SHADER_PROPERTY_MAX_NAME_LENGTH 32
 
 struct InternalShader;

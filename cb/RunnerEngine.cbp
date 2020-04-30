@@ -73,10 +73,6 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="../src/Platform/Win/platform_loading_win.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="../src/Platform/Win/platform_main_win.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -86,10 +82,6 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/Platform/platform_audio.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/Platform/platform_loading.h">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
@@ -119,6 +111,14 @@
 		</Unit>
 		<Unit filename="../src/asset_builder/main.cpp">
 			<Option target="asset_builder" />
+		</Unit>
+		<Unit filename="../src/audio.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../src/audio.h">
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="../src/collision.cpp">
 			<Option target="Release" />
@@ -180,14 +180,6 @@
 		<Unit filename="../src/input.h">
 			<Option target="Debug" />
 			<Option target="Release" />
-		</Unit>
-		<Unit filename="../src/level.cpp">
-			<Option target="Release" />
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../src/level.h">
-			<Option target="Release" />
-			<Option target="Debug" />
 		</Unit>
 		<Unit filename="../src/leveltimer.cpp">
 			<Option target="Release" />

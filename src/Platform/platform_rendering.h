@@ -4,6 +4,7 @@
 #include "../Rendering/shader.h"
 #include "../Rendering/texture.h"
 #include "../Rendering/mesh.h"
+#include "../Rendering/rendering_util.h"
 
 #define MAX_LIGHTS 16
 
@@ -40,6 +41,21 @@ struct Palette
     SubPalette subPalette[16];
 };
 
+struct rImage
+{
+    u8 *pixels;
+    u32 width, height;
+};
+
+//loading
+void platform_load_image(rImage *image, const char* fname);
+void platform_delete_image(rImage *image);
+
+void platform_load_palette(const char *fname, void *output, int s);
+
+void platform_load_mesh(MeshData *mesh, const char* fname);
+void platform_calculate_tangent(MeshData *mesh);
+
 //Shader stuff
 InternalShader *platform_create_shader(const char* vert, const char* frag);
 void platform_get_shader_property_count(InternalShader *shader, u32 *count);
@@ -48,7 +64,7 @@ void platform_delete_shader(InternalShader *shader);
 
 void platform_use_shader(InternalShader *shader);
 
-InternalTexture *platform_create_indexed_sprite_sheet(rImage *image)
+InternalTexture *platform_create_indexed_sprite_sheet(rImage *image);
 InternalTexture *platform_create_texture(rImage *image, bool srgb = true);
 void platform_delete_texture(InternalTexture* texture);
 void platform_get_texture_width(InternalTexture *texture, u32 *w);

@@ -6,9 +6,7 @@
 #include "game.h"
 #include <thread>
 
-#include "Platform/platform.h"
 #include "input.h"
-#include "entitymanager.h"
 #include "units.h"
 #include "debug.h"
 
@@ -57,7 +55,6 @@ extern "C" void runner_play()
 
 s32 main(s32 argc, char **argv)
 {
-    EntityManager::allocate(1024);
     runner_initialize();
 
     runner_play();

@@ -1,7 +1,7 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 #include "typedef.h"
-#include "Platform/platform.h"
+#include "Platform/platform_main.h"
 
 #define TIMED_BLOCK TimedBlock timedBlock##__LINE__(__COUNTER__, (char*)__FILE__, __LINE__, (char*)__FUNCTION__);
 

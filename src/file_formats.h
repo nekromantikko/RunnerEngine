@@ -1,6 +1,5 @@
 #ifndef FILE_FORMATS_H
 #define FILE_FORMATS_H
-#include "shared.h"
 
 enum AssetType
 {
@@ -10,8 +9,6 @@ enum AssetType
     SPRITE,
     MODEL,
     MESH,
-    TILESET,
-    LEVEL,
     SHADER
 };
 
@@ -38,116 +35,6 @@ struct PakAsset
     u64 onePastDataOffset;
 };
 
-//////////////////////////////////////////////////////////////
-
-struct TilesetHeader
-{
-    #define TILESET_SIGNATURE SIGNATURE('r','t','i','l')
-    u32 signature;
-    #define TILESET_VERSION 0
-    u32 version;
-
-    u32 tileCount;
-
-    //the first offset is zero
-    u64 textureOffset;
-    u64 lightmapOffset;
-    u64 normalOffset;
-    u64 tilesOffset;
-};
-
-struct TileInfo
-{
-    u32 type;
-    r32 slope;
-    u32 mask[TILE_SIZE];
-    u32 frameCount;
-};
-
-struct TileAnimFrameInfo
-{
-    u32 frame;
-    u32 duration;
-};
-
-///////////////////////////////////////////////////////////////
-
-struct LevelHeader
-{
-    #define LEVEL_SIGNATURE SIGNATURE('r','l','v','l')
-    u32 signature;
-    #define LEVEL_VERSION 2
-    u32 version;
-
-    //level properties
-    u32 width;
-    u32 height;
-    r32 ambientColor[4];
-    r32 bgColor1[4];
-    r32 bgColor2[4];
-
-    u32 tilesetAmount;
-    u32 tileLayerAmount;
-    u32 entityAmount;
-
-    u64 nameOffset;
-    //position of first TilesetInfo in the file
-    u64 tilesetOffset; // = sizeof(LevelHeader)
-    //position of first TileLayerInfo
-    u64 tileLayerOffset;
-    //etc.
-    u64 entityOffset;
-    u64 onePastEntityOffset;
-};
-
-struct TilesetInfo
-{
-    u32 firstGid;
-    u64 filenameOffset;
-    u64 onePastFilenameOffset;
-};
-
-struct TileLayerInfo
-{
-    u32 width;
-    u32 height;
-    r32 xScroll;
-    r32 yScroll;
-    bool32 xTiling;
-    bool32 yTiling;
-    u32 z;
-    bool32 collision;
-
-    u32 tileAmount;
-
-    u64 tilesOffset;
-    u64 onePastTilesOffset;
-};
-
-struct EntityInfo
-{
-    u32 x;
-    u32 y;
-    u32 w;
-    u32 h;
-    r32 depth;
-
-    u32 propertyAmount;
-
-    u64 nameOffset;
-    u64 typeOffset;
-    u64 propertyOffset;
-    u64 onePastPropertyOffset;
-};
-
-struct EntityPropertyInfo
-{
-    u64 nameOffset;
-    u64 valueOffset;
-    u64 onePastValueOffset;
-};
-
-///////////////////////////////////////////////////////////
 
 struct SpriteHeader
 {

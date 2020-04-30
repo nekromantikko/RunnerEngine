@@ -1,13 +1,11 @@
 #include "game.h"
 #include <sstream>
-#include "level.h"
-#include "Platform/platform.h"
+#include "Platform/platform_audio.h"
 #include "units.h"
 #include "input.h"
 #include "renderer.h"
 #include <algorithm>
 #include "config.h"
-#include "entitymanager.h"
 #include "debug.h"
 #include "resource.h"
 #include "gamestate.h"
@@ -90,12 +88,12 @@ void Game::play(r64 dt)
 
 void Game::draw(r32 timeRatio)
 {
-    platform_unbind_framebuffer();
+    //platform_unbind_framebuffer();
     platform_clear_buffer();
 
     state->draw(timeRatio);
 
-    platform_take_screenshot();
+    //platform_take_screenshot();
     platform_swap_buffer();
 }
 

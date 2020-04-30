@@ -1,9 +1,10 @@
 #ifndef PLATFORM_MAIN_H
 #define PLATFORM_MAIN_H
 
+#include "../signal.h"
+
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 576
-#define TILE_SIZE 32
 #define SCREEN_MARGINAL 128
 
 struct ControllerInput
