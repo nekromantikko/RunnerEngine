@@ -7,6 +7,11 @@
 #include "../Rendering/rendering_util.h"
 
 #define MAX_LIGHTS 16
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 576
+#define SCREEN_MARGINAL 128
+
+#define MAX_INSTANCE_COUNT 256
 
 enum SubPaletteIndex
 {
@@ -47,6 +52,9 @@ struct rImage
     u32 width, height;
 };
 
+//init
+void platform_init_rendering();
+void platform_deinit_rendering();
 //loading
 void platform_load_image(rImage *image, const char* fname);
 void platform_delete_image(rImage *image);
@@ -57,42 +65,43 @@ void platform_load_mesh(MeshData *mesh, const char* fname);
 void platform_calculate_tangent(MeshData *mesh);
 
 //Shader stuff
-InternalShader *platform_create_shader(const char* vert, const char* frag);
+void platform_create_shader(InternalShader *shader, const char* vert, const char* frag);
 void platform_get_shader_property_count(InternalShader *shader, u32 *count);
 void platform_get_shader_properties(InternalShader *shader, u32 count, char **names, ShaderPropertyType *types);
 void platform_delete_shader(InternalShader *shader);
 
 void platform_use_shader(InternalShader *shader);
 
-InternalTexture *platform_create_indexed_sprite_sheet(rImage *image);
-InternalTexture *platform_create_texture(rImage *image, bool srgb = true);
+void platform_create_indexed_sprite_sheet(InternalTexture* texture, rImage *image);
+void platform_create_texture(InternalTexture* texture, rImage *image, bool srgb = true);
 void platform_delete_texture(InternalTexture* texture);
 void platform_get_texture_width(InternalTexture *texture, u32 *w);
 void platform_get_texture_height(InternalTexture *texture, u32 *h);
-InternalTexture *platform_create_empty_texture(s32 w, s32 h);
+void platform_create_empty_texture(InternalTexture* texture, s32 w, s32 h);
 
-InternalTexture *platform_create_tile_index_map(u32 w, u32 h);
+void platform_create_tile_index_map(InternalTexture* texture, u32 w, u32 h);
 void platform_populate_tile_index_map(InternalTexture *texture, u32 w, u32 h, u8 *pixels);
 
-InternalTexture *platform_create_palette_texture(Palette *palette);
+void platform_create_palette_texture(InternalTexture* texture, Palette *palette);
 void platform_update_palette_texture(InternalTexture *texture, Palette *palette);
 
-void platform_shader_set_texture(const char* propertyName, InternalTexture *tex, TextureType type);
-void platform_shader_set_float(const char* propertyName, float f);
-void platform_shader_set_vector(const char* propertyName, v2 vec);
-void platform_shader_set_vector(const char* propertyName, v3 vec);
-void platform_shader_set_vector(const char* propertyName, v4 vec);
+void platform_shader_set_texture(u32 id, InternalTexture *tex);
+void platform_shader_set_float(u32 id,  u32 count, float *f);
+void platform_shader_set_vector(u32 id, u32 count, v2 *vec);
+void platform_shader_set_vector(u32 id, u32 count, v3 *vec);
+void platform_shader_set_vector(u32 id, u32 count, v4 *vec);
+void platform_shader_set_int(u32 id,  u32 count, s32 *i);
+void platform_shader_set_uint(u32 id,  u32 count, u32 *u);
 
 void platform_set_lights(Light *lights, u32 lightCount);
 void platform_set_ambient_color(v3 *color);
 
-void platform_render(Transform xform);
-void platform_blit();
+void platform_render();
+void platform_render_instanced();
 
 void platform_clear_buffer();
-void platform_swap_buffer();
 
-InternalMesh *platform_create_mesh(MeshData *mesh);
+void platform_create_mesh(InternalMesh *handle, MeshData *mesh);
 void platform_delete_mesh(InternalMesh *buf);
 
 void platform_use_mesh(InternalMesh *mesh);

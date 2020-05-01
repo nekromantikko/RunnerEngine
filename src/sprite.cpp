@@ -10,7 +10,7 @@ Sprite::~Sprite()
     std::cout << "Sprite <" << this << "> destroyed!" << std::endl;
 }
 
-void Sprite::create_clipframes()
+void SpriteSheet::create_clipframes()
 {
     //clipping
     r32 texLeft, texTop;
@@ -45,7 +45,7 @@ void Sprite::create_clipframes()
     }
 }
 
-u32 Sprite::get_frame(u32 anim, u32 index)
+u32 SpriteSheet::get_frame(u32 anim, u32 index)
 {
     u32 realAnim, realFrame;
 
@@ -64,13 +64,13 @@ u32 Sprite::get_frame(u32 anim, u32 index)
     return animations.at(realAnim).frames.at(realFrame);
 }
 
-v4 Sprite::get_clip(u32 anim, u32 index)
+v4 SpriteSheet::get_clip(u32 anim, u32 index)
 {
     u32 frame = get_frame(anim, index);
     return get_clip(frame);
 }
 
-v4 Sprite::get_clip(u32 frame)
+v4 SpriteSheet::get_clip(u32 frame)
 {
     if (frame >= clipFrames.size())
     {
@@ -81,7 +81,7 @@ v4 Sprite::get_clip(u32 frame)
     else return clipFrames.at(frame);
 }
 
-Animation *Sprite::get_anim(u32 anim)
+Animation *SpriteSheet::get_anim(u32 anim)
 {
     u32 realAnim;
     if (animations.size() <= anim)
@@ -93,7 +93,7 @@ Animation *Sprite::get_anim(u32 anim)
 
 ///////////////////////////////////////////////
 
-void SpriteInstance::update(r32 speed)
+void Sprite::update(r32 speed)
 {
     //update animation
     accumulator += speed;
@@ -104,12 +104,12 @@ void SpriteInstance::update(r32 speed)
         currentFrame++;
     }
 
-    s32 animsize = sprite->get_anim(currentAnim)->frames.size();
+    s32 animsize = sheet->get_anim(currentAnim)->frames.size();
     while (currentFrame >= animsize)
         currentFrame -= animsize;
 
 }
-void SpriteInstance::set_animation (u32 animIndex)
+void Sprite::set_animation (u32 animIndex)
 {
     if (currentAnim == animIndex)
         return;

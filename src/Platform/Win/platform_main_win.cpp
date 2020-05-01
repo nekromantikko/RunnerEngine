@@ -1,4 +1,9 @@
 #include "../platform_main.h"
+#include "../platform_rendering.h"
+#include "../platform_audio.h"
+#include <GL/glew.h>
+#include <SDL.h>
+#include <SDL_opengl.h>
 
 //THIS IS THE PLATFORM CODE FOR WINDOWS!
 //MAC + LINUX WOULD BE ALMOST THE SAME, EXCEPT WITH DIFFERENT VERSION OF FMOD
@@ -32,19 +37,14 @@ void platform_init()
     //set clear color to black
     glClearColor(0.f, 0.f, 0.f, 0.f);
 
-    //initialize DevIL
-    ilInit();
+    platform_init_rendering();
 
-    init_renderer();
-
-    init_FMOD();
+    platform_init_audio();
 }
 
 void platform_quit()
 {
-    close_renderer();
-
-    ilShutDown();
+    platform_deinit_rendering();
 
     //destroy opengl context and window
     SDL_GL_DeleteContext(runnerGlContext);
@@ -53,7 +53,7 @@ void platform_quit()
     //quit sdl
     SDL_Quit();
 
-    close_FMOD();
+    platform_deinit_audio();
 }
 
 void platform_show_error(const char* error)
@@ -289,5 +289,10 @@ void platform_set_fullscreen(bool s)
         SDL_ShowCursor(true);
         SDL_SetWindowFullscreen(runnerWindow, 0);
     }
+}
+
+void platform_swap_buffer()
+{
+    SDL_GL_SwapWindow(runnerWindow);
 }
 

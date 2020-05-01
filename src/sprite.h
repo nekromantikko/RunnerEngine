@@ -16,10 +16,9 @@ struct Animation
 };
 
 //a class that will be opened from file
-struct Sprite
+struct SpriteSheet
 {
     InternalTexture *texture;
-    InternalTexture *lightmap;
     InternalTexture *normal;
     std::vector<Animation> animations;
     std::vector<v4> clipFrames;
@@ -28,7 +27,7 @@ struct Sprite
     r32 xOffset, yOffset;
     r32 glow;
 
-    ~Sprite();
+    ~SpriteSheet();
     void create_vertex_buffer();
     void create_clipframes();
     u32 get_frame(u32 anim, u32 index);
@@ -37,12 +36,12 @@ struct Sprite
     Animation *get_anim(u32 anim);
 };
 
-struct SpriteInstance
+struct Sprite
 {
     void update(r32 speed);
     void set_animation (u32 animIndex);
 
-    Sprite *sprite;
+    SpriteSheet *sheet;
     //animstuff
     r32 accumulator = 0;
     u32 currentAnim = 0, currentFrame = 0;

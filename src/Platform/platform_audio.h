@@ -9,6 +9,9 @@
 struct InternalSound;
 struct InternalMusic;
 
+void platform_init_audio();
+void platform_deinit_audio();
+
 bool platform_load_sound(InternalSound *sound, const char* fname);
 void platform_delete_sound(InternalSound *sound);
 bool platform_load_music(InternalMusic *music, const char* fname);

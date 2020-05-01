@@ -2,6 +2,7 @@
 #define MESH_H
 
 #include <vector>
+#include "../vector.h"
 
 struct Triangle
 {
@@ -27,12 +28,6 @@ struct MeshData
     std::vector<v4> tangents;
 
     std::vector<Triangle> tris;
-};
-
-struct Mesh
-{
-    InternalMesh *internal;
-    MeshData data;
 };
 
 #endif // MESH_H

@@ -1,54 +1,28 @@
-#ifndef DATABASES_H
-#define DATABASES_H
-
-#include <vector>
-#include <cstddef>
-#include <iostream>
-#include <map>
-#include "sprite.h"
-#include "Rendering/shader.h"
-#include "Platform/platform_rendering.h"
-#include "audio.h"
-
-struct TempImage
-{
-    rImage image;
-    std::string textureName;
-};
-
-class Tileset;
+#ifndef RESOURCE_H
+#define RESORUCE_H
 
 namespace Resource
 {
     void init();
     void deinit();
 
-    Sound *get_sound(std::string handle);
-    Sprite *get_sprite(std::string handle);
-    Texture *get_texture(std::string handle);
-    Shader *get_shader(std::string handle);
-    Music *get_music(std::string handle);
-    ////////////////////////////////
+    void load_assets();
+    void free_assets();
 
-    void animate_tilesets();
-    Texture *no_texture();
-    Texture *no_normal();
-    Texture *no_lightmap();
+    u8 load_internal_texture(const char *name, const char *fname);
+    InternalTexture *get_internal_texture(const char *name);
+    InternalTexture *get_internal_texture(u8 i);
+    u8 get_internal_texture_index(const char *name);
 
-    //this should only be accessed by a loading thread
-    namespace Loader
-    {
-        Sound *load_sound(std::string fname);
-        Texture *load_texture(std::string fname, bool srgb = true);
-        Music *load_music(std::string fname);
-        void load_sprites();
-        void load_particles();
-        void load_multisounds();
+    u8 load_internal_shader(const char *name, const char *vert, const char *frag);
+    InternalShader *get_internal_shader(const char *name);
+    InternalShader *get_internal_shader(u8 i);
+    u8 get_internal_shader_index(const char *name);
 
-        void load_assets();
-
-        void throw_file_error(std::string msg, std::string fname);
-    }
+    u8 load_internal_mesh(const char *name, const char *fname);
+    InternalMesh *get_internal_mesh(const char *name);
+    InternalMesh *get_internal_nesh(u8 i);
+    u8 get_internal_mesh_index(const char *name);
 }
 
 

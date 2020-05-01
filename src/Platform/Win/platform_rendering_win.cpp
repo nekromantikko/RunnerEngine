@@ -1,5 +1,18 @@
 #include "../platform_rendering.h"
 
+#define GLM_FORCE_RADIANS
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <GL/glew.h>
+#include <GL\GLU.h>
+#include <IL/il.h>
+#include <IL/ilu.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "../platform_main.h"
+
 #define MODELVIEW_LOCATION 0
 #define PROJECTION_LOCATION 1
 
@@ -16,6 +29,9 @@ struct InternalTexture
 struct InternalShader
 {
     u32 id; //program id
+
+    u32 propertyCount;
+    s32 *propertyLocation;
 };
 
 struct InternalMesh
@@ -43,91 +59,10 @@ glm::mat4 orthoMatrix;
 ////////////////////////////////////////////////////////////////////////////////////////
 
 //INIT
-void init_renderer()
+void platform_init_rendering()
 {
-    create_screen_vbo();
-
-    //post processing
-    glGenFramebuffers(1, &postProcessFBO);
-
-    glGenTextures(1, &postProcessTexture);
-    glBindTexture(GL_TEXTURE_2D, postProcessTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT + SCREEN_MARGINAL, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, postProcessFBO);
-    glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, postProcessTexture, 0);
-    glDrawBuffer(GL_COLOR_ATTACHMENT0);
-
-    //reflect fbo
-    glGenFramebuffers(1, &reflectFBO);
-
-    glGenTextures(1, &reflectTexture);
-    glBindTexture(GL_TEXTURE_2D, reflectTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT + SCREEN_MARGINAL, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, reflectFBO);
-    glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, reflectTexture, 0);
-    glDrawBuffer(GL_COLOR_ATTACHMENT0);
-
-    //blur stuff
-    glGenFramebuffers(1, &glowFBO);
-    glGenFramebuffers(4, blurFBO);
-
-    glGenTextures(1, &glowTexture);
-    glBindTexture(GL_TEXTURE_2D, glowTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT  + SCREEN_MARGINAL, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, glowFBO);
-    glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, glowTexture, 0);
-    glDrawBuffer(GL_COLOR_ATTACHMENT0);
-
-    for (s32 i = 0; i <= 3; i++)
-    {
-        glGenTextures(1, blurTexture + i);
-        glBindTexture(GL_TEXTURE_2D, blurTexture[i]);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH / pow(2, i), (SCREEN_HEIGHT + SCREEN_MARGINAL) / pow(2, i), 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-        glBindFramebuffer(GL_FRAMEBUFFER, blurFBO[i]);
-        glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, blurTexture[i], 0);
-        glDrawBuffer(GL_COLOR_ATTACHMENT0);
-    }
-
-    //screenshot buffer and texture
-    glGenFramebuffers(1, &screenshotFBO);
-
-    glGenTextures(1, &screenshotTexture);
-    glBindTexture(GL_TEXTURE_2D, screenshotTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, screenshotFBO);
-    glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, screenshotTexture, 0);
-    glDrawBuffer(GL_COLOR_ATTACHMENT0);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    screenshot.id = screenshotTexture;
-    //screenshot.w = SCREEN_WIDTH;
-    //screenshot.h = SCREEN_HEIGHT;
+    //initialize DevIL
+    ilInit();
 
     //////////////////////////////////////////////////////////////////////////
 
@@ -141,30 +76,10 @@ void init_renderer()
 
     ///////////////////////////////////////////////////////////////////////////
 
-    //LOAD SHADERS
-    gl_load_background_shader();
-    gl_load_circle_transition_shader();
-    //gl_load_line_shader();
-
-    //gl_load_world_shader();
-
-    //for (int i = 0; i < MAX_LIGHTS; i++)
-        //gl_load_world_light_shader(i);
-
-    gl_load_glow_threshold_shader();
-    gl_load_gaussian_blur_shader();
-    gl_load_final_image_shader();
-    //gl_load_blend_shader();
-
-    //////////////////////////////////////////////////////
-
     //Set blending
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
     glEnable(GL_FRAMEBUFFER_SRGB);
-
-    //enable wireframe
-    //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
     //back face culling
     glFrontFace(GL_CCW);
@@ -175,9 +90,11 @@ void init_renderer()
     orthoMatrix = glm::mat4(glm::ortho(0.f, (r32)SCREEN_WIDTH, (r32)SCREEN_HEIGHT, 0.f, -16384.f, 16384.f));
 }
 
-void close_renderer()
+void platform_deinit_rendering()
 {
     glDeleteBuffers(1, &lightDataUBO);
+
+    ilShutDown();
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -462,19 +379,34 @@ ShaderPropertyType gl_convert_shader_property_type(GLenum propertyType)
     return result;
 }
 
+void platform_load_string_from_file(const char *fname, char *contents)
+{
+    std::string temp;
+    std::ifstream sourceFile(fname);
+
+    temp.assign((std::istreambuf_iterator<char>(sourceFile)), std::istreambuf_iterator<char>());
+    memcpy(contents, temp.c_str(), temp.length());
+    contents[temp.length()] = NULL;
+}
+
 InternalShader *platform_load_shader(const char* vert, const char* frag)
 {
     InternalShader *result = new InternalShader;
 
     GLuint shaderID = glCreateProgram();
 
+    char vertexSource[4096];
+    char fragmentSource[4096];
+    platform_load_string_from_file(vert, vertexSource);
+    platform_load_string_from_file(frag, fragmentSource);
+
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, (const GLchar**)vert, NULL);
+    glShaderSource(vertexShader, 1, (const GLchar**)&vertexSource, NULL);
     glCompileShader(vertexShader);
     glAttachShader(shaderID, vertexShader);
 
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, (const GLchar**)frag, NULL);
+    glShaderSource(fragmentShader, 1, (const GLchar**)&fragmentSource, NULL);
     glCompileShader(fragmentShader);
     glAttachShader(shaderID, fragmentShader);
 
@@ -552,15 +484,13 @@ InternalTexture *platform_create_indexed_sprite_sheet(rImage *image)
     return texture;
 }
 
-InternalTexture *platform_load_texture(rImage *image, bool srgb)
+void platform_load_texture(InternalTexture *texture, rImage *image, bool srgb)
 {
     glBindTexture(GL_TEXTURE_2D, NULL);
 
-    Texture *texture = new Texture;
+    texture = new InternalTexture;
     //create gl texture
     glGenTextures(1, (GLuint*)texture);
-    texture->w = ilGetInteger(IL_IMAGE_WIDTH);
-    texture->h = ilGetInteger(IL_IMAGE_HEIGHT);
 
     //bind texture ID
     glBindTexture(GL_TEXTURE_2D, texture->id);
@@ -578,8 +508,6 @@ InternalTexture *platform_load_texture(rImage *image, bool srgb)
 
     //unbind texture
     glBindTexture(GL_TEXTURE_2D, 0);
-
-    return texture;
 }
 void platform_delete_texture(InternalTexture *texture)
 {
@@ -600,15 +528,13 @@ void platform_get_texture_height(InternalTexture *texture, u32 *h)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-InternalTexture *platform_create_empty_texture(s32 w, s32 h)
+void platform_create_empty_texture(InternalTexture *texture, s32 w, s32 h)
 {
     glBindTexture(GL_TEXTURE_2D, NULL);
 
-    InternalTexture *texture = new InternalTexture;
+    texture = new InternalTexture;
     //create gl texture
     glGenTextures(1, (GLuint*)texture);
-    texture->w = w;
-    texture->h = h;
 
     //bind texture ID
     glBindTexture(GL_TEXTURE_2D, texture->id);
@@ -621,20 +547,16 @@ InternalTexture *platform_create_empty_texture(s32 w, s32 h)
 
     //unbind texture
     glBindTexture(GL_TEXTURE_2D, 0);
-
-    return texture;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-InternalTexture *platform_create_tile_index_map(u32 w, u32 h)
+void platform_create_tile_index_map(InternalTexture *texture, u32 w, u32 h)
 {
     glBindTexture(GL_TEXTURE_2D, NULL);
 
-    InternalTexture *texture = new InternalTexture;
+    texture = new InternalTexture;
     glGenTextures(1, (GLuint*)texture);
-    texture->w = w;
-    texture->h = h;
 
     glBindTexture(GL_TEXTURE_2D, texture->id);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, NULL);
@@ -644,8 +566,6 @@ InternalTexture *platform_create_tile_index_map(u32 w, u32 h)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
     glBindTexture(GL_TEXTURE_2D, 0);
-
-    return texture;
 }
 
 void platform_populate_tile_index_map(InternalTexture *texture, u32 w, u32 h, u8 *pixels)
@@ -657,9 +577,9 @@ void platform_populate_tile_index_map(InternalTexture *texture, u32 w, u32 h, u8
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-InternalTexture *platform_create_palette_texture(Palette *palette)
+void platform_create_palette_texture(InternalTexture *texture, Palette *palette)
 {
-    InternalTexture *texture = new InternalTexture;
+    texture = new InternalTexture;
     glGenTextures(1, (GLuint*)texture);
 
     glBindTexture(GL_TEXTURE_2D, texture->id);
@@ -670,8 +590,6 @@ InternalTexture *platform_create_palette_texture(Palette *palette)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
     glBindTexture(GL_TEXTURE_2D, 0);
-
-    return texture;
 }
 
 void platform_update_palette_texture(InternalTexture *texture, Palette *palette)
@@ -683,37 +601,33 @@ void platform_update_palette_texture(InternalTexture *texture, Palette *palette)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-void platform_shader_set_texture(const char* propertyName, InternalTexture *tex, TextureType type = TEXTURE_BASE_COLOR)
+void platform_shader_set_texture(u32 index, InternalTexture *tex)
 {
-    GLint textureLocation = glGetUniformLocation(currentShaderProgram, propertyName);
 
-    glActiveTexture(GL_TEXTURE0 + type);
-    glBindTexture(GL_TEXTURE_2D, tex->id);
-    glUniform1i(textureLocation, type);
 }
-void platform_shader_set_float(const char* propertyName, float f)
+void platform_shader_set_float(u32 index,  u32 count, float *f)
 {
-    GLint floatLocation = glGetUniformLocation(currentShaderProgram, propertyName);
 
-    glUniform1f(floatLocation, (GLfloat)f);
 }
-void platform_shader_set_vector(const char* propertyName, v2 vec)
+void platform_shader_set_vector(u32 index, u32 count, v2 *vec)
 {
-    GLint vecLocation = glGetUniformLocation(currentShaderProgram, propertyName);
 
-    glUniform2f(vecLocation, (GLfloat)vec.x, (GLfloat)vec.y);
 }
-void platform_shader_set_vector(const char* propertyName, v3 vec)
+void platform_shader_set_vector(u32 index, u32 count, v3 *vec)
 {
-    GLint vecLocation = glGetUniformLocation(currentShaderProgram, propertyName);
 
-    glUniform3f(vecLocation, (GLfloat)vec.x, (GLfloat)vec.y, (GLfloat)vec.z);
 }
-void platform_shader_set_vector(const char* propertyName, v4 vec)
+void platform_shader_set_vector(u32 index, u32 count, v4 *vec)
 {
-    GLint vecLocation = glGetUniformLocation(currentShaderProgram, propertyName);
 
-    glUniform4f(vecLocation, (GLfloat)vec.x, (GLfloat)vec.y, (GLfloat)vec.z, (GLfloat)vec.w);
+}
+void platform_shader_set_int(u32 index,  u32 count, s32 *i)
+{
+
+}
+void platform_shader_set_uint(u32 index,  u32 count, u32 *u)
+{
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -748,11 +662,6 @@ void platform_render(Transform xform)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 }
 
-void platform_blit()
-{
-    gl_render_generic_framebuffer();
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////
 
 void platform_clear_buffer()
@@ -760,16 +669,11 @@ void platform_clear_buffer()
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void platform_swap_buffer()
-{
-    SDL_GL_SwapWindow(runnerWindow);
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////
 
-InternalMesh *platform_create_mesh(MeshData *mesh)
+void platform_create_mesh(InternalMesh *handle, MeshData *mesh)
 {
-    InternalMesh *handle = new InternalMesh;
+    handle = new InternalMesh;
 
     glGenVertexArrays(1, &handle->vao);
     glBindVertexArray(handle->vao);
@@ -808,8 +712,6 @@ InternalMesh *platform_create_mesh(MeshData *mesh)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->tris.size() * sizeof(Triangle), mesh->tris.data(), GL_STATIC_DRAW);
 
     glBindVertexArray(0);
-
-    return handle;
 }
 
 void platform_delete_mesh(InternalMesh *buf)

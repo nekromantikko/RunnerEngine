@@ -7,6 +7,18 @@
 #define OGG_MUSIC
 #define OGG_USE_TREMOR
 
+struct InternalSound
+{
+    //Mix_Chunk *chunk;
+    FMOD_SOUND *sound;
+};
+
+struct InternalMusic
+{
+    FMOD_SOUND *sound;
+};
+
+
 //FMOD
 FMOD_SYSTEM *soundSystem;
 
@@ -49,6 +61,15 @@ void close_FMOD()
     //FMOD quit
     FMOD_System_Release(soundSystem);
     CoUninitialize();
+}
+
+void platform_init_audio()
+{
+    init_FMOD();
+}
+void platform_deinit_audio()
+{
+    close_FMOD();
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -114,17 +135,6 @@ void platform_delete_music(InternalMusic *music)
 }
 
 /////////////////////////////////////////////////////////////////////
-
-struct InternalSound
-{
-    //Mix_Chunk *chunk;
-    FMOD_SOUND *sound;
-};
-
-struct InternalMusic
-{
-    FMOD_SOUND *sound;
-};
 
 u32 platform_play_world_sound(InternalSound *sound, s32 loops, fvec2 *pos, fvec2 *vel)
 {

@@ -3,10 +3,6 @@
 
 #include "../signal.h"
 
-#define SCREEN_WIDTH 1024
-#define SCREEN_HEIGHT 576
-#define SCREEN_MARGINAL 128
-
 struct ControllerInput
 {
     Signal aButton;
@@ -67,5 +63,6 @@ void platform_poll_input(Input *input);
 void platform_controller_rumble(r32 strength, u32 lengthInMs);
 
 void platform_set_fullscreen(bool);
+void platform_swap_buffer();
 
 #endif // PLATFORM_MAIN_H

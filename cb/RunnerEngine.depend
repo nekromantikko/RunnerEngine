@@ -3580,13 +3580,13 @@
 	<fstream>
 	<stdexcept>
 
-1588259836 source:d:\work\gamedev\runnerengine\src\collision.cpp
+1588264273 source:d:\work\gamedev\runnerengine\src\collision.cpp
 	"collision.h"
 	"units.h"
 	"renderer.h"
 	"world.h"
 
-1588259478 d:\work\gamedev\runnerengine\src\collision.h
+1588264273 d:\work\gamedev\runnerengine\src\collision.h
 	"tileset.h"
 	"vector.h"
 	"math.h"
@@ -3615,12 +3615,12 @@
 	<cstdint>
 	<iostream>
 
-1588259029 d:\work\gamedev\runnerengine\src\math.h
+1588264273 d:\work\gamedev\runnerengine\src\math.h
 	<cmath>
 	<cstdlib>
 	"vector.h"
 
-1588261918 d:\work\gamedev\runnerengine\src\vector.h
+1588264273 d:\work\gamedev\runnerengine\src\vector.h
 	"typedef.h"
 
 1464817101 d:\work\gamedev\runnerengine\src\units.h
@@ -3687,7 +3687,7 @@
 1462820376 d:\work\gamedev\runnerengine\src\light.h
 	"component.h"
 
-1588259789 d:\work\gamedev\runnerengine\src\renderer.h
+1588325428 d:\work\gamedev\runnerengine\src\renderer.h
 	"Rendering/mesh.h"
 	"Rendering/shader.h"
 	"Rendering/rendering_util.h"
@@ -3700,13 +3700,13 @@
 	"entitymanager.h"
 	"resource.h"
 
-1588259029 d:\work\gamedev\runnerengine\src\sprite.h
+1588290971 d:\work\gamedev\runnerengine\src\sprite.h
 	"typedef.h"
 	<vector>
 	<string>
 	"vector.h"
 
-1588260910 d:\work\gamedev\runnerengine\src\resource.h
+1588291087 d:\work\gamedev\runnerengine\src\resource.h
 	<vector>
 	<cstddef>
 	<iostream>
@@ -3758,7 +3758,7 @@
 	"renderer.h"
 	<sstream>
 
-1588259865 d:\work\gamedev\runnerengine\src\debug.h
+1588264273 d:\work\gamedev\runnerengine\src\debug.h
 	"typedef.h"
 	"Platform/platform_main.h"
 
@@ -4114,7 +4114,7 @@
 1450205901 d:\work\gamedev\runnerengine\src\fpstimer.h
 	"typedef.h"
 
-1588261221 source:d:\work\gamedev\runnerengine\src\game.cpp
+1588264273 source:d:\work\gamedev\runnerengine\src\game.cpp
 	"game.h"
 	<sstream>
 	"Platform/platform_audio.h"
@@ -4139,10 +4139,10 @@
 	"typedef.h"
 	"sprite.h"
 
-1588260950 d:\work\gamedev\runnerengine\src\input.h
+1588264273 d:\work\gamedev\runnerengine\src\input.h
 	"Platform/platform_main.h"
 
-1588262365 source:d:\work\gamedev\runnerengine\src\gamestate.cpp
+1588264273 source:d:\work\gamedev\runnerengine\src\gamestate.cpp
 	"gamestate.h"
 	"world.h"
 	"input.h"
@@ -4186,7 +4186,7 @@
 	<fstream>
 	<atomic>
 
-1588262450 d:\work\gamedev\runnerengine\src\file_formats.h
+1588264273 d:\work\gamedev\runnerengine\src\file_formats.h
 
 1489182132 source:d:\work\gamedev\runnerengine\src\leveltimer.cpp
 	"leveltimer.h"
@@ -4198,7 +4198,7 @@
 	"renderer.h"
 	"entitymanager.h"
 
-1588262465 source:d:\work\gamedev\runnerengine\src\main.cpp
+1588264273 source:d:\work\gamedev\runnerengine\src\main.cpp
 	<string>
 	<iostream>
 	<map>
@@ -5730,7 +5730,7 @@
 1486600156 d:\work\gamedev\runnerengine\lib\fmod\lowlevel\inc\fmod_errors.h
 	"fmod.h"
 
-1588262420 d:\work\gamedev\runnerengine\src\macro.h
+1588264273 d:\work\gamedev\runnerengine\src\macro.h
 	"typedef.h"
 	<vector>
 	"signal.h"
@@ -5744,11 +5744,11 @@
 	<fstream>
 	"input.h"
 
-1588259340 d:\work\gamedev\runnerengine\src\tileset.h
+1588264273 d:\work\gamedev\runnerengine\src\tileset.h
 	<string>
 	"typedef.h"
 
-1588259029 d:\work\gamedev\runnerengine\src\world.h
+1588264273 d:\work\gamedev\runnerengine\src\world.h
 	"tileset.h"
 
 1588111997 source:d:\work\gamedev\runnerengine\src\world.cpp
@@ -5759,40 +5759,63 @@
 	<cstring>
 	"resource.h"
 
-1588262931 d:\work\gamedev\runnerengine\src\rendering\shader.h
+1588325470 d:\work\gamedev\runnerengine\src\rendering\shader.h
 	"../vector.h"
 
-1588260158 d:\work\gamedev\runnerengine\src\rendering\texture.h
+1588273334 d:\work\gamedev\runnerengine\src\rendering\texture.h
 
-1588263239 d:\work\gamedev\runnerengine\src\rendering\mesh.h
+1588265436 d:\work\gamedev\runnerengine\src\rendering\mesh.h
 	<vector>
+	"../vector.h"
 
-1588263009 d:\work\gamedev\runnerengine\src\rendering\rendering_util.h
+1588264273 d:\work\gamedev\runnerengine\src\rendering\rendering_util.h
 	"../math.h"
 
-1588259964 d:\work\gamedev\runnerengine\src\platform\platform_main.h
+1588265387 d:\work\gamedev\runnerengine\src\platform\platform_main.h
 	"../signal.h"
 
-1588262137 d:\work\gamedev\runnerengine\src\platform\platform_audio.h
+1588264690 d:\work\gamedev\runnerengine\src\platform\platform_audio.h
 	"../vector.h"
 
-1588262973 d:\work\gamedev\runnerengine\src\platform\platform_rendering.h
+1588325470 d:\work\gamedev\runnerengine\src\platform\platform_rendering.h
 	"../Rendering/shader.h"
 	"../Rendering/texture.h"
 	"../Rendering/mesh.h"
 	"../Rendering/rendering_util.h"
 
-1588262263 d:\work\gamedev\runnerengine\src\audio.h
+1588264273 d:\work\gamedev\runnerengine\src\audio.h
 	"vector.h"
 
-1588262261 source:d:\work\gamedev\runnerengine\src\audio.cpp
+1588264273 source:d:\work\gamedev\runnerengine\src\audio.cpp
 	"audio.h"
 	"Platform/platform_audio.h"
 
-1588262662 source:d:\work\gamedev\runnerengine\src\platform\win\platform_audio_win.cpp
+1588264742 source:d:\work\gamedev\runnerengine\src\platform\win\platform_audio_win.cpp
 	"../platform_audio.h"
 	"../../units.h"
 	<fmod.hpp>
 	<fmod_errors.h>
 	<windows.h>
+
+1588265387 source:d:\work\gamedev\runnerengine\src\platform\win\platform_main_win.cpp
+	"../platform_main.h"
+	"../platform_rendering.h"
+	"../platform_audio.h"
+	<GL/glew.h>
+	<SDL.h>
+	<SDL_opengl.h>
+
+1588265401 source:d:\work\gamedev\runnerengine\src\platform\win\platform_rendering_win.cpp
+	"../platform_rendering.h"
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<GL/glew.h>
+	<GL\GLU.h>
+	<IL/il.h>
+	<IL/ilu.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	"../platform_main.h"
 
